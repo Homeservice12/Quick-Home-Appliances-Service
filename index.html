@@ -299,10 +299,12 @@
             border-radius: 8px;
             text-align: center;
             margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: 600;
         }
 
         .total-box span {
-            font-size: 20px;
+            font-size: 22px;
             font-weight: bold;
             color: var(--secondary);
         }
@@ -374,7 +376,7 @@
             </div>
         </div>
 
-        <form id="bookingForm">
+        <form id="bookingForm" onsubmit="return false;">
             <div class="card">
                 <h2>1. Customer Information</h2>
                 
@@ -423,7 +425,7 @@
 
                 <div class="service-category">❄️ AC Cleaning & Servicing</div>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Jet Pump Service" data-price="399">
+                    <input type="checkbox" name="service" value="Split AC Jet Pump Service" data-price="399" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">Split AC Jet Pump Service</div>
                     <div class="service-price"><span class="old-price">₹599</span> ₹399 <span class="badge">OFFER</span></div>
@@ -431,25 +433,25 @@
 
                 <div class="service-category">⚡ AC Repair, Gas Charging & PCB</div>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="AC Checking & Repair" data-price="199">
+                    <input type="checkbox" name="service" value="AC Checking & Repair" data-price="199" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">AC Checking & Repair</div>
                     <div class="service-price"><span class="old-price">₹299</span> ₹199 <span class="badge">HOT</span></div>
                 </label>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="AC Gas Charging" data-price="2499">
+                    <input type="checkbox" name="service" value="AC Gas Charging" data-price="2499" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">AC Gas Charging</div>
                     <div class="service-price"><span class="old-price">₹2900</span> ₹2499 <span class="badge">SPECIAL</span></div>
                 </label>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Inverter AC PCB Repair" data-price="4500">
+                    <input type="checkbox" name="service" value="Inverter AC PCB Repair" data-price="4500" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">Inverter AC PCB Repair</div>
                     <div class="service-price">₹4500</div>
                 </label>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Non Inverter PCB Repair" data-price="1500">
+                    <input type="checkbox" name="service" value="Non Inverter PCB Repair" data-price="1500" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">Non Inverter PCB Repair</div>
                     <div class="service-price">₹1500</div>
@@ -457,41 +459,41 @@
 
                 <div class="service-category">🛠️ AC Installation & Uninstallation</div>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Installation" data-price="1500">
+                    <input type="checkbox" name="service" value="Split AC Installation" data-price="1500" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">Split AC Installation</div>
                     <div class="service-price">₹1500</div>
                 </label>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Uninstallation" data-price="650">
+                    <input type="checkbox" name="service" value="Split AC Uninstallation" data-price="650" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">Split AC Uninstallation</div>
                     <div class="service-price">₹650</div>
                 </label>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Window AC Installation" data-price="600">
+                    <input type="checkbox" name="service" value="Window AC Installation" data-price="600" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">Window AC Installation</div>
                     <div class="service-price">₹600</div>
                 </label>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Window AC Uninstallation" data-price="500">
+                    <input type="checkbox" name="service" value="Window AC Uninstallation" data-price="500" onchange="updateTotal()">
                     <span class="checkmark"></span>
                     <div class="service-title">Window AC Uninstallation</div>
                     <div class="service-price">₹500</div>
                 </label>
 
                 <div class="service-category">🔍 Inspection / Checking</div>
-                <label class="service-item"><input type="checkbox" name="service" value="Microwave Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Microwave Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Washing Machine Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Geyser Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Geyser Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Fridge Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Fridge Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Water Purifier Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Water Purifier Checking</div><div class="service-price">₹199</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Microwave Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Microwave Checking</div><div class="service-price">₹199</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Washing Machine Checking</div><div class="service-price">₹199</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Geyser Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Geyser Checking</div><div class="service-price">₹199</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Fridge Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Fridge Checking</div><div class="service-price">₹199</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Water Purifier Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Water Purifier Checking</div><div class="service-price">₹199</div></label>
 
                 <div class="service-category">🔧 Appliance Full Servicing</div>
-                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Service" data-price="550"><span class="checkmark"></span><div class="service-title">Washing Machine Service</div><div class="service-price">₹550</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Microwave Service" data-price="350"><span class="checkmark"></span><div class="service-title">Microwave Service</div><div class="service-price">₹350</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Geyser Deep Cleaning Service" data-price="600"><span class="checkmark"></span><div class="service-title">Geyser Deep Cleaning Service</div><div class="service-price">₹600</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Service" data-price="550" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Washing Machine Service</div><div class="service-price">₹550</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Microwave Service" data-price="350" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Microwave Service</div><div class="service-price">₹350</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Geyser Deep Cleaning Service" data-price="600" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Geyser Deep Cleaning Service</div><div class="service-price">₹600</div></label>
             </div>
 
             <div class="card">
@@ -517,26 +519,72 @@
                     var lng = position.coords.longitude;
                     var mapUrl = "https://maps.google.com/?q=" + lat + "," + lng;
                     var currentAddress = document.getElementById('custAddress').value;
-                    document.getElementById('custAddress').value = currentAddress ? currentAddress + " [GPS: " + mapUrl + "]" : "GPS Location: " + mapUrl;
-                    alert("Location captured successfully!");
-                }, function() {
-                    alert("Location access denied or unavailable.");
-                });
+                    document.getElementById('custAddress').value = currentAddress ? currentAddress + "\n[GPS: " + mapUrl + "]" : "GPS Location: " + mapUrl;
+                    alert("Location added successfully!");
+                }, function(error) {
+                    alert("Please enable Location / GPS permission in your phone settings.");
+                }, { enableHighAccuracy: true });
+            } else {
+                alert("Geolocation is not supported by your browser.");
             }
         }
 
-        var checkboxes = document.querySelectorAll('input[name="service"]');
-        checkboxes.forEach(function(cb) {
-            cb.addEventListener('change', function() {
-                var total = 0;
-                checkboxes.forEach(function(c) {
-                    if (c.checked) total += parseInt(c.getAttribute('data-price'));
-                });
-                document.getElementById('totalDisplay').innerText = "₹" + total;
+        function updateTotal() {
+            var checkboxes = document.querySelectorAll('input[name="service"]');
+            var total = 0;
+            checkboxes.forEach(function(c) {
+                if (c.checked) {
+                    total += parseInt(c.getAttribute('data-price')) || 0;
+                }
             });
-        });
+            document.getElementById('totalDisplay').innerText = "₹" + total;
+        }
 
         function sendToWhatsApp() {
             var name = document.getElementById('custName').value.trim();
             var phone = document.getElementById('custPhone').value.trim();
-            var addres
+            var address = document.getElementById('custAddress').value.trim();
+            var referredBy = document.getElementById('referredBy').value.trim();
+            var date = document.getElementById('bookDate').value;
+            var time = document.getElementById('bookTime').value;
+
+            if (!name || !phone || !address || !date || !time) {
+                alert("Please fill in all required details (Name, Phone, Address, Date & Time)!");
+                return;
+            }
+
+            var checkboxes = document.querySelectorAll('input[name="service"]');
+            var selected = [];
+            var total = 0;
+            checkboxes.forEach(function(c) {
+                if (c.checked) {
+                    selected.push("• " + c.value + " (₹" + c.getAttribute('data-price') + ")");
+                    total += parseInt(c.getAttribute('data-price')) || 0;
+                }
+            });
+
+            if (selected.length === 0) {
+                alert("Please select at least one service!");
+                return;
+            }
+
+            var msg = "*NEW BOOKING REQUEST - N.G COOLING SOLUTION*\n\n" +
+                      "👤 *Name:* " + name + "\n" +
+                      "📞 *Phone:* " + phone + "\n" +
+                      "📍 *Address:* " + address + "\n";
+
+            if (referredBy) {
+                msg += "🤝 *Referred By:* " + referredBy + "\n";
+            }
+
+            msg += "📅 *Date:* " + date + "\n" +
+                   "⏰ *Time:* " + time + "\n\n" +
+                   "*Selected Services:*\n" + selected.join("\n") + "\n\n" +
+                   "💰 *Total Amount:* ₹" + total;
+
+            var waUrl = "https://wa.me/917439160014?text=" + encodeURIComponent(msg);
+            window.open(waUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
