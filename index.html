@@ -9,9 +9,11 @@
             --primary: #0066cc;
             --primary-dark: #004999;
             --secondary: #28a745;
+            --accent: #ff6b00;
             --bg: #f4f7f6;
             --card: #ffffff;
             --text: #222222;
+            --gray: #666666;
             --border: #e0e0e0;
         }
 
@@ -40,6 +42,24 @@
         header h1 {
             font-size: 24px;
             margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .promo-banner {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px dashed #ffeba1;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            text-align: center;
+            font-weight: 600;
         }
 
         .container {
@@ -85,12 +105,19 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             font-size: 15px;
+            transition: border 0.2s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
         }
 
         .location-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            gap: 8px;
             background-color: #eef5ff;
             color: var(--primary);
             border: 1px solid var(--primary);
@@ -101,6 +128,19 @@
             cursor: pointer;
             width: 100%;
             margin-top: 6px;
+        }
+
+        .location-btn:hover {
+            background-color: #dbeaff;
+        }
+
+        .row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .col {
+            flex: 1;
         }
 
         .service-category {
@@ -122,12 +162,20 @@
             border: 1px solid var(--border);
             border-radius: 8px;
             cursor: pointer;
+            user-select: none;
+            transition: all 0.2s;
+        }
+
+        .service-item:hover {
+            border-color: var(--primary);
         }
 
         .service-item input {
             position: absolute;
             opacity: 0;
             cursor: pointer;
+            height: 0;
+            width: 0;
         }
 
         .checkmark {
@@ -166,27 +214,33 @@
         .service-title {
             font-size: 14px;
             font-weight: 600;
+            color: #333;
         }
 
         .service-price {
             font-size: 14px;
             font-weight: 700;
             color: var(--primary);
+            margin-top: 2px;
         }
 
         .old-price {
             text-decoration: line-through;
             color: #888;
+            font-weight: normal;
             font-size: 12px;
             margin-right: 5px;
         }
 
         .badge {
+            display: inline-block;
             background: #ffebe6;
             color: #d9381e;
             font-size: 11px;
             padding: 2px 6px;
             border-radius: 4px;
+            font-weight: bold;
+            margin-left: 6px;
         }
 
         .total-box {
@@ -214,6 +268,14 @@
             font-weight: bold;
             border-radius: 8px;
             cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -221,12 +283,16 @@
 
     <header>
         <h1>N.G COOLING SOLUTION</h1>
-        <p>Fast & Professional Appliance Repair Booking</p>
+        <p>Quick & Professional Appliance Repair Booking</p>
     </header>
 
     <div class="container">
+        <!-- Referral Special Offer Banner -->
+        <div class="promo-banner">
+            🎉 <b>বিশেষ অফার:</b> ৫ জন বন্ধু বা পরিচিতদের রেফার করুন আর পান <b>₹১০০ ছাড়!</b> 
+        </div>
+
         <form id="bookingForm">
-            <!-- Customer Information -->
             <div class="card">
                 <h2>1. Customer Information</h2>
                 
@@ -242,40 +308,43 @@
 
                 <div class="form-group">
                     <label for="custAddress">Address / Location *</label>
-                    <textarea id="custAddress" rows="2" placeholder="Enter full address" required></textarea>
+                    <textarea id="custAddress" rows="2" placeholder="Enter complete home address" required></textarea>
                     <button type="button" class="location-btn" onclick="getLocation()">
                         📍 Share Location Automatically
                     </button>
                 </div>
 
-                <div style="display: flex; gap: 10px;">
-                    <div class="form-group" style="flex: 1;">
-                        <label for="bookDate">Date *</label>
-                        <input type="date" id="bookDate" required>
+                <!-- Referral Section -->
+                <div class="form-group">
+                    <label for="referredBy">Referred By (Optional)</label>
+                    <input type="text" id="referredBy" placeholder="রেফার করা বন্ধুর নাম বা ফোন নম্বর লিখুন">
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bookDate">Service Date *</label>
+                            <input type="date" id="bookDate" required>
+                        </div>
                     </div>
-                    <div class="form-group" style="flex: 1;">
-                        <label for="bookTime">Time *</label>
-                        <input type="time" id="bookTime" required>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="bookTime">Service Time *</label>
+                            <input type="time" id="bookTime" required>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Service Selection -->
             <div class="card">
                 <h2>2. Select Services</h2>
 
                 <div class="service-category">❄️ AC Cleaning & Servicing</div>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Jet Pump Deep Cleaning Foam Service" data-price="450">
+                    <input type="checkbox" name="service" value="Split AC Jet Pump Service" data-price="399">
                     <span class="checkmark"></span>
-                    <div class="service-title">Jet Pump Deep Cleaning Foam Service</div>
-                    <div class="service-price"><span class="old-price">₹599</span> ₹450 <span class="badge">OFFER</span></div>
-                </label>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="Pump Down Split AC Service" data-price="1950">
-                    <span class="checkmark"></span>
-                    <div class="service-title">Pump Down Split AC Service</div>
-                    <div class="service-price">₹1950</div>
+                    <div class="service-title">Split AC Jet Pump Service</div>
+                    <div class="service-price"><span class="old-price">₹599</span> ₹399 <span class="badge">OFFER</span></div>
                 </label>
 
                 <div class="service-category">⚡ AC Gas Charging & PCB Repair</div>
@@ -283,27 +352,27 @@
                     <input type="checkbox" name="service" value="AC Gas Charging" data-price="2499">
                     <span class="checkmark"></span>
                     <div class="service-title">AC Gas Charging</div>
-                    <div class="service-price"><span class="old-price">₹2900</span> ₹2499 <span class="badge">DISCOUNT</span></div>
+                    <div class="service-price"><span class="old-price">₹2900</span> ₹2499 <span class="badge">SPECIAL</span></div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Inverter AC PCB Repair" data-price="4500">
                     <span class="checkmark"></span>
                     <div class="service-title">Inverter AC PCB Repair</div>
-                    <div class="service-price">₹4500 + Service Charge</div>
+                    <div class="service-price">₹4500</div>
                 </label>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Non Inverter PCB Repair" data-price="1850">
+                    <input type="checkbox" name="service" value="Non Inverter PCB Repair" data-price="1500">
                     <span class="checkmark"></span>
                     <div class="service-title">Non Inverter PCB Repair</div>
-                    <div class="service-price">₹1850 + Service Charge</div>
+                    <div class="service-price">₹1500</div>
                 </label>
 
                 <div class="service-category">🛠️ AC Installation & Uninstallation</div>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Installation" data-price="1350">
+                    <input type="checkbox" name="service" value="Split AC Installation" data-price="1500">
                     <span class="checkmark"></span>
                     <div class="service-title">Split AC Installation</div>
-                    <div class="service-price">₹1350</div>
+                    <div class="service-price">₹1500</div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Split AC Uninstallation" data-price="650">
@@ -324,8 +393,7 @@
                     <div class="service-price">₹500</div>
                 </label>
 
-                <div class="service-category">🔍 Inspection / Light Service</div>
-                <label class="service-item"><input type="checkbox" name="service" value="Light Service" data-price="399"><span class="checkmark"></span><div class="service-title">Light Service</div><div class="service-price">₹399</div></label>
+                <div class="service-category">🔍 Inspection / Checking</div>
                 <label class="service-item"><input type="checkbox" name="service" value="Microwave Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Microwave Checking</div><div class="service-price">₹199</div></label>
                 <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Washing Machine Checking</div><div class="service-price">₹199</div></label>
                 <label class="service-item"><input type="checkbox" name="service" value="Geyser Checking" data-price="199"><span class="checkmark"></span><div class="service-title">Geyser Checking</div><div class="service-price">₹199</div></label>
@@ -347,6 +415,10 @@
                 </button>
             </div>
         </form>
+
+        <footer>
+            &copy; N.G COOLING SOLUTION. All Rights Reserved.
+        </footer>
     </div>
 
     <script>
@@ -380,11 +452,12 @@
             var name = document.getElementById('custName').value.trim();
             var phone = document.getElementById('custPhone').value.trim();
             var address = document.getElementById('custAddress').value.trim();
+            var referredBy = document.getElementById('referredBy').value.trim();
             var date = document.getElementById('bookDate').value;
             var time = document.getElementById('bookTime').value;
 
             if (!name || !phone || !address || !date || !time) {
-                alert("Please fill all details!");
+                alert("Please fill in all required details!");
                 return;
             }
 
@@ -402,18 +475,22 @@
                 return;
             }
 
-            var msg = "*NEW BOOKING - N.G COOLING SOLUTION*\n\n" +
-                      "*Name:* " + name + "\n" +
-                      "*Phone:* " + phone + "\n" +
-                      "*Address:* " + address + "\n" +
-                      "*Date:* " + date + "\n" +
-                      "*Time:* " + time + "\n\n" +
-                      "*Selected Services:*\n" + selected.join("\n") + "\n\n" +
-                      "*Total Amount:* ₹" + total;
+            var msg = "*NEW BOOKING REQUEST - N.G COOLING SOLUTION*\n\n" +
+                      "👤 *Name:* " + name + "\n" +
+                      "📞 *Phone:* " + phone + "\n" +
+                      "📍 *Address:* " + address + "\n";
+
+            if (referredBy) {
+                msg += "🤝 *Referred By:* " + referredBy + "\n";
+            }
+
+            msg += "📅 *Date:* " + date + "\n" +
+                   "⏰ *Time:* " + time + "\n\n" +
+                   "*Selected Services:*\n" + selected.join("\n") + "\n\n" +
+                   "💰 *Total Amount:* ₹" + total;
 
             window.open("https://wa.me/917439160014?text=" + encodeURIComponent(msg), '_blank');
         }
     </script>
 </body>
-  </html>
-    
+</html>
