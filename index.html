@@ -3,189 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N.G COOLING SOLUTION - Easy Service Booking</title>
+    <title>N.G COOLING SOLUTION - Premium Appliance Care</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #0066cc;
-            --primary-dark: #004999;
-            --secondary: #28a745;
-            --accent: #ff6b00;
-            --bg: #f4f7f6;
-            --card: #ffffff;
-            --text: #222222;
-            --gray: #666666;
-            --border: #e0e0e0;
+            --primary: #0f172a;
+            --accent: #0284c7;
+            --accent-hover: #0369a1;
+            --success: #10b981;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
         }
 
         body {
             background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            padding-bottom: 40px;
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 50px;
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
             color: white;
             text-align: center;
-            padding: 25px 15px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            padding: 35px 20px;
+            border-bottom: 4px solid var(--accent);
         }
 
         header h1 {
-            font-size: 24px;
-            margin-bottom: 5px;
+            font-size: 26px;
+            font-weight: 700;
             letter-spacing: 0.5px;
+            margin-bottom: 6px;
         }
 
         header p {
             font-size: 14px;
-            opacity: 0.9;
-        }
-
-        .promo-banner {
-            background-color: #fff3cd;
-            color: #856404;
-            border: 1px dashed #ffeba1;
-            padding: 10px 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-size: 13px;
-            text-align: center;
-            font-weight: 600;
+            color: #94a3b8;
         }
 
         .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 0 15px;
+            max-width: 650px;
+            margin: -20px auto 0;
+            padding: 0 16px;
+        }
+
+        .promo-banner {
+            background: linear-gradient(90deg, #fffbebe6, #fef3c7);
+            color: #b45309;
+            border: 1px dashed #f59e0b;
+            padding: 14px 18px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            font-size: 13.5px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: var(--shadow);
         }
 
         .card {
-            background: var(--card);
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-            margin-bottom: 20px;
+            background: var(--card-bg);
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            margin-bottom: 24px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
         }
 
         h2 {
             font-size: 18px;
-            color: var(--primary-dark);
-            margin-bottom: 15px;
-            border-bottom: 2px solid #f0f0f0;
-            padding-bottom: 8px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        /* Banner Features Showcase Style */
         .feature-cards {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-bottom: 20px;
+            gap: 14px;
+            margin-bottom: 24px;
         }
 
         .feature-card {
             display: flex;
             align-items: center;
-            background: #fff;
+            background: var(--card-bg);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            border-radius: 12px;
+            padding: 14px;
+            transition: transform 0.2s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-2px);
         }
 
         .feature-info {
             flex: 1;
-            padding-right: 10px;
+            padding-right: 12px;
         }
 
         .feature-info h3 {
-            font-size: 16px;
-            color: #222;
+            font-size: 15px;
+            color: var(--primary);
             margin-bottom: 4px;
         }
 
         .feature-info p {
             font-size: 12px;
-            color: #666;
+            color: var(--text-muted);
             margin-bottom: 6px;
         }
 
         .feature-info .price-tag {
-            font-weight: bold;
-            color: var(--primary);
+            font-weight: 700;
+            color: var(--accent);
             font-size: 14px;
         }
 
         .feature-img {
-            width: 90px;
-            height: 80px;
+            width: 85px;
+            height: 75px;
             object-fit: cover;
             border-radius: 8px;
-            background-color: #eee;
         }
 
         .form-group {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
         }
 
         label {
             display: block;
             font-weight: 600;
             margin-bottom: 6px;
-            font-size: 14px;
+            font-size: 13.5px;
+            color: #334155;
         }
 
         input[type="text"],
         input[type="tel"],
         input[type="date"],
-        input[type="time"],
+        select,
         textarea {
             width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-size: 15px;
-            transition: border 0.2s;
+            padding: 12px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            font-size: 14px;
+            background-color: #fff;
+            color: var(--text-main);
+            transition: all 0.2s;
         }
 
-        input:focus, textarea:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: var(--primary);
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
         }
 
         .location-btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            background-color: #eef5ff;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 10px 15px;
+            gap: 6px;
+            background-color: #f0f9ff;
+            color: var(--accent);
+            border: 1px solid #bae6fd;
+            padding: 10px 14px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            margin-top: 6px;
+            margin-top: 8px;
+            transition: 0.2s;
         }
 
         .location-btn:hover {
-            background-color: #dbeaff;
+            background-color: #e0f2fe;
         }
 
         .row {
             display: flex;
-            gap: 10px;
+            gap: 12px;
         }
 
         .col {
@@ -193,54 +207,57 @@
         }
 
         .service-category {
-            font-size: 15px;
-            font-weight: bold;
-            color: #444;
-            margin: 15px 0 8px 0;
-            background: #eef2f5;
-            padding: 6px 10px;
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 20px 0 10px 0;
+            background: #f1f5f9;
+            padding: 8px 12px;
             border-radius: 6px;
         }
 
         .service-item {
-            display: block;
+            display: flex;
+            align-items: center;
             position: relative;
-            padding: 12px 12px 12px 42px;
-            margin-bottom: 8px;
-            background: #fdfdfd;
-            border: 1px solid var(--border);
-            border-radius: 8px;
+            padding: 12px 14px 12px 44px;
+            margin-bottom: 10px;
+            background: #ffffff;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
             cursor: pointer;
-            user-select: none;
             transition: all 0.2s;
         }
 
         .service-item:hover {
-            border-color: var(--primary);
+            border-color: var(--accent);
+            background-color: #f8fafc;
         }
 
         .service-item input {
             position: absolute;
             opacity: 0;
             cursor: pointer;
-            height: 0;
-            width: 0;
         }
 
         .checkmark {
             position: absolute;
-            top: 14px;
-            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 14px;
             height: 20px;
             width: 20px;
             background-color: #fff;
-            border: 2px solid #ccc;
-            border-radius: 4px;
+            border: 2px solid #cbd5e1;
+            border-radius: 6px;
+            transition: 0.2s;
         }
 
         .service-item input:checked ~ .checkmark {
-            background-color: var(--primary);
-            border-color: var(--primary);
+            background-color: var(--accent);
+            border-color: var(--accent);
         }
 
         .checkmark:after {
@@ -260,73 +277,75 @@
             transform: rotate(45deg);
         }
 
+        .service-details {
+            flex: 1;
+        }
+
         .service-title {
             font-size: 14px;
             font-weight: 600;
-            color: #333;
+            color: var(--primary);
         }
 
         .service-price {
             font-size: 14px;
             font-weight: 700;
-            color: var(--primary);
-            margin-top: 2px;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #888;
-            font-weight: normal;
-            font-size: 12px;
-            margin-right: 5px;
+            color: var(--accent);
         }
 
         .badge {
             display: inline-block;
-            background: #ffebe6;
-            color: #d9381e;
-            font-size: 11px;
+            background: #ef4444;
+            color: white;
+            font-size: 10px;
             padding: 2px 6px;
             border-radius: 4px;
-            font-weight: bold;
+            font-weight: 700;
             margin-left: 6px;
+            text-transform: uppercase;
         }
 
         .total-box {
-            background: #e8f5e9;
-            border: 1px solid #c8e6c9;
-            padding: 15px;
-            border-radius: 8px;
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            padding: 16px;
+            border-radius: 12px;
             text-align: center;
-            margin-bottom: 15px;
-            font-size: 16px;
+            margin-bottom: 18px;
+            font-size: 15px;
             font-weight: 600;
+            color: #065f46;
         }
 
         .total-box span {
-            font-size: 22px;
-            font-weight: bold;
-            color: var(--secondary);
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--success);
         }
 
         .btn-submit {
             width: 100%;
-            background-color: #25d366;
+            background-color: var(--success);
             color: white;
             border: none;
-            padding: 15px;
+            padding: 16px;
             font-size: 16px;
-            font-weight: bold;
-            border-radius: 8px;
+            font-weight: 700;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: #059669;
         }
 
         footer {
             text-align: center;
             font-size: 12px;
-            color: var(--gray);
-            margin-top: 20px;
+            color: var(--text-muted);
+            margin-top: 25px;
         }
     </style>
 </head>
@@ -340,22 +359,20 @@
     <div class="container">
         <!-- Referral Special Offer Banner -->
         <div class="promo-banner">
-            🎉 <b>বিশেষ অফার:</b> ৫ জন বন্ধু বা পরিচিতদের রেফার করুন আর পান <b>₹১০০ ছাড়!</b> 
+            🎉 <b>বিশেষ অফার:</b> ৫ জন বন্ধু বা পরিচিতদের রেফার করুন আর পান <b>₹১ ১০০ ছাড়!</b> 
         </div>
 
         <!-- Trending Services Visual Cards -->
         <div class="feature-cards">
-            <!-- Feature Card 1 -->
             <div class="feature-card">
                 <div class="feature-info">
                     <h3>Foam-jet AC Service</h3>
                     <p>Deep clean AC vents for efficient cooling & Free gas check</p>
-                    <div class="price-tag">Starts at ₹399</div>
+                    <div class="price-tag">Starts at ₹499</div>
                 </div>
                 <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=300" alt="Foam Jet AC Service" class="feature-img">
             </div>
 
-            <!-- Feature Card 2 -->
             <div class="feature-card">
                 <div class="feature-info">
                     <h3>AC Repair & Check-up</h3>
@@ -365,7 +382,6 @@
                 <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300" alt="AC Repair" class="feature-img">
             </div>
 
-            <!-- Feature Card 3 -->
             <div class="feature-card">
                 <div class="feature-info">
                     <h3>Gas Refill & Check-up</h3>
@@ -398,7 +414,6 @@
                     </button>
                 </div>
 
-                <!-- Referral Section -->
                 <div class="form-group">
                     <label for="referredBy">Referred By (Optional)</label>
                     <input type="text" id="referredBy" placeholder="রেফার করা বন্ধুর নাম বা ফোন নম্বর লিখুন">
@@ -413,8 +428,22 @@
                     </div>
                     <div class="col">
                         <div class="form-group">
-                            <label for="bookTime">Service Time *</label>
-                            <input type="time" id="bookTime" required>
+                            <label for="bookTimeSlot">Service Time Slot *</label>
+                            <select id="bookTimeSlot" required>
+                                <option value="" disabled selected>Select Slot</option>
+                                <option value="08:00 AM - 09:00 AM">08:00 AM - 09:00 AM</option>
+                                <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
+                                <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
+                                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
+                                <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
+                                <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
+                                <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
+                                <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
+                                <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
+                                <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
+                                <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
+                                <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -425,75 +454,93 @@
 
                 <div class="service-category">❄️ AC Cleaning & Servicing</div>
                 <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Jet Pump Service" data-price="399" onchange="updateTotal()">
+                    <input type="checkbox" name="service" value="Split AC Jet Pump Deep Cleaning Service" data-price="499" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">Split AC Jet Pump Service</div>
-                    <div class="service-price"><span class="old-price">₹599</span> ₹399 <span class="badge">OFFER</span></div>
+                    <div class="service-details">
+                        <div class="service-title">Split AC Jet Pump Deep Cleaning Service</div>
+                        <div class="service-price">₹499 <span class="badge">POPULAR</span></div>
+                    </div>
                 </label>
 
                 <div class="service-category">⚡ AC Repair, Gas Charging & PCB</div>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="AC Checking & Repair" data-price="199" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">AC Checking & Repair</div>
-                    <div class="service-price"><span class="old-price">₹299</span> ₹199 <span class="badge">HOT</span></div>
+                    <div class="service-details">
+                        <div class="service-title">AC Checking & Repair</div>
+                        <div class="service-price">₹199</div>
+                    </div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="AC Gas Charging" data-price="2499" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">AC Gas Charging</div>
-                    <div class="service-price"><span class="old-price">₹2900</span> ₹2499 <span class="badge">SPECIAL</span></div>
+                    <div class="service-details">
+                        <div class="service-title">AC Gas Charging</div>
+                        <div class="service-price">₹2499</div>
+                    </div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Inverter AC PCB Repair" data-price="4500" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">Inverter AC PCB Repair</div>
-                    <div class="service-price">₹4500</div>
+                    <div class="service-details">
+                        <div class="service-title">Inverter AC PCB Repair</div>
+                        <div class="service-price">₹4500</div>
+                    </div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Non Inverter PCB Repair" data-price="1500" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">Non Inverter PCB Repair</div>
-                    <div class="service-price">₹1500</div>
+                    <div class="service-details">
+                        <div class="service-title">Non Inverter PCB Repair</div>
+                        <div class="service-price">₹1500</div>
+                    </div>
                 </label>
 
                 <div class="service-category">🛠️ AC Installation & Uninstallation</div>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Split AC Installation" data-price="1500" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">Split AC Installation</div>
-                    <div class="service-price">₹1500</div>
+                    <div class="service-details">
+                        <div class="service-title">Split AC Installation</div>
+                        <div class="service-price">₹1500</div>
+                    </div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Split AC Uninstallation" data-price="650" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">Split AC Uninstallation</div>
-                    <div class="service-price">₹650</div>
+                    <div class="service-details">
+                        <div class="service-title">Split AC Uninstallation</div>
+                        <div class="service-price">₹650</div>
+                    </div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Window AC Installation" data-price="600" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">Window AC Installation</div>
-                    <div class="service-price">₹600</div>
+                    <div class="service-details">
+                        <div class="service-title">Window AC Installation</div>
+                        <div class="service-price">₹600</div>
+                    </div>
                 </label>
                 <label class="service-item">
                     <input type="checkbox" name="service" value="Window AC Uninstallation" data-price="500" onchange="updateTotal()">
                     <span class="checkmark"></span>
-                    <div class="service-title">Window AC Uninstallation</div>
-                    <div class="service-price">₹500</div>
+                    <div class="service-details">
+                        <div class="service-title">Window AC Uninstallation</div>
+                        <div class="service-price">₹500</div>
+                    </div>
                 </label>
 
                 <div class="service-category">🔍 Inspection / Checking</div>
-                <label class="service-item"><input type="checkbox" name="service" value="Microwave Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Microwave Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Washing Machine Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Geyser Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Geyser Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Fridge Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Fridge Checking</div><div class="service-price">₹199</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Water Purifier Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Water Purifier Checking</div><div class="service-price">₹199</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Microwave Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Microwave Checking</div><div class="service-price">₹199</div></div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Washing Machine Checking</div><div class="service-price">₹199</div></div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Geyser Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Geyser Checking</div><div class="service-price">₹199</div></div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Fridge Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Fridge Checking</div><div class="service-price">₹199</div></div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Water Purifier Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Water Purifier Checking</div><div class="service-price">₹199</div></div></label>
 
                 <div class="service-category">🔧 Appliance Full Servicing</div>
-                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Service" data-price="550" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Washing Machine Service</div><div class="service-price">₹550</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Microwave Service" data-price="350" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Microwave Service</div><div class="service-price">₹350</div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Geyser Deep Cleaning Service" data-price="600" onchange="updateTotal()"><span class="checkmark"></span><div class="service-title">Geyser Deep Cleaning Service</div><div class="service-price">₹600</div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Service" data-price="550" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Washing Machine Service</div><div class="service-price">₹550</div></div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Microwave Service" data-price="499" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Microwave Service</div><div class="service-price">₹499</div></div></label>
+                <label class="service-item"><input type="checkbox" name="service" value="Geyser Deep Cleaning Service" data-price="600" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Geyser Deep Cleaning Service</div><div class="service-price">₹600</div></div></label>
             </div>
 
             <div class="card">
@@ -546,10 +593,10 @@
             var address = document.getElementById('custAddress').value.trim();
             var referredBy = document.getElementById('referredBy').value.trim();
             var date = document.getElementById('bookDate').value;
-            var time = document.getElementById('bookTime').value;
+            var timeSlot = document.getElementById('bookTimeSlot').value;
 
-            if (!name || !phone || !address || !date || !time) {
-                alert("Please fill in all required details (Name, Phone, Address, Date & Time)!");
+            if (!name || !phone || !address || !date || !timeSlot) {
+                alert("Please fill in all required details (Name, Phone, Address, Date & Time Slot)!");
                 return;
             }
 
@@ -578,7 +625,7 @@
             }
 
             msg += "📅 *Date:* " + date + "\n" +
-                   "⏰ *Time:* " + time + "\n\n" +
+                   "⏰ *Slot:* " + timeSlot + "\n\n" +
                    "*Selected Services:*\n" + selected.join("\n") + "\n\n" +
                    "💰 *Total Amount:* ₹" + total;
 
