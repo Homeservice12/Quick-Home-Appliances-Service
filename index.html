@@ -3,161 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NG Cooling Solution</title>
-
+<title>NG Cooling Solution | Advanced Service Portal</title>
 <style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
-}
+  :root {
+    --primary: #0066ff;
+    --primary-dark: #075eea;
+    --accent: #00a8ff;
+    --success: #16a34a;
+    --danger: #dc2626;
+    --bg: #f3f7fb;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+  }
 
-body{
-  background:#f3f7fb;
-  color:#222;
-}
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+  body { background: var(--bg); color: var(--text); padding-bottom: 30px; }
 
-header{
-  background:linear-gradient(135deg,#0066ff,#00a8ff);
-  color:white;
-  padding:20px;
-  text-align:center;
-}
+  header {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    padding: 25px 20px;
+    text-align: center;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+  }
+  header .logo { font-size: 45px; margin-bottom: 5px; }
+  header h1 { font-size: 26px; font-weight: 700; }
+  header p { font-size: 14px; opacity: 0.9; margin-top: 4px; }
 
-header h1{
-  font-size:25px;
-}
+  .container { max-width: 650px; margin: auto; padding: 15px; }
+  .card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 15px 0;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  }
 
-header p{
-  margin-top:6px;
-}
+  h2 { margin-bottom: 15px; color: var(--primary-dark); font-size: 20px; display: flex; align-items: center; gap: 8px; }
 
-.container{
-  max-width:600px;
-  margin:auto;
-  padding:15px;
-}
+  input, select, textarea {
+    width: 100%;
+    padding: 13px;
+    margin: 8px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #f8fafc;
+    transition: border 0.2s;
+  }
+  input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: #fff;
+  }
+  textarea { min-height: 90px; }
 
-.card{
-  background:white;
-  border-radius:16px;
-  padding:20px;
-  margin:15px 0;
-  box-shadow:0 4px 15px rgba(0,0,0,.08);
-}
+  button {
+    width: 100%;
+    padding: 14px;
+    border: 0;
+    border-radius: 10px;
+    background: var(--primary);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+  }
+  button:active { transform: scale(0.98); }
+  button:hover { opacity: 0.95; }
+  .green { background: var(--success); }
+  .red { background: var(--danger); }
+  .gray { background: #64748b; }
 
-h2{
-  margin-bottom:15px;
-  color:#075eea;
-}
+  /* Service Grid */
+  .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .service-item {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    padding: 12px;
+    border-radius: 12px;
+    text-align: center;
+    cursor: pointer;
+  }
+  .service-item:hover { border-color: var(--primary); background: #eff6ff; }
+  .service-item .icon { font-size: 26px; }
+  .service-item b { display: block; font-size: 14px; margin-top: 5px; color: var(--text); }
+  .service-item span { font-size: 12px; color: #64748b; }
 
-input,select,textarea{
-  width:100%;
-  padding:13px;
-  margin:7px 0;
-  border:1px solid #ddd;
-  border-radius:10px;
-  font-size:15px;
-}
+  .nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 15px; }
+  .nav button { font-size: 13px; padding: 10px 5px; }
 
-textarea{
-  min-height:90px;
-}
+  .hidden { display: none; }
 
-button{
-  width:100%;
-  padding:13px;
-  border:0;
-  border-radius:10px;
-  background:#0866ff;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  margin-top:8px;
-  cursor:pointer;
-}
+  /* Tracker UI */
+  .booking-card {
+    border: 1px solid #e2e8f0;
+    padding: 16px;
+    border-radius: 12px;
+    margin: 12px 0;
+    background: #fff;
+  }
+  .tracker {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0 10px 0;
+    position: relative;
+  }
+  .step {
+    font-size: 11px;
+    text-align: center;
+    color: #94a3b8;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+  }
+  .step.active { color: var(--primary-dark); font-weight: bold; }
+  .step-dot {
+    width: 14px; height: 14px; background: #cbd5e1; border-radius: 50%; margin: 0 auto 5px auto;
+  }
+  .step.active .step-dot { background: var(--primary); }
 
-button:hover{
-  opacity:.9;
-}
+  .price-box {
+    background: #e0f2fe;
+    border: 1px solid #bae6fd;
+    padding: 12px;
+    border-radius: 10px;
+    margin: 10px 0;
+    text-align: center;
+    color: #0369a1;
+  }
 
-.green{
-  background:#16a34a;
-}
-
-.red{
-  background:#dc2626;
-}
-
-.gray{
-  background:#555;
-}
-
-.service{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:14px;
-  border:1px solid #eee;
-  border-radius:12px;
-  margin:8px 0;
-  background:#fafafa;
-}
-
-.service-icon{
-  font-size:28px;
-}
-
-.service b{
-  display:block;
-}
-
-.nav{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-bottom:15px;
-}
-
-.nav button{
-  font-size:13px;
-  padding:11px 5px;
-}
-
-.hidden{
-  display:none;
-}
-
-.booking{
-  border:1px solid #ddd;
-  padding:15px;
-  border-radius:12px;
-  margin:10px 0;
-}
-
-.status{
-  display:inline-block;
-  background:#fff3cd;
-  color:#856404;
-  padding:5px 10px;
-  border-radius:20px;
-  margin-top:8px;
-  font-size:13px;
-}
-
-footer{
-  text-align:center;
-  padding:25px;
-  color:#777;
-}
-
-.logo{
-  font-size:40px;
-}
+  footer { text-align: center; padding: 25px; color: #64748b; font-size: 14px; }
+  @media print { body * { visibility: hidden; } #invoicePrint, #invoicePrint * { visibility: visible; } #invoicePrint { position: absolute; left: 0; top: 0; width: 100%; } }
 </style>
 </head>
-
 <body>
 
 <header>
@@ -168,892 +151,424 @@ footer{
 
 <div class="container">
 
-<!-- HOME -->
-<div id="homePage">
+  <!-- HOME PAGE -->
+  <div id="homePage">
+    <div class="card">
+      <h2>Welcome 👋</h2>
+      <p style="color:#64748b; font-size:14px; margin-bottom:15px;">Fast & Reliable Home Service in Kolkata</p>
+      <button onclick="showPage('loginPage')">Login / Register</button>
+      <button class="green" onclick="showPage('bookingPage')">📅 Book Service Now</button>
+    </div>
 
-  <div class="card">
-    <h2>Welcome 👋</h2>
-    <p>AC Repair • AC Service • Installation • Home Appliance Repair</p>
-
-    <button onclick="showPage('loginPage')">
-      Login / Register
-    </button>
-
-    <button class="green" onclick="showPage('bookingPage')">
-      📅 Book Service
-    </button>
-  </div>
-
-  <div class="card">
-    <h2>Our Services</h2>
-
-    <div class="service">
-      <div class="service-icon">❄️</div>
-      <div>
-        <b>AC Repair & Service</b>
-        All Brand AC Service
+    <div class="card">
+      <h2>Our Premium Services</h2>
+      <div class="service-grid">
+        <div class="service-item" onclick="quickBook('AC Repair')">
+          <div class="icon">❄️</div>
+          <b>AC Repair</b>
+          <span>Est: ₹399+</span>
+        </div>
+        <div class="service-item" onclick="quickBook('AC Deep Cleaning')">
+          <div class="icon">🧼</div>
+          <b>Deep Cleaning</b>
+          <span>Est: ₹599+</span>
+        </div>
+        <div class="service-item" onclick="quickBook('Fridge Repair')">
+          <div class="icon">🧊</div>
+          <b>Fridge Repair</b>
+          <span>Est: ₹299+</span>
+        </div>
+        <div class="service-item" onclick="quickBook('Washing Machine Repair')">
+          <div class="icon">🧺</div>
+          <b>Washing Machine</b>
+          <span>Est: ₹349+</span>
+        </div>
       </div>
     </div>
 
-    <div class="service">
-      <div class="service-icon">🧼</div>
-      <div>
-        <b>AC Deep Cleaning</b>
-        Jet Pump / Foam Cleaning
+    <div class="card">
+      <h2>Contact Us</h2>
+      <p style="font-size:14px; margin-bottom:5px;">📍 Dum Dum Road, Kolkata</p>
+      <p style="font-size:14px; margin-bottom:15px;">📱 7439160014</p>
+      <button onclick="window.location.href='tel:7439160014'">📞 Call Now</button>
+      <button class="green" onclick="window.open('https://wa.me/917439160014','_blank')">💬 WhatsApp Us</button>
+    </div>
+  </div>
+
+  <!-- LOGIN PAGE -->
+  <div id="loginPage" class="hidden">
+    <div class="card">
+      <h2>🔑 Login</h2>
+      <select id="loginRole">
+        <option value="customer">Customer</option>
+        <option value="technician">Technician</option>
+        <option value="admin">Admin</option>
+      </select>
+      <input id="loginEmail" type="email" placeholder="Email Address">
+      <input id="loginPassword" type="password" placeholder="Password">
+      <button onclick="handleLogin()">Login</button>
+      <button class="gray" onclick="showPage('homePage')">Back</button>
+      <p style="margin-top:15px; text-align:center; font-size:14px;">New Customer?</p>
+      <button class="green" onclick="showPage('registerPage')">Create Customer Account</button>
+    </div>
+  </div>
+
+  <!-- REGISTER PAGE -->
+  <div id="registerPage" class="hidden">
+    <div class="card">
+      <h2>📝 Account Registration</h2>
+      <input id="regName" placeholder="Full Name">
+      <input id="regPhone" placeholder="Mobile Number">
+      <input id="regEmail" type="email" placeholder="Email Address">
+      <input id="regPassword" type="password" placeholder="Create Password">
+      <button class="green" onclick="handleRegister()">Register</button>
+      <button class="gray" onclick="showPage('loginPage')">Back to Login</button>
+    </div>
+  </div>
+
+  <!-- BOOKING PAGE -->
+  <div id="bookingPage" class="hidden">
+    <div class="card">
+      <h2>📅 Book a Service</h2>
+      <input id="custName" placeholder="Customer Name">
+      <input id="custPhone" placeholder="Mobile Number">
+      <select id="serviceSelect" onchange="updatePriceEstimate()">
+        <option value="AC Repair" data-price="399">AC Repair & Inspection (₹399)</option>
+        <option value="AC Deep Cleaning" data-price="599">AC Deep Cleaning / Foam (₹599)</option>
+        <option value="AC Gas Charging" data-price="1800">AC Gas Charging (₹1800)</option>
+        <option value="Fridge Repair" data-price="299">Fridge Inspection & Repair (₹299)</option>
+        <option value="Washing Machine Repair" data-price="349">Washing Machine Repair (₹349)</option>
+      </select>
+
+      <div class="price-box" id="priceEstimateDisplay">
+        Estimated Inspection Charge: <strong>₹399</strong>
       </div>
-    </div>
 
-    <div class="service">
-      <div class="service-icon">🔧</div>
-      <div>
-        <b>AC Installation</b>
-        Professional Installation
+      <input id="bookDate" type="date">
+      <input id="bookTime" type="time">
+      <textarea id="custAddress" placeholder="Full Service Address / Location"></textarea>
+      <textarea id="probDescription" placeholder="Describe the issue in detail..."></textarea>
+      
+      <button class="green" onclick="handleBooking()">Confirm Booking</button>
+      <button class="gray" onclick="showPage('homePage')">Back</button>
+    </div>
+  </div>
+
+  <!-- CUSTOMER DASHBOARD -->
+  <div id="customerPage" class="hidden">
+    <div class="card">
+      <h2>👤 Customer Dashboard</h2>
+      <div class="nav">
+        <button onclick="showPage('bookingPage')">Book New</button>
+        <button onclick="loadCustomerBookings()">My Bookings</button>
+        <button class="red" onclick="handleLogout()">Logout</button>
       </div>
-    </div>
-
-    <div class="service">
-      <div class="service-icon">🧊</div>
-      <div>
-        <b>Fridge Repair</b>
-        Home Appliance Service
-      </div>
-    </div>
-
-    <div class="service">
-      <div class="service-icon">🧺</div>
-      <div>
-        <b>Washing Machine Repair</b>
-        All Brand Service
-      </div>
-    </div>
-
-    <div class="service">
-      <div class="service-icon">📺</div>
-      <div>
-        <b>Microwave Repair</b>
-        Home Service
-      </div>
+      <div id="customerBookingsList"></div>
     </div>
   </div>
 
-  <div class="card">
-    <h2>Contact Us</h2>
-    <p>📍 Dum Dum Road, Kolkata</p>
-    <p>📱 7439160014</p>
-
-    <button onclick="callNow()">
-      📞 Call Now
-    </button>
-
-    <button class="green" onclick="whatsapp()">
-      💬 WhatsApp
-    </button>
-  </div>
-
-</div>
-
-
-<!-- LOGIN -->
-<div id="loginPage" class="hidden">
-
-  <div class="card">
-    <h2>Login</h2>
-
-    <select id="loginRole">
-      <option value="customer">Customer Login</option>
-      <option value="technician">Technician Login</option>
-      <option value="admin">Admin Login</option>
-    </select>
-
-    <input id="loginEmail" type="email" placeholder="Email">
-
-    <input id="loginPassword" type="password" placeholder="Password">
-
-    <button onclick="login()">Login</button>
-
-    <button class="gray" onclick="showPage('homePage')">
-      Back
-    </button>
-
-    <p style="margin-top:15px;text-align:center;">
-      New Customer?
-    </p>
-
-    <button class="green" onclick="showPage('registerPage')">
-      Create Customer Account
-    </button>
-  </div>
-
-</div>
-
-
-<!-- REGISTER -->
-<div id="registerPage" class="hidden">
-
-  <div class="card">
-    <h2>Customer Registration</h2>
-
-    <input id="regName" placeholder="Full Name">
-
-    <input id="regPhone" placeholder="Mobile Number">
-
-    <input id="regEmail" type="email" placeholder="Email">
-
-    <input id="regPassword" type="password" placeholder="Create Password">
-
-    <button onclick="register()">
-      Register
-    </button>
-
-    <button class="gray" onclick="showPage('loginPage')">
-      Back to Login
-    </button>
-  </div>
-
-</div>
-
-
-<!-- BOOKING -->
-<div id="bookingPage" class="hidden">
-
-  <div class="card">
-    <h2>📅 Book a Service</h2>
-
-    <input id="customerName" placeholder="Customer Name">
-
-    <input id="customerPhone" placeholder="Mobile Number">
-
-    <select id="service">
-      <option>AC Repair</option>
-      <option>AC General Service</option>
-      <option>AC Deep Cleaning</option>
-      <option>AC Foam Cleaning</option>
-      <option>AC Installation</option>
-      <option>AC Uninstallation</option>
-      <option>AC Gas Charging</option>
-      <option>Fridge Repair</option>
-      <option>Washing Machine Repair</option>
-      <option>Microwave Repair</option>
-      <option>Geyser Repair</option>
-      <option>Water Purifier Repair</option>
-    </select>
-
-    <input id="bookingDate" type="date">
-
-    <input id="bookingTime" type="time">
-
-    <textarea id="customerAddress"
-      placeholder="Service Address / Location"></textarea>
-
-    <textarea id="problem"
-      placeholder="Describe your problem"></textarea>
-
-    <button onclick="createBooking()">
-      Confirm Booking
-    </button>
-
-    <button class="gray" onclick="showPage('homePage')">
-      Back
-    </button>
-  </div>
-
-</div>
-
-
-<!-- CUSTOMER DASHBOARD -->
-<div id="customerPage" class="hidden">
-
-  <div class="card">
-    <h2>👤 Customer Dashboard</h2>
-
-    <div class="nav">
-      <button onclick="showPage('bookingPage')">
-        Book
-      </button>
-
-      <button onclick="showBookings()">
-        My Bookings
-      </button>
-
-      <button class="red" onclick="logout()">
-        Logout
-      </button>
+  <!-- TECHNICIAN DASHBOARD -->
+  <div id="technicianPage" class="hidden">
+    <div class="card">
+      <h2>🔧 Technician Portal</h2>
+      <p style="margin-bottom:10px; font-size:14px; color:#64748b;">Assigned Job List</p>
+      <div id="technicianBookingsList"></div>
+      <button class="red" onclick="handleLogout()">Logout</button>
     </div>
+  </div>
 
-    <div id="customerBookings"></div>
+  <!-- ADMIN DASHBOARD -->
+  <div id="adminPage" class="hidden">
+    <div class="card">
+      <h2>👨‍💼 Admin Console</h2>
+      <p style="margin-bottom:15px; font-size:14px;">Total Bookings: <b id="totalBookingCount">0</b></p>
+      <div id="adminBookingsList"></div>
+      <button class="red" onclick="handleLogout()">Logout</button>
+    </div>
+  </div>
+
+  <!-- INVOICE DISPLAY (MODAL / PRINT AREA) -->
+  <div id="invoicePrint" class="hidden">
+    <div class="card" style="border: 2px solid #000;">
+      <h2 style="text-align: center; color:#000;">NG Cooling Solution</h2>
+      <p style="text-align: center; font-size:12px;">Dum Dum Road, Kolkata | 📱 7439160014</p>
+      <hr style="margin:10px 0;">
+      <h3>Service Invoice</h3>
+      <div id="invoiceDetails" style="margin-top:10px; font-size:14px; line-height:1.6;"></div>
+      <hr style="margin:10px 0;">
+      <p style="text-align:center; font-size:12px;">Thank you for choosing NG Cooling Solution!</p>
+      <button onclick="window.print()" class="green">Print Invoice</button>
+      <button onclick="document.getElementById('invoicePrint').classList.add('hidden')" class="gray">Close</button>
+    </div>
   </div>
 
 </div>
-
-
-<!-- TECHNICIAN DASHBOARD -->
-<div id="technicianPage" class="hidden">
-
-  <div class="card">
-    <h2>🔧 Technician Dashboard</h2>
-
-    <p>Assigned Jobs</p>
-
-    <div id="technicianBookings"></div>
-
-    <button class="red" onclick="logout()">
-      Logout
-    </button>
-  </div>
-
-</div>
-
-
-<!-- ADMIN DASHBOARD -->
-<div id="adminPage" class="hidden">
-
-  <div class="card">
-
-    <h2>👨‍💼 Admin Dashboard</h2>
-
-    <p>Total Bookings:
-      <b id="totalBookings">0</b>
-    </p>
-
-    <div id="adminBookings"></div>
-
-    <button class="red" onclick="logout()">
-      Logout
-    </button>
-
-  </div>
-
-</div>
-
 
 <footer>
-  <b>NG Cooling Solution</b>
-  <br>
-  Your Comfort, Our Priority
-  <br><br>
+  <b>NG Cooling Solution</b><br>
+  Your Comfort, Our Priority<br><br>
   📞 7439160014
 </footer>
 
-
-<script>
-
-let bookings =
-JSON.parse(localStorage.getItem("ngBookings")) || [];
-
-let currentUser =
-JSON.parse(localStorage.getItem("ngUser")) || null;
-
-
-/* PAGE SYSTEM */
-
-function hideAll(){
-
-  document.querySelectorAll(
-    "#homePage,#loginPage,#registerPage,#bookingPage,#customerPage,#technicianPage,#adminPage"
-  ).forEach(x=>{
-    x.classList.add("hidden");
-  });
-
-}
-
-function showPage(id){
-
-  hideAll();
-
-  document.getElementById(id)
-    .classList.remove("hidden");
-
-}
-
-
-/* REGISTER */
-
-function register(){
-
-  let name =
-    document.getElementById("regName").value;
-
-  let phone =
-    document.getElementById("regPhone").value;
-
-  let email =
-    document.getElementById("regEmail").value;
-
-  let password =
-    document.getElementById("regPassword").value;
-
-  if(!name || !phone || !email || !password){
-
-    alert("Please fill all details");
-
-    return;
-  }
-
-  let users =
-    JSON.parse(localStorage.getItem("ngUsers")) || [];
-
-  users.push({
-
-    name:name,
-    phone:phone,
-    email:email,
-    password:password,
-    role:"customer"
-
-  });
-
-  localStorage.setItem(
-    "ngUsers",
-    JSON.stringify(users)
-  );
-
-  alert("Registration Successful!");
-
-  showPage("loginPage");
-
-}
-
-
-/* LOGIN */
-
-function login(){
-
-  let role =
-    document.getElementById("loginRole").value;
-
-  let email =
-    document.getElementById("loginEmail").value;
-
-  let password =
-    document.getElementById("loginPassword").value;
-
-
-  /* DEMO ADMIN */
-
-  if(
-    role==="admin" &&
-    email==="admin@ngcooling.com" &&
-    password==="admin123"
-  ){
-
-    currentUser={
-      role:"admin",
-      name:"NG Cooling Admin"
-    };
-
-    localStorage.setItem(
-      "ngUser",
-      JSON.stringify(currentUser)
-    );
-
-    loadAdmin();
-
-    showPage("adminPage");
-
-    return;
-  }
-
-
-  /* DEMO TECHNICIAN */
-
-  if(
-    role==="technician" &&
-    email==="technician@ngcooling.com" &&
-    password==="tech123"
-  ){
-
-    currentUser={
-      role:"technician",
-      name:"Technician"
-    };
-
-    localStorage.setItem(
-      "ngUser",
-      JSON.stringify(currentUser)
-    );
-
-    loadTechnician();
-
-    showPage("technicianPage");
-
-    return;
-  }
-
-
-  /* CUSTOMER */
-
-  let users =
-    JSON.parse(localStorage.getItem("ngUsers")) || [];
-
-  let user =
-    users.find(
-      u =>
-      u.email===email &&
-      u.password===password &&
-      u.role==="customer"
-    );
-
-  if(user){
-
-    currentUser=user;
-
-    localStorage.setItem(
-      "ngUser",
-      JSON.stringify(user)
-    );
-
-    showPage("customerPage");
-
-    showBookings();
-
-  }else{
-
-    alert("Invalid Login Details");
-
-  }
-
-}
-
-
-/* BOOKING */
-
-function createBooking(){
-
-  let name =
-    document.getElementById("customerName").value;
-
-  let phone =
-    document.getElementById("customerPhone").value;
-
-  let service =
-    document.getElementById("service").value;
-
-  let date =
-    document.getElementById("bookingDate").value;
-
-  let time =
-    document.getElementById("bookingTime").value;
-
-  let address =
-    document.getElementById("customerAddress").value;
-
-  let problem =
-    document.getElementById("problem").value;
-
-
-  if(
-    !name ||
-    !phone ||
-    !date ||
-    !time ||
-    !address
-  ){
-
-    alert("Please fill all required details");
-
-    return;
-  }
-
-
-  let booking={
-
-    id:Date.now(),
-
-    name:name,
-
-    phone:phone,
-
-    service:service,
-
-    date:date,
-
-    time:time,
-
-    address:address,
-
-    problem:problem,
-
-    status:"New Booking",
-
-    technician:"Not Assigned"
-
+<!-- FIREBASE INTEGRATION SCRIPT (v9 SDK) -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+  import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  // TODO: Replace with your actual Firebase Project Configuration
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
   };
 
-
-  bookings.push(booking);
-
-
-  localStorage.setItem(
-    "ngBookings",
-    JSON.stringify(bookings)
-  );
-
-
-  alert(
-    "Booking Successful!\nBooking ID: "
-    + booking.id
-  );
-
-
-  if(currentUser){
-
-    showPage("customerPage");
-
-    showBookings();
-
-  }else{
-
-    showPage("homePage");
-
-  }
-
-}
-
-
-/* CUSTOMER BOOKINGS */
-
-function showBookings(){
-
-  let box =
-    document.getElementById("customerBookings");
-
-  if(!box) return;
-
-  box.innerHTML="";
-
-  let myBookings =
-    bookings.filter(
-      b =>
-      !currentUser ||
-      b.phone===currentUser.phone
-    );
-
-
-  if(myBookings.length===0){
-
-    box.innerHTML =
-      "<p>No bookings found.</p>";
-
-    return;
-
-  }
-
-
-  myBookings.forEach(b=>{
-
-    box.innerHTML += `
-
-      <div class="booking">
-
-        <b>Booking ID:</b> ${b.id}<br>
-
-        <b>Service:</b> ${b.service}<br>
-
-        <b>Date:</b> ${b.date}<br>
-
-        <b>Time:</b> ${b.time}<br>
-
-        <b>Technician:</b>
-        ${b.technician}
-
-        <br>
-
-        <span class="status">
-        ${b.status}
-        </span>
-
-      </div>
-
-    `;
-
-  });
-
-}
-
-
-/* ADMIN */
-
-function loadAdmin(){
-
-  let box =
-    document.getElementById("adminBookings");
-
-  document.getElementById(
-    "totalBookings"
-  ).innerText=bookings.length;
-
-  box.innerHTML="";
-
-
-  bookings.forEach((b,index)=>{
-
-    box.innerHTML += `
-
-      <div class="booking">
-
-        <b>Booking ID:</b> ${b.id}<br>
-
-        <b>Customer:</b> ${b.name}<br>
-
-        <b>Phone:</b> ${b.phone}<br>
-
-        <b>Service:</b> ${b.service}<br>
-
-        <b>Date:</b> ${b.date}<br>
-
-        <b>Time:</b> ${b.time}<br>
-
-        <b>Location:</b> ${b.address}<br>
-
-        <b>Status:</b> ${b.status}<br>
-
-        <b>Technician:</b>
-        ${b.technician}
-
-        <button onclick="confirmBooking(${index})">
-          Confirm Booking
-        </button>
-
-        <button class="green"
-          onclick="assignTechnician(${index})">
-          Assign Technician
-        </button>
-
-        <button class="gray"
-          onclick="completeBooking(${index})">
-          Mark Completed
-        </button>
-
-      </div>
-
-    `;
-
-  });
-
-}
-
-
-/* CONFIRM */
-
-function confirmBooking(index){
-
-  bookings[index].status="Confirmed";
-
-  saveBookings();
-
-  loadAdmin();
-
-}
-
-
-/* ASSIGN TECHNICIAN */
-
-function assignTechnician(index){
-
-  let name =
-    prompt(
-      "Enter Technician Name"
-    );
-
-  if(!name) return;
-
-  bookings[index].technician=name;
-
-  bookings[index].status=
-    "Technician Assigned";
-
-  saveBookings();
-
-  loadAdmin();
-
-}
-
-
-/* COMPLETE */
-
-function completeBooking(index){
-
-  bookings[index].status=
-    "Completed";
-
-  saveBookings();
-
-  loadAdmin();
-
-}
-
-
-/* TECHNICIAN */
-
-function loadTechnician(){
-
-  let box =
-    document.getElementById(
-      "technicianBookings"
-    );
-
-  box.innerHTML="";
-
-
-  bookings.forEach((b,index)=>{
-
-    if(
-      b.technician!=="Not Assigned"
-    ){
-
-      box.innerHTML += `
-
-        <div class="booking">
-
-          <b>Customer:</b>
-          ${b.name}<br>
-
-          <b>Phone:</b>
-          ${b.phone}<br>
-
-          <b>Service:</b>
-          ${b.service}<br>
-
-          <b>Date:</b>
-          ${b.date}<br>
-
-          <b>Time:</b>
-          ${b.time}<br>
-
-          <b>Address:</b>
-          ${b.address}<br>
-
-          <span class="status">
-          ${b.status}
-          </span>
-
-          <button
-            onclick="startService(${index})">
-            Start Service
-          </button>
-
-          <button class="green"
-            onclick="finishService(${index})">
-            Complete Service
-          </button>
-
-        </div>
-
-      `;
-
-    }
-
-  });
-
-}
-
-
-/* TECHNICIAN STATUS */
-
-function startService(index){
-
-  bookings[index].status=
-    "Service Started";
-
-  saveBookings();
-
-  loadTechnician();
-
-}
-
-
-function finishService(index){
-
-  bookings[index].status=
-    "Completed";
-
-  saveBookings();
-
-  loadTechnician();
-
-}
-
-
-/* SAVE */
-
-function saveBookings(){
-
-  localStorage.setItem(
-    "ngBookings",
-    JSON.stringify(bookings)
-  );
-
-}
-
-
-/* LOGOUT */
-
-function logout(){
-
-  localStorage.removeItem("ngUser");
-
-  currentUser=null;
-
-  showPage("homePage");
-
-}
-
-
-/* CALL */
-
-function callNow(){
-
-  window.location.href=
-    "tel:7439160014";
-
-}
-
-
-/* WHATSAPP */
-
-function whatsapp(){
-
-  window.open(
-    "https://wa.me/917439160014",
-    "_blank"
-  );
-
-}
-
-
-/* START */
-
-showPage("homePage");
-
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // App State Fallback with LocalStorage if Firebase credentials aren't set up yet
+  window.useFirebase = firebaseConfig.apiKey !== "YOUR_API_KEY";
+
+  window.firebaseAuth = auth;
+  window.firebaseDb = db;
+  window.dbModule = { collection, addDoc, getDocs, updateDoc, doc, query, where, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut };
 </script>
 
+<script>
+  let bookings = JSON.parse(localStorage.getItem("ngBookings")) || [];
+  let currentUser = JSON.parse(localStorage.getItem("ngUser")) || null;
+
+  function hideAllPages() {
+    document.querySelectorAll('#homePage,#loginPage,#registerPage,#bookingPage,#customerPage,#technicianPage,#adminPage').forEach(el => el.classList.add('hidden'));
+  }
+
+  function showPage(pageId) {
+    hideAllPages();
+    document.getElementById(pageId).classList.remove('hidden');
+    if(pageId === 'customerPage') loadCustomerBookings();
+    if(pageId === 'adminPage') loadAdminDashboard();
+    if(pageId === 'technicianPage') loadTechnicianDashboard();
+  }
+
+  function updatePriceEstimate() {
+    let select = document.getElementById('serviceSelect');
+    let price = select.options[select.selectedIndex].getAttribute('data-price');
+    document.getElementById('priceEstimateDisplay').innerHTML = `Estimated Inspection Charge: <strong>₹${price}</strong>`;
+  }
+
+  function quickBook(serviceName) {
+    showPage('bookingPage');
+    document.getElementById('serviceSelect').value = serviceName;
+    updatePriceEstimate();
+  }
+
+  /* AUTHENTICATION */
+  async function handleRegister() {
+    let name = document.getElementById('regName').value;
+    let phone = document.getElementById('regPhone').value;
+    let email = document.getElementById('regEmail').value;
+    let password = document.getElementById('regPassword').value;
+
+    if(!name || !phone || !email || !password) return alert('Fill all fields');
+
+    if(window.useFirebase) {
+      try {
+        await window.dbModule.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
+        alert('Registration Successful via Firebase!');
+        showPage('loginPage');
+      } catch(e) { alert(e.message); }
+    } else {
+      let users = JSON.parse(localStorage.getItem("ngUsers")) || [];
+      users.push({ name, phone, email, password, role: "customer" });
+      localStorage.setItem("ngUsers", JSON.stringify(users));
+      alert('Registration Successful!');
+      showPage('loginPage');
+    }
+  }
+
+  async function handleLogin() {
+    let role = document.getElementById('loginRole').value;
+    let email = document.getElementById('loginEmail').value;
+    let password = document.getElementById('loginPassword').value;
+
+    // Admin Hardcoded Fallback
+    if(role === 'admin' && email === 'admin@ngcooling.com' && password === 'admin123') {
+      currentUser = { role: 'admin', name: 'System Admin' };
+      localStorage.setItem('ngUser', JSON.stringify(currentUser));
+      return showPage('adminPage');
+    }
+
+    // Technician Hardcoded Fallback
+    if(role === 'technician' && email === 'technician@ngcooling.com' && password === 'tech123') {
+      currentUser = { role: 'technician', name: 'Lead Tech' };
+      localStorage.setItem('ngUser', JSON.stringify(currentUser));
+      return showPage('technicianPage');
+    }
+
+    if(window.useFirebase) {
+      try {
+        let res = await window.dbModule.signInWithEmailAndPassword(window.firebaseAuth, email, password);
+        currentUser = { email: res.user.email, role: 'customer' };
+        localStorage.setItem('ngUser', JSON.stringify(currentUser));
+        showPage('customerPage');
+      } catch(e) { alert('Authentication Failed: ' + e.message); }
+    } else {
+      let users = JSON.parse(localStorage.getItem("ngUsers")) || [];
+      let user = users.find(u => u.email === email && u.password === password && u.role === role);
+      if(user) {
+        currentUser = user;
+        localStorage.setItem('ngUser', JSON.stringify(currentUser));
+        showPage(role === 'customer' ? 'customerPage' : role === 'technician' ? 'technicianPage' : 'adminPage');
+      } else { alert('Invalid Login Credentials'); }
+    }
+  }
+
+  /* BOOKING SYSTEM */
+  async function handleBooking() {
+    let select = document.getElementById('serviceSelect');
+    let bookingData = {
+      id: Date.now(),
+      name: document.getElementById('custName').value,
+      phone: document.getElementById('custPhone').value,
+      service: select.value,
+      price: select.options[select.selectedIndex].getAttribute('data-price'),
+      date: document.getElementById('bookDate').value,
+      time: document.getElementById('bookTime').value,
+      address: document.getElementById('custAddress').value,
+      problem: document.getElementById('probDescription').value,
+      status: 'Booking Placed',
+      stepIndex: 1,
+      technician: 'Not Assigned'
+    };
+
+    if(!bookingData.name || !bookingData.phone || !bookingData.date || !bookingData.address) {
+      return alert('Please complete required details');
+    }
+
+    if(window.useFirebase) {
+      try {
+        await window.dbModule.addDoc(window.dbModule.collection(window.firebaseDb, "bookings"), bookingData);
+      } catch(e) { console.error("Firebase Sync Error: ", e); }
+    }
+
+    bookings.push(bookingData);
+    localStorage.setItem('ngBookings', JSON.stringify(bookings));
+    alert('Booking Submitted Successfully!\nID: ' + bookingData.id);
+    showPage(currentUser ? 'customerPage' : 'homePage');
+  }
+
+  /* DASHBOARDS & UI HELPERS */
+  function renderTrackerHTML(stepIndex) {
+    return `
+      <div class="tracker">
+        <div class="step ${stepIndex >= 1 ? 'active':''}"><div class="step-dot"></div>Booked</div>
+        <div class="step ${stepIndex >= 2 ? 'active':''}"><div class="step-dot"></div>Assigned</div>
+        <div class="step ${stepIndex >= 3 ? 'active':''}"><div class="step-dot"></div>In Progress</div>
+        <div class="step ${stepIndex >= 4 ? 'active':''}"><div class="step-dot"></div>Done</div>
+      </div>
+    `;
+  }
+
+  function loadCustomerBookings() {
+    let container = document.getElementById('customerBookingsList');
+    container.innerHTML = '';
+    let userBookings = bookings.filter(b => !currentUser || b.phone === currentUser.phone || currentUser.role === 'customer');
+
+    if(userBookings.length === 0) return container.innerHTML = '<p style="text-align:center; padding:20px; color:#64748b;">No active bookings found.</p>';
+
+    userBookings.forEach(b => {
+      container.innerHTML += `
+        <div class="booking-card">
+          <b>Booking #${b.id}</b> - ${b.service}<br>
+          <small>Date: ${b.date} at ${b.time}</small>
+          ${renderTrackerHTML(b.stepIndex || 1)}
+          <p><strong>Technician:</strong> ${b.technician}</p>
+          <button style="margin-top:8px;" onclick="generateInvoice(${b.id})">📄 Download Invoice</button>
+        </div>
+      `;
+    });
+  }
+
+  function loadAdminDashboard() {
+    let container = document.getElementById('adminBookingsList');
+    document.getElementById('totalBookingCount').innerText = bookings.length;
+    container.innerHTML = '';
+
+    bookings.forEach((b, index) => {
+      container.innerHTML += `
+        <div class="booking-card">
+          <b>ID: ${b.id}</b> | Customer: ${b.name} (${b.phone})<br>
+          Service: ${b.service} | Fee: ₹${b.price}<br>
+          Address: ${b.address}<br>
+          Status: <strong>${b.status}</strong> | Tech: ${b.technician}
+          <div style="display:flex; gap:5px; margin-top:8px;">
+            <button class="green" onclick="updateStatus(${index}, 2, 'Assigned')">Assign Tech</button>
+            <button onclick="updateStatus(${index}, 3, 'In Progress')">In Progress</button>
+            <button class="gray" onclick="updateStatus(${index}, 4, 'Completed')">Mark Done</button>
+          </div>
+        </div>
+      `;
+    });
+  }
+
+  function loadTechnicianDashboard() {
+    let container = document.getElementById('technicianBookingsList');
+    container.innerHTML = '';
+    bookings.forEach((b, index) => {
+      container.innerHTML += `
+        <div class="booking-card">
+          <b>Job ID: #${b.id}</b><br>
+          Customer: ${b.name} | Phone: ${b.phone}<br>
+          Loc: ${b.address}<br>
+          Status: <strong>${b.status}</strong>
+          <button class="green" onclick="updateStatus(${index}, 3, 'In Progress')">Start Service</button>
+          <button onclick="updateStatus(${index}, 4, 'Completed')">Complete Job</button>
+        </div>
+      `;
+    });
+  }
+
+  function updateStatus(index, step, statusText) {
+    if(statusText === 'Assigned') {
+      let name = prompt("Enter Technician Name:");
+      if(name) bookings[index].technician = name;
+    }
+    bookings[index].stepIndex = step;
+    bookings[index].status = statusText;
+    localStorage.setItem('ngBookings', JSON.stringify(bookings));
+    if(currentUser?.role === 'admin') loadAdminDashboard();
+    else if(currentUser?.role === 'technician') loadTechnicianDashboard();
+    else loadCustomerBookings();
+  }
+
+  function generateInvoice(id) {
+    let b = bookings.find(item => item.id === id);
+    if(!b) return;
+    let detailsBox = document.getElementById('invoiceDetails');
+    detailsBox.innerHTML = `
+      <strong>Invoice No:</strong> INV-${b.id}<br>
+      <strong>Customer Name:</strong> ${b.name}<br>
+      <strong>Phone:</strong> ${b.phone}<br>
+      <strong>Service:</strong> ${b.service}<br>
+      <strong>Date:</strong> ${b.date}<br>
+      <strong>Total Service Charge:</strong> ₹${b.price}<br>
+      <strong>Status:</strong> ${b.status}
+    `;
+    document.getElementById('invoicePrint').classList.remove('hidden');
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('ngUser');
+    currentUser = null;
+    showPage('homePage');
+  }
+
+  // Initial Page Display
+  showPage('homePage');
+</script>
 </body>
 </html>
-অবশ্যই। নিচেরটা একটা index.html ফাইল। GitHub-এ index.html নামে বানিয়ে পুরো কোডটা পেস্ট করবেন।
-এতে থাকবে:
-👤 Customer Login/Register
-🔧 Technician Login
-👨‍💼 Admin Login
-📅 Service Booking
-📋 My Bookings
-🔄 Booking Status
-📱 Mobile/App-style design
-📞 Call + WhatsApp button
-NG Cooling Solution branding
-নোট: এটা প্রথমে Demo version। Firebase লাগানোর পর Customer/Technician/Admin-এর আসল online login ও database চালু হবে।
-HTML
-GitHub-এ এখন যা করবেন
-GitHub খুলুন।
-আপনার repository খুলুন।
-Add file → Create new file
-File name দিন: index.html
-উপরের পুরো কোড paste করুন।
-Commit changes চাপুন।
-তারপর Settings → Pages → Deploy from branch → main → Save।
-Admin Demo Login
-Email: admin@ngcooling.com
-Password: admin123
-Technician Demo Login
-Email: technician@ngcooling.com
-Password: tech123
-এরপর আপনার পরের ধাপ হবে Firebase লাগানো, যাতে এই Demo Login/LocalStorage বাদ দিয়ে সত্যিকারের online Customer + Technician + Admin account এবং booking database হয়।
