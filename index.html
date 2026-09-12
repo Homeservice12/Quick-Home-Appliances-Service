@@ -1,612 +1,1059 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N.G COOLING SOLUTION - Premium Appliance Care</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --primary: #0f172a;
-            --accent: #0284c7;
-            --accent-hover: #0369a1;
-            --success: #10b981;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
-            --border: #e2e8f0;
-            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NG Cooling Solution</title>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
-        }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
 
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            padding-bottom: 50px;
-        }
+body{
+  background:#f3f7fb;
+  color:#222;
+}
 
-        header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            text-align: center;
-            padding: 35px 20px;
-            border-bottom: 4px solid var(--accent);
-        }
+header{
+  background:linear-gradient(135deg,#0066ff,#00a8ff);
+  color:white;
+  padding:20px;
+  text-align:center;
+}
 
-        header h1 {
-            font-size: 26px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-        }
+header h1{
+  font-size:25px;
+}
 
-        header p {
-            font-size: 14px;
-            color: #94a3b8;
-        }
+header p{
+  margin-top:6px;
+}
 
-        .container {
-            max-width: 650px;
-            margin: -20px auto 0;
-            padding: 0 16px;
-        }
+.container{
+  max-width:600px;
+  margin:auto;
+  padding:15px;
+}
 
-        .promo-banner {
-            background: linear-gradient(90deg, #fffbebe6, #fef3c7);
-            color: #b45309;
-            border: 1px dashed #f59e0b;
-            padding: 14px 18px;
-            border-radius: 12px;
-            margin-bottom: 20px;
-            font-size: 13.5px;
-            text-align: center;
-            font-weight: 600;
-            box-shadow: var(--shadow);
-        }
+.card{
+  background:white;
+  border-radius:16px;
+  padding:20px;
+  margin:15px 0;
+  box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
 
-        .card {
-            background: var(--card-bg);
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            margin-bottom: 24px;
-            border: 1px solid rgba(226, 232, 240, 0.8);
-        }
+h2{
+  margin-bottom:15px;
+  color:#075eea;
+}
 
-        h2 {
-            font-size: 18px;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
+input,select,textarea{
+  width:100%;
+  padding:13px;
+  margin:7px 0;
+  border:1px solid #ddd;
+  border-radius:10px;
+  font-size:15px;
+}
 
-        .feature-cards {
-            display: flex;
-            flex-direction: column;
-            gap: 14px;
-            margin-bottom: 24px;
-        }
+textarea{
+  min-height:90px;
+}
 
-        .feature-card {
-            display: flex;
-            align-items: center;
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 14px;
-            transition: transform 0.2s;
-        }
+button{
+  width:100%;
+  padding:13px;
+  border:0;
+  border-radius:10px;
+  background:#0866ff;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:8px;
+  cursor:pointer;
+}
 
-        .feature-card:hover {
-            transform: translateY(-2px);
-        }
+button:hover{
+  opacity:.9;
+}
 
-        .feature-info {
-            flex: 1;
-            padding-right: 12px;
-        }
+.green{
+  background:#16a34a;
+}
 
-        .feature-info h3 {
-            font-size: 15px;
-            color: var(--primary);
-            margin-bottom: 4px;
-        }
+.red{
+  background:#dc2626;
+}
 
-        .feature-info p {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-bottom: 6px;
-        }
+.gray{
+  background:#555;
+}
 
-        .feature-info .price-tag {
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 14px;
-        }
+.service{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:14px;
+  border:1px solid #eee;
+  border-radius:12px;
+  margin:8px 0;
+  background:#fafafa;
+}
 
-        .feature-img {
-            width: 85px;
-            height: 75px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
+.service-icon{
+  font-size:28px;
+}
 
-        .form-group {
-            margin-bottom: 16px;
-        }
+.service b{
+  display:block;
+}
 
-        label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 13.5px;
-            color: #334155;
-        }
+.nav{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+  margin-bottom:15px;
+}
 
-        input[type="text"],
-        input[type="tel"],
-        input[type="date"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid var(--border);
-            border-radius: 10px;
-            font-size: 14px;
-            background-color: #fff;
-            color: var(--text-main);
-            transition: all 0.2s;
-        }
+.nav button{
+  font-size:13px;
+  padding:11px 5px;
+}
 
-        input:focus, select:focus, textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-            box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-        }
+.hidden{
+  display:none;
+}
 
-        .location-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            background-color: #f0f9ff;
-            color: var(--accent);
-            border: 1px solid #bae6fd;
-            padding: 10px 14px;
-            border-radius: 8px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 8px;
-            transition: 0.2s;
-        }
+.booking{
+  border:1px solid #ddd;
+  padding:15px;
+  border-radius:12px;
+  margin:10px 0;
+}
 
-        .location-btn:hover {
-            background-color: #e0f2fe;
-        }
+.status{
+  display:inline-block;
+  background:#fff3cd;
+  color:#856404;
+  padding:5px 10px;
+  border-radius:20px;
+  margin-top:8px;
+  font-size:13px;
+}
 
-        .row {
-            display: flex;
-            gap: 12px;
-        }
+footer{
+  text-align:center;
+  padding:25px;
+  color:#777;
+}
 
-        .col {
-            flex: 1;
-        }
-
-        .service-category {
-            font-size: 13px;
-            font-weight: 700;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 20px 0 10px 0;
-            background: #f1f5f9;
-            padding: 8px 12px;
-            border-radius: 6px;
-        }
-
-        .service-item {
-            display: flex;
-            align-items: center;
-            position: relative;
-            padding: 12px 14px 12px 44px;
-            margin-bottom: 10px;
-            background: #ffffff;
-            border: 1.5px solid var(--border);
-            border-radius: 10px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .service-item:hover {
-            border-color: var(--accent);
-            background-color: #f8fafc;
-        }
-
-        .service-item input {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
-        .checkmark {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            left: 14px;
-            height: 20px;
-            width: 20px;
-            background-color: #fff;
-            border: 2px solid #cbd5e1;
-            border-radius: 6px;
-            transition: 0.2s;
-        }
-
-        .service-item input:checked ~ .checkmark {
-            background-color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .checkmark:after {
-            content: "";
-            position: absolute;
-            display: none;
-        }
-
-        .service-item input:checked ~ .checkmark:after {
-            display: block;
-            left: 6px;
-            top: 2px;
-            width: 5px;
-            height: 10px;
-            border: solid white;
-            border-width: 0 2px 2px 0;
-            transform: rotate(45deg);
-        }
-
-        .service-details {
-            flex: 1;
-        }
-
-        .service-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .service-price {
-            font-size: 14px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .badge {
-            display: inline-block;
-            background: #ef4444;
-            color: white;
-            font-size: 10px;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 700;
-            margin-left: 6px;
-            text-transform: uppercase;
-        }
-
-        .total-box {
-            background: #ecfdf5;
-            border: 1px solid #a7f3d0;
-            padding: 16px;
-            border-radius: 12px;
-            text-align: center;
-            margin-bottom: 18px;
-            font-size: 15px;
-            font-weight: 600;
-            color: #065f46;
-        }
-
-        .total-box span {
-            font-size: 24px;
-            font-weight: 800;
-            color: var(--success);
-        }
-
-        .btn-submit {
-            width: 100%;
-            background-color: var(--success);
-            color: white;
-            border: none;
-            padding: 16px;
-            font-size: 16px;
-            font-weight: 700;
-            border-radius: 10px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
-            transition: background 0.2s;
-        }
-
-        .btn-submit:hover {
-            background-color: #059669;
-        }
-
-        footer {
-            text-align: center;
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 25px;
-        }
-    </style>
+.logo{
+  font-size:40px;
+}
+</style>
 </head>
+
 <body>
 
-    <header>
-        <h1>N.G COOLING SOLUTION</h1>
-        <p>Quick & Professional Appliance Repair Booking</p>
-    </header>
+<header>
+  <div class="logo">❄️</div>
+  <h1>NG Cooling Solution</h1>
+  <p>Your Comfort, Our Priority</p>
+</header>
 
-    <div class="container">
-        <!-- Referral Special Offer Banner -->
-        <div class="promo-banner">
-            🎉 <b>বিশেষ অফার:</b> ৫ জন বন্ধু বা পরিচিতদের রেফার করুন আর পান <b>₹১৫০ ছাড়!</b> 
-        </div>
+<div class="container">
 
-        <!-- Trending Services Visual Cards -->
-        <div class="feature-cards">
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h3>Foam-jet AC Service</h3>
-                    <p>Deep clean AC vents for efficient cooling & Free gas check</p>
-                    <div class="price-tag">Starts at ₹499</div>
-                </div>
-                <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=300" alt="Foam Jet AC Service" class="feature-img">
-            </div>
+<!-- HOME -->
+<div id="homePage">
 
-            <div class="feature-card">
-                <div class="feature-info">
-                    <h3>AC Repair & Check-up</h3>
-                    <p>Complete check-up to identify issues before repair</p>
-                    <div class="price-tag">Starts at ₹199</div>
-                </div>
-                <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=300" alt="AC Repair" class="feature-img">
-            </div>
-        </div>
+  <div class="card">
+    <h2>Welcome 👋</h2>
+    <p>AC Repair • AC Service • Installation • Home Appliance Repair</p>
 
-        <form id="bookingForm" onsubmit="return false;">
-            <div class="card">
-                <h2>1. Customer Information</h2>
-                
-                <div class="form-group">
-                    <label for="custName">Customer Name *</label>
-                    <input type="text" id="custName" placeholder="Enter your full name" required>
-                </div>
+    <button onclick="showPage('loginPage')">
+      Login / Register
+    </button>
 
-                <div class="form-group">
-                    <label for="custPhone">Phone Number *</label>
-                    <input type="tel" id="custPhone" placeholder="Enter 10-digit mobile number" required>
-                </div>
+    <button class="green" onclick="showPage('bookingPage')">
+      📅 Book Service
+    </button>
+  </div>
 
-                <div class="form-group">
-                    <label for="custAddress">Address / Location *</label>
-                    <textarea id="custAddress" rows="2" placeholder="Enter complete home address" required></textarea>
-                    <button type="button" class="location-btn" onclick="getLocation()">
-                        📍 Share Location Automatically
-                    </button>
-                </div>
+  <div class="card">
+    <h2>Our Services</h2>
 
-                <div class="form-group">
-                    <label for="referredBy">Referred By (Optional)</label>
-                    <input type="text" id="referredBy" placeholder="রেফার করা বন্ধুর নাম বা ফোন নম্বর লিখুন">
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="bookDate">Service Date *</label>
-                            <input type="date" id="bookDate" required>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="form-group">
-                            <label for="bookTimeSlot">Service Time Slot *</label>
-                            <select id="bookTimeSlot" required>
-                                <option value="" disabled selected>Select Slot</option>
-                                <option value="08:00 AM - 09:00 AM">08:00 AM - 09:00 AM</option>
-                                <option value="09:00 AM - 10:00 AM">09:00 AM - 10:00 AM</option>
-                                <option value="10:00 AM - 11:00 AM">10:00 AM - 11:00 AM</option>
-                                <option value="11:00 AM - 12:00 PM">11:00 AM - 12:00 PM</option>
-                                <option value="12:00 PM - 01:00 PM">12:00 PM - 01:00 PM</option>
-                                <option value="01:00 PM - 02:00 PM">01:00 PM - 02:00 PM</option>
-                                <option value="02:00 PM - 03:00 PM">02:00 PM - 03:00 PM</option>
-                                <option value="03:00 PM - 04:00 PM">03:00 PM - 04:00 PM</option>
-                                <option value="04:00 PM - 05:00 PM">04:00 PM - 05:00 PM</option>
-                                <option value="05:00 PM - 06:00 PM">05:00 PM - 06:00 PM</option>
-                                <option value="06:00 PM - 07:00 PM">06:00 PM - 07:00 PM</option>
-                                <option value="07:00 PM - 08:00 PM">07:00 PM - 08:00 PM</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2>2. Select Services</h2>
-
-                <div class="service-category">❄️ AC Cleaning & Servicing</div>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Jet Pump Deep Cleaning Service" data-price="499" onchange="updateTotal()">
-                    <span class="checkmark"></span>
-                    <div class="service-details">
-                        <div class="service-title">Split AC Jet Pump Deep Cleaning Service</div>
-                        <div class="service-price">₹499 <span class="badge">POPULAR</span></div>
-                    </div>
-                </label>
-
-                <div class="service-category">⚡ AC Repair & PCB</div>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="AC Checking & Repair" data-price="199" onchange="updateTotal()">
-                    <span class="checkmark"></span>
-                    <div class="service-details">
-                        <div class="service-title">AC Checking & Repair</div>
-                        <div class="service-price">₹199</div>
-                    </div>
-                </label>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="Non Inverter PCB Repair" data-price="1500" onchange="updateTotal()">
-                    <span class="checkmark"></span>
-                    <div class="service-details">
-                        <div class="service-title">Non Inverter PCB Repair</div>
-                        <div class="service-price">₹1500</div>
-                    </div>
-                </label>
-
-                <div class="service-category">🛠️ AC Installation & Uninstallation</div>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Installation" data-price="1500" onchange="updateTotal()">
-                    <span class="checkmark"></span>
-                    <div class="service-details">
-                        <div class="service-title">Split AC Installation</div>
-                        <div class="service-price">₹1500</div>
-                    </div>
-                </label>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="Split AC Uninstallation" data-price="650" onchange="updateTotal()">
-                    <span class="checkmark"></span>
-                    <div class="service-details">
-                        <div class="service-title">Split AC Uninstallation</div>
-                        <div class="service-price">₹650</div>
-                    </div>
-                </label>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="Window AC Installation" data-price="600" onchange="updateTotal()">
-                    <span class="checkmark"></span>
-                    <div class="service-details">
-                        <div class="service-title">Window AC Installation</div>
-                        <div class="service-price">₹600</div>
-                    </div>
-                </label>
-                <label class="service-item">
-                    <input type="checkbox" name="service" value="Window AC Uninstallation" data-price="500" onchange="updateTotal()">
-                    <span class="checkmark"></span>
-                    <div class="service-details">
-                        <div class="service-title">Window AC Uninstallation</div>
-                        <div class="service-price">₹500</div>
-                    </div>
-                </label>
-
-                <div class="service-category">🔍 Inspection / Checking</div>
-                <label class="service-item"><input type="checkbox" name="service" value="Microwave Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Microwave Checking</div><div class="service-price">₹199</div></div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Washing Machine Checking</div><div class="service-price">₹199</div></div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Geyser Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Geyser Checking</div><div class="service-price">₹199</div></div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Fridge Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Fridge Checking</div><div class="service-price">₹199</div></div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Water Purifier Checking" data-price="199" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Water Purifier Checking</div><div class="service-price">₹199</div></div></label>
-
-                <div class="service-category">🔧 Appliance Full Servicing</div>
-                <label class="service-item"><input type="checkbox" name="service" value="Washing Machine Service" data-price="550" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Washing Machine Service</div><div class="service-price">₹550</div></div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Microwave Service" data-price="499" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Microwave Service</div><div class="service-price">₹499</div></div></label>
-                <label class="service-item"><input type="checkbox" name="service" value="Geyser Deep Cleaning Service" data-price="600" onchange="updateTotal()"><span class="checkmark"></span><div class="service-details"><div class="service-title">Geyser Deep Cleaning Service</div><div class="service-price">₹600</div></div></label>
-            </div>
-
-            <div class="card">
-                <div class="total-box">
-                    Estimated Total: <span id="totalDisplay">₹0</span>
-                </div>
-                <button type="button" class="btn-submit" onclick="sendToWhatsApp()">
-                    📱 Send Booking via WhatsApp
-                </button>
-            </div>
-        </form>
-
-        <footer>
-            &copy; N.G COOLING SOLUTION. All Rights Reserved.
-        </footer>
+    <div class="service">
+      <div class="service-icon">❄️</div>
+      <div>
+        <b>AC Repair & Service</b>
+        All Brand AC Service
+      </div>
     </div>
 
-    <script>
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    var lat = position.coords.latitude;
-                    var lng = position.coords.longitude;
-                    var mapUrl = "https://maps.google.com/?q=" + lat + "," + lng;
-                    var currentAddress = document.getElementById('custAddress').value;
-                    document.getElementById('custAddress').value = currentAddress ? currentAddress + "\n[GPS: " + mapUrl + "]" : "GPS Location: " + mapUrl;
-                    alert("Location added successfully!");
-                }, function(error) {
-                    alert("Please enable Location / GPS permission in your phone settings.");
-                }, { enableHighAccuracy: true });
-            } else {
-                alert("Geolocation is not supported by your browser.");
-            }
-        }
+    <div class="service">
+      <div class="service-icon">🧼</div>
+      <div>
+        <b>AC Deep Cleaning</b>
+        Jet Pump / Foam Cleaning
+      </div>
+    </div>
 
-        function updateTotal() {
-            var checkboxes = document.querySelectorAll('input[name="service"]');
-            var total = 0;
-            checkboxes.forEach(function(c) {
-                if (c.checked) {
-                    total += parseInt(c.getAttribute('data-price')) || 0;
-                }
-            });
-            document.getElementById('totalDisplay').innerText = "₹" + total;
-        }
+    <div class="service">
+      <div class="service-icon">🔧</div>
+      <div>
+        <b>AC Installation</b>
+        Professional Installation
+      </div>
+    </div>
 
-        function sendToWhatsApp() {
-            var name = document.getElementById('custName').value.trim();
-            var phone = document.getElementById('custPhone').value.trim();
-            var address = document.getElementById('custAddress').value.trim();
-            var referredBy = document.getElementById('referredBy').value.trim();
-            var date = document.getElementById('bookDate').value;
-            var timeSlot = document.getElementById('bookTimeSlot').value;
+    <div class="service">
+      <div class="service-icon">🧊</div>
+      <div>
+        <b>Fridge Repair</b>
+        Home Appliance Service
+      </div>
+    </div>
 
-            if (!name || !phone || !address || !date || !timeSlot) {
-                alert("Please fill in all required details (Name, Phone, Address, Date & Time Slot)!");
-                return;
-            }
+    <div class="service">
+      <div class="service-icon">🧺</div>
+      <div>
+        <b>Washing Machine Repair</b>
+        All Brand Service
+      </div>
+    </div>
 
-            var checkboxes = document.querySelectorAll('input[name="service"]');
-            var selected = [];
-            var total = 0;
-            checkboxes.forEach(function(c) {
-                if (c.checked) {
-                    selected.push("• " + c.value + " (₹" + c.getAttribute('data-price') + ")");
-                    total += parseInt(c.getAttribute('data-price')) || 0;
-                }
-            });
+    <div class="service">
+      <div class="service-icon">📺</div>
+      <div>
+        <b>Microwave Repair</b>
+        Home Service
+      </div>
+    </div>
+  </div>
 
-            if (selected.length === 0) {
-                alert("Please select at least one service!");
-                return;
-            }
+  <div class="card">
+    <h2>Contact Us</h2>
+    <p>📍 Dum Dum Road, Kolkata</p>
+    <p>📱 7439160014</p>
 
-            var msg = "*NEW BOOKING REQUEST - N.G COOLING SOLUTION*\n\n" +
-                      "👤 *Name:* " + name + "\n" +
-                      "📞 *Phone:* " + phone + "\n" +
-                      "📍 *Address:* " + address + "\n";
+    <button onclick="callNow()">
+      📞 Call Now
+    </button>
 
-            if (referredBy) {
-                msg += "🤝 *Referred By:* " + referredBy + "\n";
-            }
+    <button class="green" onclick="whatsapp()">
+      💬 WhatsApp
+    </button>
+  </div>
 
-            msg += "📅 *Date:* " + date + "\n" +
-                   "⏰ *Slot:* " + timeSlot + "\n\n" +
-                   "*Selected Services:*\n" + selected.join("\n") + "\n\n" +
-                   "💰 *Total Amount:* ₹" + total;
+</div>
 
-            var waUrl = "https://wa.me/917439160014?text=" + encodeURIComponent(msg);
-            window.open(waUrl, '_blank');
-        }
-    </script>
+
+<!-- LOGIN -->
+<div id="loginPage" class="hidden">
+
+  <div class="card">
+    <h2>Login</h2>
+
+    <select id="loginRole">
+      <option value="customer">Customer Login</option>
+      <option value="technician">Technician Login</option>
+      <option value="admin">Admin Login</option>
+    </select>
+
+    <input id="loginEmail" type="email" placeholder="Email">
+
+    <input id="loginPassword" type="password" placeholder="Password">
+
+    <button onclick="login()">Login</button>
+
+    <button class="gray" onclick="showPage('homePage')">
+      Back
+    </button>
+
+    <p style="margin-top:15px;text-align:center;">
+      New Customer?
+    </p>
+
+    <button class="green" onclick="showPage('registerPage')">
+      Create Customer Account
+    </button>
+  </div>
+
+</div>
+
+
+<!-- REGISTER -->
+<div id="registerPage" class="hidden">
+
+  <div class="card">
+    <h2>Customer Registration</h2>
+
+    <input id="regName" placeholder="Full Name">
+
+    <input id="regPhone" placeholder="Mobile Number">
+
+    <input id="regEmail" type="email" placeholder="Email">
+
+    <input id="regPassword" type="password" placeholder="Create Password">
+
+    <button onclick="register()">
+      Register
+    </button>
+
+    <button class="gray" onclick="showPage('loginPage')">
+      Back to Login
+    </button>
+  </div>
+
+</div>
+
+
+<!-- BOOKING -->
+<div id="bookingPage" class="hidden">
+
+  <div class="card">
+    <h2>📅 Book a Service</h2>
+
+    <input id="customerName" placeholder="Customer Name">
+
+    <input id="customerPhone" placeholder="Mobile Number">
+
+    <select id="service">
+      <option>AC Repair</option>
+      <option>AC General Service</option>
+      <option>AC Deep Cleaning</option>
+      <option>AC Foam Cleaning</option>
+      <option>AC Installation</option>
+      <option>AC Uninstallation</option>
+      <option>AC Gas Charging</option>
+      <option>Fridge Repair</option>
+      <option>Washing Machine Repair</option>
+      <option>Microwave Repair</option>
+      <option>Geyser Repair</option>
+      <option>Water Purifier Repair</option>
+    </select>
+
+    <input id="bookingDate" type="date">
+
+    <input id="bookingTime" type="time">
+
+    <textarea id="customerAddress"
+      placeholder="Service Address / Location"></textarea>
+
+    <textarea id="problem"
+      placeholder="Describe your problem"></textarea>
+
+    <button onclick="createBooking()">
+      Confirm Booking
+    </button>
+
+    <button class="gray" onclick="showPage('homePage')">
+      Back
+    </button>
+  </div>
+
+</div>
+
+
+<!-- CUSTOMER DASHBOARD -->
+<div id="customerPage" class="hidden">
+
+  <div class="card">
+    <h2>👤 Customer Dashboard</h2>
+
+    <div class="nav">
+      <button onclick="showPage('bookingPage')">
+        Book
+      </button>
+
+      <button onclick="showBookings()">
+        My Bookings
+      </button>
+
+      <button class="red" onclick="logout()">
+        Logout
+      </button>
+    </div>
+
+    <div id="customerBookings"></div>
+  </div>
+
+</div>
+
+
+<!-- TECHNICIAN DASHBOARD -->
+<div id="technicianPage" class="hidden">
+
+  <div class="card">
+    <h2>🔧 Technician Dashboard</h2>
+
+    <p>Assigned Jobs</p>
+
+    <div id="technicianBookings"></div>
+
+    <button class="red" onclick="logout()">
+      Logout
+    </button>
+  </div>
+
+</div>
+
+
+<!-- ADMIN DASHBOARD -->
+<div id="adminPage" class="hidden">
+
+  <div class="card">
+
+    <h2>👨‍💼 Admin Dashboard</h2>
+
+    <p>Total Bookings:
+      <b id="totalBookings">0</b>
+    </p>
+
+    <div id="adminBookings"></div>
+
+    <button class="red" onclick="logout()">
+      Logout
+    </button>
+
+  </div>
+
+</div>
+
+
+<footer>
+  <b>NG Cooling Solution</b>
+  <br>
+  Your Comfort, Our Priority
+  <br><br>
+  📞 7439160014
+</footer>
+
+
+<script>
+
+let bookings =
+JSON.parse(localStorage.getItem("ngBookings")) || [];
+
+let currentUser =
+JSON.parse(localStorage.getItem("ngUser")) || null;
+
+
+/* PAGE SYSTEM */
+
+function hideAll(){
+
+  document.querySelectorAll(
+    "#homePage,#loginPage,#registerPage,#bookingPage,#customerPage,#technicianPage,#adminPage"
+  ).forEach(x=>{
+    x.classList.add("hidden");
+  });
+
+}
+
+function showPage(id){
+
+  hideAll();
+
+  document.getElementById(id)
+    .classList.remove("hidden");
+
+}
+
+
+/* REGISTER */
+
+function register(){
+
+  let name =
+    document.getElementById("regName").value;
+
+  let phone =
+    document.getElementById("regPhone").value;
+
+  let email =
+    document.getElementById("regEmail").value;
+
+  let password =
+    document.getElementById("regPassword").value;
+
+  if(!name || !phone || !email || !password){
+
+    alert("Please fill all details");
+
+    return;
+  }
+
+  let users =
+    JSON.parse(localStorage.getItem("ngUsers")) || [];
+
+  users.push({
+
+    name:name,
+    phone:phone,
+    email:email,
+    password:password,
+    role:"customer"
+
+  });
+
+  localStorage.setItem(
+    "ngUsers",
+    JSON.stringify(users)
+  );
+
+  alert("Registration Successful!");
+
+  showPage("loginPage");
+
+}
+
+
+/* LOGIN */
+
+function login(){
+
+  let role =
+    document.getElementById("loginRole").value;
+
+  let email =
+    document.getElementById("loginEmail").value;
+
+  let password =
+    document.getElementById("loginPassword").value;
+
+
+  /* DEMO ADMIN */
+
+  if(
+    role==="admin" &&
+    email==="admin@ngcooling.com" &&
+    password==="admin123"
+  ){
+
+    currentUser={
+      role:"admin",
+      name:"NG Cooling Admin"
+    };
+
+    localStorage.setItem(
+      "ngUser",
+      JSON.stringify(currentUser)
+    );
+
+    loadAdmin();
+
+    showPage("adminPage");
+
+    return;
+  }
+
+
+  /* DEMO TECHNICIAN */
+
+  if(
+    role==="technician" &&
+    email==="technician@ngcooling.com" &&
+    password==="tech123"
+  ){
+
+    currentUser={
+      role:"technician",
+      name:"Technician"
+    };
+
+    localStorage.setItem(
+      "ngUser",
+      JSON.stringify(currentUser)
+    );
+
+    loadTechnician();
+
+    showPage("technicianPage");
+
+    return;
+  }
+
+
+  /* CUSTOMER */
+
+  let users =
+    JSON.parse(localStorage.getItem("ngUsers")) || [];
+
+  let user =
+    users.find(
+      u =>
+      u.email===email &&
+      u.password===password &&
+      u.role==="customer"
+    );
+
+  if(user){
+
+    currentUser=user;
+
+    localStorage.setItem(
+      "ngUser",
+      JSON.stringify(user)
+    );
+
+    showPage("customerPage");
+
+    showBookings();
+
+  }else{
+
+    alert("Invalid Login Details");
+
+  }
+
+}
+
+
+/* BOOKING */
+
+function createBooking(){
+
+  let name =
+    document.getElementById("customerName").value;
+
+  let phone =
+    document.getElementById("customerPhone").value;
+
+  let service =
+    document.getElementById("service").value;
+
+  let date =
+    document.getElementById("bookingDate").value;
+
+  let time =
+    document.getElementById("bookingTime").value;
+
+  let address =
+    document.getElementById("customerAddress").value;
+
+  let problem =
+    document.getElementById("problem").value;
+
+
+  if(
+    !name ||
+    !phone ||
+    !date ||
+    !time ||
+    !address
+  ){
+
+    alert("Please fill all required details");
+
+    return;
+  }
+
+
+  let booking={
+
+    id:Date.now(),
+
+    name:name,
+
+    phone:phone,
+
+    service:service,
+
+    date:date,
+
+    time:time,
+
+    address:address,
+
+    problem:problem,
+
+    status:"New Booking",
+
+    technician:"Not Assigned"
+
+  };
+
+
+  bookings.push(booking);
+
+
+  localStorage.setItem(
+    "ngBookings",
+    JSON.stringify(bookings)
+  );
+
+
+  alert(
+    "Booking Successful!\nBooking ID: "
+    + booking.id
+  );
+
+
+  if(currentUser){
+
+    showPage("customerPage");
+
+    showBookings();
+
+  }else{
+
+    showPage("homePage");
+
+  }
+
+}
+
+
+/* CUSTOMER BOOKINGS */
+
+function showBookings(){
+
+  let box =
+    document.getElementById("customerBookings");
+
+  if(!box) return;
+
+  box.innerHTML="";
+
+  let myBookings =
+    bookings.filter(
+      b =>
+      !currentUser ||
+      b.phone===currentUser.phone
+    );
+
+
+  if(myBookings.length===0){
+
+    box.innerHTML =
+      "<p>No bookings found.</p>";
+
+    return;
+
+  }
+
+
+  myBookings.forEach(b=>{
+
+    box.innerHTML += `
+
+      <div class="booking">
+
+        <b>Booking ID:</b> ${b.id}<br>
+
+        <b>Service:</b> ${b.service}<br>
+
+        <b>Date:</b> ${b.date}<br>
+
+        <b>Time:</b> ${b.time}<br>
+
+        <b>Technician:</b>
+        ${b.technician}
+
+        <br>
+
+        <span class="status">
+        ${b.status}
+        </span>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* ADMIN */
+
+function loadAdmin(){
+
+  let box =
+    document.getElementById("adminBookings");
+
+  document.getElementById(
+    "totalBookings"
+  ).innerText=bookings.length;
+
+  box.innerHTML="";
+
+
+  bookings.forEach((b,index)=>{
+
+    box.innerHTML += `
+
+      <div class="booking">
+
+        <b>Booking ID:</b> ${b.id}<br>
+
+        <b>Customer:</b> ${b.name}<br>
+
+        <b>Phone:</b> ${b.phone}<br>
+
+        <b>Service:</b> ${b.service}<br>
+
+        <b>Date:</b> ${b.date}<br>
+
+        <b>Time:</b> ${b.time}<br>
+
+        <b>Location:</b> ${b.address}<br>
+
+        <b>Status:</b> ${b.status}<br>
+
+        <b>Technician:</b>
+        ${b.technician}
+
+        <button onclick="confirmBooking(${index})">
+          Confirm Booking
+        </button>
+
+        <button class="green"
+          onclick="assignTechnician(${index})">
+          Assign Technician
+        </button>
+
+        <button class="gray"
+          onclick="completeBooking(${index})">
+          Mark Completed
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+
+/* CONFIRM */
+
+function confirmBooking(index){
+
+  bookings[index].status="Confirmed";
+
+  saveBookings();
+
+  loadAdmin();
+
+}
+
+
+/* ASSIGN TECHNICIAN */
+
+function assignTechnician(index){
+
+  let name =
+    prompt(
+      "Enter Technician Name"
+    );
+
+  if(!name) return;
+
+  bookings[index].technician=name;
+
+  bookings[index].status=
+    "Technician Assigned";
+
+  saveBookings();
+
+  loadAdmin();
+
+}
+
+
+/* COMPLETE */
+
+function completeBooking(index){
+
+  bookings[index].status=
+    "Completed";
+
+  saveBookings();
+
+  loadAdmin();
+
+}
+
+
+/* TECHNICIAN */
+
+function loadTechnician(){
+
+  let box =
+    document.getElementById(
+      "technicianBookings"
+    );
+
+  box.innerHTML="";
+
+
+  bookings.forEach((b,index)=>{
+
+    if(
+      b.technician!=="Not Assigned"
+    ){
+
+      box.innerHTML += `
+
+        <div class="booking">
+
+          <b>Customer:</b>
+          ${b.name}<br>
+
+          <b>Phone:</b>
+          ${b.phone}<br>
+
+          <b>Service:</b>
+          ${b.service}<br>
+
+          <b>Date:</b>
+          ${b.date}<br>
+
+          <b>Time:</b>
+          ${b.time}<br>
+
+          <b>Address:</b>
+          ${b.address}<br>
+
+          <span class="status">
+          ${b.status}
+          </span>
+
+          <button
+            onclick="startService(${index})">
+            Start Service
+          </button>
+
+          <button class="green"
+            onclick="finishService(${index})">
+            Complete Service
+          </button>
+
+        </div>
+
+      `;
+
+    }
+
+  });
+
+}
+
+
+/* TECHNICIAN STATUS */
+
+function startService(index){
+
+  bookings[index].status=
+    "Service Started";
+
+  saveBookings();
+
+  loadTechnician();
+
+}
+
+
+function finishService(index){
+
+  bookings[index].status=
+    "Completed";
+
+  saveBookings();
+
+  loadTechnician();
+
+}
+
+
+/* SAVE */
+
+function saveBookings(){
+
+  localStorage.setItem(
+    "ngBookings",
+    JSON.stringify(bookings)
+  );
+
+}
+
+
+/* LOGOUT */
+
+function logout(){
+
+  localStorage.removeItem("ngUser");
+
+  currentUser=null;
+
+  showPage("homePage");
+
+}
+
+
+/* CALL */
+
+function callNow(){
+
+  window.location.href=
+    "tel:7439160014";
+
+}
+
+
+/* WHATSAPP */
+
+function whatsapp(){
+
+  window.open(
+    "https://wa.me/917439160014",
+    "_blank"
+  );
+
+}
+
+
+/* START */
+
+showPage("homePage");
+
+</script>
+
 </body>
 </html>
+অবশ্যই। নিচেরটা একটা index.html ফাইল। GitHub-এ index.html নামে বানিয়ে পুরো কোডটা পেস্ট করবেন।
+এতে থাকবে:
+👤 Customer Login/Register
+🔧 Technician Login
+👨‍💼 Admin Login
+📅 Service Booking
+📋 My Bookings
+🔄 Booking Status
+📱 Mobile/App-style design
+📞 Call + WhatsApp button
+NG Cooling Solution branding
+নোট: এটা প্রথমে Demo version। Firebase লাগানোর পর Customer/Technician/Admin-এর আসল online login ও database চালু হবে।
+HTML
+GitHub-এ এখন যা করবেন
+GitHub খুলুন।
+আপনার repository খুলুন।
+Add file → Create new file
+File name দিন: index.html
+উপরের পুরো কোড paste করুন।
+Commit changes চাপুন।
+তারপর Settings → Pages → Deploy from branch → main → Save।
+Admin Demo Login
+Email: admin@ngcooling.com
+Password: admin123
+Technician Demo Login
+Email: technician@ngcooling.com
+Password: tech123
+এরপর আপনার পরের ধাপ হবে Firebase লাগানো, যাতে এই Demo Login/LocalStorage বাদ দিয়ে সত্যিকারের online Customer + Technician + Admin account এবং booking database হয়।
