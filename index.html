@@ -3,572 +3,1283 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NG Cooling Solution | Advanced Service Portal</title>
+<title>NG Cooling Solution - 3-Page Digital Dashboard</title>
+
 <style>
-  :root {
-    --primary: #0066ff;
-    --primary-dark: #075eea;
-    --accent: #00a8ff;
-    --success: #16a34a;
-    --danger: #dc2626;
-    --bg: #f3f7fb;
-    --card-bg: #ffffff;
-    --text: #1e293b;
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --nayan-color: #0284c7;
+  --ashid-color: #7c3aed;
+  --success: #10b981;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #0f172a;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+header{
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  color:white;
+  padding:25px 20px;
+  text-align:center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+header h1{
+  font-size:28px;
+  letter-spacing: 1px;
+  color: #38bdf8;
+}
+
+header p{
+  margin-top:6px;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+/* Page Navigation Tabs */
+.nav-tabs {
+  display: flex;
+  justify-content: center;
+  background: #0f172a;
+  border-bottom: 2px solid var(--border);
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  background: transparent;
+  color: #94a3b8;
+  padding: 14px 24px;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+}
+
+.tab-btn:hover {
+  color: #38bdf8;
+}
+
+.tab-btn.active {
+  color: #38bdf8;
+  border-bottom: 3px solid #38bdf8;
+  background: rgba(255,255,255,0.05);
+}
+
+.container{
+  max-width:1250px;
+  margin:auto;
+  padding:20px 15px;
+}
+
+.page-content {
+  display: none;
+}
+
+.page-content.active {
+  display: block;
+}
+
+/* Digital Stats Grid */
+.digital-banner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  border-radius: 16px;
+  padding: 20px;
+  color: white;
+  margin-bottom: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.digital-banner h2 {
+  font-size: 16px;
+  color: #a5b4fc;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.progress-bar-bg {
+  background: rgba(255,255,255,0.1);
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(90deg, #38bdf8, #10b981);
+  height: 100%;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+.progress-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #cbd5e1;
+}
+
+/* Dashboard Cards */
+.dashboard{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:15px;
+}
+
+.dashboard-partner{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.card{
+  background: var(--card-bg);
+  border-radius:14px;
+  padding:20px;
+  border: 1px solid var(--border);
+  box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.card.partner-nayan{
+  border-top: 5px solid var(--nayan-color);
+  background: linear-gradient(180deg, #f0f9ff 0%, #ffffff 100%);
+}
+
+.card.partner-ashid{
+  border-top: 5px solid var(--ashid-color);
+  background: linear-gradient(180deg, #f5f3ff 0%, #ffffff 100%);
+}
+
+.card h3{
+  font-size:13px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.card strong{
+  display:block;
+  font-size:24px;
+  margin-top:10px;
+  color: var(--text);
+}
+
+.card .sub-text{
+  font-size:13px;
+  margin-top:8px;
+  font-weight: 600;
+}
+
+/* Forms */
+.form-box{
+  background: var(--card-bg);
+  padding:22px;
+  border-radius:14px;
+  border: 1px solid var(--border);
+  box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);
+  margin-bottom:20px;
+}
+
+.form-box h2 {
+  font-size: 18px;
+  color: var(--text);
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+label{
+  display:block;
+  font-weight:600;
+  margin-bottom:6px;
+  font-size:13px;
+  color: var(--text-muted);
+}
+
+input,select{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:14px;
+  background: #f8fafc;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: var(--primary);
+  background: #fff;
+}
+
+button{
+  border:0;
+  padding:12px 20px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:bold;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+.add-btn{
+  background: var(--primary);
+  color:white;
+  margin-top:15px;
+}
+
+.cancel-btn{
+  background: var(--text-muted);
+  color:white;
+  margin-top:15px;
+  margin-left:8px;
+  display:none;
+}
+
+/* Table */
+.table-box{
+  background: var(--card-bg);
+  border-radius:14px;
+  padding:20px;
+  overflow-x:auto;
+  border: 1px solid var(--border);
+  box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.table-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.search{
+  width: 300px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  min-width:1100px;
+}
+
+th,td{
+  padding:12px 14px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+  font-size:14px;
+}
+
+th{
+  background:#f1f5f9;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.profit{
+  color: var(--success);
+  font-weight:bold;
+}
+
+.loss{
+  color: var(--danger);
+  font-weight:bold;
+}
+
+.status{
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:bold;
+  display:inline-block;
+}
+
+.stock{
+  background:#fef3c7;
+  color:#b45309;
+}
+
+.sold{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.completed{
+  background:#dcfce7;
+  color:#15803d;
+}
+
+.pending{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+.action button{
+  padding:6px 12px;
+  margin:2px;
+  font-size: 12px;
+}
+
+.edit{
+  background:#e0f2fe;
+  color:#0369a1;
+}
+
+.delete{
+  background:#fee2e2;
+  color:#b91c1c;
+}
+
+@media(max-width:900px){
+  .dashboard, .dashboard-partner, .form-grid{
+    grid-template-columns:repeat(2,1fr);
   }
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
-  body { background: var(--bg); color: var(--text); padding-bottom: 30px; }
-
-  header {
-    background: linear-gradient(135deg, var(--primary), var(--accent));
-    color: white;
-    padding: 25px 20px;
-    text-align: center;
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 102, 255, 0.2);
+@media(max-width:500px){
+  .dashboard, .dashboard-partner, .form-grid{
+    grid-template-columns:1fr;
   }
-  header .logo { font-size: 45px; margin-bottom: 5px; }
-  header h1 { font-size: 26px; font-weight: 700; }
-  header p { font-size: 14px; opacity: 0.9; margin-top: 4px; }
-
-  .container { max-width: 650px; margin: auto; padding: 15px; }
-  .card {
-    background: var(--card-bg);
-    border-radius: 16px;
-    padding: 20px;
-    margin: 15px 0;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.06);
+  .table-header {
+    flex-direction: column;
+    gap: 10px;
   }
-
-  h2 { margin-bottom: 15px; color: var(--primary-dark); font-size: 20px; display: flex; align-items: center; gap: 8px; }
-
-  input, select, textarea {
+  .search {
     width: 100%;
-    padding: 13px;
-    margin: 8px 0;
-    border: 1px solid #cbd5e1;
-    border-radius: 10px;
-    font-size: 15px;
-    background: #f8fafc;
-    transition: border 0.2s;
   }
-  input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    background: #fff;
-  }
-  textarea { min-height: 90px; }
-
-  button {
-    width: 100%;
-    padding: 14px;
-    border: 0;
-    border-radius: 10px;
-    background: var(--primary);
-    color: white;
-    font-size: 15px;
-    font-weight: bold;
-    margin-top: 10px;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.1s;
-  }
-  button:active { transform: scale(0.98); }
-  button:hover { opacity: 0.95; }
-  .green { background: var(--success); }
-  .red { background: var(--danger); }
-  .gray { background: #64748b; }
-
-  /* Service Grid */
-  .service-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .service-item {
-    background: #f8fafc;
-    border: 1px solid #e2e8f0;
-    padding: 12px;
-    border-radius: 12px;
-    text-align: center;
-    cursor: pointer;
-  }
-  .service-item:hover { border-color: var(--primary); background: #eff6ff; }
-  .service-item .icon { font-size: 26px; }
-  .service-item b { display: block; font-size: 14px; margin-top: 5px; color: var(--text); }
-  .service-item span { font-size: 12px; color: #64748b; }
-
-  .nav { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 15px; }
-  .nav button { font-size: 13px; padding: 10px 5px; }
-
-  .hidden { display: none; }
-
-  /* Tracker UI */
-  .booking-card {
-    border: 1px solid #e2e8f0;
-    padding: 16px;
-    border-radius: 12px;
-    margin: 12px 0;
-    background: #fff;
-  }
-  .tracker {
-    display: flex;
-    justify-content: space-between;
-    margin: 15px 0 10px 0;
-    position: relative;
-  }
-  .step {
-    font-size: 11px;
-    text-align: center;
-    color: #94a3b8;
-    flex: 1;
-    position: relative;
-    z-index: 1;
-  }
-  .step.active { color: var(--primary-dark); font-weight: bold; }
-  .step-dot {
-    width: 14px; height: 14px; background: #cbd5e1; border-radius: 50%; margin: 0 auto 5px auto;
-  }
-  .step.active .step-dot { background: var(--primary); }
-
-  .price-box {
-    background: #e0f2fe;
-    border: 1px solid #bae6fd;
-    padding: 12px;
-    border-radius: 10px;
-    margin: 10px 0;
-    text-align: center;
-    color: #0369a1;
-  }
-
-  footer { text-align: center; padding: 25px; color: #64748b; font-size: 14px; }
-  @media print { body * { visibility: hidden; } #invoicePrint, #invoicePrint * { visibility: visible; } #invoicePrint { position: absolute; left: 0; top: 0; width: 100%; } }
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="logo">❄️</div>
-  <h1>NG Cooling Solution</h1>
-  <p>Your Comfort, Our Priority</p>
+  <h1>NG COOLING SOLUTION</h1>
+  <p>⚡ Digital Analytics & Partnership Management (50%-50%)</p>
 </header>
+
+<!-- Navigation Tabs -->
+<div class="nav-tabs">
+  <button class="tab-btn active" onclick="switchPage('page1', this)">📦 Page 1: Product Buy & Sell</button>
+  <button class="tab-btn" onclick="switchPage('page2', this)">🛠️ Page 2: Service & Repairing</button>
+  <button class="tab-btn" onclick="switchPage('page3', this)">🧾 Page 3: Customer Bill & Spare Parts Purchase</button>
+</div>
 
 <div class="container">
 
-  <!-- HOME PAGE -->
-  <div id="homePage">
-    <div class="card">
-      <h2>Welcome 👋</h2>
-      <p style="color:#64748b; font-size:14px; margin-bottom:15px;">Fast & Reliable Home Service in Kolkata</p>
-      <button onclick="showPage('loginPage')">Login / Register</button>
-      <button class="green" onclick="showPage('bookingPage')">📅 Book Service Now</button>
+<!-- PAGE 1: BUY & SELL INVENTORY -->
+<div id="page1" class="page-content active">
+  <div class="digital-banner">
+    <h2>📊 Digital Investment Recovery Tracker</h2>
+    <div class="progress-bar-bg">
+      <div class="progress-bar-fill" id="progressBar"></div>
     </div>
+    <div class="progress-stats">
+      <span id="recoveryPercent">Capital Recovered: 0%</span>
+      <span id="stockValue">In-Stock Capital: ₹0</span>
+    </div>
+  </div>
 
-    <div class="card">
-      <h2>Our Premium Services</h2>
-      <div class="service-grid">
-        <div class="service-item" onclick="quickBook('AC Repair')">
-          <div class="icon">❄️</div>
-          <b>AC Repair</b>
-          <span>Est: ₹399+</span>
-        </div>
-        <div class="service-item" onclick="quickBook('AC Deep Cleaning')">
-          <div class="icon">🧼</div>
-          <b>Deep Cleaning</b>
-          <span>Est: ₹599+</span>
-        </div>
-        <div class="service-item" onclick="quickBook('Fridge Repair')">
-          <div class="icon">🧊</div>
-          <b>Fridge Repair</b>
-          <span>Est: ₹299+</span>
-        </div>
-        <div class="service-item" onclick="quickBook('Washing Machine Repair')">
-          <div class="icon">🧺</div>
-          <b>Washing Machine</b>
-          <span>Est: ₹349+</span>
-        </div>
+  <div class="dashboard">
+    <div class="card" style="border-top: 4px solid var(--primary);">
+      <h3>Total Products</h3>
+      <strong id="totalItems">0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--warning);">
+      <h3>Total Investment</h3>
+      <strong id="totalCost">₹0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--success);">
+      <h3>Total Sales Received</h3>
+      <strong id="totalSales">₹0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid #8b5cf6;">
+      <h3>Net Profit / Loss</h3>
+      <strong id="totalProfit">₹0</strong>
+    </div>
+  </div>
+
+  <div class="dashboard-partner">
+    <div class="card partner-nayan">
+      <h3 style="color: var(--nayan-color);">👤 Nayan Gain</h3>
+      <strong id="nayanInvest">Invested: ₹0</strong>
+      <div class="sub-text profit" id="nayanProfit">Profit Share: ₹0</div>
+    </div>
+    <div class="card partner-ashid">
+      <h3 style="color: var(--ashid-color);">👤 Ashid Bose</h3>
+      <strong id="ashidInvest">Invested: ₹0</strong>
+      <div class="sub-text profit" id="ashidProfit">Profit Share: ₹0</div>
+    </div>
+  </div>
+
+  <div class="form-box">
+    <h2 id="formTitle">➕ Product Entry & Investment</h2>
+    <div class="form-grid">
+      <div>
+        <label>Date</label>
+        <input type="date" id="date">
+      </div>
+      <div>
+        <label>Product Category</label>
+        <select id="product" onchange="toggleOtherProductInput()">
+          <option value="AC">AC</option>
+          <option value="Fridge">Fridge</option>
+          <option value="Washing Machine">Washing Machine</option>
+          <option value="Microwave">Microwave</option>
+          <option value="Geyser">Geyser</option>
+          <option value="Water Purifier">Water Purifier</option>
+          <option value="Other">Other Item</option>
+        </select>
+      </div>
+      <div id="otherProductBox" style="display:none;">
+        <label>Item Name (Other)</label>
+        <input type="text" id="otherProduct" placeholder="e.g. Deep Freezer">
+      </div>
+      <div>
+        <label>Company / Brand</label>
+        <input type="text" id="company" placeholder="LG, Samsung, Voltas...">
+      </div>
+      <div>
+        <label>Buy Price (₹)</label>
+        <input type="number" id="buyPrice" placeholder="8000">
+      </div>
+      <div>
+        <label>Transport Cost (₹)</label>
+        <input type="number" id="transport" value="0">
+      </div>
+      <div>
+        <label>Repair / Parts (₹)</label>
+        <input type="number" id="repair" value="0">
+      </div>
+      <div>
+        <label>Invested By</label>
+        <select id="investor" onchange="toggleCustomInvestment()">
+          <option value="Both (50-50)">Both (50% Nayan - 50% Ashid)</option>
+          <option value="Nayan Gain">Nayan Gain Only</option>
+          <option value="Ashid Bose">Ashid Bose Only</option>
+          <option value="Custom">Custom Split</option>
+        </select>
+      </div>
+      <div id="nayanCustomBox" style="display:none;">
+        <label>Nayan Invested (₹)</label>
+        <input type="number" id="nayanCustomAmount" placeholder="e.g. 5000">
+      </div>
+      <div id="ashidCustomBox" style="display:none;">
+        <label>Ashid Invested (₹)</label>
+        <input type="number" id="ashidCustomAmount" placeholder="e.g. 3000">
+      </div>
+      <div>
+        <label>Selling Price (₹)</label>
+        <input type="number" id="sellPrice" placeholder="12000">
+      </div>
+      <div>
+        <label>Status</label>
+        <select id="status">
+          <option value="In Stock">In Stock</option>
+          <option value="Sold">Sold</option>
+        </select>
       </div>
     </div>
+    <button class="add-btn" onclick="saveItem()" id="saveBtn">Save Record</button>
+    <button class="cancel-btn" onclick="resetForm()" id="cancelBtn">Cancel</button>
+  </div>
 
-    <div class="card">
-      <h2>Contact Us</h2>
-      <p style="font-size:14px; margin-bottom:5px;">📍 Dum Dum Road, Kolkata</p>
-      <p style="font-size:14px; margin-bottom:15px;">📱 7439160014</p>
-      <button onclick="window.location.href='tel:7439160014'">📞 Call Now</button>
-      <button class="green" onclick="window.open('https://wa.me/917439160014','_blank')">💬 WhatsApp Us</button>
+  <div class="table-box">
+    <div class="table-header">
+      <h2 style="font-size: 18px;">📦 Inventory Records</h2>
+      <input type="text" class="search" id="search" placeholder="🔍 Search inventory..." onkeyup="renderData()">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Product</th>
+          <th>Company</th>
+          <th>Investor Details</th>
+          <th>Total Cost</th>
+          <th>Sell Price</th>
+          <th>Net Profit</th>
+          <th>Nayan Profit Share</th>
+          <th>Ashid Profit Share</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="inventoryList"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 2: SERVICE & REPAIRING -->
+<div id="page2" class="page-content">
+  <div class="dashboard">
+    <div class="card" style="border-top: 4px solid var(--primary);">
+      <h3>Total Service Calls</h3>
+      <strong id="srvTotalCalls">0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--success);">
+      <h3>Total Service Income</h3>
+      <strong id="srvTotalIncome">₹0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--warning);">
+      <h3>Spare Parts & Tech Cost</h3>
+      <strong id="srvTotalCost">₹0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid #8b5cf6;">
+      <h3>Total Service Net Profit</h3>
+      <strong id="srvTotalProfit">₹0</strong>
     </div>
   </div>
 
-  <!-- LOGIN PAGE -->
-  <div id="loginPage" class="hidden">
-    <div class="card">
-      <h2>🔑 Login</h2>
-      <select id="loginRole">
-        <option value="customer">Customer</option>
-        <option value="technician">Technician</option>
-        <option value="admin">Admin</option>
-      </select>
-      <input id="loginEmail" type="email" placeholder="Email Address">
-      <input id="loginPassword" type="password" placeholder="Password">
-      <button onclick="handleLogin()">Login</button>
-      <button class="gray" onclick="showPage('homePage')">Back</button>
-      <p style="margin-top:15px; text-align:center; font-size:14px;">New Customer?</p>
-      <button class="green" onclick="showPage('registerPage')">Create Customer Account</button>
+  <div class="dashboard-partner">
+    <div class="card partner-nayan">
+      <h3 style="color: var(--nayan-color);">👤 Nayan Gain (50% Service Profit)</h3>
+      <strong id="srvNayanProfit" style="color: var(--success);">₹0</strong>
+    </div>
+    <div class="card partner-ashid">
+      <h3 style="color: var(--ashid-color);">👤 Ashid Bose (50% Service Profit)</h3>
+      <strong id="srvAshidProfit" style="color: var(--success);">₹0</strong>
     </div>
   </div>
 
-  <!-- REGISTER PAGE -->
-  <div id="registerPage" class="hidden">
-    <div class="card">
-      <h2>📝 Account Registration</h2>
-      <input id="regName" placeholder="Full Name">
-      <input id="regPhone" placeholder="Mobile Number">
-      <input id="regEmail" type="email" placeholder="Email Address">
-      <input id="regPassword" type="password" placeholder="Create Password">
-      <button class="green" onclick="handleRegister()">Register</button>
-      <button class="gray" onclick="showPage('loginPage')">Back to Login</button>
-    </div>
-  </div>
-
-  <!-- BOOKING PAGE -->
-  <div id="bookingPage" class="hidden">
-    <div class="card">
-      <h2>📅 Book a Service</h2>
-      <input id="custName" placeholder="Customer Name">
-      <input id="custPhone" placeholder="Mobile Number">
-      <select id="serviceSelect" onchange="updatePriceEstimate()">
-        <option value="AC Repair" data-price="399">AC Repair & Inspection (₹399)</option>
-        <option value="AC Deep Cleaning" data-price="599">AC Deep Cleaning / Foam (₹599)</option>
-        <option value="AC Gas Charging" data-price="1800">AC Gas Charging (₹1800)</option>
-        <option value="Fridge Repair" data-price="299">Fridge Inspection & Repair (₹299)</option>
-        <option value="Washing Machine Repair" data-price="349">Washing Machine Repair (₹349)</option>
-      </select>
-
-      <div class="price-box" id="priceEstimateDisplay">
-        Estimated Inspection Charge: <strong>₹399</strong>
+  <div class="form-box">
+    <h2 id="srvFormTitle">🛠️ Service & Repair Work Entry</h2>
+    <div class="form-grid">
+      <div>
+        <label>Date</label>
+        <input type="date" id="srvDate">
       </div>
-
-      <input id="bookDate" type="date">
-      <input id="bookTime" type="time">
-      <textarea id="custAddress" placeholder="Full Service Address / Location"></textarea>
-      <textarea id="probDescription" placeholder="Describe the issue in detail..."></textarea>
-      
-      <button class="green" onclick="handleBooking()">Confirm Booking</button>
-      <button class="gray" onclick="showPage('homePage')">Back</button>
-    </div>
-  </div>
-
-  <!-- CUSTOMER DASHBOARD -->
-  <div id="customerPage" class="hidden">
-    <div class="card">
-      <h2>👤 Customer Dashboard</h2>
-      <div class="nav">
-        <button onclick="showPage('bookingPage')">Book New</button>
-        <button onclick="loadCustomerBookings()">My Bookings</button>
-        <button class="red" onclick="handleLogout()">Logout</button>
+      <div>
+        <label>Customer Name / Phone</label>
+        <input type="text" id="srvCustomer" placeholder="Customer Name or Mobile">
       </div>
-      <div id="customerBookingsList"></div>
+      <div>
+        <label>Appliance Category</label>
+        <select id="srvCategory">
+          <option value="AC Service/Repair">AC Service / Repair</option>
+          <option value="Fridge Service/Repair">Fridge Repair</option>
+          <option value="Washing Machine Repair">Washing Machine Repair</option>
+          <option value="Microwave Repair">Microwave Repair</option>
+          <option value="Geyser Service">Geyser Service</option>
+          <option value="Water Purifier Service">Water Purifier Service</option>
+          <option value="Other Service">Other Appliance</option>
+        </select>
+      </div>
+      <div>
+        <label>Total Charge to Customer (₹)</label>
+        <input type="number" id="srvCharge" placeholder="e.g. 2500">
+      </div>
+      <div>
+        <label>Spare Parts Cost (₹)</label>
+        <input type="number" id="srvPartsCost" value="0" placeholder="0">
+      </div>
+      <div>
+        <label>Technician / Working Charge (₹)</label>
+        <input type="number" id="srvTechCharge" value="0" placeholder="0">
+      </div>
+      <div>
+        <label>Payment / Work Status</label>
+        <select id="srvStatus">
+          <option value="Completed">Completed</option>
+          <option value="Pending">Pending / In Progress</option>
+        </select>
+      </div>
+    </div>
+    <button class="add-btn" onclick="saveServiceItem()" id="srvSaveBtn">Save Service Record</button>
+    <button class="cancel-btn" onclick="resetServiceForm()" id="srvCancelBtn">Cancel</button>
+  </div>
+
+  <div class="table-box">
+    <div class="table-header">
+      <h2 style="font-size: 18px;">🛠️ Service & Repair Logs</h2>
+      <input type="text" class="search" id="srvSearch" placeholder="🔍 Search service records..." onkeyup="renderServiceData()">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Customer Info</th>
+          <th>Appliance Category</th>
+          <th>Bill Amount</th>
+          <th>Spare Parts Cost</th>
+          <th>Tech Charges</th>
+          <th>Net Profit</th>
+          <th>Nayan Profit (50%)</th>
+          <th>Ashid Profit (50%)</th>
+          <th>Status</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="serviceList"></tbody>
+    </table>
+  </div>
+</div>
+
+<!-- PAGE 3: CUSTOMER BILL & SPARE PARTS PURCHASE LOG -->
+<div id="page3" class="page-content">
+  <div class="dashboard">
+    <div class="card" style="border-top: 4px solid var(--primary);">
+      <h3>Total Parts Purchased</h3>
+      <strong id="partTotalItems">0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--warning);">
+      <h3>Total Parts Spent</h3>
+      <strong id="partTotalSpent">₹0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid var(--success);">
+      <h3>Nayan Spent on Parts</h3>
+      <strong id="partNayanSpent">₹0</strong>
+    </div>
+    <div class="card" style="border-top: 4px solid #8b5cf6;">
+      <h3>Ashid Spent on Parts</h3>
+      <strong id="partAshidSpent">₹0</strong>
     </div>
   </div>
 
-  <!-- TECHNICIAN DASHBOARD -->
-  <div id="technicianPage" class="hidden">
-    <div class="card">
-      <h2>🔧 Technician Portal</h2>
-      <p style="margin-bottom:10px; font-size:14px; color:#64748b;">Assigned Job List</p>
-      <div id="technicianBookingsList"></div>
-      <button class="red" onclick="handleLogout()">Logout</button>
+  <div class="form-box">
+    <h2 id="partFormTitle">🛒 Spare Parts Purchase Entry</h2>
+    <div class="form-grid">
+      <div>
+        <label>Date</label>
+        <input type="date" id="partDate">
+      </div>
+      <div>
+        <label>Part Name / Description</label>
+        <input type="text" id="partName" placeholder="e.g. AC Capacitor, Gas R32">
+      </div>
+      <div>
+        <label>Appliance Category</label>
+        <select id="partCategory">
+          <option value="AC">AC</option>
+          <option value="Fridge">Fridge</option>
+          <option value="Washing Machine">Washing Machine</option>
+          <option value="Microwave">Microwave</option>
+          <option value="Geyser">Geyser</option>
+          <option value="Water Purifier">Water Purifier</option>
+          <option value="General">General/Tools</option>
+        </select>
+      </div>
+      <div>
+        <label>Purchase Amount (₹)</label>
+        <input type="number" id="partAmount" placeholder="e.g. 1500">
+      </div>
+      <div>
+        <label>Purchased / Paid By</label>
+        <select id="partPurchaser">
+          <option value="Both (50-50)">Both (50% Nayan - 50% Ashid)</option>
+          <option value="Nayan Gain">Nayan Gain Only</option>
+          <option value="Ashid Bose">Ashid Bose Only</option>
+        </select>
+      </div>
+      <div>
+        <label>Supplier / Shop Name</label>
+        <input type="text" id="partSupplier" placeholder="e.g. Kolkata Electronics">
+      </div>
     </div>
+    <button class="add-btn" onclick="savePartItem()" id="partSaveBtn">Save Purchase Record</button>
+    <button class="cancel-btn" onclick="resetPartForm()" id="partCancelBtn">Cancel</button>
   </div>
 
-  <!-- ADMIN DASHBOARD -->
-  <div id="adminPage" class="hidden">
-    <div class="card">
-      <h2>👨‍💼 Admin Console</h2>
-      <p style="margin-bottom:15px; font-size:14px;">Total Bookings: <b id="totalBookingCount">0</b></p>
-      <div id="adminBookingsList"></div>
-      <button class="red" onclick="handleLogout()">Logout</button>
+  <div class="table-box">
+    <div class="table-header">
+      <h2 style="font-size: 18px;">🛒 Spare Parts Purchase History</h2>
+      <input type="text" class="search" id="partSearch" placeholder="🔍 Search parts..." onkeyup="renderPartData()">
     </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Part Name</th>
+          <th>Category</th>
+          <th>Total Cost</th>
+          <th>Purchased By</th>
+          <th>Supplier</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="partsList"></tbody>
+    </table>
   </div>
-
-  <!-- INVOICE DISPLAY (MODAL / PRINT AREA) -->
-  <div id="invoicePrint" class="hidden">
-    <div class="card" style="border: 2px solid #000;">
-      <h2 style="text-align: center; color:#000;">NG Cooling Solution</h2>
-      <p style="text-align: center; font-size:12px;">Dum Dum Road, Kolkata | 📱 7439160014</p>
-      <hr style="margin:10px 0;">
-      <h3>Service Invoice</h3>
-      <div id="invoiceDetails" style="margin-top:10px; font-size:14px; line-height:1.6;"></div>
-      <hr style="margin:10px 0;">
-      <p style="text-align:center; font-size:12px;">Thank you for choosing NG Cooling Solution!</p>
-      <button onclick="window.print()" class="green">Print Invoice</button>
-      <button onclick="document.getElementById('invoicePrint').classList.add('hidden')" class="gray">Close</button>
-    </div>
-  </div>
+</div>
 
 </div>
 
-<footer>
-  <b>NG Cooling Solution</b><br>
-  Your Comfort, Our Priority<br><br>
-  📞 7439160014
-</footer>
-
-<!-- FIREBASE INTEGRATION SCRIPT (v9 SDK) -->
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-  import { getFirestore, collection, addDoc, getDocs, updateDoc, doc, query, where } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-
-  // TODO: Replace with your actual Firebase Project Configuration
-  const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
-
-  // App State Fallback with LocalStorage if Firebase credentials aren't set up yet
-  window.useFirebase = firebaseConfig.apiKey !== "YOUR_API_KEY";
-
-  window.firebaseAuth = auth;
-  window.firebaseDb = db;
-  window.dbModule = { collection, addDoc, getDocs, updateDoc, doc, query, where, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut };
-</script>
-
 <script>
-  let bookings = JSON.parse(localStorage.getItem("ngBookings")) || [];
-  let currentUser = JSON.parse(localStorage.getItem("ngUser")) || null;
-
-  function hideAllPages() {
-    document.querySelectorAll('#homePage,#loginPage,#registerPage,#bookingPage,#customerPage,#technicianPage,#adminPage').forEach(el => el.classList.add('hidden'));
+// --- WhatsApp Auto Message Function ---
+function sendWhatsAppRecord(type, dataDetails) {
+  const targetPhone = "917439160014";
+  let text = `🚨 *NG COOLING SOLUTION - NEW RECORD SAVED* 🚨\n\n📌 *Section:* ${type}\n`;
+  
+  for (const [k, v] of Object.entries(dataDetails)) {
+    if (v !== undefined && v !== "") {
+      text += `• *${k}:* ${v}\n`;
+    }
   }
+  
+  text += `\n✅ *Record saved successfully on system!*`;
+  
+  const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
+  window.open(waUrl, '_blank');
+}
 
-  function showPage(pageId) {
-    hideAllPages();
-    document.getElementById(pageId).classList.remove('hidden');
-    if(pageId === 'customerPage') loadCustomerBookings();
-    if(pageId === 'adminPage') loadAdminDashboard();
-    if(pageId === 'technicianPage') loadTechnicianDashboard();
+// --- Global Data Structures ---
+let inventory = JSON.parse(localStorage.getItem('ng_digital_inventory')) || [];
+let services = JSON.parse(localStorage.getItem('ng_digital_services')) || [];
+let parts = JSON.parse(localStorage.getItem('ng_digital_parts')) || [];
+
+let editIndex = null;
+let editServiceIndex = null;
+let editPartIndex = null;
+
+document.getElementById('date').valueAsDate = new Date();
+document.getElementById('srvDate').valueAsDate = new Date();
+document.getElementById('partDate').valueAsDate = new Date();
+
+// --- Navigation Tabs Logic ---
+function switchPage(pageId, btn) {
+  document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  
+  document.getElementById(pageId).classList.add('active');
+  btn.classList.add('active');
+}
+
+// --- PAGE 1: Buy & Sell Logic ---
+function toggleOtherProductInput() {
+  const productSelect = document.getElementById('product').value;
+  const otherBox = document.getElementById('otherProductBox');
+  otherBox.style.display = (productSelect === 'Other') ? 'block' : 'none';
+}
+
+function toggleCustomInvestment() {
+  const investorVal = document.getElementById('investor').value;
+  const nayanBox = document.getElementById('nayanCustomBox');
+  const ashidBox = document.getElementById('ashidCustomBox');
+
+  if (investorVal === 'Custom') {
+    nayanBox.style.display = 'block';
+    ashidBox.style.display = 'block';
+  } else {
+    nayanBox.style.display = 'none';
+    ashidBox.style.display = 'none';
   }
+}
 
-  function updatePriceEstimate() {
-    let select = document.getElementById('serviceSelect');
-    let price = select.options[select.selectedIndex].getAttribute('data-price');
-    document.getElementById('priceEstimateDisplay').innerHTML = `Estimated Inspection Charge: <strong>₹${price}</strong>`;
-  }
+function renderData() {
+  const tbody = document.getElementById('inventoryList');
+  const searchQuery = document.getElementById('search').value.toLowerCase();
+  tbody.innerHTML = '';
 
-  function quickBook(serviceName) {
-    showPage('bookingPage');
-    document.getElementById('serviceSelect').value = serviceName;
-    updatePriceEstimate();
-  }
+  let totalCostSum = 0;
+  let totalSalesSum = 0;
+  let totalProfitSum = 0;
+  let inStockCostSum = 0;
 
-  /* AUTHENTICATION */
-  async function handleRegister() {
-    let name = document.getElementById('regName').value;
-    let phone = document.getElementById('regPhone').value;
-    let email = document.getElementById('regEmail').value;
-    let password = document.getElementById('regPassword').value;
+  let nayanTotalInvest = 0;
+  let ashidTotalInvest = 0;
+  let nayanTotalProfit = 0;
+  let ashidTotalProfit = 0;
 
-    if(!name || !phone || !email || !password) return alert('Fill all fields');
+  inventory.forEach((item, index) => {
+    const totalCost = Number(item.buyPrice) + Number(item.transport) + Number(item.repair);
+    const profit = item.status === 'Sold' ? Number(item.sellPrice) - totalCost : 0;
+    const partnerProfitShare = item.status === 'Sold' ? profit / 2 : 0;
 
-    if(window.useFirebase) {
-      try {
-        await window.dbModule.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
-        alert('Registration Successful via Firebase!');
-        showPage('loginPage');
-      } catch(e) { alert(e.message); }
+    let investorDisplay = item.investor;
+    let nayanItemInvest = 0;
+    let ashidItemInvest = 0;
+
+    if (item.investor === 'Nayan Gain') {
+      nayanItemInvest = totalCost;
+    } else if (item.investor === 'Ashid Bose') {
+      ashidItemInvest = totalCost;
+    } else if (item.investor === 'Custom') {
+      nayanItemInvest = Number(item.nayanCustomAmount) || 0;
+      ashidItemInvest = Number(item.ashidCustomAmount) || 0;
+      investorDisplay = `Custom (N: ₹${nayanItemInvest} / A: ₹${ashidItemInvest})`;
     } else {
-      let users = JSON.parse(localStorage.getItem("ngUsers")) || [];
-      users.push({ name, phone, email, password, role: "customer" });
-      localStorage.setItem("ngUsers", JSON.stringify(users));
-      alert('Registration Successful!');
-      showPage('loginPage');
-    }
-  }
-
-  async function handleLogin() {
-    let role = document.getElementById('loginRole').value;
-    let email = document.getElementById('loginEmail').value;
-    let password = document.getElementById('loginPassword').value;
-
-    // Admin Hardcoded Fallback
-    if(role === 'admin' && email === 'admin@ngcooling.com' && password === 'admin123') {
-      currentUser = { role: 'admin', name: 'System Admin' };
-      localStorage.setItem('ngUser', JSON.stringify(currentUser));
-      return showPage('adminPage');
+      nayanItemInvest = totalCost / 2;
+      ashidItemInvest = totalCost / 2;
     }
 
-    // Technician Hardcoded Fallback
-    if(role === 'technician' && email === 'technician@ngcooling.com' && password === 'tech123') {
-      currentUser = { role: 'technician', name: 'Lead Tech' };
-      localStorage.setItem('ngUser', JSON.stringify(currentUser));
-      return showPage('technicianPage');
-    }
+    nayanTotalInvest += nayanItemInvest;
+    ashidTotalInvest += ashidItemInvest;
+    totalCostSum += totalCost;
 
-    if(window.useFirebase) {
-      try {
-        let res = await window.dbModule.signInWithEmailAndPassword(window.firebaseAuth, email, password);
-        currentUser = { email: res.user.email, role: 'customer' };
-        localStorage.setItem('ngUser', JSON.stringify(currentUser));
-        showPage('customerPage');
-      } catch(e) { alert('Authentication Failed: ' + e.message); }
+    if (item.status === 'Sold') {
+      totalSalesSum += Number(item.sellPrice);
+      totalProfitSum += profit;
+      nayanTotalProfit += partnerProfitShare;
+      ashidTotalProfit += partnerProfitShare;
     } else {
-      let users = JSON.parse(localStorage.getItem("ngUsers")) || [];
-      let user = users.find(u => u.email === email && u.password === password && u.role === role);
-      if(user) {
-        currentUser = user;
-        localStorage.setItem('ngUser', JSON.stringify(currentUser));
-        showPage(role === 'customer' ? 'customerPage' : role === 'technician' ? 'technicianPage' : 'adminPage');
-      } else { alert('Invalid Login Credentials'); }
-    }
-  }
-
-  /* BOOKING SYSTEM */
-  async function handleBooking() {
-    let select = document.getElementById('serviceSelect');
-    let bookingData = {
-      id: Date.now(),
-      name: document.getElementById('custName').value,
-      phone: document.getElementById('custPhone').value,
-      service: select.value,
-      price: select.options[select.selectedIndex].getAttribute('data-price'),
-      date: document.getElementById('bookDate').value,
-      time: document.getElementById('bookTime').value,
-      address: document.getElementById('custAddress').value,
-      problem: document.getElementById('probDescription').value,
-      status: 'Booking Placed',
-      stepIndex: 1,
-      technician: 'Not Assigned'
-    };
-
-    if(!bookingData.name || !bookingData.phone || !bookingData.date || !bookingData.address) {
-      return alert('Please complete required details');
+      inStockCostSum += totalCost;
     }
 
-    if(window.useFirebase) {
-      try {
-        await window.dbModule.addDoc(window.dbModule.collection(window.firebaseDb, "bookings"), bookingData);
-      } catch(e) { console.error("Firebase Sync Error: ", e); }
-    }
+    const itemCompany = item.company || '-';
+    const displayProduct = item.product === 'Other' ? (item.otherProduct || 'Other') : item.product;
 
-    bookings.push(bookingData);
-    localStorage.setItem('ngBookings', JSON.stringify(bookings));
-    alert('Booking Submitted Successfully!\nID: ' + bookingData.id);
-    showPage(currentUser ? 'customerPage' : 'homePage');
-  }
+    if (
+      displayProduct.toLowerCase().includes(searchQuery) || 
+      itemCompany.toLowerCase().includes(searchQuery) ||
+      item.status.toLowerCase().includes(searchQuery) ||
+      investorDisplay.toLowerCase().includes(searchQuery)
+    ) {
+      const statusClass = item.status === 'In Stock' ? 'stock' : 'sold';
+      const profitClass = profit >= 0 ? 'profit' : 'loss';
 
-  /* DASHBOARDS & UI HELPERS */
-  function renderTrackerHTML(stepIndex) {
-    return `
-      <div class="tracker">
-        <div class="step ${stepIndex >= 1 ? 'active':''}"><div class="step-dot"></div>Booked</div>
-        <div class="step ${stepIndex >= 2 ? 'active':''}"><div class="step-dot"></div>Assigned</div>
-        <div class="step ${stepIndex >= 3 ? 'active':''}"><div class="step-dot"></div>In Progress</div>
-        <div class="step ${stepIndex >= 4 ? 'active':''}"><div class="step-dot"></div>Done</div>
-      </div>
-    `;
-  }
-
-  function loadCustomerBookings() {
-    let container = document.getElementById('customerBookingsList');
-    container.innerHTML = '';
-    let userBookings = bookings.filter(b => !currentUser || b.phone === currentUser.phone || currentUser.role === 'customer');
-
-    if(userBookings.length === 0) return container.innerHTML = '<p style="text-align:center; padding:20px; color:#64748b;">No active bookings found.</p>';
-
-    userBookings.forEach(b => {
-      container.innerHTML += `
-        <div class="booking-card">
-          <b>Booking #${b.id}</b> - ${b.service}<br>
-          <small>Date: ${b.date} at ${b.time}</small>
-          ${renderTrackerHTML(b.stepIndex || 1)}
-          <p><strong>Technician:</strong> ${b.technician}</p>
-          <button style="margin-top:8px;" onclick="generateInvoice(${b.id})">📄 Download Invoice</button>
-        </div>
+      tbody.innerHTML += `
+        <tr>
+          <td>${item.date}</td>
+          <td><strong>${displayProduct}</strong></td>
+          <td>${itemCompany}</td>
+          <td>${investorDisplay}</td>
+          <td>₹${totalCost}</td>
+          <td>₹${item.sellPrice || 0}</td>
+          <td class="${profitClass}">₹${item.status === 'Sold' ? profit : 0}</td>
+          <td class="${profitClass}">₹${partnerProfitShare}</td>
+          <td class="${profitClass}">₹${partnerProfitShare}</td>
+          <td><span class="status ${statusClass}">${item.status}</span></td>
+          <td class="action">
+            <button class="edit" onclick="editItem(${index})">Edit</button>
+            <button class="delete" onclick="deleteItem(${index})">Delete</button>
+          </td>
+        </tr>
       `;
-    });
-  }
-
-  function loadAdminDashboard() {
-    let container = document.getElementById('adminBookingsList');
-    document.getElementById('totalBookingCount').innerText = bookings.length;
-    container.innerHTML = '';
-
-    bookings.forEach((b, index) => {
-      container.innerHTML += `
-        <div class="booking-card">
-          <b>ID: ${b.id}</b> | Customer: ${b.name} (${b.phone})<br>
-          Service: ${b.service} | Fee: ₹${b.price}<br>
-          Address: ${b.address}<br>
-          Status: <strong>${b.status}</strong> | Tech: ${b.technician}
-          <div style="display:flex; gap:5px; margin-top:8px;">
-            <button class="green" onclick="updateStatus(${index}, 2, 'Assigned')">Assign Tech</button>
-            <button onclick="updateStatus(${index}, 3, 'In Progress')">In Progress</button>
-            <button class="gray" onclick="updateStatus(${index}, 4, 'Completed')">Mark Done</button>
-          </div>
-        </div>
-      `;
-    });
-  }
-
-  function loadTechnicianDashboard() {
-    let container = document.getElementById('technicianBookingsList');
-    container.innerHTML = '';
-    bookings.forEach((b, index) => {
-      container.innerHTML += `
-        <div class="booking-card">
-          <b>Job ID: #${b.id}</b><br>
-          Customer: ${b.name} | Phone: ${b.phone}<br>
-          Loc: ${b.address}<br>
-          Status: <strong>${b.status}</strong>
-          <button class="green" onclick="updateStatus(${index}, 3, 'In Progress')">Start Service</button>
-          <button onclick="updateStatus(${index}, 4, 'Completed')">Complete Job</button>
-        </div>
-      `;
-    });
-  }
-
-  function updateStatus(index, step, statusText) {
-    if(statusText === 'Assigned') {
-      let name = prompt("Enter Technician Name:");
-      if(name) bookings[index].technician = name;
     }
-    bookings[index].stepIndex = step;
-    bookings[index].status = statusText;
-    localStorage.setItem('ngBookings', JSON.stringify(bookings));
-    if(currentUser?.role === 'admin') loadAdminDashboard();
-    else if(currentUser?.role === 'technician') loadTechnicianDashboard();
-    else loadCustomerBookings();
+  });
+
+  const recoveryPercent = totalCostSum > 0 ? Math.min(Math.round((totalSalesSum / totalCostSum) * 100), 100) : 0;
+  document.getElementById('progressBar').style.width = recoveryPercent + '%';
+  document.getElementById('recoveryPercent').innerText = `Capital Recovered: ${recoveryPercent}%`;
+  document.getElementById('stockValue').innerText = `In-Stock Capital: ₹${inStockCostSum}`;
+
+  document.getElementById('totalItems').innerText = inventory.length;
+  document.getElementById('totalCost').innerText = '₹' + totalCostSum;
+  document.getElementById('totalSales').innerText = '₹' + totalSalesSum;
+  document.getElementById('totalProfit').innerText = '₹' + totalProfitSum;
+
+  document.getElementById('nayanInvest').innerText = 'Invested: ₹' + nayanTotalInvest;
+  document.getElementById('nayanProfit').innerText = 'Profit Share: ₹' + nayanTotalProfit;
+  document.getElementById('ashidInvest').innerText = 'Invested: ₹' + ashidTotalInvest;
+  document.getElementById('ashidProfit').innerText = 'Profit Share: ₹' + ashidTotalProfit;
+
+  localStorage.setItem('ng_digital_inventory', JSON.stringify(inventory));
+}
+
+function saveItem() {
+  const date = document.getElementById('date').value;
+  const product = document.getElementById('product').value;
+  const otherProduct = document.getElementById('otherProduct').value;
+  const company = document.getElementById('company').value;
+  const buyPrice = document.getElementById('buyPrice').value;
+  const transport = document.getElementById('transport').value || 0;
+  const repair = document.getElementById('repair').value || 0;
+  const investor = document.getElementById('investor').value;
+  const nayanCustomAmount = document.getElementById('nayanCustomAmount').value || 0;
+  const ashidCustomAmount = document.getElementById('ashidCustomAmount').value || 0;
+  const sellPrice = document.getElementById('sellPrice').value || 0;
+  const status = document.getElementById('status').value;
+
+  if (!date || !buyPrice) {
+    alert('Date and Buy Price are required!');
+    return;
   }
 
-  function generateInvoice(id) {
-    let b = bookings.find(item => item.id === id);
-    if(!b) return;
-    let detailsBox = document.getElementById('invoiceDetails');
-    detailsBox.innerHTML = `
-      <strong>Invoice No:</strong> INV-${b.id}<br>
-      <strong>Customer Name:</strong> ${b.name}<br>
-      <strong>Phone:</strong> ${b.phone}<br>
-      <strong>Service:</strong> ${b.service}<br>
-      <strong>Date:</strong> ${b.date}<br>
-      <strong>Total Service Charge:</strong> ₹${b.price}<br>
-      <strong>Status:</strong> ${b.status}
-    `;
-    document.getElementById('invoicePrint').classList.remove('hidden');
+  const itemData = { date, product, otherProduct, company, buyPrice, transport, repair, investor, nayanCustomAmount, ashidCustomAmount, sellPrice, status };
+
+  if (editIndex === null) {
+    inventory.push(itemData);
+  } else {
+    inventory[editIndex] = itemData;
+    editIndex = null;
   }
 
-  function handleLogout() {
-    localStorage.removeItem('ngUser');
-    currentUser = null;
-    showPage('homePage');
+  // Send WhatsApp Message
+  const totalCost = Number(buyPrice) + Number(transport) + Number(repair);
+  const prodName = product === 'Other' ? otherProduct : product;
+  sendWhatsAppRecord('Product Buy & Sell', {
+    'Date': date,
+    'Product': prodName,
+    'Company': company,
+    'Buy Price': `₹${buyPrice}`,
+    'Transport Cost': `₹${transport}`,
+    'Repair Cost': `₹${repair}`,
+    'Total Cost': `₹${totalCost}`,
+    'Investor': investor,
+    'Selling Price': `₹${sellPrice}`,
+    'Status': status
+  });
+
+  resetForm();
+  renderData();
+}
+
+function editItem(index) {
+  const item = inventory[index];
+  document.getElementById('date').value = item.date;
+  document.getElementById('product').value = item.product || 'AC';
+  document.getElementById('otherProduct').value = item.otherProduct || '';
+  document.getElementById('company').value = item.company || '';
+  document.getElementById('buyPrice').value = item.buyPrice;
+  document.getElementById('transport').value = item.transport;
+  document.getElementById('repair').value = item.repair;
+  document.getElementById('investor').value = item.investor;
+  document.getElementById('nayanCustomAmount').value = item.nayanCustomAmount || '';
+  document.getElementById('ashidCustomAmount').value = item.ashidCustomAmount || '';
+  document.getElementById('sellPrice').value = item.sellPrice;
+  document.getElementById('status').value = item.status;
+
+  toggleOtherProductInput();
+  toggleCustomInvestment();
+
+  editIndex = index;
+  document.getElementById('formTitle').innerText = '✏️ Edit Product Record';
+  document.getElementById('saveBtn').innerText = 'Update Record';
+  document.getElementById('cancelBtn').style.display = 'inline-block';
+}
+
+function deleteItem(index) {
+  if (confirm('Delete this product entry?')) {
+    inventory.splice(index, 1);
+    renderData();
+  }
+}
+
+function resetForm() {
+  document.getElementById('date').valueAsDate = new Date();
+  document.getElementById('product').selectedIndex = 0;
+  document.getElementById('otherProduct').value = '';
+  document.getElementById('company').value = '';
+  document.getElementById('buyPrice').value = '';
+  document.getElementById('transport').value = '0';
+  document.getElementById('repair').value = '0';
+  document.getElementById('investor').value = 'Both (50-50)';
+  document.getElementById('nayanCustomAmount').value = '';
+  document.getElementById('ashidCustomAmount').value = '';
+  document.getElementById('sellPrice').value = '';
+  document.getElementById('status').value = 'In Stock';
+
+  toggleOtherProductInput();
+  toggleCustomInvestment();
+
+  editIndex = null;
+  document.getElementById('formTitle').innerText = '➕ Product Entry & Investment';
+  document.getElementById('saveBtn').innerText = 'Save Record';
+  document.getElementById('cancelBtn').style.display = 'none';
+}
+
+// --- PAGE 2: Service & Repairing Logic ---
+function renderServiceData() {
+  const tbody = document.getElementById('serviceList');
+  const searchQuery = document.getElementById('srvSearch').value.toLowerCase();
+  tbody.innerHTML = '';
+
+  let srvTotalIncome = 0;
+  let srvTotalCost = 0;
+  let srvTotalProfit = 0;
+
+  services.forEach((srv, index) => {
+    const totalCharge = Number(srv.charge) || 0;
+    const partsCost = Number(srv.partsCost) || 0;
+    const techCharge = Number(srv.techCharge) || 0;
+    const totalExp = partsCost + techCharge;
+    const netProfit = srv.status === 'Completed' ? (totalCharge - totalExp) : 0;
+    const profitShare = srv.status === 'Completed' ? netProfit / 2 : 0;
+
+    if (srv.status === 'Completed') {
+      srvTotalIncome += totalCharge;
+      srvTotalCost += totalExp;
+      srvTotalProfit += netProfit;
+    }
+
+    if (
+      (srv.customer && srv.customer.toLowerCase().includes(searchQuery)) ||
+      (srv.category && srv.category.toLowerCase().includes(searchQuery)) ||
+      (srv.status && srv.status.toLowerCase().includes(searchQuery))
+    ) {
+      const statusClass = srv.status === 'Completed' ? 'completed' : 'pending';
+      const profitClass = netProfit >= 0 ? 'profit' : 'loss';
+
+      tbody.innerHTML += `
+        <tr>
+          <td>${srv.date}</td>
+          <td><strong>${srv.customer || 'Guest'}</strong></td>
+          <td>${srv.category}</td>
+          <td>₹${totalCharge}</td>
+          <td>₹${partsCost}</td>
+          <td>₹${techCharge}</td>
+          <td class="${profitClass}">₹${netProfit}</td>
+          <td class="${profitClass}">₹${profitShare}</td>
+          <td class="${profitClass}">₹${profitShare}</td>
+          <td><span class="status ${statusClass}">${srv.status}</span></td>
+          <td class="action">
+            <button class="edit" onclick="editServiceItem(${index})">Edit</button>
+            <button class="delete" onclick="deleteServiceItem(${index})">Delete</button>
+          </td>
+        </tr>
+      `;
+    }
+  });
+
+  document.getElementById('srvTotalCalls').innerText = services.length;
+  document.getElementById('srvTotalIncome').innerText = '₹' + srvTotalIncome;
+  document.getElementById('srvTotalCost').innerText = '₹' + srvTotalCost;
+  document.getElementById('srvTotalProfit').innerText = '₹' + srvTotalProfit;
+
+  const partnerShare = srvTotalProfit / 2;
+  document.getElementById('srvNayanProfit').innerText = 'Profit Share: ₹' + partnerShare;
+  document.getElementById('srvAshidProfit').innerText = 'Profit Share: ₹' + partnerShare;
+
+  localStorage.setItem('ng_digital_services', JSON.stringify(services));
+}
+
+function saveServiceItem() {
+  const date = document.getElementById('srvDate').value;
+  const customer = document.getElementById('srvCustomer').value;
+  const category = document.getElementById('srvCategory').value;
+  const charge = document.getElementById('srvCharge').value;
+  const partsCost = document.getElementById('srvPartsCost').value || 0;
+  const techCharge = document.getElementById('srvTechCharge').value || 0;
+  const status = document.getElementById('srvStatus').value;
+
+  if (!date || !charge) {
+    alert('Date and Total Charge are required!');
+    return;
   }
 
-  // Initial Page Display
-  showPage('homePage');
+  const srvData = { date, customer, category, charge, partsCost, techCharge, status };
+
+  if (editServiceIndex === null) {
+    services.push(srvData);
+  } else {
+    services[editServiceIndex] = srvData;
+    editServiceIndex = null;
+  }
+
+  // Send WhatsApp Message
+  const totalExp = Number(partsCost) + Number(techCharge);
+  const netProf = status === 'Completed' ? (Number(charge) - totalExp) : 0;
+  sendWhatsAppRecord('Service & Repairing', {
+    'Date': date,
+    'Customer Details': customer,
+    'Category': category,
+    'Bill Charge': `₹${charge}`,
+    'Parts Cost': `₹${partsCost}`,
+    'Tech Charge': `₹${techCharge}`,
+    'Net Profit': `₹${netProf}`,
+    'Status': status
+  });
+
+  resetServiceForm();
+  renderServiceData();
+}
+
+function editServiceItem(index) {
+  const srv = services[index];
+  document.getElementById('srvDate').value = srv.date;
+  document.getElementById('srvCustomer').value = srv.customer || '';
+  document.getElementById('srvCategory').value = srv.category;
+  document.getElementById('srvCharge').value = srv.charge;
+  document.getElementById('srvPartsCost').value = srv.partsCost;
+  document.getElementById('srvTechCharge').value = srv.techCharge;
+  document.getElementById('srvStatus').value = srv.status;
+
+  editServiceIndex = index;
+  document.getElementById('srvFormTitle').innerText = '✏️ Edit Service Record';
+  document.getElementById('srvSaveBtn').innerText = 'Update Service Record';
+  document.getElementById('srvCancelBtn').style.display = 'inline-block';
+}
+
+function deleteServiceItem(index) {
+  if (confirm('Delete this service entry?')) {
+    services.splice(index, 1);
+    renderServiceData();
+  }
+}
+
+function resetServiceForm() {
+  document.getElementById('srvDate').valueAsDate = new Date();
+  document.getElementById('srvCustomer').value = '';
+  document.getElementById('srvCategory').selectedIndex = 0;
+  document.getElementById('srvCharge').value = '';
+  document.getElementById('srvPartsCost').value = '0';
+  document.getElementById('srvTechCharge').value = '0';
+  document.getElementById('srvStatus').value = 'Completed';
+
+  editServiceIndex = null;
+  document.getElementById('srvFormTitle').innerText = '🛠️ Service & Repair Work Entry';
+  document.getElementById('srvSaveBtn').innerText = 'Save Service Record';
+  document.getElementById('srvCancelBtn').style.display = 'none';
+}
+
+// --- PAGE 3: Spare Parts Purchase Logic ---
+function renderPartData() {
+  const tbody = document.getElementById('partsList');
+  const searchQuery = document.getElementById('partSearch').value.toLowerCase();
+  tbody.innerHTML = '';
+
+  let partTotalSpentSum = 0;
+  let partNayanSpentSum = 0;
+  let partAshidSpentSum = 0;
+
+  parts.forEach((p, index) => {
+    const cost = Number(p.amount) || 0;
+    partTotalSpentSum += cost;
+
+    if (p.purchaser === 'Nayan Gain') {
+      partNayanSpentSum += cost;
+    } else if (p.purchaser === 'Ashid Bose') {
+      partAshidSpentSum += cost;
+    } else {
+      partNayanSpentSum += cost / 2;
+      partAshidSpentSum += cost / 2;
+    }
+
+    if (
+      (p.name && p.name.toLowerCase().includes(searchQuery)) ||
+      (p.category && p.category.toLowerCase().includes(searchQuery)) ||
+      (p.supplier && p.supplier.toLowerCase().includes(searchQuery))
+    ) {
+      tbody.innerHTML += `
+        <tr>
+          <td>${p.date}</td>
+          <td><strong>${p.name}</strong></td>
+          <td>${p.category}</td>
+          <td>₹${cost}</td>
+          <td>${p.purchaser}</td>
+          <td>${p.supplier || '-'}</td>
+          <td class="action">
+            <button class="edit" onclick="editPartItem(${index})">Edit</button>
+            <button class="delete" onclick="deletePartItem(${index})">Delete</button>
+          </td>
+        </tr>
+      `;
+    }
+  });
+
+  document.getElementById('partTotalItems').innerText = parts.length;
+  document.getElementById('partTotalSpent').innerText = '₹' + partTotalSpentSum;
+  document.getElementById('partNayanSpent').innerText = '₹' + partNayanSpentSum;
+  document.getElementById('partAshidSpent').innerText = '₹' + partAshidSpentSum;
+
+  localStorage.setItem('ng_digital_parts', JSON.stringify(parts));
+}
+
+function savePartItem() {
+  const date = document.getElementById('partDate').value;
+  const name = document.getElementById('partName').value;
+  const category = document.getElementById('partCategory').value;
+  const amount = document.getElementById('partAmount').value;
+  const purchaser = document.getElementById('partPurchaser').value;
+  const supplier = document.getElementById('partSupplier').value;
+
+  if (!date || !name || !amount) {
+    alert('Date, Part Name, and Amount are required!');
+    return;
+  }
+
+  const partData = { date, name, category, amount, purchaser, supplier };
+
+  if (editPartIndex === null) {
+    parts.push(partData);
+  } else {
+    parts[editPartIndex] = partData;
+    editPartIndex = null;
+  }
+
+  // Send WhatsApp Message
+  sendWhatsAppRecord('Spare Parts Purchase', {
+    'Date': date,
+    'Part Name': name,
+    'Category': category,
+    'Amount Spent': `₹${amount}`,
+    'Purchased By': purchaser,
+    'Supplier/Shop': supplier
+  });
+
+  resetPartForm();
+  renderPartData();
+}
+
+function editPartItem(index) {
+  const p = parts[index];
+  document.getElementById('partDate').value = p.date;
+  document.getElementById('partName').value = p.name;
+  document.getElementById('partCategory').value = p.category;
+  document.getElementById('partAmount').value = p.amount;
+  document.getElementById('partPurchaser').value = p.purchaser;
+  document.getElementById('partSupplier').value = p.supplier || '';
+
+  editPartIndex = index;
+  document.getElementById('partFormTitle').innerText = '✏️ Edit Spare Part Record';
+  document.getElementById('partSaveBtn').innerText = 'Update Purchase Record';
+  document.getElementById('partCancelBtn').style.display = 'inline-block';
+}
+
+function deletePartItem(index) {
+  if (confirm('Delete this part purchase entry?')) {
+    parts.splice(index, 1);
+    renderPartData();
+  }
+}
+
+function resetPartForm() {
+  document.getElementById('partDate').valueAsDate = new Date();
+  document.getElementById('partName').value = '';
+  document.getElementById('partCategory').selectedIndex = 0;
+  document.getElementById('partAmount').value = '';
+  document.getElementById('partPurchaser').selectedIndex = 0;
+  document.getElementById('partSupplier').value = '';
+
+  editPartIndex = null;
+  document.getElementById('partFormTitle').innerText = '🛒 Spare Parts Purchase Entry';
+  document.getElementById('partSaveBtn').innerText = 'Save Purchase Record';
+  document.getElementById('partCancelBtn').style.display = 'none';
+}
+
+// Initial Render All Pages
+renderData();
+renderServiceData();
+renderPartData();
 </script>
+
 </body>
 </html>
