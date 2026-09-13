@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,12 +33,67 @@ body{
   color: var(--text);
 }
 
+/* লগইন না হওয়া পর্যন্ত মূল ড্যাশবোর্ড লুকানো থাকবে */
+body.locked header, 
+body.locked .nav-tabs, 
+body.locked .container {
+  display: none !important;
+}
+
+/* Modal Overlay Styling */
+.login-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.95);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.login-card {
+  background: var(--card-bg);
+  padding: 30px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.login-card h2 {
+  color: var(--primary);
+  margin-bottom: 5px;
+}
+
+.login-card p {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.login-card .form-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.error-msg {
+  color: var(--danger);
+  font-size: 13px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
 header{
   background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
   color:white;
   padding:25px 20px;
   text-align:center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  position: relative;
 }
 
 header h1{
@@ -51,6 +106,18 @@ header p{
   margin-top:6px;
   color: #94a3b8;
   font-size: 14px;
+}
+
+.logout-btn {
+  position: absolute;
+  right: 20px;
+  top: 25px;
+  background: var(--danger);
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
 }
 
 /* Page Navigation Tabs */
@@ -389,11 +456,33 @@ th{
 </style>
 </head>
 
-<body>
+<body class="locked">
+
+<!-- LOGIN MODAL -->
+<div id="loginOverlay" class="login-overlay">
+  <div class="login-card">
+    <h2>🔒 NG Cooling Solution</h2>
+    <p>সিস্টেমে প্রবেশের জন্য তথ্য দিন</p>
+    <div id="loginError" class="error-msg"></div>
+    
+    <div class="form-group">
+      <label for="username">User ID</label>
+      <input type="text" id="username" placeholder="User ID লিখুন">
+    </div>
+    
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password লিখুন">
+    </div>
+    
+    <button class="add-btn" style="width: 100%; margin-top: 10px;" onclick="handleLogin()">Login</button>
+  </div>
+</div>
 
 <header>
   <h1>NG COOLING SOLUTION</h1>
   <p>⚡ Digital Analytics & Partnership Management (50%-50%)</p>
+  <button class="logout-btn" onclick="handleLogout()">Logout</button>
 </header>
 
 <!-- Navigation Tabs -->
@@ -743,6 +832,51 @@ th{
 </div>
 
 <script>
+// --- Authentication System ---
+const AUTH_USER = "ngcoolingsolution";
+const AUTH_PASS = "ng@12345";
+
+document.addEventListener("DOMContentLoaded", function() {
+  if (sessionStorage.getItem("ng_authenticated") === "true") {
+    unlockDashboard();
+  } else {
+    document.body.classList.add("locked");
+  }
+});
+
+function handleLogin() {
+  const userInput = document.getElementById("username").value.trim();
+  const passInput = document.getElementById("password").value.trim();
+  const errorElement = document.getElementById("loginError");
+
+  if (userInput === AUTH_USER && passInput === AUTH_PASS) {
+    sessionStorage.setItem("ng_authenticated", "true");
+    unlockDashboard();
+  } else {
+    errorElement.textContent = "❌ ভুল User ID বা Password দেওয়া হয়েছে!";
+  }
+}
+
+function unlockDashboard() {
+  document.body.classList.remove("locked");
+  const overlay = document.getElementById("loginOverlay");
+  if (overlay) {
+    overlay.style.display = "none";
+  }
+}
+
+function handleLogout() {
+  sessionStorage.removeItem("ng_authenticated");
+  location.reload();
+}
+
+// Enter কী প্রেস করলে লগইন করার অপশন
+document.getElementById("password").addEventListener("keypress", function(e) {
+  if (e.key === "Enter") {
+    handleLogin();
+  }
+});
+
 // --- WhatsApp Auto Message Function ---
 function sendWhatsAppRecord(type, dataDetails) {
   const targetPhone = "917439160014";
@@ -777,509 +911,9 @@ document.getElementById('partDate').valueAsDate = new Date();
 function switchPage(pageId, btn) {
   document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  
   document.getElementById(pageId).classList.add('active');
   btn.classList.add('active');
 }
-
-// --- PAGE 1: Buy & Sell Logic ---
-function toggleOtherProductInput() {
-  const productSelect = document.getElementById('product').value;
-  const otherBox = document.getElementById('otherProductBox');
-  otherBox.style.display = (productSelect === 'Other') ? 'block' : 'none';
-}
-
-function toggleCustomInvestment() {
-  const investorVal = document.getElementById('investor').value;
-  const nayanBox = document.getElementById('nayanCustomBox');
-  const ashidBox = document.getElementById('ashidCustomBox');
-
-  if (investorVal === 'Custom') {
-    nayanBox.style.display = 'block';
-    ashidBox.style.display = 'block';
-  } else {
-    nayanBox.style.display = 'none';
-    ashidBox.style.display = 'none';
-  }
-}
-
-function renderData() {
-  const tbody = document.getElementById('inventoryList');
-  const searchQuery = document.getElementById('search').value.toLowerCase();
-  tbody.innerHTML = '';
-
-  let totalCostSum = 0;
-  let totalSalesSum = 0;
-  let totalProfitSum = 0;
-  let inStockCostSum = 0;
-
-  let nayanTotalInvest = 0;
-  let ashidTotalInvest = 0;
-  let nayanTotalProfit = 0;
-  let ashidTotalProfit = 0;
-
-  inventory.forEach((item, index) => {
-    const totalCost = Number(item.buyPrice) + Number(item.transport) + Number(item.repair);
-    const profit = item.status === 'Sold' ? Number(item.sellPrice) - totalCost : 0;
-    const partnerProfitShare = item.status === 'Sold' ? profit / 2 : 0;
-
-    let investorDisplay = item.investor;
-    let nayanItemInvest = 0;
-    let ashidItemInvest = 0;
-
-    if (item.investor === 'Nayan Gain') {
-      nayanItemInvest = totalCost;
-    } else if (item.investor === 'Ashid Bose') {
-      ashidItemInvest = totalCost;
-    } else if (item.investor === 'Custom') {
-      nayanItemInvest = Number(item.nayanCustomAmount) || 0;
-      ashidItemInvest = Number(item.ashidCustomAmount) || 0;
-      investorDisplay = `Custom (N: ₹${nayanItemInvest} / A: ₹${ashidItemInvest})`;
-    } else {
-      nayanItemInvest = totalCost / 2;
-      ashidItemInvest = totalCost / 2;
-    }
-
-    nayanTotalInvest += nayanItemInvest;
-    ashidTotalInvest += ashidItemInvest;
-    totalCostSum += totalCost;
-
-    if (item.status === 'Sold') {
-      totalSalesSum += Number(item.sellPrice);
-      totalProfitSum += profit;
-      nayanTotalProfit += partnerProfitShare;
-      ashidTotalProfit += partnerProfitShare;
-    } else {
-      inStockCostSum += totalCost;
-    }
-
-    const itemCompany = item.company || '-';
-    const displayProduct = item.product === 'Other' ? (item.otherProduct || 'Other') : item.product;
-
-    if (
-      displayProduct.toLowerCase().includes(searchQuery) || 
-      itemCompany.toLowerCase().includes(searchQuery) ||
-      item.status.toLowerCase().includes(searchQuery) ||
-      investorDisplay.toLowerCase().includes(searchQuery)
-    ) {
-      const statusClass = item.status === 'In Stock' ? 'stock' : 'sold';
-      const profitClass = profit >= 0 ? 'profit' : 'loss';
-
-      tbody.innerHTML += `
-        <tr>
-          <td>${item.date}</td>
-          <td><strong>${displayProduct}</strong></td>
-          <td>${itemCompany}</td>
-          <td>${investorDisplay}</td>
-          <td>₹${totalCost}</td>
-          <td>₹${item.sellPrice || 0}</td>
-          <td class="${profitClass}">₹${item.status === 'Sold' ? profit : 0}</td>
-          <td class="${profitClass}">₹${partnerProfitShare}</td>
-          <td class="${profitClass}">₹${partnerProfitShare}</td>
-          <td><span class="status ${statusClass}">${item.status}</span></td>
-          <td class="action">
-            <button class="edit" onclick="editItem(${index})">Edit</button>
-            <button class="delete" onclick="deleteItem(${index})">Delete</button>
-          </td>
-        </tr>
-      `;
-    }
-  });
-
-  const recoveryPercent = totalCostSum > 0 ? Math.min(Math.round((totalSalesSum / totalCostSum) * 100), 100) : 0;
-  document.getElementById('progressBar').style.width = recoveryPercent + '%';
-  document.getElementById('recoveryPercent').innerText = `Capital Recovered: ${recoveryPercent}%`;
-  document.getElementById('stockValue').innerText = `In-Stock Capital: ₹${inStockCostSum}`;
-
-  document.getElementById('totalItems').innerText = inventory.length;
-  document.getElementById('totalCost').innerText = '₹' + totalCostSum;
-  document.getElementById('totalSales').innerText = '₹' + totalSalesSum;
-  document.getElementById('totalProfit').innerText = '₹' + totalProfitSum;
-
-  document.getElementById('nayanInvest').innerText = 'Invested: ₹' + nayanTotalInvest;
-  document.getElementById('nayanProfit').innerText = 'Profit Share: ₹' + nayanTotalProfit;
-  document.getElementById('ashidInvest').innerText = 'Invested: ₹' + ashidTotalInvest;
-  document.getElementById('ashidProfit').innerText = 'Profit Share: ₹' + ashidTotalProfit;
-
-  localStorage.setItem('ng_digital_inventory', JSON.stringify(inventory));
-}
-
-function saveItem() {
-  const date = document.getElementById('date').value;
-  const product = document.getElementById('product').value;
-  const otherProduct = document.getElementById('otherProduct').value;
-  const company = document.getElementById('company').value;
-  const buyPrice = document.getElementById('buyPrice').value;
-  const transport = document.getElementById('transport').value || 0;
-  const repair = document.getElementById('repair').value || 0;
-  const investor = document.getElementById('investor').value;
-  const nayanCustomAmount = document.getElementById('nayanCustomAmount').value || 0;
-  const ashidCustomAmount = document.getElementById('ashidCustomAmount').value || 0;
-  const sellPrice = document.getElementById('sellPrice').value || 0;
-  const status = document.getElementById('status').value;
-
-  if (!date || !buyPrice) {
-    alert('Date and Buy Price are required!');
-    return;
-  }
-
-  const itemData = { date, product, otherProduct, company, buyPrice, transport, repair, investor, nayanCustomAmount, ashidCustomAmount, sellPrice, status };
-
-  if (editIndex === null) {
-    inventory.push(itemData);
-  } else {
-    inventory[editIndex] = itemData;
-    editIndex = null;
-  }
-
-  // Send WhatsApp Message
-  const totalCost = Number(buyPrice) + Number(transport) + Number(repair);
-  const prodName = product === 'Other' ? otherProduct : product;
-  sendWhatsAppRecord('Product Buy & Sell', {
-    'Date': date,
-    'Product': prodName,
-    'Company': company,
-    'Buy Price': `₹${buyPrice}`,
-    'Transport Cost': `₹${transport}`,
-    'Repair Cost': `₹${repair}`,
-    'Total Cost': `₹${totalCost}`,
-    'Investor': investor,
-    'Selling Price': `₹${sellPrice}`,
-    'Status': status
-  });
-
-  resetForm();
-  renderData();
-}
-
-function editItem(index) {
-  const item = inventory[index];
-  document.getElementById('date').value = item.date;
-  document.getElementById('product').value = item.product || 'AC';
-  document.getElementById('otherProduct').value = item.otherProduct || '';
-  document.getElementById('company').value = item.company || '';
-  document.getElementById('buyPrice').value = item.buyPrice;
-  document.getElementById('transport').value = item.transport;
-  document.getElementById('repair').value = item.repair;
-  document.getElementById('investor').value = item.investor;
-  document.getElementById('nayanCustomAmount').value = item.nayanCustomAmount || '';
-  document.getElementById('ashidCustomAmount').value = item.ashidCustomAmount || '';
-  document.getElementById('sellPrice').value = item.sellPrice;
-  document.getElementById('status').value = item.status;
-
-  toggleOtherProductInput();
-  toggleCustomInvestment();
-
-  editIndex = index;
-  document.getElementById('formTitle').innerText = '✏️ Edit Product Record';
-  document.getElementById('saveBtn').innerText = 'Update Record';
-  document.getElementById('cancelBtn').style.display = 'inline-block';
-}
-
-function deleteItem(index) {
-  if (confirm('Delete this product entry?')) {
-    inventory.splice(index, 1);
-    renderData();
-  }
-}
-
-function resetForm() {
-  document.getElementById('date').valueAsDate = new Date();
-  document.getElementById('product').selectedIndex = 0;
-  document.getElementById('otherProduct').value = '';
-  document.getElementById('company').value = '';
-  document.getElementById('buyPrice').value = '';
-  document.getElementById('transport').value = '0';
-  document.getElementById('repair').value = '0';
-  document.getElementById('investor').value = 'Both (50-50)';
-  document.getElementById('nayanCustomAmount').value = '';
-  document.getElementById('ashidCustomAmount').value = '';
-  document.getElementById('sellPrice').value = '';
-  document.getElementById('status').value = 'In Stock';
-
-  toggleOtherProductInput();
-  toggleCustomInvestment();
-
-  editIndex = null;
-  document.getElementById('formTitle').innerText = '➕ Product Entry & Investment';
-  document.getElementById('saveBtn').innerText = 'Save Record';
-  document.getElementById('cancelBtn').style.display = 'none';
-}
-
-// --- PAGE 2: Service & Repairing Logic ---
-function renderServiceData() {
-  const tbody = document.getElementById('serviceList');
-  const searchQuery = document.getElementById('srvSearch').value.toLowerCase();
-  tbody.innerHTML = '';
-
-  let srvTotalIncome = 0;
-  let srvTotalCost = 0;
-  let srvTotalProfit = 0;
-
-  services.forEach((srv, index) => {
-    const totalCharge = Number(srv.charge) || 0;
-    const partsCost = Number(srv.partsCost) || 0;
-    const techCharge = Number(srv.techCharge) || 0;
-    const totalExp = partsCost + techCharge;
-    const netProfit = srv.status === 'Completed' ? (totalCharge - totalExp) : 0;
-    const profitShare = srv.status === 'Completed' ? netProfit / 2 : 0;
-
-    if (srv.status === 'Completed') {
-      srvTotalIncome += totalCharge;
-      srvTotalCost += totalExp;
-      srvTotalProfit += netProfit;
-    }
-
-    if (
-      (srv.customer && srv.customer.toLowerCase().includes(searchQuery)) ||
-      (srv.category && srv.category.toLowerCase().includes(searchQuery)) ||
-      (srv.status && srv.status.toLowerCase().includes(searchQuery))
-    ) {
-      const statusClass = srv.status === 'Completed' ? 'completed' : 'pending';
-      const profitClass = netProfit >= 0 ? 'profit' : 'loss';
-
-      tbody.innerHTML += `
-        <tr>
-          <td>${srv.date}</td>
-          <td><strong>${srv.customer || 'Guest'}</strong></td>
-          <td>${srv.category}</td>
-          <td>₹${totalCharge}</td>
-          <td>₹${partsCost}</td>
-          <td>₹${techCharge}</td>
-          <td class="${profitClass}">₹${netProfit}</td>
-          <td class="${profitClass}">₹${profitShare}</td>
-          <td class="${profitClass}">₹${profitShare}</td>
-          <td><span class="status ${statusClass}">${srv.status}</span></td>
-          <td class="action">
-            <button class="edit" onclick="editServiceItem(${index})">Edit</button>
-            <button class="delete" onclick="deleteServiceItem(${index})">Delete</button>
-          </td>
-        </tr>
-      `;
-    }
-  });
-
-  document.getElementById('srvTotalCalls').innerText = services.length;
-  document.getElementById('srvTotalIncome').innerText = '₹' + srvTotalIncome;
-  document.getElementById('srvTotalCost').innerText = '₹' + srvTotalCost;
-  document.getElementById('srvTotalProfit').innerText = '₹' + srvTotalProfit;
-
-  const partnerShare = srvTotalProfit / 2;
-  document.getElementById('srvNayanProfit').innerText = 'Profit Share: ₹' + partnerShare;
-  document.getElementById('srvAshidProfit').innerText = 'Profit Share: ₹' + partnerShare;
-
-  localStorage.setItem('ng_digital_services', JSON.stringify(services));
-}
-
-function saveServiceItem() {
-  const date = document.getElementById('srvDate').value;
-  const customer = document.getElementById('srvCustomer').value;
-  const category = document.getElementById('srvCategory').value;
-  const charge = document.getElementById('srvCharge').value;
-  const partsCost = document.getElementById('srvPartsCost').value || 0;
-  const techCharge = document.getElementById('srvTechCharge').value || 0;
-  const status = document.getElementById('srvStatus').value;
-
-  if (!date || !charge) {
-    alert('Date and Total Charge are required!');
-    return;
-  }
-
-  const srvData = { date, customer, category, charge, partsCost, techCharge, status };
-
-  if (editServiceIndex === null) {
-    services.push(srvData);
-  } else {
-    services[editServiceIndex] = srvData;
-    editServiceIndex = null;
-  }
-
-  // Send WhatsApp Message
-  const totalExp = Number(partsCost) + Number(techCharge);
-  const netProf = status === 'Completed' ? (Number(charge) - totalExp) : 0;
-  sendWhatsAppRecord('Service & Repairing', {
-    'Date': date,
-    'Customer Details': customer,
-    'Category': category,
-    'Bill Charge': `₹${charge}`,
-    'Parts Cost': `₹${partsCost}`,
-    'Tech Charge': `₹${techCharge}`,
-    'Net Profit': `₹${netProf}`,
-    'Status': status
-  });
-
-  resetServiceForm();
-  renderServiceData();
-}
-
-function editServiceItem(index) {
-  const srv = services[index];
-  document.getElementById('srvDate').value = srv.date;
-  document.getElementById('srvCustomer').value = srv.customer || '';
-  document.getElementById('srvCategory').value = srv.category;
-  document.getElementById('srvCharge').value = srv.charge;
-  document.getElementById('srvPartsCost').value = srv.partsCost;
-  document.getElementById('srvTechCharge').value = srv.techCharge;
-  document.getElementById('srvStatus').value = srv.status;
-
-  editServiceIndex = index;
-  document.getElementById('srvFormTitle').innerText = '✏️ Edit Service Record';
-  document.getElementById('srvSaveBtn').innerText = 'Update Service Record';
-  document.getElementById('srvCancelBtn').style.display = 'inline-block';
-}
-
-function deleteServiceItem(index) {
-  if (confirm('Delete this service entry?')) {
-    services.splice(index, 1);
-    renderServiceData();
-  }
-}
-
-function resetServiceForm() {
-  document.getElementById('srvDate').valueAsDate = new Date();
-  document.getElementById('srvCustomer').value = '';
-  document.getElementById('srvCategory').selectedIndex = 0;
-  document.getElementById('srvCharge').value = '';
-  document.getElementById('srvPartsCost').value = '0';
-  document.getElementById('srvTechCharge').value = '0';
-  document.getElementById('srvStatus').value = 'Completed';
-
-  editServiceIndex = null;
-  document.getElementById('srvFormTitle').innerText = '🛠️ Service & Repair Work Entry';
-  document.getElementById('srvSaveBtn').innerText = 'Save Service Record';
-  document.getElementById('srvCancelBtn').style.display = 'none';
-}
-
-// --- PAGE 3: Spare Parts Purchase Logic ---
-function renderPartData() {
-  const tbody = document.getElementById('partsList');
-  const searchQuery = document.getElementById('partSearch').value.toLowerCase();
-  tbody.innerHTML = '';
-
-  let partTotalSpentSum = 0;
-  let partNayanSpentSum = 0;
-  let partAshidSpentSum = 0;
-
-  parts.forEach((p, index) => {
-    const cost = Number(p.amount) || 0;
-    partTotalSpentSum += cost;
-
-    if (p.purchaser === 'Nayan Gain') {
-      partNayanSpentSum += cost;
-    } else if (p.purchaser === 'Ashid Bose') {
-      partAshidSpentSum += cost;
-    } else {
-      partNayanSpentSum += cost / 2;
-      partAshidSpentSum += cost / 2;
-    }
-
-    if (
-      (p.name && p.name.toLowerCase().includes(searchQuery)) ||
-      (p.category && p.category.toLowerCase().includes(searchQuery)) ||
-      (p.supplier && p.supplier.toLowerCase().includes(searchQuery))
-    ) {
-      tbody.innerHTML += `
-        <tr>
-          <td>${p.date}</td>
-          <td><strong>${p.name}</strong></td>
-          <td>${p.category}</td>
-          <td>₹${cost}</td>
-          <td>${p.purchaser}</td>
-          <td>${p.supplier || '-'}</td>
-          <td class="action">
-            <button class="edit" onclick="editPartItem(${index})">Edit</button>
-            <button class="delete" onclick="deletePartItem(${index})">Delete</button>
-          </td>
-        </tr>
-      `;
-    }
-  });
-
-  document.getElementById('partTotalItems').innerText = parts.length;
-  document.getElementById('partTotalSpent').innerText = '₹' + partTotalSpentSum;
-  document.getElementById('partNayanSpent').innerText = '₹' + partNayanSpentSum;
-  document.getElementById('partAshidSpent').innerText = '₹' + partAshidSpentSum;
-
-  localStorage.setItem('ng_digital_parts', JSON.stringify(parts));
-}
-
-function savePartItem() {
-  const date = document.getElementById('partDate').value;
-  const name = document.getElementById('partName').value;
-  const category = document.getElementById('partCategory').value;
-  const amount = document.getElementById('partAmount').value;
-  const purchaser = document.getElementById('partPurchaser').value;
-  const supplier = document.getElementById('partSupplier').value;
-
-  if (!date || !name || !amount) {
-    alert('Date, Part Name, and Amount are required!');
-    return;
-  }
-
-  const partData = { date, name, category, amount, purchaser, supplier };
-
-  if (editPartIndex === null) {
-    parts.push(partData);
-  } else {
-    parts[editPartIndex] = partData;
-    editPartIndex = null;
-  }
-
-  // Send WhatsApp Message
-  sendWhatsAppRecord('Spare Parts Purchase', {
-    'Date': date,
-    'Part Name': name,
-    'Category': category,
-    'Amount Spent': `₹${amount}`,
-    'Purchased By': purchaser,
-    'Supplier/Shop': supplier
-  });
-
-  resetPartForm();
-  renderPartData();
-}
-
-function editPartItem(index) {
-  const p = parts[index];
-  document.getElementById('partDate').value = p.date;
-  document.getElementById('partName').value = p.name;
-  document.getElementById('partCategory').value = p.category;
-  document.getElementById('partAmount').value = p.amount;
-  document.getElementById('partPurchaser').value = p.purchaser;
-  document.getElementById('partSupplier').value = p.supplier || '';
-
-  editPartIndex = index;
-  document.getElementById('partFormTitle').innerText = '✏️ Edit Spare Part Record';
-  document.getElementById('partSaveBtn').innerText = 'Update Purchase Record';
-  document.getElementById('partCancelBtn').style.display = 'inline-block';
-}
-
-function deletePartItem(index) {
-  if (confirm('Delete this part purchase entry?')) {
-    parts.splice(index, 1);
-    renderPartData();
-  }
-}
-
-function resetPartForm() {
-  document.getElementById('partDate').valueAsDate = new Date();
-  document.getElementById('partName').value = '';
-  document.getElementById('partCategory').selectedIndex = 0;
-  document.getElementById('partAmount').value = '';
-  document.getElementById('partPurchaser').selectedIndex = 0;
-  document.getElementById('partSupplier').value = '';
-
-  editPartIndex = null;
-  document.getElementById('partFormTitle').innerText = '🛒 Spare Parts Purchase Entry';
-  document.getElementById('partSaveBtn').innerText = 'Save Purchase Record';
-  document.getElementById('partCancelBtn').style.display = 'none';
-}
-
-// Initial Render All Pages
-renderData();
-renderServiceData();
-renderPartData();
 </script>
-
 </body>
 </html>
