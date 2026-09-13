@@ -117,6 +117,7 @@ header p{
   padding: 8px 14px;
   border-radius: 6px;
   font-size: 12px;
+  border: none;
   cursor: pointer;
 }
 
@@ -842,6 +843,9 @@ document.addEventListener("DOMContentLoaded", function() {
   } else {
     document.body.classList.add("locked");
   }
+  renderData();
+  renderServiceData();
+  renderPartData();
 });
 
 function handleLogin() {
@@ -870,31 +874,24 @@ function handleLogout() {
   location.reload();
 }
 
-// Enter কী প্রেস করলে লগইন করার অপশন
-document.getElementById("password").addEventListener("keypress", function(e) {
-  if (e.key === "Enter") {
-    handleLogin();
-  }
+document.getElementById("password")?.addEventListener("keypress", function(e) {
+  if (e.key === "Enter") handleLogin();
 });
 
-// --- WhatsApp Auto Message Function ---
-function sendWhatsAppRecord(type, dataDetails) {
-  const targetPhone = "917439160014";
-  let text = `🚨 *NG COOLING SOLUTION - NEW RECORD SAVED* 🚨\n\n📌 *Section:* ${type}\n`;
-  
-  for (const [k, v] of Object.entries(dataDetails)) {
-    if (v !== undefined && v !== "") {
-      text += `• *${k}:* ${v}\n`;
-    }
-  }
-  
-  text += `\n✅ *Record saved successfully on system!*`;
-  
-  const waUrl = `https://wa.me/${targetPhone}?text=${encodeURIComponent(text)}`;
-  window.open(waUrl, '_blank');
+// --- Dynamic Input Handlers ---
+function toggleOtherProductInput() {
+  const prod = document.getElementById('product').value;
+  document.getElementById('otherProductBox').style.display = prod === 'Other' ? 'block' : 'none';
 }
 
-// --- Global Data Structures ---
+function toggleCustomInvestment() {
+  const inv = document.getElementById('investor').value;
+  const isCustom = inv === 'Custom';
+  document.getElementById('nayanCustomBox').style.display = isCustom ? 'block' : 'none';
+  document.getElementById('ashidCustomBox').style.display = isCustom ? 'block' : 'none';
+}
+
+// --- Global Storage ---
 let inventory = JSON.parse(localStorage.getItem('ng_digital_inventory')) || [];
 let services = JSON.parse(localStorage.getItem('ng_digital_services')) || [];
 let parts = JSON.parse(localStorage.getItem('ng_digital_parts')) || [];
@@ -907,12 +904,393 @@ document.getElementById('date').valueAsDate = new Date();
 document.getElementById('srvDate').valueAsDate = new Date();
 document.getElementById('partDate').valueAsDate = new Date();
 
-// --- Navigation Tabs Logic ---
 function switchPage(pageId, btn) {
   document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   btn.classList.add('active');
+}
+
+// ================= PAGE 1 LOGIC =================
+function saveItem() {
+  const date = document.getElementById('date').value;
+  let prodCat = document.getElementById('product').value;
+  if(prodCat === 'Other') {
+    prodCat = document.getElementById('otherProduct').value || 'Other';
+  }
+  const company = document.getElementById('company').value;
+  const buyPrice = parseFloat(document.getElementById('buyPrice').value) || 0;
+  const transport = parseFloat(document.getElementById('transport').value) || 0;
+  const repair = parseFloat(document.getElementById('repair').value) || 0;
+  const investor = document.getElementById('investor').value;
+  const sellPrice = parseFloat(document.getElementById('sellPrice').value) || 0;
+  const status = document.getElementById('status').value;
+
+  if(!company || !buyPrice) {
+    alert("অনুগ্রহ করে কোম্পানি ও ক্রয়মূল্য সঠিক দিন!");
+    return;
+  }
+
+  const totalCost = buyPrice + transport + repair;
+  let nayanInvest = 0, ashidInvest = 0;
+
+  if(investor === 'Both (50-50)') {
+    nayanInvest = totalCost / 2;
+    ashidInvest = totalCost / 2;
+  } else if(investor === 'Nayan Gain Only') {
+    nayanInvest = totalCost;
+  } else if(investor === 'Ashid Bose Only') {
+    ashidInvest = totalCost;
+  } else {
+    nayanInvest = parseFloat(document.getElementById('nayanCustomAmount').value) || 0;
+    ashidInvest = parseFloat(document.getElementById('ashidCustomAmount').value) || 0;
+  }
+
+  const netProfit = status === 'Sold' ? (sellPrice - totalCost) : 0;
+  const nayanProfit = netProfit / 2;
+  const ashidProfit = netProfit / 2;
+
+  const itemData = { date, prodCat, company, buyPrice, transport, repair, totalCost, investor, nayanInvest, ashidInvest, sellPrice, netProfit, nayanProfit, ashidProfit, status };
+
+  if(editIndex !== null) {
+    inventory[editIndex] = itemData;
+  } else {
+    inventory.push(itemData);
+  }
+
+  localStorage.setItem('ng_digital_inventory', JSON.stringify(inventory));
+  resetForm();
+  renderData();
+}
+
+function resetForm() {
+  editIndex = null;
+  document.getElementById('formTitle').textContent = "➕ Product Entry & Investment";
+  document.getElementById('saveBtn').textContent = "Save Record";
+  document.getElementById('cancelBtn').style.display = "none";
+  document.getElementById('company').value = "";
+  document.getElementById('buyPrice').value = "";
+  document.getElementById('transport').value = "0";
+  document.getElementById('repair').value = "0";
+  document.getElementById('sellPrice').value = "";
+  document.getElementById('status').value = "In Stock";
+  document.getElementById('investor').value = "Both (50-50)";
+  toggleCustomInvestment();
+  toggleOtherProductInput();
+}
+
+function renderData() {
+  const tbody = document.getElementById('inventoryList');
+  const search = document.getElementById('search').value.toLowerCase();
+  tbody.innerHTML = "";
+
+  let totalItems = 0, totalCostSum = 0, totalSalesSum = 0, totalProfitSum = 0;
+  let nayanInvTotal = 0, ashidInvTotal = 0, nayanProfTotal = 0, ashidProfTotal = 0;
+  let inStockCost = 0;
+
+  inventory.forEach((item, index) => {
+    if(item.company.toLowerCase().includes(search) || item.prodCat.toLowerCase().includes(search)) {
+      totalItems++;
+      totalCostSum += item.totalCost;
+      nayanInvTotal += item.nayanInvest;
+      ashidInvTotal += item.ashidInvest;
+
+      if(item.status === 'Sold') {
+        totalSalesSum += item.sellPrice;
+        totalProfitSum += item.netProfit;
+        nayanProfTotal += item.nayanProfit;
+        ashidProfTotal += item.ashidProfit;
+      } else {
+        inStockCost += item.totalCost;
+      }
+
+      const row = `<tr>
+        <td>${item.date}</td>
+        <td><b>${item.prodCat}</b></td>
+        <td>${item.company}</td>
+        <td>${item.investor}<br><small>(N: ₹${item.nayanInvest} | A: ₹${item.ashidInvest})</small></td>
+        <td>₹${item.totalCost}</td>
+        <td>₹${item.sellPrice}</td>
+        <td class="${item.netProfit >= 0 ? 'profit':'loss'}">₹${item.netProfit}</td>
+        <td class="profit">₹${item.nayanProfit}</td>
+        <td class="profit">₹${item.ashidProfit}</td>
+        <td><span class="status ${item.status === 'Sold' ? 'sold':'stock'}">${item.status}</span></td>
+        <td class="action">
+          <button class="edit" onclick="editItem(${index})">Edit</button>
+          <button class="delete" onclick="deleteItem(${index})">Delete</button>
+        </td>
+      </tr>`;
+      tbody.innerHTML += row;
+    }
+  });
+
+  document.getElementById('totalItems').textContent = totalItems;
+  document.getElementById('totalCost').textContent = "₹" + totalCostSum;
+  document.getElementById('totalSales').textContent = "₹" + totalSalesSum;
+  document.getElementById('totalProfit').textContent = "₹" + totalProfitSum;
+
+  document.getElementById('nayanInvest').textContent = "Invested: ₹" + nayanInvTotal;
+  document.getElementById('nayanProfit').textContent = "Profit Share: ₹" + nayanProfTotal;
+  document.getElementById('ashidInvest').textContent = "Invested: ₹" + ashidInvTotal;
+  document.getElementById('ashidProfit').textContent = "Profit Share: ₹" + ashidProfTotal;
+
+  document.getElementById('stockValue').textContent = "In-Stock Capital: ₹" + inStockCost;
+  const recoveryPercent = totalCostSum > 0 ? Math.min(100, Math.round((totalSalesSum / totalCostSum) * 100)) : 0;
+  document.getElementById('recoveryPercent').textContent = `Capital Recovered: ${recoveryPercent}%`;
+  document.getElementById('progressBar').style.width = recoveryPercent + "%";
+}
+
+function editItem(i) {
+  editIndex = i;
+  const item = inventory[i];
+  document.getElementById('date').value = item.date;
+  document.getElementById('company').value = item.company;
+  document.getElementById('buyPrice').value = item.buyPrice;
+  document.getElementById('transport').value = item.transport;
+  document.getElementById('repair').value = item.repair;
+  document.getElementById('investor').value = item.investor;
+  document.getElementById('sellPrice').value = item.sellPrice;
+  document.getElementById('status').value = item.status;
+  
+  toggleCustomInvestment();
+  if(item.investor === 'Custom') {
+    document.getElementById('nayanCustomAmount').value = item.nayanInvest;
+    document.getElementById('ashidCustomAmount').value = item.ashidInvest;
+  }
+
+  document.getElementById('formTitle').textContent = "✏️ Edit Product Entry";
+  document.getElementById('saveBtn').textContent = "Update Record";
+  document.getElementById('cancelBtn').style.display = "inline-block";
+}
+
+function deleteItem(i) {
+  if(confirm("আপনি কি নিশ্চিত যে এই রেকর্ডটি মুছে ফেলতে চান?")) {
+    inventory.splice(i, 1);
+    localStorage.setItem('ng_digital_inventory', JSON.stringify(inventory));
+    renderData();
+  }
+}
+
+// ================= PAGE 2 LOGIC =================
+function saveServiceItem() {
+  const date = document.getElementById('srvDate').value;
+  const customer = document.getElementById('srvCustomer').value;
+  const category = document.getElementById('srvCategory').value;
+  const charge = parseFloat(document.getElementById('srvCharge').value) || 0;
+  const partsCost = parseFloat(document.getElementById('srvPartsCost').value) || 0;
+  const techCharge = parseFloat(document.getElementById('srvTechCharge').value) || 0;
+  const status = document.getElementById('srvStatus').value;
+
+  if(!customer || !charge) {
+    alert("কাস্টমার তথ্য ও চার্জ সঠিকভাবে দিন!");
+    return;
+  }
+
+  const netProfit = status === 'Completed' ? (charge - partsCost - techCharge) : 0;
+  const nayanProfit = netProfit / 2;
+  const ashidProfit = netProfit / 2;
+
+  const srvData = { date, customer, category, charge, partsCost, techCharge, netProfit, nayanProfit, ashidProfit, status };
+
+  if(editServiceIndex !== null) {
+    services[editServiceIndex] = srvData;
+  } else {
+    services.push(srvData);
+  }
+
+  localStorage.setItem('ng_digital_services', JSON.stringify(services));
+  resetServiceForm();
+  renderServiceData();
+}
+
+function resetServiceForm() {
+  editServiceIndex = null;
+  document.getElementById('srvFormTitle').textContent = "🛠️ Service & Repair Work Entry";
+  document.getElementById('srvSaveBtn').textContent = "Save Service Record";
+  document.getElementById('srvCancelBtn').style.display = "none";
+  document.getElementById('srvCustomer').value = "";
+  document.getElementById('srvCharge').value = "";
+  document.getElementById('srvPartsCost').value = "0";
+  document.getElementById('srvTechCharge').value = "0";
+  document.getElementById('srvStatus').value = "Completed";
+}
+
+function renderServiceData() {
+  const tbody = document.getElementById('serviceList');
+  const search = document.getElementById('srvSearch').value.toLowerCase();
+  tbody.innerHTML = "";
+
+  let totalCalls = 0, totalIncome = 0, totalCost = 0, totalProfit = 0;
+  let nayanProf = 0, ashidProf = 0;
+
+  services.forEach((item, index) => {
+    if(item.customer.toLowerCase().includes(search) || item.category.toLowerCase().includes(search)) {
+      totalCalls++;
+      totalIncome += item.charge;
+      totalCost += (item.partsCost + item.techCharge);
+      
+      if(item.status === 'Completed') {
+        totalProfit += item.netProfit;
+        nayanProf += item.nayanProfit;
+        ashidProf += item.ashidProfit;
+      }
+
+      const row = `<tr>
+        <td>${item.date}</td>
+        <td><b>${item.customer}</b></td>
+        <td>${item.category}</td>
+        <td>₹${item.charge}</td>
+        <td>₹${item.partsCost}</td>
+        <td>₹${item.techCharge}</td>
+        <td class="${item.netProfit >= 0 ? 'profit':'loss'}">₹${item.netProfit}</td>
+        <td class="profit">₹${item.nayanProfit}</td>
+        <td class="profit">₹${item.ashidProfit}</td>
+        <td><span class="status ${item.status === 'Completed' ? 'completed':'pending'}">${item.status}</span></td>
+        <td class="action">
+          <button class="edit" onclick="editServiceItem(${index})">Edit</button>
+          <button class="delete" onclick="deleteServiceItem(${index})">Delete</button>
+        </td>
+      </tr>`;
+      tbody.innerHTML += row;
+    }
+  });
+
+  document.getElementById('srvTotalCalls').textContent = totalCalls;
+  document.getElementById('srvTotalIncome').textContent = "₹" + totalIncome;
+  document.getElementById('srvTotalCost').textContent = "₹" + totalCost;
+  document.getElementById('srvTotalProfit').textContent = "₹" + totalProfit;
+  document.getElementById('srvNayanProfit').textContent = "₹" + nayanProf;
+  document.getElementById('srvAshidProfit').textContent = "₹" + ashidProf;
+}
+
+function editServiceItem(i) {
+  editServiceIndex = i;
+  const item = services[i];
+  document.getElementById('srvDate').value = item.date;
+  document.getElementById('srvCustomer').value = item.customer;
+  document.getElementById('srvCategory').value = item.category;
+  document.getElementById('srvCharge').value = item.charge;
+  document.getElementById('srvPartsCost').value = item.partsCost;
+  document.getElementById('srvTechCharge').value = item.techCharge;
+  document.getElementById('srvStatus').value = item.status;
+
+  document.getElementById('srvFormTitle').textContent = "✏️ Edit Service Entry";
+  document.getElementById('srvSaveBtn').textContent = "Update Record";
+  document.getElementById('srvCancelBtn').style.display = "inline-block";
+}
+
+function deleteServiceItem(i) {
+  if(confirm("আপনি কি নিশ্চিত যে এই সার্ভিস রেকর্ডটি মুছতে চান?")) {
+    services.splice(i, 1);
+    localStorage.setItem('ng_digital_services', JSON.stringify(services));
+    renderServiceData();
+  }
+}
+
+// ================= PAGE 3 LOGIC =================
+function savePartItem() {
+  const date = document.getElementById('partDate').value;
+  const name = document.getElementById('partName').value;
+  const category = document.getElementById('partCategory').value;
+  const amount = parseFloat(document.getElementById('partAmount').value) || 0;
+  const purchaser = document.getElementById('partPurchaser').value;
+  const supplier = document.getElementById('partSupplier').value;
+
+  if(!name || !amount) {
+    alert("পার্টসের নাম ও দাম সঠিকভাবে দিন!");
+    return;
+  }
+
+  let nayanSpent = 0, ashidSpent = 0;
+  if(purchaser === 'Both (50-50)') {
+    nayanSpent = amount / 2;
+    ashidSpent = amount / 2;
+  } else if(purchaser === 'Nayan Gain Only') {
+    nayanSpent = amount;
+  } else {
+    ashidSpent = amount;
+  }
+
+  const partData = { date, name, category, amount, purchaser, supplier, nayanSpent, ashidSpent };
+
+  if(editPartIndex !== null) {
+    parts[editPartIndex] = partData;
+  } else {
+    parts.push(partData);
+  }
+
+  localStorage.setItem('ng_digital_parts', JSON.stringify(parts));
+  resetPartForm();
+  renderPartData();
+}
+
+function resetPartForm() {
+  editPartIndex = null;
+  document.getElementById('partFormTitle').textContent = "🛒 Spare Parts Purchase Entry";
+  document.getElementById('partSaveBtn').textContent = "Save Purchase Record";
+  document.getElementById('partCancelBtn').style.display = "none";
+  document.getElementById('partName').value = "";
+  document.getElementById('partAmount').value = "";
+  document.getElementById('partSupplier').value = "";
+}
+
+function renderPartData() {
+  const tbody = document.getElementById('partsList');
+  const search = document.getElementById('partSearch').value.toLowerCase();
+  tbody.innerHTML = "";
+
+  let totalItems = 0, totalSpent = 0, nayanSpentTotal = 0, ashidSpentTotal = 0;
+
+  parts.forEach((item, index) => {
+    if(item.name.toLowerCase().includes(search) || item.category.toLowerCase().includes(search)) {
+      totalItems++;
+      totalSpent += item.amount;
+      nayanSpentTotal += item.nayanSpent;
+      ashidSpentTotal += item.ashidSpent;
+
+      const row = `<tr>
+        <td>${item.date}</td>
+        <td><b>${item.name}</b></td>
+        <td>${item.category}</td>
+        <td>₹${item.amount}</td>
+        <td>${item.purchaser}</td>
+        <td>${item.supplier || '-'}</td>
+        <td class="action">
+          <button class="edit" onclick="editPartItem(${index})">Edit</button>
+          <button class="delete" onclick="deletePartItem(${index})">Delete</button>
+        </td>
+      </tr>`;
+      tbody.innerHTML += row;
+    }
+  });
+
+  document.getElementById('partTotalItems').textContent = totalItems;
+  document.getElementById('partTotalSpent').textContent = "₹" + totalSpent;
+  document.getElementById('partNayanSpent').textContent = "₹" + nayanSpentTotal;
+  document.getElementById('partAshidSpent').textContent = "₹" + ashidSpentTotal;
+}
+
+function editPartItem(i) {
+  editPartIndex = i;
+  const item = parts[i];
+  document.getElementById('partDate').value = item.date;
+  document.getElementById('partName').value = item.name;
+  document.getElementById('partCategory').value = item.category;
+  document.getElementById('partAmount').value = item.amount;
+  document.getElementById('partPurchaser').value = item.purchaser;
+  document.getElementById('partSupplier').value = item.supplier;
+
+  document.getElementById('partFormTitle').textContent = "✏️ Edit Spare Part Entry";
+  document.getElementById('partSaveBtn').textContent = "Update Record";
+  document.getElementById('partCancelBtn').style.display = "inline-block";
+}
+
+function deletePartItem(i) {
+  if(confirm("আপনি কি নিশ্চিত যে এই রেকর্ডটি মুছে ফেলবেন?")) {
+    parts.splice(i, 1);
+    localStorage.setItem('ng_digital_parts', JSON.stringify(parts));
+    renderPartData();
+  }
 }
 </script>
 </body>
