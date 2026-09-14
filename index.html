@@ -922,7 +922,7 @@ function switchPage(pageId, btn) {
   btn.classList.add('active');
 }
 
-// WhatsApp Notification Integration (Number: 7439160014)
+// WhatsApp Direct Automatic Notification (Number: 7439160014)
 function sendWhatsAppNotification(message) {
   const phoneNumber = "917439160014"; 
   const encodedMessage = encodeURIComponent(message);
@@ -975,7 +975,7 @@ function initializeAppdata() {
   });
 }
 
-// Save Product Inventory & Trigger Automatic WhatsApp Notification
+// Save Product Inventory & Trigger WhatsApp Automatic Message
 function saveItem() {
   const date = document.getElementById('date').value || new Date().toISOString().split('T')[0];
   let product = document.getElementById('product').value;
@@ -1018,7 +1018,7 @@ function saveItem() {
 
   db.ref('ng_cooling/inventory/' + itemObj.id).set(itemObj);
 
-  const waMsg = `⚡ *NG Cooling Solution - New Product Entry* ⚡\n📅 Date: ${date}\n📦 Product: ${product} (${company})\n💰 Total Cost: ₹${totalCost}\n🏷️ Status: ${status}`;
+  const waMsg = `⚡ *NG Cooling Solution - New Product Entry* ⚡\n📅 Date: ${date}\n📦 Product: ${product} (${company})\n💰 Total Cost: ₹${totalCost}\n🏷️ Status: ${status}\n👤 Investor: ${investorType}`;
   sendWhatsAppNotification(waMsg);
 
   resetForm();
@@ -1105,7 +1105,7 @@ function deleteItem(id) {
   }
 }
 
-// Save Service Entry & Trigger Automatic WhatsApp Notification
+// Save Service Entry & Trigger WhatsApp Automatic Message
 function saveServiceItem() {
   const srvDate = document.getElementById('srvDate').value || new Date().toISOString().split('T')[0];
   const srvCustomer = document.getElementById('srvCustomer').value || 'General Customer';
@@ -1136,7 +1136,7 @@ function saveServiceItem() {
 
   db.ref('ng_cooling/services/' + serviceObj.id).set(serviceObj);
 
-  const waMsg = `🛠️ *NG Cooling - Service Entry* 🛠️\n📅 Date: ${srvDate}\n👤 Customer: ${srvCustomer}\n🔧 Service: ${srvCategory}\n💵 Bill: ₹${srvCharge}\n📈 Net Profit: ₹${netProfit}`;
+  const waMsg = `🛠️ *NG Cooling - Service Entry* 🛠️\n📅 Date: ${srvDate}\n👤 Customer: ${srvCustomer}\n🔧 Service: ${srvCategory}\n💵 Bill: ₹${srvCharge}\n📈 Net Profit: ₹${netProfit}\n📌 Status: ${srvStatus}`;
   sendWhatsAppNotification(waMsg);
 
   resetServiceForm();
@@ -1205,7 +1205,7 @@ function deleteServiceItem(id) {
   }
 }
 
-// Save Spare Parts Entry & Trigger Automatic WhatsApp Notification
+// Save Spare Parts Entry & Trigger WhatsApp Automatic Message
 function savePartItem() {
   const partDate = document.getElementById('partDate').value || new Date().toISOString().split('T')[0];
   const partName = document.getElementById('partName').value || 'Spare Item';
@@ -1243,7 +1243,7 @@ function savePartItem() {
 
   db.ref('ng_cooling/parts/' + partObj.id).set(partObj);
 
-  const waMsg = `🛒 *NG Cooling - Spare Parts Purchase* 🛒\n📅 Date: ${partDate}\n🔧 Part: ${partName}\n💵 Cost: ₹${partCost}\n👤 Paid By: ${buyerType}`;
+  const waMsg = `🛒 *NG Cooling - Spare Parts Purchase* 🛒\n📅 Date: ${partDate}\n🔧 Part: ${partName}\n💵 Cost: ₹${partCost}\n👤 Paid By: ${buyerType}\n📍 Supplier: ${partSupplier}`;
   sendWhatsAppNotification(waMsg);
 
   resetPartForm();
@@ -1307,3 +1307,4 @@ function deletePartItem(id) {
 </script>
 </body>
 </html>
+
