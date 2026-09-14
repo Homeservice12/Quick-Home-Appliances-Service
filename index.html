@@ -922,12 +922,18 @@ function switchPage(pageId, btn) {
   btn.classList.add('active');
 }
 
-// Automatic WhatsApp Notification Integration (Number: 7439160014)
+// Optimized WhatsApp Notification Integration (Number: 7439160014)
 function sendWhatsAppNotification(message) {
   const phoneNumber = "917439160014"; 
   const encodedMessage = encodeURIComponent(message);
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-  window.open(whatsappUrl, '_blank');
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodedMessage}`;
+  
+  const link = document.createElement('a');
+  link.href = whatsappUrl;
+  link.target = '_blank';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
 }
 
 function toggleOtherProductInput() {
@@ -1256,7 +1262,7 @@ function resetPartForm() {
 
 function renderPartsLocally() {
   const tbody = document.getElementById('partsList');
-  tbody.innerHTML = clicking => '';
+  tbody.innerHTML = '';
 
   let totalParts = partsData.length;
   let totalSpent = 0;
