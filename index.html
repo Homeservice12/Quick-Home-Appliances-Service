@@ -1012,7 +1012,7 @@ function saveItem() {
 
   db.ref('ng_cooling/inventory/' + itemObj.id).set(itemObj);
 
-  const waMsg = `⚡ *NG Cooling Solution - New Product Entry* ⚡%0A📅 Date: ${date}%0A📦 Product: ${product} (${company})%0A💰 Buy Price: ₹${buyPrice}%0A🚚 Transport: ₹${transport}%0A🔧 Repair/Parts: ₹${repair}%0A💵 Total Cost: ₹${totalCost}%0A🏷️ Selling Price: ₹${sellPrice}%0A📊 Status: ${status}%0A👤 Investor: ${investorType} (N: ₹${nayanInv} | A: ₹${ashidInv})`;
+  const waMsg = `⚡ *NG Cooling Solution - New Product Entry* ⚡\n📅 Date: ${date}\n📦 Product: ${product} (${company})\n💰 Buy Price: ₹${buyPrice}\n🚚 Transport: ₹${transport}\n🔧 Repair/Parts: ₹${repair}\n💵 Total Cost: ₹${totalCost}\n🏷️ Selling Price: ₹${sellPrice}\n📊 Status: ${status}\n👤 Investor: ${investorType} (N: ₹${nayanInv} | A: ₹${ashidInv})`;
   sendWhatsAppNotification(waMsg);
 
   resetForm();
@@ -1130,7 +1130,7 @@ function saveServiceItem() {
 
   db.ref('ng_cooling/services/' + serviceObj.id).set(serviceObj);
 
-  const waMsg = `🛠️ *NG Cooling - Service Entry* 🛠️%0A📅 Date: ${srvDate}%0A👤 Customer: ${srvCustomer}%0A🔧 Service: ${srvCategory}%0A💵 Bill Amount: ₹${srvCharge}%0A🔩 Spare Parts Cost: ₹${srvPartsCost}%0A🛠️ Tech Charges: ₹${srvTechCharge}%0A📈 Net Profit: ₹${netProfit}%0A👥 Partner Share (50-50): Nayan ₹${nayanProfit} | Ashid ₹${ashidProfit}%0A📊 Status: ${srvStatus}`;
+  const waMsg = `🛠️ *NG Cooling - Service Entry* 🛠️\n📅 Date: ${srvDate}\n👤 Customer: ${srvCustomer}\n🔧 Service: ${srvCategory}\n💵 Bill Amount: ₹${srvCharge}\n🔩 Spare Parts Cost: ₹${srvPartsCost}\n🛠️ Tech Charges: ₹${srvTechCharge}\n📈 Net Profit: ₹${netProfit}\n👥 Partner Share (50-50): Nayan ₹${nayanProfit} | Ashid ₹${ashidProfit}\n📊 Status: ${srvStatus}`;
   sendWhatsAppNotification(waMsg);
 
   resetServiceForm();
@@ -1237,7 +1237,7 @@ function savePartItem() {
 
   db.ref('ng_cooling/parts/' + partObj.id).set(partObj);
 
-  const waMsg = `🛒 *NG Cooling - Spare Parts Purchase* 🛒%0A📅 Date: ${partDate}%0A🔧 Part Name: ${partName}%0A📂 Category: ${partCategory}%0A💵 Total Cost: ₹${partCost}%0A👤 Paid By: ${buyerType} (Nayan: ₹${nayanPaid} | Ashid: ₹${ashidPaid})%0A🏪 Supplier: ${partSupplier}`;
+  const waMsg = `🛒 *NG Cooling - Spare Parts Purchase* 🛒\n📅 Date: ${partDate}\n🔧 Part Name: ${partName}\n📂 Category: ${partCategory}\n💵 Total Cost: ₹${partCost}\n👤 Paid By: ${buyerType} (Nayan: ₹${nayanPaid} | Ashid: ₹${ashidPaid})\n🏪 Supplier: ${partSupplier}`;
   sendWhatsAppNotification(waMsg);
 
   resetPartForm();
@@ -1256,7 +1256,7 @@ function resetPartForm() {
 
 function renderPartsLocally() {
   const tbody = document.getElementById('partsList');
-  tbody.innerHTML = '';
+  tbody.innerHTML =`.`;
 
   let totalParts = partsData.length;
   let totalSpent = 0;
@@ -1281,7 +1281,7 @@ function renderPartsLocally() {
       <td>${item.buyerType}<br><small>N: ₹${item.nayanPaid} | A: ₹${item.ashidPaid}</small></td>
       <td>${item.supplier}</td>
       <td class="action">
-        <button class="delete" onclick="deletePartItem(${item.id})">Delete</td>
+        <button class="delete" onclick="deletePartItem(${item.id})">Delete</button>
       </td>
     </tr>`;
     tbody.innerHTML += row;
