@@ -922,7 +922,7 @@ function switchPage(pageId, btn) {
   btn.classList.add('active');
 }
 
-// WhatsApp Notification Integration (Number: 7439160014)
+// Automatic WhatsApp Notification Integration (Number: 7439160014)
 function sendWhatsAppNotification(message) {
   const phoneNumber = "917439160014"; 
   const encodedMessage = encodeURIComponent(message);
@@ -969,7 +969,7 @@ function initializeAppdata() {
   });
 }
 
-// Save Product Inventory
+// Save Product Inventory & Trigger Automatic WhatsApp Notification
 function saveItem() {
   const date = document.getElementById('date').value || new Date().toISOString().split('T')[0];
   let product = document.getElementById('product').value;
@@ -1099,7 +1099,7 @@ function deleteItem(id) {
   }
 }
 
-// Save Service Entry
+// Save Service Entry & Trigger Automatic WhatsApp Notification
 function saveServiceItem() {
   const srvDate = document.getElementById('srvDate').value || new Date().toISOString().split('T')[0];
   const srvCustomer = document.getElementById('srvCustomer').value || 'General Customer';
@@ -1199,7 +1199,7 @@ function deleteServiceItem(id) {
   }
 }
 
-// Save Spare Parts Entry
+// Save Spare Parts Entry & Trigger Automatic WhatsApp Notification
 function savePartItem() {
   const partDate = document.getElementById('partDate').value || new Date().toISOString().split('T')[0];
   const partName = document.getElementById('partName').value || 'Spare Item';
@@ -1256,7 +1256,7 @@ function resetPartForm() {
 
 function renderPartsLocally() {
   const tbody = document.getElementById('partsList');
-  tbody.innerHTML = '';
+  tbody.innerHTML = clicking => '';
 
   let totalParts = partsData.length;
   let totalSpent = 0;
