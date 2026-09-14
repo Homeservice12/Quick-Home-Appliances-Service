@@ -465,11 +465,6 @@ th{
   font-size: 12px;
 }
 
-.edit{
-  background:#e0f2fe;
-  color:#0369a1;
-}
-
 .delete{
   background:#fee2e2;
   color:#b91c1c;
@@ -811,45 +806,52 @@ th{
         </div>
         <div>
           <label>Part Name / Description</label>
-          <input type="text" id="partName" placeholder="e.g. AC Capacitor, Gas R32">
+          <input type="text" id="partName" placeholder="e.g. AC Copper Pipe / Compressor">
         </div>
         <div>
-          <label>Appliance Category</label>
+          <label>Category</label>
           <select id="partCategory">
-            <option value="AC">AC</option>
-            <option value="Fridge">Fridge</option>
-            <option value="Washing Machine">Washing Machine</option>
-            <option value="Microwave">Microwave</option>
-            <option value="Geyser">Geyser</option>
-            <option value="Water Purifier">Water Purifier</option>
-            <option value="General">General/Tools</option>
+            <option value="AC Compressor / Copper">AC Parts</option>
+            <option value="Fridge Gas / Overload">Fridge Parts</option>
+            <option value="Washing Machine Pump / Motor">Washing Machine Parts</option>
+            <option value="General Tools / Consumables">General Tools</option>
+            <option value="Other Parts">Other Parts</option>
           </select>
         </div>
         <div>
-          <label>Purchase Amount (₹)</label>
-          <input type="number" id="partAmount" placeholder="e.g. 1500">
+          <label>Total Purchase Cost (₹)</label>
+          <input type="number" id="partCost" placeholder="e.g. 1500">
         </div>
         <div>
           <label>Purchased / Paid By</label>
-          <select id="partPurchaser">
+          <select id="partBuyer" onchange="togglePartCustomInvestment()">
             <option value="Both (50-50)">Both (50% Nayan - 50% Ashid)</option>
             <option value="Nayan Gain">Nayan Gain Only</option>
             <option value="Ashid Bose">Ashid Bose Only</option>
+            <option value="Custom">Custom Split</option>
           </select>
+        </div>
+        <div id="partNayanCustomBox" style="display:none;">
+          <label>Nayan Paid (₹)</label>
+          <input type="number" id="partNayanCustomAmount" placeholder="e.g. 1000">
+        </div>
+        <div id="partAshidCustomBox" style="display:none;">
+          <label>Ashid Paid (₹)</label>
+          <input type="number" id="partAshidCustomAmount" placeholder="e.g. 500">
         </div>
         <div>
           <label>Supplier / Shop Name</label>
-          <input type="text" id="partSupplier" placeholder="e.g. Kolkata Electronics">
+          <input type="text" id="partSupplier" placeholder="Local Market / Vendor">
         </div>
       </div>
-      <button class="add-btn" onclick="savePartItem()" id="partSaveBtn">Save Purchase Record</button>
-      <button class="cancel-btn" onclick="resetPartPartForm()" id="partCancelBtn">Cancel</button>
+      <button class="add-btn" onclick="savePartItem()" id="partSaveBtn">Save Spare Parts Record</button>
+      <button class="cancel-btn" onclick="resetPartForm()" id="partCancelBtn">Cancel</button>
     </div>
 
     <div class="table-box">
       <div class="table-header">
-        <h2 style="font-size: 18px;">🛒 Spare Parts Purchase History</h2>
-        <input type="text" class="search" id="partSearch" placeholder="🔍 Search parts..." onkeyup="renderPartLocally()">
+        <h2 style="font-size: 18px;">🧾 Spare Parts Purchase Records</h2>
+        <input type="text" class="search" id="partSearch" placeholder="🔍 Search spare parts..." onkeyup="renderPartsLocally()">
       </div>
       <table>
         <thead>
@@ -858,7 +860,7 @@ th{
             <th>Part Name</th>
             <th>Category</th>
             <th>Total Cost</th>
-            <th>Purchased By</th>
+            <th>Payment Split Details</th>
             <th>Supplier</th>
             <th>Actions</th>
           </tr>
@@ -868,98 +870,50 @@ th{
     </div>
   </div>
 
-  </div>
-</div>
+  </div> <!-- End Container -->
+</div> <!-- End App Container -->
 
 <script>
-// --- FIREBASE CONFIGURATION ---
+// Firebase Configuration (Replace with your actual Firebase project settings)
 const firebaseConfig = {
-  apiKey: "AIzaSyDummyKeyForNGCoolingSolution",
-  authDomain: "ng-cooling-solution.firebaseapp.com",
-  databaseURL: "https://ng-cooling-solution-default-rtdb.firebaseio.com",
-  projectId: "ng-cooling-solution",
-  storageBucket: "ng-cooling-solution.appspot.com",
-  messagingSenderId: "1234567890",
-  appId: "1:1234567890:web:abcdef"
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_AUTH_DOMAIN",
+  databaseURL: "YOUR_DATABASE_URL",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
 };
 
-try {
-  firebase.initializeApp(firebaseConfig);
-} catch(e) {
-  console.log("Firebase already initialized.");
-}
-
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-let inventory = [];
-let services = [];
-let parts = [];
+let inventoryData = [];
+let serviceData = [];
+let partsData = [];
 
-let editIndex = null;
-let editServiceIndex = null;
-let editPartIndex = null;
-
-document.getElementById('date').valueAsDate = new Date();
-document.getElementById('srvDate').valueAsDate = new Date();
-document.getElementById('partDate').valueAsDate = new Date();
-
-// Check if already logged in previously
-window.onload = function() {
-  if (localStorage.getItem('ng_is_logged_in') === 'true') {
-    document.getElementById('loginOverlay').style.display = 'none';
-    document.getElementById('appContainer').style.display = 'block';
-    initRealtimeListeners();
-  }
-};
-
-// --- Login Validation ---
+// Login Function
 function checkLogin() {
-  const user = document.getElementById('loginUser').value.trim();
-  const pass = document.getElementById('loginPass').value.trim();
-  const errorBox = document.getElementById('loginError');
-
-  if (user === 'ng' && pass === '0000') {
-    localStorage.setItem('ng_is_logged_in', 'true');
+  const user = document.getElementById('loginUser').value;
+  const pass = document.getElementById('loginPass').value;
+  
+  if (user === "admin" && pass === "ngcooling123") {
     document.getElementById('loginOverlay').style.display = 'none';
     document.getElementById('appContainer').style.display = 'block';
-    initRealtimeListeners();
+    initializeAppdata();
   } else {
-    errorBox.style.display = 'block';
+    document.getElementById('loginError').style.display = 'block';
   }
 }
 
-// --- Logout Function ---
 function logout() {
-  localStorage.removeItem('ng_is_logged_in');
-  document.getElementById('loginUser').value = '';
-  document.getElementById('loginPass').value = '';
-  document.getElementById('loginError').style.display = 'none';
   document.getElementById('appContainer').style.display = 'none';
   document.getElementById('loginOverlay').style.display = 'flex';
+  document.getElementById('loginUser').value = '';
+  document.getElementById('loginPass').value = '';
 }
 
-// --- Realtime Cloud Sync Listeners ---
-function initRealtimeListeners() {
-  db.ref('ng_inventory').on('value', (snapshot) => {
-    const data = snapshot.val();
-    inventory = data ? Object.values(data) : [];
-    renderDataLocally();
-  });
-
-  db.ref('ng_services').on('value', (snapshot) => {
-    const data = snapshot.val();
-    services = data ? Object.values(data) : [];
-    renderServiceLocally();
-  });
-
-  db.ref('ng_parts').on('value', (snapshot) => {
-    const data = snapshot.val();
-    parts = data ? Object.values(data) : [];
-    renderPartLocally();
-  });
-}
-
-// --- Navigation Tabs Logic ---
 function switchPage(pageId, btn) {
   document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -968,453 +922,382 @@ function switchPage(pageId, btn) {
   btn.classList.add('active');
 }
 
-// --- PAGE 1: Buy & Sell Logic ---
+// WhatsApp Notification Integration (Number: 7439160014)
+function sendWhatsAppNotification(message) {
+  const phoneNumber = "917439160014"; 
+  const encodedMessage = encodeURIComponent(message);
+  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+  window.open(whatsappUrl, '_blank');
+}
+
 function toggleOtherProductInput() {
-  const productSelect = document.getElementById('product').value;
-  const otherBox = document.getElementById('otherProductBox');
-  otherBox.style.display = (productSelect === 'Other') ? 'block' : 'none';
+  const prod = document.getElementById('product').value;
+  document.getElementById('otherProductBox').style.display = (prod === 'Other') ? 'block' : 'none';
 }
 
 function toggleCustomInvestment() {
-  const investorVal = document.getElementById('investor').value;
-  const nayanBox = document.getElementById('nayanCustomBox');
-  const ashidBox = document.getElementById('ashidCustomBox');
-
-  if (investorVal === 'Custom') {
-    nayanBox.style.display = 'block';
-    ashidBox.style.display = 'block';
-  } else {
-    nayanBox.style.display = 'none';
-    ashidBox.style.display = 'none';
-  }
+  const inv = document.getElementById('investor').value;
+  const showCustom = (inv === 'Custom');
+  document.getElementById('nayanCustomBox').style.display = showCustom ? 'block' : 'none';
+  document.getElementById('ashidCustomBox').style.display = showCustom ? 'block' : 'none';
 }
 
-function renderDataLocally() {
-  const tbody = document.getElementById('inventoryList');
-  const searchQuery = document.getElementById('search').value.toLowerCase();
-  tbody.innerHTML = '';
+function togglePartCustomInvestment() {
+  const inv = document.getElementById('partBuyer').value;
+  const showCustom = (inv === 'Custom');
+  document.getElementById('partNayanCustomBox').style.display = showCustom ? 'block' : 'none';
+  document.getElementById('partAshidCustomBox').style.display = showCustom ? 'block' : 'none';
+}
 
-  let totalCostSum = 0;
-  let totalSalesSum = 0;
-  let totalProfitSum = 0;
-  let inStockCostSum = 0;
-
-  let nayanTotalInvest = 0;
-  let ashidTotalInvest = 0;
-  let nayanTotalProfit = 0;
-  let ashidTotalProfit = 0;
-
-  inventory.forEach((item, index) => {
-    const totalCost = Number(item.buyPrice) + Number(item.transport) + Number(item.repair);
-    const profit = item.status === 'Sold' ? Number(item.sellPrice) - totalCost : 0;
-    const partnerProfitShare = item.status === 'Sold' ? profit / 2 : 0;
-
-    let investorDisplay = item.investor;
-    let nayanItemInvest = 0;
-    let ashidItemInvest = 0;
-
-    if (item.investor === 'Nayan Gain') {
-      nayanItemInvest = totalCost;
-    } else if (item.investor === 'Ashid Bose') {
-      ashidItemInvest = totalCost;
-    } else if (item.investor === 'Custom') {
-      nayanItemInvest = Number(item.nayanCustomAmount) || 0;
-      ashidItemInvest = Number(item.ashidCustomAmount) || 0;
-      investorDisplay = `Custom (N: ₹${nayanItemInvest} / A: ₹${ashidItemInvest})`;
-    } else {
-      nayanItemInvest = totalCost / 2;
-      ashidItemInvest = totalCost / 2;
-    }
-
-    nayanTotalInvest += nayanItemInvest;
-    ashidTotalInvest += ashidItemInvest;
-    totalCostSum += totalCost;
-
-    if (item.status === 'Sold') {
-      totalSalesSum += Number(item.sellPrice);
-      totalProfitSum += profit;
-      nayanTotalProfit += partnerProfitShare;
-      ashidTotalProfit += partnerProfitShare;
-    } else {
-      inStockCostSum += totalCost;
-    }
-
-    const itemCompany = item.company || '-';
-    const displayProduct = item.product === 'Other' ? (item.otherProduct || 'Other') : item.product;
-
-    if (
-      displayProduct.toLowerCase().includes(searchQuery) || 
-      itemCompany.toLowerCase().includes(searchQuery) ||
-      item.status.toLowerCase().includes(searchQuery) ||
-      investorDisplay.toLowerCase().includes(searchQuery)
-    ) {
-      const statusClass = item.status === 'In Stock' ? 'stock' : 'sold';
-      const profitClass = profit >= 0 ? 'profit' : 'loss';
-
-      tbody.innerHTML += `
-        <tr>
-          <td>${item.date}</td>
-          <td><strong>${displayProduct}</strong></td>
-          <td>${itemCompany}</td>
-          <td>${investorDisplay}</td>
-          <td>₹${totalCost}</td>
-          <td>₹${item.sellPrice || 0}</td>
-          <td class="${profitClass}">₹${item.status === 'Sold' ? profit : 0}</td>
-          <td class="${profitClass}">₹${partnerProfitShare}</td>
-          <td class="${profitClass}">₹${partnerProfitShare}</td>
-          <td><span class="status ${statusClass}">${item.status}</span></td>
-          <td class="action">
-            <button class="edit" onclick="editItem(${index})">Edit</button>
-            <button class="delete" onclick="deleteItem(${index})">Delete</button>
-          </td>
-        </tr>
-      `;
-    }
+function initializeAppdata() {
+  db.ref('ng_cooling/inventory').on('value', (snapshot) => {
+    const data = snapshot.val();
+    inventoryData = data ? Object.values(data) : [];
+    renderDataLocally();
   });
 
-  const recoveryPercent = totalCostSum > 0 ? Math.min(Math.round((totalSalesSum / totalCostSum) * 100), 100) : 0;
-  document.getElementById('progressBar').style.width = recoveryPercent + '%';
-  document.getElementById('recoveryPercent').innerText = `Capital Recovered: ${recoveryPercent}%`;
-  document.getElementById('stockValue').innerText = `In-Stock Capital: ₹${inStockCostSum}`;
+  db.ref('ng_cooling/services').on('value', (snapshot) => {
+    const data = snapshot.val();
+    serviceData = data ? Object.values(data) : [];
+    renderServiceLocally();
+  });
 
-  document.getElementById('totalItems').innerText = inventory.length;
-  document.getElementById('totalCost').innerText = '₹' + totalCostSum;
-  document.getElementById('totalSales').innerText = '₹' + totalSalesSum;
-  document.getElementById('totalProfit').innerText = '₹' + totalProfitSum;
-
-  document.getElementById('nayanInvest').innerText = 'Invested: ₹' + nayanTotalInvest;
-  document.getElementById('nayanProfit').innerText = 'Profit Share: ₹' + nayanTotalProfit;
-  document.getElementById('ashidInvest').innerText = 'Invested: ₹' + ashidTotalInvest;
-  document.getElementById('ashidProfit').innerText = 'Profit Share: ₹' + ashidTotalProfit;
+  db.ref('ng_cooling/parts').on('value', (snapshot) => {
+    const data = snapshot.val();
+    partsData = data ? Object.values(data) : [];
+    renderPartsLocally();
+  });
 }
 
+// Save Product Inventory
 function saveItem() {
-  const date = document.getElementById('date').value;
-  const product = document.getElementById('product').value;
-  const otherProduct = document.getElementById('otherProduct').value;
-  const company = document.getElementById('company').value;
-  const buyPrice = document.getElementById('buyPrice').value;
-  const transport = document.getElementById('transport').value || 0;
-  const repair = document.getElementById('repair').value || 0;
-  const investor = document.getElementById('investor').value;
-  const nayanCustomAmount = document.getElementById('nayanCustomAmount').value || 0;
-  const ashidCustomAmount = document.getElementById('ashidCustomAmount').value || 0;
-  const sellPrice = document.getElementById('sellPrice').value || 0;
+  const date = document.getElementById('date').value || new Date().toISOString().split('T')[0];
+  let product = document.getElementById('product').value;
+  if (product === 'Other') {
+    product = document.getElementById('otherProduct').value || 'Other Item';
+  }
+  const company = document.getElementById('company').value || 'General';
+  const buyPrice = parseFloat(document.getElementById('buyPrice').value) || 0;
+  const transport = parseFloat(document.getElementById('transport').value) || 0;
+  const repair = parseFloat(document.getElementById('repair').value) || 0;
+  const sellPrice = parseFloat(document.getElementById('sellPrice').value) || 0;
   const status = document.getElementById('status').value;
+  const investorType = document.getElementById('investor').value;
 
-  if (!date || !buyPrice) {
-    alert('Date and Buy Price are required!');
-    return;
+  let nayanInv = 0;
+  let ashidInv = 0;
+  const totalCost = buyPrice + transport + repair;
+
+  if (investorType === 'Both (50-50)') {
+    nayanInv = totalCost / 2;
+    ashidInv = totalCost / 2;
+  } else if (investorType === 'Nayan Gain') {
+    nayanInv = totalCost;
+  } else if (investorType === 'Ashid Bose') {
+    ashidInv = totalCost;
+  } else if (investorType === 'Custom') {
+    nayanInv = parseFloat(document.getElementById('nayanCustomAmount').value) || 0;
+    ashidInv = parseFloat(document.getElementById('ashidCustomAmount').value) || 0;
   }
 
-  const itemData = { date, product, otherProduct, company, buyPrice, transport, repair, investor, nayanCustomAmount, ashidCustomAmount, sellPrice, status };
+  const netProfit = (status === 'Sold') ? (sellPrice - totalCost) : 0;
+  const nayanProfitShare = netProfit / 2;
+  const ashidProfitShare = netProfit / 2;
 
-  if (editIndex === null) {
-    inventory.push(itemData);
-  } else {
-    inventory[editIndex] = itemData;
-    editIndex = null;
-  }
+  const itemObj = {
+    id: Date.now(),
+    date, product, company, buyPrice, transport, repair, totalCost, sellPrice, status,
+    investorType, nayanInv, ashidInv, netProfit, nayanProfitShare, ashidProfitShare
+  };
 
-  db.ref('ng_inventory').set(inventory);
+  db.ref('ng_cooling/inventory/' + itemObj.id).set(itemObj);
+
+  const waMsg = `⚡ *NG Cooling Solution - New Product Entry* ⚡\n📅 Date: ${date}\n📦 Product: ${product} (${company})\n💰 Total Cost: ₹${totalCost}\n🏷️ Status: ${status}`;
+  sendWhatsAppNotification(waMsg);
+
   resetForm();
 }
 
-function editItem(index) {
-  const item = inventory[index];
-  document.getElementById('date').value = item.date;
-  document.getElementById('product').value = item.product || 'AC';
-  document.getElementById('otherProduct').value = item.otherProduct || '';
-  document.getElementById('company').value = item.company || '';
-  document.getElementById('buyPrice').value = item.buyPrice;
-  document.getElementById('transport').value = item.transport;
-  document.getElementById('repair').value = item.repair;
-  document.getElementById('investor').value = item.investor;
-  document.getElementById('nayanCustomAmount').value = item.nayanCustomAmount || '';
-  document.getElementById('ashidCustomAmount').value = item.ashidCustomAmount || '';
-  document.getElementById('sellPrice').value = item.sellPrice;
-  document.getElementById('status').value = item.status;
-
-  toggleOtherProductInput();
-  toggleCustomInvestment();
-
-  editIndex = index;
-  document.getElementById('formTitle').innerText = '✏️ Edit Product Record';
-  document.getElementById('saveBtn').innerText = 'Update Record';
-  document.getElementById('cancelBtn').style.display = 'inline-block';
-}
-
-function deleteItem(index) {
-  if (confirm('Delete this product entry?')) {
-    inventory.splice(index, 1);
-    db.ref('ng_inventory').set(inventory);
-  }
-}
-
 function resetForm() {
-  document.getElementById('date').valueAsDate = new Date();
-  document.getElementById('product').selectedIndex = 0;
-  document.getElementById('otherProduct').value = '';
+  document.getElementById('date').value = '';
   document.getElementById('company').value = '';
   document.getElementById('buyPrice').value = '';
   document.getElementById('transport').value = '0';
   document.getElementById('repair').value = '0';
-  document.getElementById('investor').value = 'Both (50-50)';
-  document.getElementById('nayanCustomAmount').value = '';
-  document.getElementById('ashidCustomAmount').value = '';
   document.getElementById('sellPrice').value = '';
-  document.getElementById('status').value = 'In Stock';
-
-  toggleOtherProductInput();
-  toggleCustomInvestment();
-
-  editIndex = null;
-  document.getElementById('formTitle').innerText = '➕ Product Entry & Investment';
-  document.getElementById('saveBtn').innerText = 'Save Record';
-  document.getElementById('cancelBtn').style.display = 'none';
+  document.getElementById('otherProduct').value = '';
+  document.getElementById('otherProductBox').style.display = 'none';
 }
 
-// --- PAGE 2: Service & Repairing Logic ---
-function renderServiceLocally() {
-  const tbody = document.getElementById('serviceList');
-  const searchQuery = document.getElementById('srvSearch').value.toLowerCase();
+function renderDataLocally() {
+  const tbody = document.getElementById('inventoryList');
   tbody.innerHTML = '';
+  
+  let totalCostSum = 0;
+  let totalSalesSum = 0;
+  let totalProfitSum = 0;
+  let nayanTotalInv = 0, nayanTotalProfit = 0;
+  let ashidTotalInv = 0, ashidTotalProfit = 0;
+  let stockValueSum = 0;
 
-  let srvTotalIncome = 0;
-  let srvTotalCost = 0;
-  let srvTotalProfit = 0;
+  const searchTerm = document.getElementById('search').value.toLowerCase();
 
-  services.forEach((srv, index) => {
-    const totalCharge = Number(srv.charge) || 0;
-    const partsCost = Number(srv.partsCost) || 0;
-    const techCharge = Number(srv.techCharge) || 0;
-    const totalExp = partsCost + techCharge;
-    const netProfit = srv.status === 'Completed' ? (totalCharge - totalExp) : 0;
-    const profitShare = srv.status === 'Completed' ? netProfit / 2 : 0;
+  inventoryData.filter(item => 
+    item.product.toLowerCase().includes(searchTerm) || 
+    item.company.toLowerCase().includes(searchTerm)
+  ).forEach((item) => {
+    totalCostSum += item.totalCost;
+    nayanTotalInv += item.nayanInv;
+    ashidTotalInv += item.ashidInv;
 
-    if (srv.status === 'Completed') {
-      srvTotalIncome += totalCharge;
-      srvTotalCost += totalExp;
-      srvTotalProfit += netProfit;
+    if (item.status === 'Sold') {
+      totalSalesSum += item.sellPrice;
+      totalProfitSum += item.netProfit;
+      nayanTotalProfit += item.nayanProfitShare;
+      ashidTotalProfit += item.ashidProfitShare;
+    } else {
+      stockValueSum += item.totalCost;
     }
 
-    if (
-      (srv.customer && srv.customer.toLowerCase().includes(searchQuery)) ||
-      (srv.category && srv.category.toLowerCase().includes(searchQuery)) ||
-      (srv.status && srv.status.toLowerCase().includes(searchQuery))
-    ) {
-      const statusClass = srv.status === 'Completed' ? 'completed' : 'pending';
-      const profitClass = netProfit >= 0 ? 'profit' : 'loss';
-
-      tbody.innerHTML += `
-        <tr>
-          <td>${srv.date}</td>
-          <td><strong>${srv.customer || 'Guest'}</strong></td>
-          <td>${srv.category}</td>
-          <td>₹${totalCharge}</td>
-          <td>₹${partsCost}</td>
-          <td>₹${techCharge}</td>
-          <td class="${profitClass}">₹${netProfit}</td>
-          <td class="${profitClass}">₹${profitShare}</td>
-          <td class="${profitClass}">₹${profitShare}</td>
-          <td><span class="status ${statusClass}">${srv.status}</span></td>
-          <td class="action">
-            <button class="edit" onclick="editServiceItem(${index})">Edit</button>
-            <button class="delete" onclick="deleteServiceItem(${index})">Delete</button>
-          </td>
-        </tr>
-      `;
-    }
+    const row = `<tr>
+      <td>${item.date}</td>
+      <td><strong>${item.product}</strong></td>
+      <td>${item.company}</td>
+      <td>${item.investorType}<br><small>N: ₹${item.nayanInv} | A: ₹${item.ashidInv}</small></td>
+      <td>₹${item.totalCost}</td>
+      <td>₹${item.sellPrice}</td>
+      <td class="${item.netProfit >= 0 ? 'profit' : 'loss'}">₹${item.netProfit}</td>
+      <td class="profit">₹${item.nayanProfitShare}</td>
+      <td class="profit">₹${item.ashidProfitShare}</td>
+      <td><span class="status ${item.status === 'Sold' ? 'sold' : 'stock'}">${item.status}</span></td>
+      <td class="action">
+        <button class="delete" onclick="deleteItem(${item.id})">Delete</button>
+      </td>
+    </tr>`;
+    tbody.innerHTML += row;
   });
 
-  document.getElementById('srvTotalCalls').innerText = services.length;
-  document.getElementById('srvTotalIncome').innerText = '₹' + srvTotalIncome;
-  document.getElementById('srvTotalCost').innerText = '₹' + srvTotalCost;
-  document.getElementById('srvTotalProfit').innerText = '₹' + srvTotalProfit;
+  document.getElementById('totalItems').innerText = inventoryData.length;
+  document.getElementById('totalCost').innerText = `₹${totalCostSum}`;
+  document.getElementById('totalSales').innerText = `₹${totalSalesSum}`;
+  document.getElementById('totalProfit').innerText = `₹${totalProfitSum}`;
+  
+  document.getElementById('nayanInvest').innerText = `Invested: ₹${nayanTotalInv}`;
+  document.getElementById('nayanProfit').innerText = `Profit Share: ₹${nayanTotalProfit}`;
+  document.getElementById('ashidInvest').innerText = `Invested: ₹${ashidTotalInv}`;
+  document.getElementById('ashidProfit').innerText = `Profit Share: ₹${ashidTotalProfit}`;
 
-  const partnerShare = srvTotalProfit / 2;
-  document.getElementById('srvNayanProfit').innerText = 'Profit Share: ₹' + partnerShare;
-  document.getElementById('srvAshidProfit').innerText = 'Profit Share: ₹' + partnerShare;
+  const recoveryPercent = totalCostSum > 0 ? Math.min(100, Math.round((totalSalesSum / totalCostSum) * 100)) : 0;
+  document.getElementById('progressBar').style.width = `${recoveryPercent}%`;
+  document.getElementById('recoveryPercent').innerText = `Capital Recovered: ${recoveryPercent}%`;
+  document.getElementById('stockValue').innerText = `In-Stock Capital: ₹${stockValueSum}`;
 }
 
+function deleteItem(id) {
+  if (confirm('Are you sure you want to delete this record?')) {
+    db.ref('ng_cooling/inventory/' + id).remove();
+  }
+}
+
+// Save Service Entry
 function saveServiceItem() {
-  const date = document.getElementById('srvDate').value;
-  const customer = document.getElementById('srvCustomer').value;
-  const category = document.getElementById('srvCategory').value;
-  const charge = document.getElementById('srvCharge').value;
-  const partsCost = document.getElementById('srvPartsCost').value || 0;
-  const techCharge = document.getElementById('srvTechCharge').value || 0;
-  const status = document.getElementById('srvStatus').value;
+  const srvDate = document.getElementById('srvDate').value || new Date().toISOString().split('T')[0];
+  const srvCustomer = document.getElementById('srvCustomer').value || 'General Customer';
+  const srvCategory = document.getElementById('srvCategory').value;
+  const srvCharge = parseFloat(document.getElementById('srvCharge').value) || 0;
+  const srvPartsCost = parseFloat(document.getElementById('srvPartsCost').value) || 0;
+  const srvTechCharge = parseFloat(document.getElementById('srvTechCharge').value) || 0;
+  const srvStatus = document.getElementById('srvStatus').value;
 
-  if (!date || !charge) {
-    alert('Date and Total Charge are required!');
-    return;
-  }
+  const totalExpense = srvPartsCost + srvTechCharge;
+  const netProfit = srvCharge - totalExpense;
+  const nayanProfit = netProfit / 2;
+  const ashidProfit = netProfit / 2;
 
-  const srvData = { date, customer, category, charge, partsCost, techCharge, status };
+  const serviceObj = {
+    id: Date.now(),
+    date: srvDate,
+    customer: srvCustomer,
+    category: srvCategory,
+    charge: srvCharge,
+    partsCost: srvPartsCost,
+    techCharge: srvTechCharge,
+    netProfit: netProfit,
+    nayanProfit: nayanProfit,
+    ashidProfit: ashidProfit,
+    status: srvStatus
+  };
 
-  if (editServiceIndex === null) {
-    services.push(srvData);
-  } else {
-    services[editServiceIndex] = srvData;
-    editServiceIndex = null;
-  }
+  db.ref('ng_cooling/services/' + serviceObj.id).set(serviceObj);
 
-  db.ref('ng_services').set(services);
+  const waMsg = `🛠️ *NG Cooling - Service Entry* 🛠️\n📅 Date: ${srvDate}\n👤 Customer: ${srvCustomer}\n🔧 Service: ${srvCategory}\n💵 Bill: ₹${srvCharge}\n📈 Net Profit: ₹${netProfit}`;
+  sendWhatsAppNotification(waMsg);
+
   resetServiceForm();
 }
 
-function editServiceItem(index) {
-  const srv = services[index];
-  document.getElementById('srvDate').value = srv.date;
-  document.getElementById('srvCustomer').value = srv.customer || '';
-  document.getElementById('srvCategory').value = srv.category;
-  document.getElementById('srvCharge').value = srv.charge;
-  document.getElementById('srvPartsCost').value = srv.partsCost;
-  document.getElementById('srvTechCharge').value = srv.techCharge;
-  document.getElementById('srvStatus').value = srv.status;
-
-  editServiceIndex = index;
-  document.getElementById('srvFormTitle').innerText = '✏️ Edit Service Record';
-  document.getElementById('srvSaveBtn').innerText = 'Update Service Record';
-  document.getElementById('srvCancelBtn').style.display = 'inline-block';
-}
-
-function deleteServiceItem(index) {
-  if (confirm('Delete this service entry?')) {
-    services.splice(index, 1);
-    db.ref('ng_services').set(services);
-  }
-}
-
 function resetServiceForm() {
-  document.getElementById('srvDate').valueAsDate = new Date();
+  document.getElementById('srvDate').value = '';
   document.getElementById('srvCustomer').value = '';
-  document.getElementById('srvCategory').selectedIndex = 0;
   document.getElementById('srvCharge').value = '';
   document.getElementById('srvPartsCost').value = '0';
   document.getElementById('srvTechCharge').value = '0';
-  document.getElementById('srvStatus').value = 'Completed';
-
-  editServiceIndex = null;
-  document.getElementById('srvFormTitle').innerText = '🛠️ Service & Repair Work Entry';
-  document.getElementById('srvSaveBtn').innerText = 'Save Service Record';
-  document.getElementById('srvCancelBtn').style.display = 'none';
 }
 
-// --- PAGE 3: Spare Parts Purchase Logic ---
-function renderPartLocally() {
-  const tbody = document.getElementById('partsList');
-  const searchQuery = document.getElementById('partSearch').value.toLowerCase();
+function renderServiceLocally() {
+  const tbody = document.getElementById('serviceList');
   tbody.innerHTML = '';
 
-  let partTotalSpentSum = 0;
-  let partNayanSpentSum = 0;
-  let partAshidSpentSum = 0;
+  let totalCalls = serviceData.length;
+  let totalIncome = 0;
+  let totalCostSum = 0;
+  let totalProfitSum = 0;
+  let nayanTotalServiceProfit = 0;
+  let ashidTotalServiceProfit = 0;
 
-  parts.forEach((p, index) => {
-    const cost = Number(p.amount) || 0;
-    partTotalSpentSum += cost;
+  const searchTerm = document.getElementById('srvSearch').value.toLowerCase();
 
-    if (p.purchaser === 'Nayan Gain') {
-      partNayanSpentSum += cost;
-    } else if (p.purchaser === 'Ashid Bose') {
-      partAshidSpentSum += cost;
-    } else {
-      partNayanSpentSum += cost / 2;
-      partAshidSpentSum += cost / 2;
-    }
+  serviceData.filter(item => 
+    item.customer.toLowerCase().includes(searchTerm) || 
+    item.category.toLowerCase().includes(searchTerm)
+  ).forEach((item) => {
+    totalIncome += item.charge;
+    totalCostSum += (item.partsCost + item.techCharge);
+    totalProfitSum += item.netProfit;
+    nayanTotalServiceProfit += item.nayanProfit;
+    ashidTotalServiceProfit += item.ashidProfit;
 
-    if (
-      (p.name && p.name.toLowerCase().includes(searchQuery)) ||
-      (p.category && p.category.toLowerCase().includes(searchQuery)) ||
-      (p.supplier && p.supplier.toLowerCase().includes(searchQuery))
-    ) {
-      tbody.innerHTML += `
-        <tr>
-          <td>${p.date}</td>
-          <td><strong>${p.name}</strong></td>
-          <td>${p.category}</td>
-          <td>₹${cost}</td>
-          <td>${p.purchaser}</td>
-          <td>${p.supplier || '-'}</td>
-          <td class="action">
-            <button class="edit" onclick="editPartItem(${index})">Edit</button>
-            <button class="delete" onclick="deletePartItem(${index})">Delete</button>
-          </td>
-        </tr>
-      `;
-    }
+    const row = `<tr>
+      <td>${item.date}</td>
+      <td><strong>${item.customer}</strong></td>
+      <td>${item.category}</td>
+      <td>₹${item.charge}</td>
+      <td>₹${item.partsCost}</td>
+      <td>₹${item.techCharge}</td>
+      <td class="${item.netProfit >= 0 ? 'profit' : 'loss'}">₹${item.netProfit}</td>
+      <td class="profit">₹${item.nayanProfit}</td>
+      <td class="profit">₹${item.ashidProfit}</td>
+      <td><span class="status ${item.status === 'Completed' ? 'completed' : 'pending'}">${item.status}</span></td>
+      <td class="action">
+        <button class="delete" onclick="deleteServiceItem(${item.id})">Delete</button>
+      </td>
+    </tr>`;
+    tbody.innerHTML += row;
   });
 
-  document.getElementById('partTotalItems').innerText = parts.length;
-  document.getElementById('partTotalSpent').innerText = '₹' + partTotalSpentSum;
-  document.getElementById('partNayanSpent').innerText = '₹' + partNayanSpentSum;
-  document.getElementById('partAshidSpent').innerText = '₹' + partAshidSpentSum;
+  document.getElementById('srvTotalCalls').innerText = totalCalls;
+  document.getElementById('srvTotalIncome').innerText = `₹${totalIncome}`;
+  document.getElementById('srvTotalCost').innerText = `₹${totalCostSum}`;
+  document.getElementById('srvTotalProfit').innerText = `₹${totalProfitSum}`;
+  document.getElementById('srvNayanProfit').innerText = `₹${nayanTotalServiceProfit}`;
+  document.getElementById('srvAshidProfit').innerText = `₹${ashidTotalServiceProfit}`;
 }
 
+function deleteServiceItem(id) {
+  if (confirm('Are you sure you want to delete this service record?')) {
+    db.ref('ng_cooling/services/' + id).remove();
+  }
+}
+
+// Save Spare Parts Entry
 function savePartItem() {
-  const date = document.getElementById('partDate').value;
-  const name = document.getElementById('partName').value;
-  const category = document.getElementById('partCategory').value;
-  const amount = document.getElementById('partAmount').value;
-  const purchaser = document.getElementById('partPurchaser').value;
-  const supplier = document.getElementById('partSupplier').value;
+  const partDate = document.getElementById('partDate').value || new Date().toISOString().split('T')[0];
+  const partName = document.getElementById('partName').value || 'Spare Item';
+  const partCategory = document.getElementById('partCategory').value;
+  const partCost = parseFloat(document.getElementById('partCost').value) || 0;
+  const buyerType = document.getElementById('partBuyer').value;
+  const partSupplier = document.getElementById('partSupplier').value || 'Market';
 
-  if (!date || !name || !amount) {
-    alert('Date, Part Name, and Amount are required!');
-    return;
+  let nayanPaid = 0;
+  let ashidPaid = 0;
+
+  if (buyerType === 'Both (50-50)') {
+    nayanPaid = partCost / 2;
+    ashidPaid = partCost / 2;
+  } else if (buyerType === 'Nayan Gain') {
+    nayanPaid = partCost;
+  } else if (buyerType === 'Ashid Bose') {
+    ashidPaid = partCost;
+  } else if (buyerType === 'Custom') {
+    nayanPaid = parseFloat(document.getElementById('partNayanCustomAmount').value) || 0;
+    ashidPaid = parseFloat(document.getElementById('partAshidCustomAmount').value) || 0;
   }
 
-  const partData = { date, name, category, amount, purchaser, supplier };
+  const partObj = {
+    id: Date.now(),
+    date: partDate,
+    name: partName,
+    category: partCategory,
+    cost: partCost,
+    buyerType: buyerType,
+    nayanPaid: nayanPaid,
+    ashidPaid: ashidPaid,
+    supplier: partSupplier
+  };
 
-  if (editPartIndex === null) {
-    parts.push(partData);
-  } else {
-    parts[editPartIndex] = partData;
-    editPartIndex = null;
-  }
+  db.ref('ng_cooling/parts/' + partObj.id).set(partObj);
 
-  db.ref('ng_parts').set(parts);
-  resetPartPartForm();
+  const waMsg = `🛒 *NG Cooling - Spare Parts Purchase* 🛒\n📅 Date: ${partDate}\n🔧 Part: ${partName}\n💵 Cost: ₹${partCost}\n👤 Paid By: ${buyerType}`;
+  sendWhatsAppNotification(waMsg);
+
+  resetPartForm();
 }
 
-function editPartItem(index) {
-  const p = parts[index];
-  document.getElementById('partDate').value = p.date;
-  document.getElementById('partName').value = p.name;
-  document.getElementById('partCategory').value = p.category;
-  document.getElementById('partAmount').value = p.amount;
-  document.getElementById('partPurchaser').value = p.purchaser;
-  document.getElementById('partSupplier').value = p.supplier || '';
-
-  editPartIndex = index;
-  document.getElementById('partFormTitle').innerText = '✏️ Edit Spare Part Record';
-  document.getElementById('partSaveBtn').innerText = 'Update Purchase Record';
-  document.getElementById('partCancelBtn').style.display = 'inline-block';
-}
-
-function deletePartItem(index) {
-  if (confirm('Delete this part purchase entry?')) {
-    parts.splice(index, 1);
-    db.ref('ng_parts').set(parts);
-  }
-}
-
-function resetPartPartForm() {
-  document.getElementById('partDate').valueAsDate = new Date();
+function resetPartForm() {
+  document.getElementById('partDate').value = '';
   document.getElementById('partName').value = '';
-  document.getElementById('partCategory').selectedIndex = 0;
-  document.getElementById('partAmount').value = '';
-  document.getElementById('partPurchaser').selectedIndex = 0;
+  document.getElementById('partCost').value = '';
   document.getElementById('partSupplier').value = '';
+  document.getElementById('partNayanCustomAmount').value = '';
+  document.getElementById('partAshidCustomAmount').value = '';
+  document.getElementById('partNayanCustomBox').style.display = 'none';
+  document.getElementById('partAshidCustomBox').style.display = 'none';
+}
 
-  editPartIndex = null;
-  document.getElementById('partFormTitle').innerText = '🛒 Spare Parts Purchase Entry';
-  document.getElementById('partSaveBtn').innerText = 'Save Purchase Record';
-  document.getElementById('partCancelBtn').style.display = 'none';
+function renderPartsLocally() {
+  const tbody = document.getElementById('partsList');
+  tbody.innerHTML = '';
+
+  let totalParts = partsData.length;
+  let totalSpent = 0;
+  let nayanSpentTotal = 0;
+  let ashidSpentTotal = 0;
+
+  const searchTerm = document.getElementById('partSearch').value.toLowerCase();
+
+  partsData.filter(item => 
+    item.name.toLowerCase().includes(searchTerm) || 
+    item.supplier.toLowerCase().includes(searchTerm)
+  ).forEach((item) => {
+    totalSpent += item.cost;
+    nayanSpentTotal += item.nayanPaid;
+    ashidSpentTotal += item.ashidPaid;
+
+    const row = `<tr>
+      <td>${item.date}</td>
+      <td><strong>${item.name}</strong></td>
+      <td>${item.category}</td>
+      <td>₹${item.cost}</td>
+      <td>${item.buyerType}<br><small>N: ₹${item.nayanPaid} | A: ₹${item.ashidPaid}</small></td>
+      <td>${item.supplier}</td>
+      <td class="action">
+        <button class="delete" onclick="deletePartItem(${item.id})">Delete</button>
+      </td>
+    </tr>`;
+    tbody.innerHTML += row;
+  });
+
+  document.getElementById('partTotalItems').innerText = totalParts;
+  document.getElementById('partTotalSpent').innerText = `₹${totalSpent}`;
+  document.getElementById('partNayanSpent').innerText = `₹${nayanSpentTotal}`;
+  document.getElementById('partAshidSpent').innerText = `₹${ashidSpentTotal}`;
+}
+
+function deletePartItem(id) {
+  if (confirm('Are you sure you want to delete this part record?')) {
+    db.ref('ng_cooling/parts/' + id).remove();
+  }
 }
 </script>
-
 </body>
 </html>
