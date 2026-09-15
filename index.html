@@ -3,84 +3,219 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N.G Cooling Solution - Customer Success</title>
+    <title>N.G Cooling Solution - Home Appliance Services</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f7f6;
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f8f9fa;
             color: #333;
         }
+        /* Header / Navbar */
         header {
-            background-color: #1e3a8a;
+            background: #ffffff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1e3a8a;
+        }
+        .logo span {
+            color: #25d366;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            margin-left: 20px;
+            font-weight: 600;
+            font-size: 14px;
+        }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
             text-align: center;
-            padding: 20px;
+            padding: 50px 20px;
         }
+        .hero h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 16px;
+            color: #e2e8f0;
+            margin-bottom: 20px;
+        }
+        /* Services Section */
         .container {
-            max-width: 800px;
+            max-width: 1100px;
             margin: 30px auto;
+            padding: 0 20px;
+        }
+        .section-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+            border-left: 4px solid #25d366;
+            padding-left: 10px;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        .service-card {
             background: white;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
-        h2 {
-            color: #1e3a8a;
             text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+            cursor: pointer;
         }
-        .success-card {
-            border-left: 5px solid #22c55e;
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .service-card h3 {
+            font-size: 15px;
+            color: #333;
+            margin-top: 10px;
+        }
+        /* Booking & WhatsApp Button */
+        .booking-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .btn-whatsapp {
+            display: inline-block;
+            background-color: #25d366;
+            color: white;
+            padding: 12px 30px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 30px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+        }
+        /* Customer Review Section */
+        .review-card {
             background: #f0fdf4;
+            border-left: 5px solid #25d366;
             padding: 15px;
-            margin: 15px 0;
-            border-radius: 4px;
+            border-radius: 6px;
+            margin-bottom: 15px;
         }
-        .customer-name {
+        .review-name {
             font-weight: bold;
             color: #15803d;
         }
-        .rating {
+        .stars {
             color: #f59e0b;
-            font-size: 18px;
+            font-size: 14px;
         }
-        .btn-whatsapp {
-            display: block;
-            width: 100%;
-            background-color: #25d366;
+        /* Footer */
+        footer {
+            background: #1e3a8a;
             color: white;
             text-align: center;
-            padding: 12px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
-            margin-top: 20px;
+            padding: 20px;
+            font-size: 13px;
+            margin-top: 40px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header -->
     <header>
-        <h1>N.G Cooling Solution</h1>
-        <p>Dum Dum, Kolkata - Trusted Appliance Service</p>
+        <div class="logo">N.G <span>Cooling</span></div>
+        <div class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Contact</a>
+        </div>
     </header>
 
-    <div class="container">
-        <h2>Customer Satisfaction & Service Complete</h2>
-        <p style="text-align: center;">Ami amar kothao ba service sesh kore kাস্টomer-er khushi dekhe anondito. Ekhan theke apnake customer review share korar option dewa holo.</p>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Professional Home Appliance Repair</h1>
+        <p>Expert AC, Fridge, Washing Machine Service in Dum Dum & Kolkata</p>
+    </div>
 
-        <div class="success-card">
-            <span class="customer-name">Subhajit Gain (Dum Dum)</span>
-            <div class="rating">★★★★★</div>
-            <p>"AC jet pump foam cleaning korar por cooling darun hochhe! Very professional service by N.G Cooling Solution. Great price!"</p>
+    <div class="container" id="services">
+        <div class="section-title">Our Expert Services</div>
+        
+        <!-- Services Grid -->
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>❄️ AC Service & Repair</h3>
+            </div>
+            <div class="service-card">
+                <h3>🧊 Refrigerator Repair</h3>
+            </div>
+            <div class="service-card">
+                <h3>🌀 Washing Machine</h3>
+            </div>
+            <div class="service-card">
+                <h3>🔥 Microwave Oven</h3>
+            </div>
+            <div class="service-card">
+                <h3>♨️ Geyser Repair</h3>
+            </div>
+            <div class="service-card">
+                <h3>💧 Water Purifier (RO)</h3>
+            </div>
         </div>
 
-        <a href="https://wa.me/91XXXXXXXXXX?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20an%20AC/Fridge%20service." class="btn-whatsapp">
-            💬 Book Service via WhatsApp
-        </a>
+        <!-- Quick Booking Section -->
+        <div class="booking-box">
+            <h2 style="font-size: 20px; color: #1e3a8a; margin-bottom: 10px;">Book a Service Instantly</h2>
+            <p style="color: #666; font-size: 14px;">Click below to send direct booking details to our technician via WhatsApp.</p>
+            <a href="https://wa.me/919000000000?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20an%20appliance%20repair%20service." class="btn-whatsapp" target="_blank">
+                💬 Book via WhatsApp
+            </a>
+        </div>
+
+        <!-- Customer Reviews -->
+        <div class="section-title" id="reviews">Customer Happy Reviews</div>
+        
+        <div class="review-card">
+            <span class="review-name">Subhajit Gain (Dum Dum)</span>
+            <div class="stars">★★★★★</div>
+            <p style="font-size: 14px; margin-top: 5px;">"AC jet pump foam cleaning korar por cooling darun hochhe! Very professional service."</p>
+        </div>
+
+        <div class="review-card">
+            <span class="review-name">Amit Roy (Kolkata)</span>
+            <div class="stars">★★★★★</div>
+            <p style="font-size: 14px; margin-top: 5px;">"Fridge compressor issue solve koreche khub kom somoye. Great pricing and polite technician!"</p>
+        </div>
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 N.G Cooling Solution | Dum Dum, Kolkata | All Rights Reserved</p>
+    </footer>
 
 </body>
 </html>
