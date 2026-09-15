@@ -277,31 +277,8 @@
             <span class="close-btn" onclick="closeServiceModal()">&times;</span>
             <h2 id="modalTitle" style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px;">Service Options</h2>
             
-            <div class="option-item">
-                <div class="option-details">
-                    <h4 id="serviceName1">Jet Pump Deep Cleaning</h4>
-                    <p>Complete foam & high-pressure water wash.</p>
-                    <div class="option-price">₹499</div>
-                </div>
-                <a id="whatsappBtn1" href="#" class="btn-book-now" target="_blank">Book WhatsApp</a>
-            </div>
-
-            <div class="option-item">
-                <div class="option-details">
-                    <h4 id="serviceName2">No Cooling / Issue Check</h4>
-                    <p>Inspection & diagnosis of the cooling problem.</p>
-                    <div class="option-price">₹199</div>
-                </div>
-                <a id="whatsappBtn2" href="#" class="btn-book-now" target="_blank">Book WhatsApp</a>
-            </div>
-
-            <div class="option-item">
-                <div class="option-details">
-                    <h4 id="serviceName3">General Repair</h4>
-                    <p>Expert repairing and component fixing.</p>
-                    <div class="option-price">₹199</div>
-                </div>
-                <a id="whatsappBtn3" href="#" class="btn-book-now" target="_blank">Book WhatsApp</a>
+            <div id="modalOptionsContainer">
+                <!-- Dynamically populated options -->
             </div>
         </div>
     </div>
@@ -311,17 +288,61 @@
     </footer>
 
     <script>
-        const whatsappNumber = "7439160013";
+        const whatsappNumber = "7439160014";
 
         function openServiceModal(serviceName) {
             document.getElementById('modalTitle').innerText = serviceName + " - Options";
-            
-            // Set WhatsApp links with pre-filled message
-            document.getElementById('whatsappBtn1').href = `https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Jet%20Pump%20Deep%20Cleaning%20(₹499).`;
-            
-            document.getElementById('whatsappBtn2').href = `https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20No%20Cooling%20Issue%20(₹199).`;
-            
-            document.getElementById('whatsappBtn3').href = `https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Repair%20Service%20(₹199).`;
+            let container = document.getElementById('modalOptionsContainer');
+            container.innerHTML = "";
+
+            if (serviceName === 'AC Service & Repair') {
+                container.innerHTML = `
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>Jet Pump Deep Cleaning</h4>
+                            <p>Complete foam & high-pressure water wash.</p>
+                            <div class="option-price">₹499</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*AC%20Service*%20-%20Jet%20Pump%20Deep%20Cleaning%20(%E2%82%B9499)." class="btn-book-now" target="_blank">Book WhatsApp</a>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>No Cooling / Issue Check</h4>
+                            <p>Inspection & diagnosis of the cooling problem.</p>
+                            <div class="option-price">₹199</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*AC%20Service*%20-%20No%20Cooling%20Issue%20(%E2%82%B9199)." class="btn-book-now" target="_blank">Book WhatsApp</a>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>General Repair</h4>
+                            <p>Expert repairing and component fixing.</p>
+                            <div class="option-price">₹199</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*AC%20Service*%20-%20General%20Repair%20(%E2%82%B9199)." class="btn-book-now" target="_blank">Book WhatsApp</a>
+                    </div>
+                `;
+            } else {
+                // For Refrigerator, Washing Machine, Microwave, Geyser, Water Purifier
+                container.innerHTML = `
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>Service Charge</h4>
+                            <p>Complete diagnosis and servicing by expert technician.</p>
+                            <div class="option-price">₹499</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Service%20Charge%20(%E2%82%B9499)." class="btn-book-now" target="_blank">Book WhatsApp</a>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>Repair Charge</h4>
+                            <p>Professional repair service for breakdown issues.</p>
+                            <div class="option-price">₹199</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Repair%20Charge%20(%E2%82%B9199)." class="btn-book-now" target="_blank">Book WhatsApp</a>
+                    </div>
+                `;
+            }
 
             document.getElementById('serviceModal').style.display = 'flex';
         }
@@ -330,7 +351,6 @@
             document.getElementById('serviceModal').style.display = 'none';
         }
 
-        // Close modal when clicking outside content
         window.onclick = function(event) {
             let modal = document.getElementById('serviceModal');
             if (event.target == modal) {
