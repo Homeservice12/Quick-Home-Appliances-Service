@@ -15,7 +15,6 @@
             background-color: #f8f9fa;
             color: #333;
         }
-        /* Header / Navbar */
         header {
             background: #ffffff;
             padding: 15px 5%;
@@ -38,184 +37,307 @@
         .nav-links a {
             text-decoration: none;
             color: #333;
-            margin-left: 20px;
+            margin-left: 15px;
             font-weight: 600;
             font-size: 14px;
         }
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #1e3a8a, #3b82f6);
             color: white;
             text-align: center;
-            padding: 50px 20px;
+            padding: 40px 20px;
         }
         .hero h1 {
-            font-size: 28px;
-            margin-bottom: 10px;
+            font-size: 24px;
+            margin-bottom: 8px;
         }
         .hero p {
-            font-size: 16px;
+            font-size: 14px;
             color: #e2e8f0;
-            margin-bottom: 20px;
         }
-        /* Services Section */
         .container {
             max-width: 1100px;
-            margin: 30px auto;
-            padding: 0 20px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
         .section-title {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             color: #1e3a8a;
             border-left: 4px solid #25d366;
-            padding-left: 10px;
+            padding-left: 8px;
         }
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 30px;
         }
         .service-card {
             background: white;
-            padding: 20px;
+            padding: 18px 10px;
             text-align: center;
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            transition: transform 0.2s;
             cursor: pointer;
+            transition: transform 0.2s;
         }
-        .service-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .service-card:active {
+            transform: scale(0.97);
         }
         .service-card h3 {
-            font-size: 15px;
+            font-size: 14px;
             color: #333;
-            margin-top: 10px;
+            margin-top: 8px;
         }
-        /* Booking & WhatsApp Button */
-        .booking-box {
+        /* Modal / Sub-Page Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: flex-end;
+        }
+        .modal-content {
             background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            text-align: center;
-            margin-bottom: 40px;
+            width: 100%;
+            max-height: 85vh;
+            border-radius: 20px 20px 0 0;
+            padding: 20px;
+            overflow-y: auto;
+            animation: slideUp 0.3s ease-out;
         }
-        .btn-whatsapp {
-            display: inline-block;
-            background-color: #25d366;
-            color: white;
-            padding: 12px 30px;
-            text-decoration: none;
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+        .close-btn {
+            float: right;
+            font-size: 24px;
+            font-weight: bold;
+            color: #aaa;
+            cursor: pointer;
+        }
+        .option-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .option-details h4 {
+            font-size: 15px;
+            color: #1e3a8a;
+            margin-bottom: 4px;
+        }
+        .option-details p {
+            font-size: 13px;
+            color: #666;
+        }
+        .option-price {
             font-size: 16px;
             font-weight: bold;
-            border-radius: 30px;
-            margin-top: 15px;
-            box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+            color: #15803d;
+            margin-bottom: 8px;
         }
-        /* Customer Review Section */
-        .review-card {
-            background: #f0fdf4;
-            border-left: 5px solid #25d366;
+        .btn-book-now {
+            background-color: #25d366;
+            color: white;
+            border: none;
+            padding: 8px 14px;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 13px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        /* Reviews Section */
+        .rating-summary {
+            background: white;
             padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .rating-summary h2 {
+            color: #1e3a8a;
+            font-size: 22px;
+        }
+        .review-card {
+            background: white;
+            padding: 12px;
             border-radius: 6px;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
         .review-name {
             font-weight: bold;
+            font-size: 13px;
             color: #15803d;
         }
         .stars {
             color: #f59e0b;
-            font-size: 14px;
+            font-size: 13px;
         }
-        /* Footer */
         footer {
             background: #1e3a8a;
             color: white;
             text-align: center;
-            padding: 20px;
-            font-size: 13px;
-            margin-top: 40px;
+            padding: 15px;
+            font-size: 12px;
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Header -->
     <header>
         <div class="logo">N.G <span>Cooling</span></div>
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#reviews">Reviews</a>
-            <a href="#contact">Contact</a>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <div class="hero">
-        <h1>Professional Home Appliance Repair</h1>
-        <p>Expert AC, Fridge, Washing Machine Service in Dum Dum & Kolkata</p>
+        <h1>N.G Cooling Solution</h1>
+        <p>Expert Appliance Repair & Service in Dum Dum & Kolkata</p>
     </div>
 
     <div class="container" id="services">
-        <div class="section-title">Our Expert Services</div>
+        <div class="section-title">Select Appliance Service</div>
         
-        <!-- Services Grid -->
         <div class="services-grid">
-            <div class="service-card">
-                <h3>❄️ AC Service & Repair</h3>
+            <div class="service-card" onclick="openServiceModal('AC Service & Repair')">
+                <span style="font-size: 28px;">❄️</span>
+                <h3>AC Service & Repair</h3>
             </div>
-            <div class="service-card">
-                <h3>🧊 Refrigerator Repair</h3>
+            <div class="service-card" onclick="openServiceModal('Refrigerator Repair')">
+                <span style="font-size: 28px;">🧊</span>
+                <h3>Refrigerator Repair</h3>
             </div>
-            <div class="service-card">
-                <h3>🌀 Washing Machine</h3>
+            <div class="service-card" onclick="openServiceModal('Washing Machine')">
+                <span style="font-size: 28px;">🌀</span>
+                <h3>Washing Machine</h3>
             </div>
-            <div class="service-card">
-                <h3>🔥 Microwave Oven</h3>
+            <div class="service-card" onclick="openServiceModal('Microwave Oven')">
+                <span style="font-size: 28px;">🔥</span>
+                <h3>Microwave Oven</h3>
             </div>
-            <div class="service-card">
-                <h3>♨️ Geyser Repair</h3>
+            <div class="service-card" onclick="openServiceModal('Geyser Repair')">
+                <span style="font-size: 28px;">♨️</span>
+                <h3>Geyser Repair</h3>
             </div>
-            <div class="service-card">
-                <h3>💧 Water Purifier (RO)</h3>
+            <div class="service-card" onclick="openServiceModal('Water Purifier (RO)')">
+                <span style="font-size: 28px;">💧</span>
+                <h3>Water Purifier</h3>
             </div>
         </div>
 
-        <!-- Quick Booking Section -->
-        <div class="booking-box">
-            <h2 style="font-size: 20px; color: #1e3a8a; margin-bottom: 10px;">Book a Service Instantly</h2>
-            <p style="color: #666; font-size: 14px;">Click below to send direct booking details to our technician via WhatsApp.</p>
-            <a href="https://wa.me/919000000000?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20an%20appliance%20repair%20service." class="btn-whatsapp" target="_blank">
-                💬 Book via WhatsApp
-            </a>
+        <!-- Rating Summary -->
+        <div class="rating-summary">
+            <h2>4.9 ★★★★★</h2>
+            <p style="color: #666; font-size: 13px; margin-top: 4px;">Based on 33 Customer Reviews (30 Five-Star & 3 Four-Star)</p>
         </div>
 
-        <!-- Customer Reviews -->
-        <div class="section-title" id="reviews">Customer Happy Reviews</div>
+        <div class="section-title" id="reviews">Customer Reviews</div>
         
         <div class="review-card">
-            <span class="review-name">Subhajit Gain (Dum Dum)</span>
+            <span class="review-name">Subhajit Gain</span>
             <div class="stars">★★★★★</div>
-            <p style="font-size: 14px; margin-top: 5px;">"AC jet pump foam cleaning korar por cooling darun hochhe! Very professional service."</p>
+            <p style="font-size: 13px; margin-top: 4px;">"Jet pump deep cleaning korar por cooling darun hochhe! Very professional service."</p>
         </div>
 
         <div class="review-card">
-            <span class="review-name">Amit Roy (Kolkata)</span>
+            <span class="review-name">Amit Roy</span>
             <div class="stars">★★★★★</div>
-            <p style="font-size: 14px; margin-top: 5px;">"Fridge compressor issue solve koreche khub kom somoye. Great pricing and polite technician!"</p>
+            <p style="font-size: 13px; margin-top: 4px;">"Quick response and solved my fridge cooling issue cleanly. Best service in Dum Dum."</p>
+        </div>
+
+        <div class="review-card">
+            <span class="review-name">Poulami Das</span>
+            <div class="stars">★★★★☆</div>
+            <p style="font-size: 13px; margin-top: 4px;">"Good service for washing machine repair, polite technician."</p>
         </div>
     </div>
 
-    <!-- Footer -->
+    <!-- Service Details Modal / Sub-Page -->
+    <div id="serviceModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeServiceModal()">&times;</span>
+            <h2 id="modalTitle" style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px;">Service Options</h2>
+            
+            <div class="option-item">
+                <div class="option-details">
+                    <h4 id="serviceName1">Jet Pump Deep Cleaning</h4>
+                    <p>Complete foam & high-pressure water wash.</p>
+                    <div class="option-price">₹499</div>
+                </div>
+                <a id="whatsappBtn1" href="#" class="btn-book-now" target="_blank">Book WhatsApp</a>
+            </div>
+
+            <div class="option-item">
+                <div class="option-details">
+                    <h4 id="serviceName2">No Cooling / Issue Check</h4>
+                    <p>Inspection & diagnosis of the cooling problem.</p>
+                    <div class="option-price">₹199</div>
+                </div>
+                <a id="whatsappBtn2" href="#" class="btn-book-now" target="_blank">Book WhatsApp</a>
+            </div>
+
+            <div class="option-item">
+                <div class="option-details">
+                    <h4 id="serviceName3">General Repair</h4>
+                    <p>Expert repairing and component fixing.</p>
+                    <div class="option-price">₹199</div>
+                </div>
+                <a id="whatsappBtn3" href="#" class="btn-book-now" target="_blank">Book WhatsApp</a>
+            </div>
+        </div>
+    </div>
+
     <footer>
-        <p>&copy; 2026 N.G Cooling Solution | Dum Dum, Kolkata | All Rights Reserved</p>
+        <p>&copy; 2026 N.G Cooling Solution | Dum Dum, Kolkata</p>
     </footer>
+
+    <script>
+        const whatsappNumber = "7439160013";
+
+        function openServiceModal(serviceName) {
+            document.getElementById('modalTitle').innerText = serviceName + " - Options";
+            
+            // Set WhatsApp links with pre-filled message
+            document.getElementById('whatsappBtn1').href = `https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Jet%20Pump%20Deep%20Cleaning%20(₹499).`;
+            
+            document.getElementById('whatsappBtn2').href = `https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20No%20Cooling%20Issue%20(₹199).`;
+            
+            document.getElementById('whatsappBtn3').href = `https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Repair%20Service%20(₹199).`;
+
+            document.getElementById('serviceModal').style.display = 'flex';
+        }
+
+        function closeServiceModal() {
+            document.getElementById('serviceModal').style.display = 'none';
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            let modal = document.getElementById('serviceModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 
 </body>
 </html>
