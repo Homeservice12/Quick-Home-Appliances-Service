@@ -206,6 +206,7 @@
         <div class="nav-links">
             <a href="#services">Services</a>
             <a href="#reviews">Reviews</a>
+            <a href="#" onclick="openServiceModal('Service Post-Check / Feedback & Support')">Post-Service</a>
         </div>
     </header>
 
@@ -242,6 +243,13 @@
                 <span style="font-size: 28px;">💧</span>
                 <h3>Water Purifier</h3>
             </div>
+        </div>
+
+        <!-- Post Service Quick Action Banner -->
+        <div style="background: #e6f4ea; border: 1px solid #ceead6; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
+            <h3 style="color: #137333; font-size: 16px; margin-bottom: 6px;">Already had a service done?</h3>
+            <p style="color: #444; font-size: 13px; margin-bottom: 10px;">Report any issues, share feedback, or check warranty status via WhatsApp.</p>
+            <button onclick="openServiceModal('Service Post-Check / Feedback & Support')" class="btn-book-now">Post-Service Support</button>
         </div>
 
         <!-- Rating Summary -->
@@ -320,6 +328,33 @@
                             <div class="option-price">₹199</div>
                         </div>
                         <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*AC%20Service*%20-%20General%20Repair%20(%E2%82%B9199)." class="btn-book-now" target="_blank">Book WhatsApp</a>
+                    </div>
+                `;
+            } else if (serviceName === 'Service Post-Check / Feedback & Support') {
+                container.innerHTML = `
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>Report Issue After Service</h4>
+                            <p>Same issue persisted or facing a new problem after technician visit.</p>
+                            <div class="option-price">Warranty Claim</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20Service%20jabar%20por%20ami%20ekti%20problem%20face%20korchi.%20Please%20help%20me%20with%20post-service%20support." class="btn-book-now" target="_blank">WhatsApp Support</a>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>Share Service Feedback</h4>
+                            <p>Rate your recent repair experience or leave a review text.</p>
+                            <div class="option-price">Feedback</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20Ami%20amar%20service%20er%20feedback%20share%20koraktey%20chai." class="btn-book-now" target="_blank">Share Feedback</a>
+                    </div>
+                    <div class="option-item">
+                        <div class="option-details">
+                            <h4>Follow-Up / Maintenance Request</h4>
+                            <p>Schedule a routine checkup or schedule maintenance call.</p>
+                            <div class="option-price">Follow-Up</div>
+                        </div>
+                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20need%20a%20follow-up%20maintenance%20service%20for%20my%20appliance." class="btn-book-now" target="_blank">Book Follow-Up</a>
                     </div>
                 `;
             } else {
