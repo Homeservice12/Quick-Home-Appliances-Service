@@ -1,405 +1,3410 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>N.G Cooling Solution - Home Appliance Services</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #f8f9fa;
-            color: #333;
-        }
-        header {
-            background: #ffffff;
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #1e3a8a;
-        }
-        .logo span {
-            color: #25d366;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            margin-left: 15px;
-            font-weight: 600;
-            font-size: 14px;
-        }
-        .hero {
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-        .hero h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
-        .hero p {
-            font-size: 14px;
-            color: #e2e8f0;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-        .section-title {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #1e3a8a;
-            border-left: 4px solid #25d366;
-            padding-left: 8px;
-        }
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-        .service-card {
-            background: white;
-            padding: 18px 10px;
-            text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .service-card:active {
-            transform: scale(0.97);
-        }
-        .service-card h3 {
-            font-size: 14px;
-            color: #333;
-            margin-top: 8px;
-        }
-        /* Modal / Sub-Page Styling */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            align-items: flex-end;
-        }
-        .modal-content {
-            background: white;
-            width: 100%;
-            max-height: 85vh;
-            border-radius: 20px 20px 0 0;
-            padding: 20px;
-            overflow-y: auto;
-            animation: slideUp 0.3s ease-out;
-        }
-        @keyframes slideUp {
-            from { transform: translateY(100%); }
-            to { transform: translateY(0); }
-        }
-        .close-btn {
-            float: right;
-            font-size: 24px;
-            font-weight: bold;
-            color: #aaa;
-            cursor: pointer;
-        }
-        .option-item {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 12px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .option-details h4 {
-            font-size: 15px;
-            color: #1e3a8a;
-            margin-bottom: 4px;
-        }
-        .option-details p {
-            font-size: 13px;
-            color: #666;
-        }
-        .option-price {
-            font-size: 15px;
-            font-weight: bold;
-            color: #15803d;
-            margin-bottom: 8px;
-        }
-        .btn-book-now {
-            background-color: #25d366;
-            color: white;
-            border: none;
-            padding: 8px 14px;
-            border-radius: 5px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 13px;
-            text-decoration: none;
-            display: inline-block;
-            white-space: nowrap;
-        }
-        .review-card {
-            background: white;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .review-name {
-            font-weight: bold;
-            font-size: 13px;
-            color: #15803d;
-        }
-        .stars {
-            color: #f59e0b;
-            font-size: 13px;
-        }
-        footer {
-            background: #1e3a8a;
-            color: white;
-            text-align: center;
-            padding: 15px;
-            font-size: 12px;
-            margin-top: 30px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>N.G Cooling Solution | 2026 Service & Repair</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,Segoe UI,sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    color:#172033;
+}
+
+/* HEADER */
+
+header{
+    background:#ffffff;
+    height:65px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 5%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.08);
+}
+
+.logo{
+    font-size:21px;
+    font-weight:800;
+    color:#075985;
+}
+
+.logo span{
+    color:#16a34a;
+}
+
+.header-btn{
+    background:#16a34a;
+    color:white;
+    padding:10px 15px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:bold;
+}
+
+/* HERO */
+
+.hero{
+    background:linear-gradient(135deg,#075985,#0284c7,#16a34a);
+    color:white;
+    text-align:center;
+    padding:45px 20px;
+}
+
+.hero h1{
+    font-size:29px;
+    margin-bottom:10px;
+}
+
+.hero p{
+    font-size:14px;
+    opacity:.95;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:rgba(255,255,255,.15);
+    border:1px solid rgba(255,255,255,.3);
+    padding:7px 14px;
+    border-radius:30px;
+    margin-top:15px;
+    font-size:12px;
+}
+
+/* CONTAINER */
+
+.container{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+    padding:25px 15px;
+}
+
+.section-title{
+    font-size:20px;
+    font-weight:800;
+    color:#075985;
+    margin-bottom:16px;
+}
+
+/* SERVICE GRID */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+}
+
+@media(min-width:700px){
+    .services-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+}
+
+.service-card{
+    background:white;
+    border-radius:15px;
+    padding:22px 12px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+    border:1px solid #e2e8f0;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.service-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(0,0,0,.12);
+}
+
+.service-icon{
+    font-size:38px;
+    margin-bottom:10px;
+}
+
+.service-card h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.service-card p{
+    color:#64748b;
+    font-size:11px;
+}
+
+/* SERVICE PAGE */
+
+.service-page{
+    display:none;
+}
+
+.page-header{
+    background:white;
+    padding:16px;
+    border-radius:12px;
+    margin-bottom:15px;
+    box-shadow:0 3px 12px rgba(0,0,0,.06);
+}
+
+.back-btn{
+    border:none;
+    background:#e0f2fe;
+    color:#075985;
+    padding:9px 13px;
+    border-radius:7px;
+    font-weight:bold;
+    cursor:pointer;
+    margin-bottom:12px;
+}
+
+.page-title{
+    font-size:22px;
+    font-weight:800;
+    color:#075985;
+}
+
+.page-subtitle{
+    color:#64748b;
+    font-size:13px;
+    margin-top:5px;
+}
+
+/* SEARCH */
+
+.search-box{
+    margin:15px 0;
+    display:flex;
+    gap:8px;
+}
+
+.search-box input{
+    width:100%;
+    padding:13px;
+    border:1px solid #cbd5e1;
+    border-radius:9px;
+    outline:none;
+    font-size:14px;
+}
+
+.search-box input:focus{
+    border-color:#0284c7;
+}
+
+/* CATEGORY */
+
+.category-tabs{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    padding-bottom:10px;
+    margin-bottom:15px;
+}
+
+.category-tabs button{
+    white-space:nowrap;
+    border:none;
+    background:#e2e8f0;
+    padding:9px 13px;
+    border-radius:20px;
+    cursor:pointer;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.category-tabs button.active{
+    background:#075985;
+    color:white;
+}
+
+/* RATE CARD */
+
+.rate-card{
+    background:white;
+    border-radius:12px;
+    margin-bottom:12px;
+    border:1px solid #e2e8f0;
+    overflow:hidden;
+    box-shadow:0 3px 10px rgba(0,0,0,.05);
+}
+
+.rate-category{
+    background:#075985;
+    color:white;
+    padding:11px 13px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.rate-row{
+    padding:13px;
+    border-bottom:1px solid #eef2f7;
+}
+
+.rate-row:last-child{
+    border-bottom:none;
+}
+
+.rate-name{
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.rate-info{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.price{
+    color:#15803d;
+    font-size:16px;
+    font-weight:800;
+}
+
+.labour{
+    color:#ea580c;
+    font-size:11px;
+    margin-top:3px;
+}
+
+.book-btn{
+    background:#16a34a;
+    color:white;
+    border:none;
+    border-radius:7px;
+    padding:8px 10px;
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* BOOKING */
+
+.booking-box{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:3000;
+    align-items:flex-end;
+}
+
+.booking-content{
+    background:white;
+    width:100%;
+    max-height:90vh;
+    overflow-y:auto;
+    border-radius:20px 20px 0 0;
+    padding:20px;
+}
+
+.booking-content h2{
+    color:#075985;
+    margin-bottom:15px;
+    font-size:20px;
+}
+
+.form-group{
+    margin-bottom:12px;
+}
+
+.form-group label{
+    display:block;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    padding:11px;
+    border:1px solid #cbd5e1;
+    border-radius:8px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:75px;
+}
+
+.booking-actions{
+    display:flex;
+    gap:8px;
+    margin-top:15px;
+}
+
+.whatsapp-btn{
+    flex:1;
+    border:none;
+    background:#16a34a;
+    color:white;
+    padding:13px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.cancel-btn{
+    border:none;
+    background:#e2e8f0;
+    padding:13px 18px;
+    border-radius:8px;
+}
+
+/* HISTORY */
+
+.history-box{
+    margin-top:25px;
+    background:white;
+    border-radius:12px;
+    padding:15px;
+}
+
+.history-item{
+    border-bottom:1px solid #e2e8f0;
+    padding:12px 0;
+}
+
+.history-item:last-child{
+    border-bottom:none;
+}
+
+.history-item strong{
+    color:#075985;
+}
+
+.history-item small{
+    color:#64748b;
+}
+
+/* FOOTER */
+
+footer{
+    margin-top:30px;
+    background:#082f49;
+    color:white;
+    text-align:center;
+    padding:25px 15px;
+    font-size:12px;
+}
+
+.footer-phone{
+    color:#4ade80;
+    font-size:18px;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+</style>
 </head>
+
 <body>
 
-    <header>
-        <div class="logo">N.G <span>Cooling</span></div>
-        <div class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#reviews">Reviews</a>
-            <a href="#" onclick="openServiceModal('Service Post-Check / Feedback & Support')">Post-Service</a>
-        </div>
-    </header>
+<header>
 
-    <div class="hero">
-        <h1>N.G Cooling Solution</h1>
-        <p>Expert Appliance Repair & Service in Dum Dum & Kolkata</p>
-    </div>
+<div class="logo">
+N.G <span>Cooling Solution</span>
+</div>
 
-    <div class="container" id="services">
-        <div class="section-title">Select Appliance Service & Rate Card</div>
-        
-        <div class="services-grid">
-            <div class="service-card" onclick="openServiceModal('AC Service & Repair')">
-                <span style="font-size: 28px;">❄️</span>
-                <h3>AC Service & Repair</h3>
-            </div>
-            <div class="service-card" onclick="openServiceModal('Refrigerator Repair')">
-                <span style="font-size: 28px;">🧊</span>
-                <h3>Refrigerator Repair</h3>
-            </div>
-            <div class="service-card" onclick="openServiceModal('Washing Machine')">
-                <span style="font-size: 28px;">🌀</span>
-                <h3>Washing Machine</h3>
-            </div>
-            <div class="service-card" onclick="openServiceModal('Microwave Oven')">
-                <span style="font-size: 28px;">🔥</span>
-                <h3>Microwave Oven</h3>
-            </div>
-            <div class="service-card" onclick="openServiceModal('Geyser Repair')">
-                <span style="font-size: 28px;">♨️</span>
-                <h3>Geyser Repair</h3>
-            </div>
-            <div class="service-card" onclick="openServiceModal('Water Purifier (RO)')">
-                <span style="font-size: 28px;">💧</span>
-                <h3>Water Purifier</h3>
-            </div>
-        </div>
+<a class="header-btn"
+href="https://wa.me/917439160014"
+target="_blank">
+WhatsApp
+</a>
 
-        <!-- Post Service Quick Action Banner -->
-        <div style="background: #e6f4ea; border: 1px solid #ceead6; padding: 15px; border-radius: 8px; text-align: center; margin-bottom: 20px;">
-            <h3 style="color: #137333; font-size: 16px; margin-bottom: 6px;">Already had a service done?</h3>
-            <p style="color: #444; font-size: 13px; margin-bottom: 10px;">Report any issues, share feedback, or check warranty status via WhatsApp.</p>
-            <button onclick="openServiceModal('Service Post-Check / Feedback & Support')" class="btn-book-now">Post-Service Support</button>
-        </div>
+</header>
 
-        <div class="section-title" id="reviews">Customer Reviews</div>
-        
-        <div class="review-card">
-            <span class="review-name">Subhajit Gain</span>
-            <div class="stars">★★★★★</div>
-            <p style="font-size: 13px; margin-top: 4px;">"Jet pump deep cleaning korar por cooling darun hochhe! Very professional service."</p>
-        </div>
 
-        <div class="review-card">
-            <span class="review-name">Amit Roy</span>
-            <div class="stars">★★★★★</div>
-            <p style="font-size: 13px; margin-top: 4px;">"Quick response and solved my fridge cooling issue cleanly. Best service in Dum Dum."</p>
-        </div>
+<section class="hero">
 
-        <div class="review-card">
-            <span class="review-name">Poulami Das</span>
-            <div class="stars">★★★★☆</div>
-            <p style="font-size: 13px; margin-top: 4px;">"Good service for washing machine repair, polite technician."</p>
-        </div>
-    </div>
+<h1>N.G Cooling Solution</h1>
 
-    <!-- Service Details Modal / Sub-Page -->
-    <div id="serviceModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeServiceModal()">&times;</span>
-            <h2 id="modalTitle" style="color: #1e3a8a; font-size: 18px; margin-bottom: 15px;">Service Options</h2>
-            
-            <div id="modalOptionsContainer">
-                <!-- Dynamically populated options -->
-            </div>
-        </div>
-    </div>
+<p>
+Professional Home Appliance Repair & Service
+</p>
 
-    <footer>
-        <p>&copy; 2026 N.G Cooling Solution | Dum Dum, Kolkata</p>
-    </footer>
+<div class="hero-badge">
+2026 Advanced Rate Card & Booking System
+</div>
 
-    <script>
-        const whatsappNumber = "7439160014";
+</section>
 
-        function openServiceModal(serviceName) {
-            document.getElementById('modalTitle').innerText = serviceName + " - Rate Card & Booking";
-            let container = document.getElementById('modalOptionsContainer');
-            container.innerHTML = "";
 
-            if (serviceName === 'AC Service & Repair') {
-                container.innerHTML = `
-                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Service & Installation</h3>
-                    <div class="option-item"><div class="option-details"><h4>Lite AC service</h4><p>Standard check and cleaning</p><div class="option-price">₹499</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Lite%20AC%20service%20(₹499)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Foam-jet AC service</h4><p>High quality foam wash</p><div class="option-price">₹599</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Foam-jet%20AC%20service%20(₹599)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>AC installation</h4><p>Complete split/window installation</p><div class="option-price">₹1699</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20AC%20installation%20(₹1699)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>AC uninstallation</h4><p>Safe uninstallation</p><div class="option-price">₹699</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20AC%20uninstallation%20(₹699)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Split AC Wall stand</h4><p>Durable outdoor wall bracket</p><div class="option-price">₹750</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Split%20AC%20Wall%20stand%20(₹750)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Anti-rust spray</h4><p>Avoid gas leaks</p><div class="option-price">₹249</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Anti-rust%20spray%20(₹249)" class="btn-book-now" target="_blank">Book</a></div>
+<!-- HOME -->
 
-                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Electrical Parts</h3>
-                    <div class="option-item"><div class="option-details"><h4>Non-Inverter PCB repaired</h4><p>Circuit board repair</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Non-Inverter%20PCB%20repaired%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Inverter PCB repaired</h4><p>Advanced inverter circuit repair</p><div class="option-price">₹4500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Inverter%20PCB%20repaired%20(₹4500)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Convert PCB with remote</h4><p>Universal PCB conversion kit</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Convert%20PCB%20with%20remote%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Comp Capacitor (25-60 mfd)</h4><p>Compressor capacitor replacement + ₹449 labour</p><div class="option-price">₹400 + Labour</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Comp%20Capacitor%20(₹400)" class="btn-book-now" target="_blank">Book</a></div>
+<div id="homePage" class="container">
 
-                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Gas Charging & Coils</h3>
-                    <div class="option-item"><div class="option-details"><h4>Gas Charging</h4><p>Refrigerant gas top-up / full charge</p><div class="option-price">₹2800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Gas%20Charging%20(₹2800)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Copper Coil Condensor (1.5 ton)</h4><p>Split AC condenser coil replacement</p><div class="option-price">₹4800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Copper%20Coil%20Condensor%201.5%20ton%20(₹4800)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Compressor (1.5 ton)</h4><p>Replacement compressor unit</p><div class="option-price">₹8500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Compressor%201.5%20ton%20(₹8500)" class="btn-book-now" target="_blank">Book</a></div>
-                `;
-            } else if (serviceName === 'Refrigerator Repair') {
-                container.innerHTML = `
-                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Single Door Refrigerator</h3>
-                    <div class="option-item"><div class="option-details"><h4>Thermostat</h4><p>Temperature controller replacement</p><div class="option-price">₹800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Thermostat%20(₹800)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Complete door gasket</h4><p>Magnetic door seal replacement</p><div class="option-price">₹1000</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Complete%20door%20gasket%20(₹1000)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Refrigerant Gas Charge (>100L)</h4><p>Single door gas charging</p><div class="option-price">₹1700</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Gas%20Charge%20Single%20Door%20(₹1700)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Compressor (Single Door Combo)</h4><p>Includes Relay, OLP & capacitor</p><div class="option-price">₹3600</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Compressor%20Single%20Door%20(₹3600)" class="btn-book-now" target="_blank">Book</a></div>
+<div class="section-title">
+Select Appliance Service
+</div>
 
-                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Double Door & Side-by-Side</h3>
-                    <div class="option-item"><div class="option-details"><h4>Coil Heater (Double Door)</h4><p>Defrost heater replacement</p><div class="option-price">₹1800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Coil%20Heater%20(₹1800)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Refrigerant Gas Charge (Double Door)</h4><p>Complete gas charging</p><div class="option-price">₹2000</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Double%20Door%20Gas%20Charge%20(₹2000)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Compressor (<500 lit. Double Door)</h4><p>Includes Relay, OLP & capacitor</p><div class="option-price">₹5400</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Double%20Door%20Compressor%20(₹5400)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Ice maker kit (Side-by-Side)</h4><p>Dispenser ice maker kit</p><div class="option-price">₹2500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Ice%20maker%20kit%20(₹2500)" class="btn-book-now" target="_blank">Book</a></div>
-                `;
-            } else if (serviceName === 'Washing Machine') {
-                container.innerHTML = `
-                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Semi-Automatic Washing Machine</h3>
-                    <div class="option-item"><div class="option-details"><h4>Wash Motor</h4><p>Replacement wash motor</p><div class="option-price">₹2500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Wash%20Motor%20(₹2500)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Gear Box (With Pulley)</h4><p>Heavy duty gearbox assembly</p><div class="option-price">₹1550</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Gear%20Box%20(₹1550)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Spin Motor</h4><p>Spin motor replacement</p><div class="option-price">₹1800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Spin%20Motor%20(₹1800)" class="btn-book-now" target="_blank">Book</a></div>
+<div class="services-grid">
 
-                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Top Load & Front Load</h3>
-                    <div class="option-item"><div class="option-details"><h4>Top Load Main Motor</h4><p>Top load washing machine motor</p><div class="option-price">₹2182</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Top%20Load%20Main%20Motor%20(₹2182)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Damper rod / Balancing Rods (4 Qty)</h4><p>Suspension rods for top load</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Balancing%20Rods%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Front Load Drum Bearing / Oil Seal</h4><p>Complete drum bearing overhaul cleaning</p><div class="option-price">₹2500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Front%20Load%20Bearing%20(₹2500)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Front Load Gasket / Door Diaphragm</h4><p>Rubber seal replacement</p><div class="option-price">₹1600</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Door%20Diaphragm%20(₹1600)" class="btn-book-now" target="_blank">Book</a></div>
-                `;
-            } else if (serviceName === 'Microwave Oven') {
-                container.innerHTML = `
-                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">General & No Heating Spares</h3>
-                    <div class="option-item"><div class="option-details"><h4>Magnetron</h4><p>Core heating component replacement</p><div class="option-price">₹1800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20Magnetron%20(₹1800)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>HV Transformer</h4><p>High voltage transformer</p><div class="option-price">₹1900</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20HV%20Transformer%20(₹1900)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Keypad / Touchpad Repair</h4><p>Membrane switch replacement</p><div class="option-price">₹1600</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20Touchpad%20Repair%20(₹1600)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Glass Turn table</h4><p>Replacement rotating glass plate</p><div class="option-price">₹810</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20Glass%20Turn%20table%20(₹810)" class="btn-book-now" target="_blank">Book</a></div>
-                `;
-            } else if (serviceName === 'Geyser Repair') {
-                container.innerHTML = `
-                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Geyser Heating Elements & Parts</h3>
-                    <div class="option-item"><div class="option-details"><h4>Heating Element (Medium 10-30L)</h4><p>Standard copper heating element</p><div class="option-price">₹910</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20Heating%20Element%20(₹910)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Heating Element (Glass Line Tank)</h4><p>Branded glass-line heating element</p><div class="option-price">₹1950</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20Glass%20Line%20Heating%20Element%20(₹1950)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Main Thermostat (Branded)</h4><p>Accurate temperature cutoff thermostat</p><div class="option-price">₹900</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20Main%20Thermostat%20(₹900)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>SS Tank (Medium Size 10-30L)</h4><p>Stainless steel inner tank replacement</p><div class="option-price">₹2400</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20SS%20Tank%2010-30L%20(₹2400)" class="btn-book-now" target="_blank">Book</a></div>
-                `;
-            } else if (serviceName === 'Water Purifier (RO)') {
-                container.innerHTML = `
-                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">RO Filters & Spares</h3>
-                    <div class="option-item"><div class="option-details"><h4>RO Membrane <3000 TDS</h4><p>High purity water filtration membrane</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20RO%20Membrane%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Booster Pump 75GPD / 100GPD</h4><p>High pressure water booster pump</p><div class="option-price">₹1799</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20Booster%20Pump%20(₹1799)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>SMPS Power Adapter 24V</h4><p>Power supply unit</p><div class="option-price">₹599</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20SMPS%20Adapter%20(₹599)" class="btn-book-now" target="_blank">Book</a></div>
-                    <div class="option-item"><div class="option-details"><h4>Pressure Tank</h4><p>Storage tank for purified water</p><div class="option-price">₹3299</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20Pressure%20Tank%20(₹3299)" class="btn-book-now" target="_blank">Book</a></div>
-                `;
-            } else if (serviceName === 'Service Post-Check / Feedback & Support') {
-                container.innerHTML = `
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>Report Issue After Service</h4>
-                            <p>Same issue persisted or facing a new problem after technician visit.</p>
-                            <div class="option-price">Warranty Claim</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20Service%20jabar%20por%20ami%20ekti%20problem%20face%20korchi.%20Please%20help%20me%20with%20post-service%20support." class="btn-book-now" target="_blank">WhatsApp Support</a>
-                    </div>
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>Share Service Feedback</h4>
-                            <p>Rate your recent repair experience or leave a review text.</p>
-                            <div class="option-price">Feedback</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20Ami%20amar%20service%20er%20feedback%20share%20koraktey%20chai." class="btn-book-now" target="_blank">Share Feedback</a>
-                    </div>
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>Follow-Up / Maintenance Request</h4>
-                            <p>Schedule a routine checkup or schedule maintenance call.</p>
-                            <div class="option-price">Follow-Up</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20need%20a%20follow-up%20maintenance%20service%20for%20my%20appliance." class="btn-book-now" target="_blank">Book Follow-Up</a>
-                    </div>
-                `;
-            }
+<div class="service-card"
+onclick="openService('AC')">
 
-            document.getElementById('serviceModal').style.display = 'flex';
-        }
+<div class="service-icon">❄️</div>
 
-        function closeServiceModal() {
-            document.getElementById('serviceModal').style.display = 'none';
-        }
+<h3>AC Service & Repair</h3>
 
-        window.onclick = function(event) {
-            let modal = document.getElementById('serviceModal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        }
-    </script>
+<p>PCB • Gas • Coil • Motor • Installation</p>
+
+</div>
+
+
+<div class="service-card"
+onclick="openService('FRIDGE')">
+
+<div class="service-icon">🧊</div>
+
+<h3>Fridge Repair</h3>
+
+<p>Single Door • Double Door • SBS</p>
+
+</div>
+
+
+<div class="service-card"
+onclick="openService('WM')">
+
+<div class="service-icon">🌀</div>
+
+<h3>Washing Machine</h3>
+
+<p>Semi • Top Load • Front Load</p>
+
+</div>
+
+
+<div class="service-card"
+onclick="openService('MICROWAVE')">
+
+<div class="service-icon">🔥</div>
+
+<h3>Microwave Repair</h3>
+
+<p>PCB • Magnetron • Heater • Fuse</p>
+
+</div>
+
+
+<div class="service-card"
+onclick="openService('GEYSER')">
+
+<div class="service-icon">♨️</div>
+
+<h3>Geyser Repair</h3>
+
+<p>Heating • Thermostat • Leakage</p>
+
+</div>
+
+
+<div class="service-card"
+onclick="openService('RO')">
+
+<div class="service-icon">💧</div>
+
+<h3>Water Purifier</h3>
+
+<p>RO • UV • Aquaguard • Kent</p>
+
+</div>
+
+</div>
+
+
+<div class="history-box">
+
+<h3 style="color:#075985;margin-bottom:10px;">
+📋 Recent Bookings
+</h3>
+
+<div id="historyContainer">
+No booking history yet.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- SERVICE PAGE -->
+
+<div id="servicePage" class="container service-page">
+
+<div class="page-header">
+
+<button class="back-btn"
+onclick="goHome()">
+← Back
+</button>
+
+<div id="pageTitle" class="page-title"></div>
+
+<div id="pageSubtitle" class="page-subtitle"></div>
+
+</div>
+
+
+<div class="search-box">
+
+<input
+type="text"
+id="searchInput"
+placeholder="🔎 Search service / part..."
+oninput="renderRates()">
+
+</div>
+
+
+<div id="categoryTabs"
+class="category-tabs">
+</div>
+
+
+<div id="rateContainer">
+</div>
+
+</div>
+
+
+<!-- BOOKING MODAL -->
+
+<div id="bookingBox"
+class="booking-box">
+
+<div class="booking-content">
+
+<h2>📅 Book Service</h2>
+
+<div id="selectedService"
+style="
+background:#f0fdf4;
+padding:12px;
+border-radius:8px;
+margin-bottom:15px;
+font-size:13px;
+font-weight:bold;
+color:#166534;
+">
+</div>
+
+
+<div class="form-group">
+
+<label>Customer Name</label>
+
+<input
+id="customerName"
+type="text"
+placeholder="আপনার নাম">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Mobile Number</label>
+
+<input
+id="customerPhone"
+type="tel"
+placeholder="10 digit mobile number">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Service Address</label>
+
+<textarea
+id="customerAddress"
+placeholder="আপনার সম্পূর্ণ address"></textarea>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Date</label>
+
+<input
+id="serviceDate"
+type="date">
+
+</div>
+
+
+<div class="form-group">
+
+<label>Preferred Time</label>
+
+<select id="serviceTime">
+
+<option>8:00 AM - 10:00 AM</option>
+<option>10:00 AM - 12:00 PM</option>
+<option>12:00 PM - 2:00 PM</option>
+<option>2:00 PM - 4:00 PM</option>
+<option>4:00 PM - 6:00 PM</option>
+<option>6:00 PM - 8:00 PM</option>
+<option>8:00 PM - 10:00 PM</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Additional Problem</label>
+
+<textarea
+id="customerNote"
+placeholder="Problem details"></textarea>
+
+</div>
+
+
+<div class="booking-actions">
+
+<button
+class="cancel-btn"
+onclick="closeBooking()">
+Cancel
+</button>
+
+<button
+class="whatsapp-btn"
+onclick="sendBooking()">
+📱 Book on WhatsApp
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<div>N.G Cooling Solution</div>
+
+<div>
+AC • Fridge • Washing Machine • Microwave • Geyser • RO
+</div>
+
+<div class="footer-phone">
+WhatsApp: 7439160014
+</div>
+
+<div style="margin-top:8px;">
+© 2026 N.G Cooling Solution
+</div>
+
+</footer>
+
+
+<script>
+
+/* =========================================================
+   CONFIG
+========================================================= */
+
+const whatsappNumber = "7439160014";
+
+let currentService = "";
+let currentCategory = "All";
+let selectedRate = "";
+
+
+/* =========================================================
+   RATE DATABASE
+========================================================= */
+
+const rates = {
+
+
+/* ================= AC ================= */
+
+AC: [
+
+{
+category:"Electrical Parts",
+name:"Non-Inverter PCB repaired",
+price:"₹1500"
+},
+
+{
+category:"Electrical Parts",
+name:"Inverter PCB repaired",
+price:"₹4500"
+},
+
+{
+category:"Electrical Parts",
+name:"LVT (Transformer)",
+price:"₹900",
+labour:"₹349 Labour"
+},
+
+{
+category:"Electrical Parts",
+name:"Replace sensor",
+price:"₹350",
+labour:"₹499 Labour"
+},
+
+{
+category:"Electrical Parts",
+name:"Contactor replaced",
+price:"₹500",
+labour:"₹499 Labour"
+},
+
+{
+category:"Electrical Parts",
+name:"Contactor Daikin / O-General",
+price:"₹1500",
+labour:"₹449 Labour"
+},
+
+{
+category:"Electrical Parts",
+name:"Convert PCB with remote",
+price:"₹1500"
+},
+
+{
+category:"Electrical Parts",
+name:"Fan Capacitor - 2.5 to 10 mfd",
+price:"₹250",
+labour:"₹449 Labour"
+},
+
+{
+category:"Electrical Parts",
+name:"Comp Capacitor - 25 to 60 mfd",
+price:"₹400",
+labour:"₹449 Labour"
+},
+
+{
+category:"Electrical Parts",
+name:"Combo Capacitor (Comp + Fan)",
+price:"₹500",
+labour:"₹449 Labour"
+},
+
+{
+category:"Electrical Parts",
+name:"Fuse Change in PCB",
+price:"₹150",
+labour:"₹299 Labour"
+},
+
+{
+category:"Gas Charging",
+name:"Gas Charging",
+price:"₹2800"
+},
+
+{
+category:"Gas Charging",
+name:"Flair Nut Replaced",
+price:"₹150"
+},
+
+{
+category:"Gas Charging",
+name:"Copper Coil Condensor 1 Ton Split",
+price:"₹4000"
+},
+
+{
+category:"Gas Charging",
+name:"Copper Coil Condensor 1.5 Ton Split",
+price:"₹4800"
+},
+
+{
+category:"Gas Charging",
+name:"Copper Coil Condensor 2 Ton Split",
+price:"₹5300"
+},
+
+{
+category:"Gas Charging",
+name:"Capillary and Filter Replaced",
+price:"₹350"
+},
+
+{
+category:"Gas Charging",
+name:"Compressor 0.8 - 1 Ton",
+price:"₹6500"
+},
+
+{
+category:"Gas Charging",
+name:"Compressor 1.5 Ton",
+price:"₹8500"
+},
+
+{
+category:"Gas Charging",
+name:"Compressor 2 Ton",
+price:"₹10000"
+},
+
+{
+category:"Gas Charging",
+name:"Expansion Valve Replaced",
+price:"₹1200"
+},
+
+{
+category:"Gas Charging",
+name:"Service Valve 1/4",
+price:"₹400"
+},
+
+{
+category:"Gas Charging",
+name:"Service Valve 1/2",
+price:"₹400"
+},
+
+{
+category:"Gas Charging",
+name:"Service Valve 5/8",
+price:"₹500"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling Coil Split AC - 1 Ton",
+price:"₹5500"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling Coil Split AC - 1.5 Ton",
+price:"₹6500"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling Coil Split AC - 2 Ton",
+price:"₹7500"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling Coil O General / Mitsubishi - 1.5 Ton",
+price:"₹7500"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling / Condenser Coil Window AC - 1 Ton",
+price:"₹4500"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling / Condenser Coil Window AC - 1.5 Ton",
+price:"₹5000"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling / Condenser Coil Window AC - 2 Ton",
+price:"₹5500"
+},
+
+{
+category:"Gas Charging",
+name:"Cooling Coil Repair with Anti-Rust Coating",
+price:"₹899"
+},
+
+{
+category:"Gas Charging",
+name:"Left Side U Band Replacement",
+price:"₹1500"
+},
+
+{
+category:"Fan Motors",
+name:"Fan Motor - Split AC",
+price:"₹1800",
+labour:"₹499 Labour"
+},
+
+{
+category:"Fan Motors",
+name:"Blower Motor - Split AC",
+price:"₹2200",
+labour:"₹499 Labour"
+},
+
+{
+category:"Fan Motors",
+name:"Blower Replaced",
+price:"₹1100",
+labour:"₹499 Labour"
+},
+
+{
+category:"Fan Motors",
+name:"Flap / Swing Motor",
+price:"₹400",
+labour:"₹499 Labour"
+},
+
+{
+category:"Fan Motors",
+name:"Motor Bearing Change",
+price:"₹1000"
+},
+
+{
+category:"Fan Motors",
+name:"Fan Motor - Window AC",
+price:"₹2600",
+labour:"₹499 Labour"
+},
+
+{
+category:"Fan Motors",
+name:"Blower Motor DC - Split AC",
+price:"₹3800"
+},
+
+{
+category:"Fan Motors",
+name:"Fan Motor DC - Split AC",
+price:"₹3800"
+},
+
+{
+category:"Service & Installation",
+name:"1 ft Copper Pipe Set",
+price:"₹350"
+},
+
+{
+category:"Service & Installation",
+name:"Split AC Wall Stand",
+price:"₹750"
+},
+
+{
+category:"Service & Installation",
+name:"Outdoor Unit Reinstalled",
+price:"₹799"
+},
+
+{
+category:"Service & Installation",
+name:"Indoor Unit Reinstalled",
+price:"₹699"
+},
+
+{
+category:"Service & Installation",
+name:"Fastner Complete Set",
+price:"₹200"
+},
+
+{
+category:"Service & Installation",
+name:"Floor Stand",
+price:"₹550"
+},
+
+{
+category:"Service & Installation",
+name:"Universal Back Plate",
+price:"₹300"
+},
+
+{
+category:"Service & Installation",
+name:"Foam-Jet AC Service",
+price:"₹599"
+},
+
+{
+category:"Service & Installation",
+name:"AC Installation",
+price:"₹1699"
+},
+
+{
+category:"Service & Installation",
+name:"AC Uninstallation",
+price:"₹699"
+},
+
+{
+category:"Service & Installation",
+name:"Anti-Rust Spray",
+price:"₹249"
+},
+
+{
+category:"Service & Installation",
+name:"Lite AC Service",
+price:"₹499"
+},
+
+{
+category:"Service & Installation",
+name:"Drain Pipe Replacement - 1 Meter",
+price:"₹100"
+},
+
+{
+category:"Service & Installation",
+name:"3/4 Core Wire Per Meter",
+price:"₹120"
+},
+
+{
+category:"Service & Installation",
+name:"Outdoor / Indoor Connector",
+price:"₹150"
+},
+
+{
+category:"Minor Repairs",
+name:"Water Leakage Repaired - Split AC",
+price:"₹599"
+},
+
+{
+category:"Minor Repairs",
+name:"Adjust Grill Locks",
+price:"₹0",
+labour:"₹349 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Adjust Pipe and Tight Compressor Screw",
+price:"₹0",
+labour:"₹349 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Connector Wires Replaced - 1 Meter",
+price:"₹100",
+labour:"₹349 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Tighten / Replace Thimble",
+price:"₹50",
+labour:"₹349 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"External Dust / Stick Removal",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Noise Adjustment in Motor",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Noise Adjustment in Blower",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Noise Adjustment in Cabinet",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Noise Adjustment in Swing Flap",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Water Leakage Repaired - Window AC",
+price:"₹0",
+labour:"₹449 Labour"
+},
+
+{
+category:"Minor Repairs",
+name:"Drain Pipe Adjust",
+price:"₹499"
+},
+
+{
+category:"Minor Repairs",
+name:"Insulation Refix",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Other Parts",
+name:"AC Fan Blade",
+price:"₹700",
+labour:"₹499 Labour"
+},
+
+{
+category:"Other Parts",
+name:"Grill Cover",
+price:"₹1500",
+labour:"₹349 Labour"
+},
+
+{
+category:"Other Parts",
+name:"Swing Blade Replaced",
+price:"₹400",
+labour:"₹349 Labour"
+},
+
+{
+category:"Other Parts",
+name:"Universal Remote",
+price:"₹800"
+},
+
+{
+category:"Other Parts",
+name:"Water Tray",
+price:"₹500",
+labour:"₹200 Labour"
+},
+
+{
+category:"Other Parts",
+name:"Stabilizer Repair",
+price:"₹1500"
+},
+
+{
+category:"Other Parts",
+name:"Sleeves Per Piece",
+price:"₹50"
+},
+
+{
+category:"Other Parts",
+name:"Stabilizer Connection",
+price:"₹499"
+}
+
+],
+
+
+/* ================= FRIDGE ================= */
+
+FRIDGE:[
+
+{
+category:"Single Door - Power Unit",
+name:"Power Cord",
+price:"₹350"
+},
+
+{
+category:"Single Door - Power Unit",
+name:"Power 3 Pin Plug Top",
+price:"₹100"
+},
+
+{
+category:"Single Door - Power Unit",
+name:"Repair - Inverter PCB",
+price:"₹1601"
+},
+
+{
+category:"Single Door - Power Unit",
+name:"Replace New - Inverter PCB",
+price:"₹3201"
+},
+
+{
+category:"Single Door - Power Unit",
+name:"Repair - PCB",
+price:"₹1201"
+},
+
+{
+category:"Single Door - Cooling Issue",
+name:"Damaged Door Repair",
+price:"₹901"
+},
+
+{
+category:"Single Door - Cooling Issue",
+name:"Door / Gasket Adjust",
+price:"₹151"
+},
+
+{
+category:"Single Door - Cooling Issue",
+name:"Thermostat",
+price:"₹800"
+},
+
+{
+category:"Single Door - Cooling Issue",
+name:"Complete Door Gasket with Magnet",
+price:"₹1000"
+},
+
+{
+category:"Single Door - Cooling Issue",
+name:"Defrost Sensor",
+price:"₹500"
+},
+
+{
+category:"Single Door - Gas Charge",
+name:"Capillary",
+price:"₹400"
+},
+
+{
+category:"Single Door - Gas Charge",
+name:"Dryer Freezer",
+price:"₹160"
+},
+
+{
+category:"Single Door - Gas Charge",
+name:"Pin Valve",
+price:"₹100"
+},
+
+{
+category:"Single Door - Gas Charge",
+name:"Condensor Coil",
+price:"₹1050"
+},
+
+{
+category:"Single Door - Gas Charge",
+name:"Cooling Coil with Capillary",
+price:"₹1450"
+},
+
+{
+category:"Single Door - Gas Charge",
+name:"Refrigerant Gas Charge >100L",
+price:"₹1700"
+},
+
+{
+category:"Single Door - Compressor",
+name:"Inverter Compressor",
+price:"₹6500"
+},
+
+{
+category:"Single Door - Compressor",
+name:"Capacitor",
+price:"₹150"
+},
+
+{
+category:"Single Door - Compressor",
+name:"Relay",
+price:"₹350"
+},
+
+{
+category:"Single Door - Compressor",
+name:"Over Load Protector",
+price:"₹300"
+},
+
+{
+category:"Single Door - Compressor",
+name:"Relay + OLP Combo",
+price:"₹650"
+},
+
+{
+category:"Single Door - Compressor",
+name:"Compressor including Relay + OLP + Capacitor",
+price:"₹3600"
+},
+
+{
+category:"Double Door - Power Unit",
+name:"LVT",
+price:"₹750"
+},
+
+{
+category:"Double Door - Power Unit",
+name:"Power 3 Pin Plug Top",
+price:"₹100"
+},
+
+{
+category:"Double Door - Power Unit",
+name:"Power Cord",
+price:"₹350"
+},
+
+{
+category:"Double Door - Power Unit",
+name:"Repair Inverter PCB",
+price:"₹2300"
+},
+
+{
+category:"Double Door - Power Unit",
+name:"Repair PCB",
+price:"₹1600"
+},
+
+{
+category:"Double Door - Defrost",
+name:"Coil Heater",
+price:"₹1800"
+},
+
+{
+category:"Double Door - Defrost",
+name:"Defrost Sensor",
+price:"₹600"
+},
+
+{
+category:"Double Door - Defrost",
+name:"Defrost Timer",
+price:"₹950"
+},
+
+{
+category:"Double Door - Defrost",
+name:"Duct and Drain Cleaning",
+price:"₹350"
+},
+
+{
+category:"Double Door - Defrost",
+name:"Glass Heater",
+price:"₹900"
+},
+
+{
+category:"Double Door - Defrost",
+name:"Bimetal",
+price:"₹500"
+},
+
+{
+category:"Double Door - Gas Charge",
+name:"Capillary",
+price:"₹400"
+},
+
+{
+category:"Double Door - Gas Charge",
+name:"Condensor Coil",
+price:"₹1300"
+},
+
+{
+category:"Double Door - Gas Charge",
+name:"Cooling Coil",
+price:"₹2500"
+},
+
+{
+category:"Double Door - Gas Charge",
+name:"Refrigerant Gas Charge",
+price:"₹2000"
+},
+
+{
+category:"Double Door - Compressor",
+name:"Compressor <500L including Relay, OLP, Capacitor",
+price:"₹5400"
+},
+
+{
+category:"Double Door - Compressor",
+name:"Compressor >500L including Relay, OLP, Capacitor",
+price:"₹5830"
+},
+
+{
+category:"Double Door - Compressor",
+name:"Inverter Compressor",
+price:"₹7500"
+},
+
+{
+category:"Double Door - Cooling",
+name:"DC Fan Motor - Condenser",
+price:"₹1900"
+},
+
+{
+category:"Double Door - Cooling",
+name:"AC Fan Motor",
+price:"₹1350"
+},
+
+{
+category:"Double Door - Cooling",
+name:"Damper Thermostat",
+price:"₹1100"
+},
+
+{
+category:"Double Door - Cooling",
+name:"DC Fan Motor - Freezer",
+price:"₹1800"
+},
+
+{
+category:"Double Door - Cooling",
+name:"DC Fan Motor - Refrigerator",
+price:"₹1900"
+},
+
+{
+category:"Double Door - Cooling",
+name:"Fan Blade",
+price:"₹120"
+},
+
+{
+category:"Double Door - Cooling",
+name:"Room Sensor",
+price:"₹550"
+},
+
+{
+category:"Double Door - Cooling",
+name:"Thermostat",
+price:"₹800"
+},
+
+{
+category:"Accessories",
+name:"Bulb",
+price:"₹50"
+},
+
+{
+category:"Accessories",
+name:"Door Switch",
+price:"₹290"
+},
+
+{
+category:"Accessories",
+name:"Drain Pipe",
+price:"₹100"
+},
+
+{
+category:"Accessories",
+name:"Drain Tray",
+price:"₹300"
+},
+
+{
+category:"Accessories",
+name:"LED Light",
+price:"₹290"
+},
+
+{
+category:"Accessories",
+name:"Magnetic Door Switch",
+price:"₹200"
+},
+
+{
+category:"Minor Repair",
+name:"Defrost Cycle Adjustment",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Door Gap Fix",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Electrical Contact Fixing",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Temperature Setting",
+price:"₹0",
+labour:"₹399 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Wire Retaping",
+price:"₹0",
+labour:"₹399 Labour"
+}
+
+],
+
+
+/* ================= MICROWAVE ================= */
+
+MICROWAVE:[
+
+{
+category:"Electrical",
+name:"Fuse 5 / 15 Amp",
+price:"₹59"
+},
+
+{
+category:"Electrical",
+name:"PCB New",
+price:"₹2000"
+},
+
+{
+category:"Electrical",
+name:"LVT",
+price:"₹630"
+},
+
+{
+category:"Electrical",
+name:"Keypad / Touchpad Repair",
+price:"₹1600"
+},
+
+{
+category:"Electrical",
+name:"Power 3 Pin Plug Top",
+price:"₹200"
+},
+
+{
+category:"Electrical",
+name:"Power Cord",
+price:"₹400"
+},
+
+{
+category:"Electrical",
+name:"Selector Switch",
+price:"₹630"
+},
+
+{
+category:"Electrical",
+name:"Universal New PCB",
+price:"₹2100"
+},
+
+{
+category:"Electrical",
+name:"PCB Repair",
+price:"₹1600"
+},
+
+{
+category:"No Heating",
+name:"HV Capacitor",
+price:"₹650"
+},
+
+{
+category:"No Heating",
+name:"Grill Heater",
+price:"₹750"
+},
+
+{
+category:"No Heating",
+name:"HV Diode",
+price:"₹400"
+},
+
+{
+category:"No Heating",
+name:"HV Transformer",
+price:"₹1900"
+},
+
+{
+category:"No Heating",
+name:"Magnetron",
+price:"₹1800"
+},
+
+{
+category:"No Heating",
+name:"Convection Heater",
+price:"₹860"
+},
+
+{
+category:"No Heating",
+name:"Cavity Sensor",
+price:"₹630"
+},
+
+{
+category:"No Heating",
+name:"Door Latch",
+price:"₹630"
+},
+
+{
+category:"No Heating",
+name:"Door Switch Set of 3",
+price:"₹401"
+},
+
+{
+category:"No Heating",
+name:"Fan Blade",
+price:"₹120"
+},
+
+{
+category:"No Heating",
+name:"HV Fuse",
+price:"₹300"
+},
+
+{
+category:"No Heating",
+name:"Smart Oven Grill Heater",
+price:"₹1750"
+},
+
+{
+category:"No Heating",
+name:"Thermal Cut Off",
+price:"₹400"
+},
+
+{
+category:"No Heating",
+name:"Timer",
+price:"₹1000"
+},
+
+{
+category:"Noise Issue",
+name:"Turn Table Motor",
+price:"₹750"
+},
+
+{
+category:"Noise Issue",
+name:"Roller",
+price:"₹300"
+},
+
+{
+category:"Noise Issue",
+name:"Fan Motor",
+price:"₹950"
+},
+
+{
+category:"Accessories",
+name:"Bulb Holder",
+price:"₹90"
+},
+
+{
+category:"Accessories",
+name:"Mica Sheet",
+price:"₹250"
+},
+
+{
+category:"Accessories",
+name:"Coupler",
+price:"₹230"
+},
+
+{
+category:"Accessories",
+name:"Glass Turn Table",
+price:"₹810"
+},
+
+{
+category:"Accessories",
+name:"Door Hinge",
+price:"₹400"
+},
+
+{
+category:"Accessories",
+name:"Timer Knob",
+price:"₹120"
+},
+
+{
+category:"Minor Repair",
+name:"Wire Retaping",
+price:"₹0",
+labour:"₹299 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Cavity Cleaning",
+price:"₹0",
+labour:"₹299 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Ventilation Cleaning",
+price:"₹0",
+labour:"₹299 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Electrical Plug Adjustment",
+price:"₹0",
+labour:"₹299 Labour"
+},
+
+{
+category:"Minor Repair",
+name:"Body Cabinet Adjustment",
+price:"₹0",
+labour:"₹299 Labour"
+}
+
+],
+
+
+/* ================= GEYSER ================= */
+
+GEYSER:[
+
+{
+category:"Parts",
+name:"Main Thermostat",
+price:"₹350"
+},
+
+{
+category:"Parts",
+name:"Main Thermostat Branded",
+price:"₹900"
+},
+
+{
+category:"Parts",
+name:"Heating Element Branded",
+price:"₹1600"
+},
+
+{
+category:"Parts",
+name:"Heating Element Small Geyser <10L",
+price:"₹700"
+},
+
+{
+category:"Parts",
+name:"Heating Element 10-30L",
+price:"₹910"
+},
+
+{
+category:"Parts",
+name:"Heating Element 30-50L",
+price:"₹1200"
+},
+
+{
+category:"Parts",
+name:"Heating Element 3KW Instant Geyser",
+price:"₹950"
+},
+
+{
+category:"Parts",
+name:"Heating Element Glass Line Tank",
+price:"₹1600"
+},
+
+{
+category:"Parts",
+name:"Gasket Small Geyser <10L",
+price:"₹100"
+},
+
+{
+category:"Parts",
+name:"Gasket 10-30L",
+price:"₹200"
+},
+
+{
+category:"Parts",
+name:"Gasket Commercial 30-50L",
+price:"₹400"
+},
+
+{
+category:"Services",
+name:"Geyser Water Leakage",
+price:"₹299"
+},
+
+{
+category:"Services",
+name:"Geyser Servicing Up To 10L",
+price:"₹300",
+labour:"₹299 Labour"
+},
+
+{
+category:"Services",
+name:"Geyser Servicing 10-25L",
+price:"₹350",
+labour:"₹299 Labour"
+},
+
+{
+category:"Services",
+name:"Geyser Servicing >25L",
+price:"₹400",
+labour:"₹299 Labour"
+},
+
+{
+category:"Services",
+name:"Geyser Installation",
+price:"₹200",
+labour:"₹299 Labour"
+},
+
+{
+category:"Services",
+name:"Geyser Uninstallation",
+price:"₹100",
+labour:"₹299 Labour"
+},
+
+{
+category:"Services",
+name:"Welding Work",
+price:"₹450"
+},
+
+{
+category:"Services",
+name:"Wiring Repair",
+price:"₹100"
+},
+
+{
+category:"Services",
+name:"PCB Repair",
+price:"₹850"
+},
+
+{
+category:"Services",
+name:"Geyser Service",
+price:"₹300",
+labour:"₹299 Labour"
+},
+
+{
+category:"Services",
+name:"Geyser Check-up",
+price:"₹0"
+},
+
+{
+category:"Accessories",
+name:"Inlet Outlet Pipe SS 36 Inch",
+price:"₹260"
+},
+
+{
+category:"Accessories",
+name:"Inlet Outlet Pipe SS 18 Inch",
+price:"₹200"
+},
+
+{
+category:"Accessories",
+name:"Copper Tank Small <10L",
+price:"₹1800"
+},
+
+{
+category:"Accessories",
+name:"Copper Tank Medium 10-30L",
+price:"₹3000"
+},
+
+{
+category:"Accessories",
+name:"Copper Tank Commercial 30-50L",
+price:"₹4000"
+},
+
+{
+category:"Accessories",
+name:"Safety Valve",
+price:"₹300"
+},
+
+{
+category:"Accessories",
+name:"Pressure Release Valve",
+price:"₹400"
+},
+
+{
+category:"Accessories",
+name:"Multi Function Valve",
+price:"₹400"
+},
+
+{
+category:"Accessories",
+name:"Angle Valve",
+price:"₹400"
+},
+
+{
+category:"Accessories",
+name:"Power Cord",
+price:"₹200"
+},
+
+{
+category:"Accessories",
+name:"Indicator",
+price:"₹100"
+},
+
+{
+category:"Accessories",
+name:"3 Pin Top Plug",
+price:"₹100"
+},
+
+{
+category:"Accessories",
+name:"Fastner 4 Bolts",
+price:"₹100"
+},
+
+{
+category:"Accessories",
+name:"Safety Thermostat",
+price:"₹350"
+}
+
+],
+
+
+/* ================= WASHING MACHINE ================= */
+
+WM:[
+
+{
+category:"Semi Automatic - Power",
+name:"Power 3 Pin Plug Top",
+price:"₹200"
+},
+
+{
+category:"Semi Automatic - Power",
+name:"Power Cord",
+price:"₹350"
+},
+
+{
+category:"Semi Automatic - Power",
+name:"Re-Wiring Heavy Damage",
+price:"₹650"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Timer Wash Electro Mechanical",
+price:"₹1000"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Pulsator Snap",
+price:"₹200"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Thermostat",
+price:"₹400"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Pulsator With Snap",
+price:"₹900"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Gear Box With Pulley",
+price:"₹1550"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Heater",
+price:"₹800"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Motor Pulley",
+price:"₹550"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Spin & Wash Capacitor",
+price:"₹490"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Wash Motor",
+price:"₹2500"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"Wash Timer",
+price:"₹750"
+},
+
+{
+category:"Semi Automatic - Wash",
+name:"V Belt",
+price:"₹350"
+},
+
+{
+category:"Semi Automatic - Spin",
+name:"Spin Lid",
+price:"₹700"
+},
+
+{
+category:"Semi Automatic - Spin",
+name:"Spin Lid Switch",
+price:"₹250"
+},
+
+{
+category:"Semi Automatic - Spin",
+name:"Spin Tub",
+price:"₹1250"
+},
+
+{
+category:"Semi Automatic - Spin",
+name:"Spin Motor",
+price:"₹1800"
+},
+
+{
+category:"Semi Automatic - Spin",
+name:"Coupler / Brake Wheel",
+price:"₹400"
+},
+
+{
+category:"Semi Automatic - Spin",
+name:"Brake Shoe",
+price:"₹200"
+},
+
+{
+category:"Semi Automatic - Leakage",
+name:"Drain Bellow",
+price:"₹300"
+},
+
+{
+category:"Semi Automatic - Leakage",
+name:"Drain Valve Assembly",
+price:"₹500"
+},
+
+{
+category:"Semi Automatic - Leakage",
+name:"Drain Valve Spring",
+price:"₹50"
+},
+
+{
+category:"Top Load",
+name:"Repair Inverter PCB",
+price:"₹2250"
+},
+
+{
+category:"Top Load",
+name:"Power Cord",
+price:"₹350"
+},
+
+{
+category:"Top Load",
+name:"LVT",
+price:"₹650"
+},
+
+{
+category:"Top Load",
+name:"Repair PCB",
+price:"₹1700"
+},
+
+{
+category:"Top Load",
+name:"Capacitor",
+price:"₹450"
+},
+
+{
+category:"Top Load",
+name:"Motor Pulley",
+price:"₹450"
+},
+
+{
+category:"Top Load",
+name:"Pressure Sensor With Pipe",
+price:"₹950"
+},
+
+{
+category:"Top Load",
+name:"Agitator",
+price:"₹850"
+},
+
+{
+category:"Top Load",
+name:"Outer Tub",
+price:"₹2000"
+},
+
+{
+category:"Top Load",
+name:"Main Motor",
+price:"₹2182"
+},
+
+{
+category:"Top Load",
+name:"Hall Sensor",
+price:"₹900"
+},
+
+{
+category:"Top Load",
+name:"Direct Drive Motor",
+price:"₹4000"
+},
+
+{
+category:"Top Load",
+name:"Heater",
+price:"₹750"
+},
+
+{
+category:"Top Load",
+name:"Door Lock",
+price:"₹1450"
+},
+
+{
+category:"Top Load",
+name:"V Belt",
+price:"₹350"
+},
+
+{
+category:"Top Load - Spin",
+name:"Damper Rod / Balancing Rods 4 Qty",
+price:"₹1500"
+},
+
+{
+category:"Top Load - Spin",
+name:"Haier 6.5KG Clutch Assembly",
+price:"₹3800",
+labour:"₹299 Labour"
+},
+
+{
+category:"Top Load - Spin",
+name:"Clutch Assembly",
+price:"₹4000"
+},
+
+{
+category:"Top Load - Spin",
+name:"Hub Flange",
+price:"₹1000"
+},
+
+{
+category:"Top Load - Leakage",
+name:"Inner Drain Hose",
+price:"₹300"
+},
+
+{
+category:"Top Load - Leakage",
+name:"Drain Case Assembly",
+price:"₹1000"
+},
+
+{
+category:"Front Load",
+name:"Repair Inverter PCB",
+price:"₹2800"
+},
+
+{
+category:"Front Load",
+name:"Repair PCB",
+price:"₹2300"
+},
+
+{
+category:"Front Load",
+name:"LVT",
+price:"₹650"
+},
+
+{
+category:"Front Load",
+name:"Motor Control Unit",
+price:"₹1450"
+},
+
+{
+category:"Front Load",
+name:"Door Lock",
+price:"₹1450"
+},
+
+{
+category:"Front Load",
+name:"Gasket / Door Diaphragm",
+price:"₹1600"
+},
+
+{
+category:"Front Load",
+name:"Complete Tub & Drum Assembly",
+price:"₹6000"
+},
+
+{
+category:"Front Load",
+name:"Front Tub",
+price:"₹2300"
+},
+
+{
+category:"Front Load",
+name:"Back Tub With Bearings & Seal",
+price:"₹3300"
+},
+
+{
+category:"Front Load",
+name:"Capacitor",
+price:"₹400"
+},
+
+{
+category:"Front Load",
+name:"Pulley Drive",
+price:"₹750"
+},
+
+{
+category:"Front Load",
+name:"Hall Sensor",
+price:"₹1050"
+},
+
+{
+category:"Front Load",
+name:"Direct Drive Motor",
+price:"₹4000"
+},
+
+{
+category:"Front Load",
+name:"Heater",
+price:"₹1000"
+},
+
+{
+category:"Front Load",
+name:"Heater Sensor",
+price:"₹500"
+},
+
+{
+category:"Front Load",
+name:"V Belt",
+price:"₹850"
+},
+
+{
+category:"Front Load - Noise",
+name:"Shocker Set 3 Pieces",
+price:"₹2400"
+},
+
+{
+category:"Front Load - Noise",
+name:"Flange Shaft",
+price:"₹2700"
+},
+
+{
+category:"Front Load - Noise",
+name:"Drum Bearing / Oil Seal With Cleaning",
+price:"₹2500"
+},
+
+{
+category:"Front Load - Spin",
+name:"Drain Pump Motor",
+price:"₹1600"
+},
+
+{
+category:"Front Load - Spin",
+name:"Assembly Drain Pump",
+price:"₹1600"
+},
+
+{
+category:"Front Load - Leakage",
+name:"Drain Cleaning",
+price:"₹300"
+},
+
+{
+category:"Front Load - Leakage",
+name:"Drain Rubber Hose",
+price:"₹700"
+},
+
+{
+category:"Installation",
+name:"Washing Machine Installation",
+price:"₹100",
+labour:"₹299 Labour"
+},
+
+{
+category:"Descaling",
+name:"Descaling",
+price:"₹200"
+},
+
+{
+category:"Descaling",
+name:"Top Load Deep Cleaning",
+price:"₹800",
+labour:"₹299 Labour"
+},
+
+{
+category:"Descaling",
+name:"Front Load Deep Cleaning",
+price:"₹1200",
+labour:"₹299 Labour"
+},
+
+{
+category:"Service",
+name:"Washing Machine Jet Service",
+price:"₹800",
+labour:"₹299 Labour"
+}
+
+],
+
+
+/* ================= RO ================= */
+
+RO:[
+
+{
+category:"Native",
+name:"NATIVE Essential Kit 10 Inch Without RO Membrane",
+price:"₹1581",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Pre-Filter 10 Inch",
+price:"₹250",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Complete Kit 10 Inch",
+price:"₹3901",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Sediment Filter 10 Inch",
+price:"₹400",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Pre-Carbon Filter 10 Inch",
+price:"₹745",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Post Carbon 10 Inch",
+price:"₹900",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE RO Membrane 8 Inch Nano",
+price:"₹2530",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Booster Pump 75 GPD",
+price:"₹2675",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE SMPS Adapter",
+price:"₹1150",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Membrane Housing",
+price:"₹375",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Low Pressure Switch",
+price:"₹310",
+labour:"₹299 Labour"
+},
+
+{
+category:"Native",
+name:"NATIVE Pressure Enhancing Kit",
+price:"₹2050",
+labour:"₹299 Labour"
+},
+
+{
+category:"Servicing",
+name:"Water Purifier Installation",
+price:"₹150",
+labour:"₹299 Labour"
+},
+
+{
+category:"Servicing",
+name:"Water Purifier Uninstallation",
+price:"₹100",
+labour:"₹299 Labour"
+},
+
+{
+category:"Servicing",
+name:"UTC Installation",
+price:"₹350",
+labour:"₹299 Labour"
+},
+
+{
+category:"Servicing",
+name:"Minor Repair - RO Reset",
+price:"₹50",
+labour:"₹299 Labour"
+},
+
+{
+category:"Servicing",
+name:"Filter / Tank Cleaning",
+price:"₹50",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Pre-Filter Housing Clamp",
+price:"₹50",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Solenoid Valve",
+price:"₹350",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Carbon Block Filter 10 Inch",
+price:"₹250"
+},
+
+{
+category:"Generic Spares",
+name:"Alkaline Filter",
+price:"₹1299",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Pressure Tank",
+price:"₹3299",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"NRV",
+price:"₹149",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Flow Restrictor",
+price:"₹200",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"TDS Controller",
+price:"₹199",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Float Valve",
+price:"₹149",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"RO Membrane <3000 TDS",
+price:"₹1500",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Regular Service 10 Inch",
+price:"₹1000",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Full Service 10 Inch",
+price:"₹2701",
+labour:"₹299 Labour"
+},
+
+{
+category:"Generic Spares",
+name:"Regular Service 8 Inch Nano",
+price:"₹1000",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard Doctor Aqua Kit",
+price:"₹4500",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard Magna Kit",
+price:"₹4500",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard Carbon Filter",
+price:"₹850",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard PCB",
+price:"₹1998",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard Purity Sensor",
+price:"₹499",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard Booster Pump",
+price:"₹2999",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard UV Lamp 11W",
+price:"₹699",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard Solenoid Valve",
+price:"₹450",
+labour:"₹299 Labour"
+},
+
+{
+category:"Aquaguard",
+name:"Aquaguard RO Membrane",
+price:"₹2500",
+labour:"₹299 Labour"
+},
+
+{
+category:"Kent",
+name:"KENT RO Membrane 8 Inch High Flow",
+price:"₹2750",
+labour:"₹299 Labour"
+},
+
+{
+category:"Kent",
+name:"KENT UF Membrane 8 Inch",
+price:"₹1000",
+labour:"₹299 Labour"
+},
+
+{
+category:"Kent",
+name:"KENT Inline Carbon Filter 8 Inch",
+price:"₹600",
+labour:"₹299 Labour"
+},
+
+{
+category:"Kent",
+name:"KENT Sediment Filter 10 Inch",
+price:"₹500",
+labour:"₹299 Labour"
+},
+
+{
+category:"Kent",
+name:"KENT Pump 100PSI / 600RP",
+price:"₹2400",
+labour:"₹299 Labour"
+},
+
+{
+category:"Kent",
+name:"KENT SMPS 2.5A 24VDC",
+price:"₹935",
+labour:"₹299 Labour"
+},
+
+{
+category:"PureIT",
+name:"Pressure Reducer Valve",
+price:"₹999",
+labour:"₹299 Labour"
+},
+
+{
+category:"PureIT",
+name:"PureIT GK1",
+price:"₹2750",
+labour:"₹299 Labour"
+},
+
+{
+category:"PureIT",
+name:"PureIT GK2",
+price:"₹3499",
+labour:"₹299 Labour"
+},
+
+{
+category:"PureIT",
+name:"PureIT Mineral Filter",
+price:"₹2950",
+labour:"₹299 Labour"
+},
+
+{
+category:"PureIT",
+name:"PureIT RO+UV GKK1",
+price:"₹2750",
+labour:"₹299 Labour"
+},
+
+{
+category:"Livpure",
+name:"Livpure RO Pre-Carbon Filter",
+price:"₹550",
+labour:"₹299 Labour"
+},
+
+{
+category:"Livpure",
+name:"Livpure RO Membrane",
+price:"₹2750",
+labour:"₹299 Labour"
+},
+
+{
+category:"Livpure",
+name:"Livpure Sediment Filter",
+price:"₹550",
+labour:"₹299 Labour"
+},
+
+{
+category:"Philips",
+name:"Philips UV Model Block Dual Cartridge",
+price:"₹850",
+labour:"₹299 Labour"
+}
+
+]
+
+};
+
+
+/* =========================================================
+   OPEN SERVICE
+========================================================= */
+
+function openService(service){
+
+currentService = service;
+currentCategory = "All";
+
+document.getElementById("homePage").style.display="none";
+document.getElementById("servicePage").style.display="block";
+
+const titles={
+AC:"❄️ AC Service & Repair",
+FRIDGE:"🧊 Refrigerator Repair Service",
+WM:"🌀 Washing Machine Repair Service",
+MICROWAVE:"🔥 Microwave Repair Service",
+GEYSER:"♨️ Geyser Service & Repair",
+RO:"💧 Water Purifier Repair Service"
+};
+
+const subtitles={
+AC:"Electrical Parts • Gas • Coil • Fan Motor • Installation • Minor Repair",
+FRIDGE:"Single Door • Double Door • Side-by-Side",
+WM:"Semi Automatic • Top Load • Front Load",
+MICROWAVE:"Electrical • No Heating • Noise • Accessories",
+GEYSER:"Parts • Services • Installation • Accessories",
+RO:"Native • Aquaguard • Kent • PureIT • Livpure • Generic"
+};
+
+document.getElementById("pageTitle").innerText=titles[service];
+
+document.getElementById("pageSubtitle").innerText=subtitles[service];
+
+document.getElementById("searchInput").value="";
+
+createCategoryTabs();
+
+renderRates();
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function goHome(){
+
+document.getElementById("servicePage").style.display="none";
+
+document.getElementById("homePage").style.display="block";
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+
+/* =========================================================
+   CATEGORY TABS
+========================================================= */
+
+function createCategoryTabs(){
+
+const container=document.getElementById("categoryTabs");
+
+const data=rates[currentService] || [];
+
+const categories=[
+"All",
+...new Set(data.map(item=>item.category))
+];
+
+container.innerHTML="";
+
+categories.forEach(category=>{
+
+const btn=document.createElement("button");
+
+btn.innerText=category;
+
+if(category===currentCategory){
+btn.classList.add("active");
+}
+
+btn.onclick=function(){
+
+currentCategory=category;
+
+createCategoryTabs();
+
+renderRates();
+
+};
+
+container.appendChild(btn);
+
+});
+
+}
+
+
+/* =========================================================
+   RENDER RATE CARD
+========================================================= */
+
+function renderRates(){
+
+const container=document.getElementById("rateContainer");
+
+const search=document
+.getElementById("searchInput")
+.value
+.toLowerCase()
+.trim();
+
+let data=rates[currentService] || [];
+
+data=data.filter(item=>{
+
+const categoryMatch=
+currentCategory==="All" ||
+item.category===currentCategory;
+
+const searchMatch=
+!search ||
+item.name.toLowerCase().includes(search) ||
+item.category.toLowerCase().includes(search);
+
+return categoryMatch && searchMatch;
+
+});
+
+
+container.innerHTML="";
+
+if(data.length===0){
+
+container.innerHTML=`
+<div style="
+background:white;
+padding:25px;
+border-radius:10px;
+text-align:center;
+color:#64748b;
+">
+No service found.
+</div>
+`;
+
+return;
+
+}
+
+
+const grouped={};
+
+data.forEach(item=>{
+
+if(!grouped[item.category]){
+grouped[item.category]=[];
+}
+
+grouped[item.category].push(item);
+
+});
+
+
+Object.keys(grouped).forEach(category=>{
+
+const card=document.createElement("div");
+
+card.className="rate-card";
+
+let html=`
+<div class="rate-category">
+${category}
+</div>
+`;
+
+grouped[category].forEach(item=>{
+
+html+=`
+
+<div class="rate-row">
+
+<div class="rate-name">
+${item.name}
+</div>
+
+<div class="rate-info">
+
+<div>
+
+<div class="price">
+${item.price}
+</div>
+
+${item.labour
+?`<div class="labour">${item.labour}</div>`
+:""}
+
+</div>
+
+<button
+class="book-btn"
+onclick='openBooking(${JSON.stringify(item.name)},${JSON.stringify(item.price)})'>
+Book
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+card.innerHTML=html;
+
+container.appendChild(card);
+
+});
+
+}
+
+
+/* =========================================================
+   BOOKING
+========================================================= */
+
+function openBooking(service,price){
+
+selectedRate=
+service+
+" - "+
+price;
+
+document.getElementById("selectedService")
+.innerText=
+currentService+
+" | "+
+selectedRate;
+
+document.getElementById("bookingBox")
+.style.display="flex";
+
+const today=new Date()
+.toISOString()
+.split("T")[0];
+
+document.getElementById("serviceDate")
+.value=today;
+
+}
+
+
+function closeBooking(){
+
+document.getElementById("bookingBox")
+.style.display="none";
+
+}
+
+
+/* =========================================================
+   WHATSAPP BOOKING
+========================================================= */
+
+function sendBooking(){
+
+const name=
+document.getElementById("customerName").value.trim();
+
+const phone=
+document.getElementById("customerPhone").value.trim();
+
+const address=
+document.getElementById("customerAddress").value.trim();
+
+const date=
+document.getElementById("serviceDate").value;
+
+const time=
+document.getElementById("serviceTime").value;
+
+const note=
+document.getElementById("customerNote").value.trim();
+
+
+if(!name){
+
+alert("Please enter customer name.");
+
+return;
+
+}
+
+if(!phone){
+
+alert("Please enter mobile number.");
+
+return;
+
+}
+
+if(!address){
+
+alert("Please enter service address.");
+
+return;
+
+}
+
+
+const booking={
+
+id:Date.now(),
+
+service:currentService,
+
+rate:selectedRate,
+
+name:name,
+
+phone:phone,
+
+address:address,
+
+date:date,
+
+time:time,
+
+note:note
+
+};
+
+
+saveBooking(booking);
+
+
+const message=
+
+`Hello N.G Cooling Solution,
+
+I want to book a service.
+
+Service:
+${currentService}
+
+Required Work:
+${selectedRate}
+
+Customer Name:
+${name}
+
+Mobile:
+${phone}
+
+Address:
+${address}
+
+Date:
+${date}
+
+Preferred Time:
+${time}
+
+Problem:
+${note || "Not specified"}
+
+Please confirm my booking.
+
+Thank you.
+N.G Cooling Solution`;
+
+
+const url=
+"https://wa.me/91"+
+whatsappNumber+
+"?text="+
+encodeURIComponent(message);
+
+
+window.open(url,"_blank");
+
+closeBooking();
+
+}
+
+
+/* =========================================================
+   LOCAL BOOKING HISTORY
+========================================================= */
+
+function saveBooking(booking){
+
+let history=
+JSON.parse(
+localStorage.getItem("ngCoolingBookings") || "[]"
+);
+
+history.unshift(booking);
+
+history=
+history.slice(0,20);
+
+localStorage.setItem(
+"ngCoolingBookings",
+JSON.stringify(history)
+);
+
+renderHistory();
+
+}
+
+
+function renderHistory(){
+
+const container=
+document.getElementById("historyContainer");
+
+if(!container)return;
+
+let history=
+JSON.parse(
+localStorage.getItem("ngCoolingBookings") || "[]"
+);
+
+if(history.length===0){
+
+container.innerHTML=
+"No booking history yet.";
+
+return;
+
+}
+
+container.innerHTML="";
+
+history.forEach(item=>{
+
+const div=document.createElement("div");
+
+div.className="history-item";
+
+div.innerHTML=`
+
+<strong>
+${item.service}
+</strong>
+
+<br>
+
+${item.rate}
+
+<br>
+
+<small>
+${item.name} • ${item.phone}
+</small>
+
+<br>
+
+<small>
+${item.date} • ${item.time}
+</small>
+
+`;
+
+container.appendChild(div);
+
+});
+
+}
+
+
+/* =========================================================
+   INITIALIZE
+========================================================= */
+
+renderHistory();
+
+
+/* CLOSE BOOKING BY OUTSIDE CLICK */
+
+document.getElementById("bookingBox")
+.addEventListener("click",function(e){
+
+if(e.target===this){
+
+closeBooking();
+
+}
+
+});
+
+</script>
 
 </body>
 </html>
