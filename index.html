@@ -143,7 +143,7 @@
             color: #666;
         }
         .option-price {
-            font-size: 16px;
+            font-size: 15px;
             font-weight: bold;
             color: #15803d;
             margin-bottom: 8px;
@@ -159,19 +159,7 @@
             font-size: 13px;
             text-decoration: none;
             display: inline-block;
-        }
-        /* Reviews Section */
-        .rating-summary {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .rating-summary h2 {
-            color: #1e3a8a;
-            font-size: 22px;
+            white-space: nowrap;
         }
         .review-card {
             background: white;
@@ -216,7 +204,7 @@
     </div>
 
     <div class="container" id="services">
-        <div class="section-title">Select Appliance Service</div>
+        <div class="section-title">Select Appliance Service & Rate Card</div>
         
         <div class="services-grid">
             <div class="service-card" onclick="openServiceModal('AC Service & Repair')">
@@ -250,12 +238,6 @@
             <h3 style="color: #137333; font-size: 16px; margin-bottom: 6px;">Already had a service done?</h3>
             <p style="color: #444; font-size: 13px; margin-bottom: 10px;">Report any issues, share feedback, or check warranty status via WhatsApp.</p>
             <button onclick="openServiceModal('Service Post-Check / Feedback & Support')" class="btn-book-now">Post-Service Support</button>
-        </div>
-
-        <!-- Rating Summary -->
-        <div class="rating-summary">
-            <h2>4.9 ★★★★★</h2>
-            <p style="color: #666; font-size: 13px; margin-top: 4px;">Based on 33 Customer Reviews (30 Five-Star & 3 Four-Star)</p>
         </div>
 
         <div class="section-title" id="reviews">Customer Reviews</div>
@@ -299,36 +281,81 @@
         const whatsappNumber = "7439160014";
 
         function openServiceModal(serviceName) {
-            document.getElementById('modalTitle').innerText = serviceName + " - Options";
+            document.getElementById('modalTitle').innerText = serviceName + " - Rate Card & Booking";
             let container = document.getElementById('modalOptionsContainer');
             container.innerHTML = "";
 
             if (serviceName === 'AC Service & Repair') {
                 container.innerHTML = `
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>Jet Pump Deep Cleaning</h4>
-                            <p>Complete foam & high-pressure water wash.</p>
-                            <div class="option-price">₹499</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*AC%20Service*%20-%20Jet%20Pump%20Deep%20Cleaning%20(%E2%82%B9499)." class="btn-book-now" target="_blank">Book WhatsApp</a>
-                    </div>
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>No Cooling / Issue Check</h4>
-                            <p>Inspection & diagnosis of the cooling problem.</p>
-                            <div class="option-price">₹199</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*AC%20Service*%20-%20No%20Cooling%20Issue%20(%E2%82%B9199)." class="btn-book-now" target="_blank">Book WhatsApp</a>
-                    </div>
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>General Repair</h4>
-                            <p>Expert repairing and component fixing.</p>
-                            <div class="option-price">₹199</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*AC%20Service*%20-%20General%20Repair%20(%E2%82%B9199)." class="btn-book-now" target="_blank">Book WhatsApp</a>
-                    </div>
+                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Service & Installation</h3>
+                    <div class="option-item"><div class="option-details"><h4>Lite AC service</h4><p>Standard check and cleaning</p><div class="option-price">₹499</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Lite%20AC%20service%20(₹499)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Foam-jet AC service</h4><p>High quality foam wash</p><div class="option-price">₹599</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Foam-jet%20AC%20service%20(₹599)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>AC installation</h4><p>Complete split/window installation</p><div class="option-price">₹1699</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20AC%20installation%20(₹1699)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>AC uninstallation</h4><p>Safe uninstallation</p><div class="option-price">₹699</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20AC%20uninstallation%20(₹699)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Split AC Wall stand</h4><p>Durable outdoor wall bracket</p><div class="option-price">₹750</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Split%20AC%20Wall%20stand%20(₹750)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Anti-rust spray</h4><p>Avoid gas leaks</p><div class="option-price">₹249</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Anti-rust%20spray%20(₹249)" class="btn-book-now" target="_blank">Book</a></div>
+
+                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Electrical Parts</h3>
+                    <div class="option-item"><div class="option-details"><h4>Non-Inverter PCB repaired</h4><p>Circuit board repair</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Non-Inverter%20PCB%20repaired%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Inverter PCB repaired</h4><p>Advanced inverter circuit repair</p><div class="option-price">₹4500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Inverter%20PCB%20repaired%20(₹4500)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Convert PCB with remote</h4><p>Universal PCB conversion kit</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Convert%20PCB%20with%20remote%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Comp Capacitor (25-60 mfd)</h4><p>Compressor capacitor replacement + ₹449 labour</p><div class="option-price">₹400 + Labour</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Comp%20Capacitor%20(₹400)" class="btn-book-now" target="_blank">Book</a></div>
+
+                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Gas Charging & Coils</h3>
+                    <div class="option-item"><div class="option-details"><h4>Gas Charging</h4><p>Refrigerant gas top-up / full charge</p><div class="option-price">₹2800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Gas%20Charging%20(₹2800)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Copper Coil Condensor (1.5 ton)</h4><p>Split AC condenser coil replacement</p><div class="option-price">₹4800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Copper%20Coil%20Condensor%201.5%20ton%20(₹4800)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Compressor (1.5 ton)</h4><p>Replacement compressor unit</p><div class="option-price">₹8500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20AC%20Service:%20Compressor%201.5%20ton%20(₹8500)" class="btn-book-now" target="_blank">Book</a></div>
+                `;
+            } else if (serviceName === 'Refrigerator Repair') {
+                container.innerHTML = `
+                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Single Door Refrigerator</h3>
+                    <div class="option-item"><div class="option-details"><h4>Thermostat</h4><p>Temperature controller replacement</p><div class="option-price">₹800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Thermostat%20(₹800)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Complete door gasket</h4><p>Magnetic door seal replacement</p><div class="option-price">₹1000</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Complete%20door%20gasket%20(₹1000)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Refrigerant Gas Charge (>100L)</h4><p>Single door gas charging</p><div class="option-price">₹1700</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Gas%20Charge%20Single%20Door%20(₹1700)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Compressor (Single Door Combo)</h4><p>Includes Relay, OLP & capacitor</p><div class="option-price">₹3600</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Compressor%20Single%20Door%20(₹3600)" class="btn-book-now" target="_blank">Book</a></div>
+
+                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Double Door & Side-by-Side</h3>
+                    <div class="option-item"><div class="option-details"><h4>Coil Heater (Double Door)</h4><p>Defrost heater replacement</p><div class="option-price">₹1800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Coil%20Heater%20(₹1800)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Refrigerant Gas Charge (Double Door)</h4><p>Complete gas charging</p><div class="option-price">₹2000</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Double%20Door%20Gas%20Charge%20(₹2000)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Compressor (<500 lit. Double Door)</h4><p>Includes Relay, OLP & capacitor</p><div class="option-price">₹5400</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Double%20Door%20Compressor%20(₹5400)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Ice maker kit (Side-by-Side)</h4><p>Dispenser ice maker kit</p><div class="option-price">₹2500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Fridge:%20Ice%20maker%20kit%20(₹2500)" class="btn-book-now" target="_blank">Book</a></div>
+                `;
+            } else if (serviceName === 'Washing Machine') {
+                container.innerHTML = `
+                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Semi-Automatic Washing Machine</h3>
+                    <div class="option-item"><div class="option-details"><h4>Wash Motor</h4><p>Replacement wash motor</p><div class="option-price">₹2500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Wash%20Motor%20(₹2500)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Gear Box (With Pulley)</h4><p>Heavy duty gearbox assembly</p><div class="option-price">₹1550</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Gear%20Box%20(₹1550)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Spin Motor</h4><p>Spin motor replacement</p><div class="option-price">₹1800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Spin%20Motor%20(₹1800)" class="btn-book-now" target="_blank">Book</a></div>
+
+                    <h3 style="color:#1e3a8a; margin:15px 0 10px 0; font-size:15px;">Top Load & Front Load</h3>
+                    <div class="option-item"><div class="option-details"><h4>Top Load Main Motor</h4><p>Top load washing machine motor</p><div class="option-price">₹2182</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Top%20Load%20Main%20Motor%20(₹2182)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Damper rod / Balancing Rods (4 Qty)</h4><p>Suspension rods for top load</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Balancing%20Rods%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Front Load Drum Bearing / Oil Seal</h4><p>Complete drum bearing overhaul cleaning</p><div class="option-price">₹2500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Front%20Load%20Bearing%20(₹2500)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Front Load Gasket / Door Diaphragm</h4><p>Rubber seal replacement</p><div class="option-price">₹1600</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20WM:%20Door%20Diaphragm%20(₹1600)" class="btn-book-now" target="_blank">Book</a></div>
+                `;
+            } else if (serviceName === 'Microwave Oven') {
+                container.innerHTML = `
+                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">General & No Heating Spares</h3>
+                    <div class="option-item"><div class="option-details"><h4>Magnetron</h4><p>Core heating component replacement</p><div class="option-price">₹1800</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20Magnetron%20(₹1800)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>HV Transformer</h4><p>High voltage transformer</p><div class="option-price">₹1900</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20HV%20Transformer%20(₹1900)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Keypad / Touchpad Repair</h4><p>Membrane switch replacement</p><div class="option-price">₹1600</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20Touchpad%20Repair%20(₹1600)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Glass Turn table</h4><p>Replacement rotating glass plate</p><div class="option-price">₹810</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Microwave:%20Glass%20Turn%20table%20(₹810)" class="btn-book-now" target="_blank">Book</a></div>
+                `;
+            } else if (serviceName === 'Geyser Repair') {
+                container.innerHTML = `
+                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">Geyser Heating Elements & Parts</h3>
+                    <div class="option-item"><div class="option-details"><h4>Heating Element (Medium 10-30L)</h4><p>Standard copper heating element</p><div class="option-price">₹910</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20Heating%20Element%20(₹910)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Heating Element (Glass Line Tank)</h4><p>Branded glass-line heating element</p><div class="option-price">₹1950</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20Glass%20Line%20Heating%20Element%20(₹1950)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Main Thermostat (Branded)</h4><p>Accurate temperature cutoff thermostat</p><div class="option-price">₹900</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20Main%20Thermostat%20(₹900)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>SS Tank (Medium Size 10-30L)</h4><p>Stainless steel inner tank replacement</p><div class="option-price">₹2400</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20Geyser:%20SS%20Tank%2010-30L%20(₹2400)" class="btn-book-now" target="_blank">Book</a></div>
+                `;
+            } else if (serviceName === 'Water Purifier (RO)') {
+                container.innerHTML = `
+                    <h3 style="color:#1e3a8a; margin:10px 0; font-size:15px;">RO Filters & Spares</h3>
+                    <div class="option-item"><div class="option-details"><h4>RO Membrane <3000 TDS</h4><p>High purity water filtration membrane</p><div class="option-price">₹1500</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20RO%20Membrane%20(₹1500)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Booster Pump 75GPD / 100GPD</h4><p>High pressure water booster pump</p><div class="option-price">₹1799</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20Booster%20Pump%20(₹1799)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>SMPS Power Adapter 24V</h4><p>Power supply unit</p><div class="option-price">₹599</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20SMPS%20Adapter%20(₹599)" class="btn-book-now" target="_blank">Book</a></div>
+                    <div class="option-item"><div class="option-details"><h4>Pressure Tank</h4><p>Storage tank for purified water</p><div class="option-price">₹3299</div></div><a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling,%20Book%20RO:%20Pressure%20Tank%20(₹3299)" class="btn-book-now" target="_blank">Book</a></div>
                 `;
             } else if (serviceName === 'Service Post-Check / Feedback & Support') {
                 container.innerHTML = `
@@ -355,26 +382,6 @@
                             <div class="option-price">Follow-Up</div>
                         </div>
                         <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20need%20a%20follow-up%20maintenance%20service%20for%20my%20appliance." class="btn-book-now" target="_blank">Book Follow-Up</a>
-                    </div>
-                `;
-            } else {
-                // For Refrigerator, Washing Machine, Microwave, Geyser, Water Purifier
-                container.innerHTML = `
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>Service Charge</h4>
-                            <p>Complete diagnosis and servicing by expert technician.</p>
-                            <div class="option-price">₹499</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Service%20Charge%20(%E2%82%B9499)." class="btn-book-now" target="_blank">Book WhatsApp</a>
-                    </div>
-                    <div class="option-item">
-                        <div class="option-details">
-                            <h4>Repair Charge</h4>
-                            <p>Professional repair service for breakdown issues.</p>
-                            <div class="option-price">₹199</div>
-                        </div>
-                        <a href="https://wa.me/91${whatsappNumber}?text=Hello%20N.G%20Cooling%20Solution,%20I%20want%20to%20book%20*${encodeURIComponent(serviceName)}*%20-%20Repair%20Charge%20(%E2%82%B9199)." class="btn-book-now" target="_blank">Book WhatsApp</a>
                     </div>
                 `;
             }
