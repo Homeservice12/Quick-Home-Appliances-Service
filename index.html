@@ -5,266 +5,2211 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#075985">
 <title>N.G Cooling Solution | AC Service & Repair</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:Arial,"Segoe UI",sans-serif}
-body{background:#f1f5f9;color:#172033}
-header{background:#fff;height:65px;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:1000;box-shadow:0 3px 15px rgba(0,0,0,.08)}
-.logo{font-size:21px;font-weight:800;color:#075985}.logo span{color:#16a34a}
-.header-btn{background:#16a34a;color:#fff;padding:10px 15px;border-radius:8px;text-decoration:none;font-size:13px;font-weight:bold}
-.hero{background:linear-gradient(135deg,#075985,#0284c7,#16a34a);color:#fff;text-align:center;padding:38px 20px}
-.hero h1{font-size:29px;margin-bottom:8px}.hero p{font-size:14px}.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:7px 14px;border-radius:30px;margin-top:15px;font-size:12px}
-.container{width:100%;max-width:1200px;margin:auto;padding:22px 15px}
-.photo-card,.fast-box,.history-box,.page-header{background:#fff;border-radius:16px;padding:12px;box-shadow:0 5px 20px rgba(0,0,0,.07);margin-bottom:20px}
-.photo-title,.fast-title{font-size:19px;font-weight:800;color:#075985;padding:6px;margin-bottom:10px}
-.photo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
-.photo-grid a{display:block;position:relative;overflow:hidden;border-radius:11px}
-.photo-grid img{width:100%;height:150px;object-fit:cover;display:block}
-.photo-grid a:first-child{grid-column:span 2}.photo-grid a:first-child img{height:220px}
-.photo-label{position:absolute;left:8px;bottom:8px;background:rgba(0,0,0,.65);color:#fff;padding:5px 8px;border-radius:6px;font-size:11px}
-.photo-caption{text-align:center;color:#64748b;font-size:11px;padding:10px 4px 3px}
-.fast-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.fast-btn{border:1px solid #dbeafe;background:#f8fafc;border-radius:12px;padding:12px;text-align:left;cursor:pointer}
-.fast-btn strong{display:block;font-size:13px;color:#172033}.fast-btn span{display:block;color:#15803d;font-size:16px;font-weight:800;margin-top:4px}.fast-btn small{color:#64748b;font-size:10px}
-.section-title{font-size:20px;font-weight:800;color:#075985;margin-bottom:14px}
-.services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.service-card{background:#fff;border-radius:15px;padding:22px 12px;text-align:center;box-shadow:0 5px 20px rgba(0,0,0,.07);border:1px solid #e2e8f0;cursor:pointer;transition:.2s}
-.service-card:hover{transform:translateY(-4px)}.service-icon{font-size:38px;margin-bottom:10px}.service-card h3{font-size:15px;margin-bottom:5px}.service-card p{color:#64748b;font-size:11px}
-.service-page{display:none}.back-btn{border:none;background:#e0f2fe;color:#075985;padding:9px 13px;border-radius:7px;font-weight:bold;cursor:pointer;margin-bottom:12px}
-.page-title{font-size:22px;font-weight:800;color:#075985}.page-subtitle{color:#64748b;font-size:13px;margin-top:5px}
-.search-box{margin:15px 0;display:flex;gap:8px}.search-box input{width:100%;padding:13px;border:1px solid #cbd5e1;border-radius:9px;outline:none;font-size:14px}
-.category-tabs{display:flex;gap:8px;overflow-x:auto;padding-bottom:10px;margin-bottom:15px}.category-tabs button{white-space:nowrap;border:none;background:#e2e8f0;padding:9px 13px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:bold}.category-tabs button.active{background:#075985;color:#fff}
-.rate-card{background:#fff;border-radius:12px;margin-bottom:12px;border:1px solid #e2e8f0;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,.05)}
-.rate-category{background:#075985;color:#fff;padding:11px 13px;font-size:14px;font-weight:bold}.rate-row{padding:13px;border-bottom:1px solid #eef2f7}.rate-row:last-child{border-bottom:none}
-.rate-name{font-size:13px;font-weight:700;margin-bottom:6px}.rate-info{display:flex;justify-content:space-between;align-items:center;gap:10px}.price{color:#15803d;font-size:16px;font-weight:800}.labour{color:#ea580c;font-size:11px;margin-top:3px}
-.book-btn{background:#16a34a;color:#fff;border:none;border-radius:7px;padding:8px 10px;font-size:11px;font-weight:bold;cursor:pointer}
-.booking-box{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:3000;align-items:flex-end}
-.booking-content{background:#fff;width:100%;max-height:92vh;overflow-y:auto;border-radius:20px 20px 0 0;padding:20px}
-.booking-content h2{color:#075985;margin-bottom:15px;font-size:20px}.form-group{margin-bottom:12px}.form-group label{display:block;font-size:12px;font-weight:bold;margin-bottom:5px}
-.form-group input,.form-group textarea,.form-group select{width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:8px;outline:none}.form-group textarea{min-height:75px}
-.address-row{display:flex;gap:8px;align-items:stretch}.address-row textarea{flex:1}.location-btn{border:none;background:#075985;color:#fff;border-radius:8px;padding:10px;font-weight:bold;min-width:92px;cursor:pointer}
-.location-status{font-size:11px;color:#64748b;margin-top:5px}.booking-actions{display:flex;gap:8px;margin-top:15px}.whatsapp-btn{flex:1;border:none;background:#16a34a;color:#fff;padding:13px;border-radius:8px;font-weight:bold}.cancel-btn{border:none;background:#e2e8f0;padding:13px 18px;border-radius:8px}
-.map-link{display:none;margin-top:7px;color:#075985;font-size:12px;font-weight:bold}
-.history-item{border-bottom:1px solid #e2e8f0;padding:12px 0}.history-item:last-child{border-bottom:none}.history-item strong{color:#075985}.history-item small{color:#64748b}
-footer{margin-top:30px;background:#082f49;color:#fff;text-align:center;padding:25px 15px;font-size:12px}.footer-phone{color:#4ade80;font-size:18px;font-weight:bold;margin-top:8px}
-@media(min-width:700px){.photo-grid{grid-template-columns:repeat(5,1fr)}.photo-grid a:first-child{grid-column:auto}.photo-grid img,.photo-grid a:first-child img{height:170px}.fast-grid{grid-template-columns:repeat(5,1fr)}.services-grid{grid-template-columns:repeat(3,1fr)}.booking-content{width:600px;margin:auto;border-radius:20px}}
-@media(max-width:430px){.address-row{flex-direction:column}.location-btn{width:100%}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,"Segoe UI",sans-serif
+}
+
+body{
+  background:#f1f5f9;
+  color:#172033
+}
+
+header{
+  background:#fff;
+  height:65px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 5%;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 3px 15px rgba(0,0,0,.08)
+}
+
+.logo{
+  font-size:21px;
+  font-weight:800;
+  color:#075985
+}
+
+.logo span{
+  color:#16a34a
+}
+
+.header-btn{
+  background:#16a34a;
+  color:#fff;
+  padding:10px 15px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold
+}
+
+.hero{
+  background:linear-gradient(135deg,#075985,#0284c7,#16a34a);
+  color:#fff;
+  text-align:center;
+  padding:40px 20px
+}
+
+.hero h1{
+  font-size:30px;
+  margin-bottom:8px
+}
+
+.hero p{
+  font-size:14px
+}
+
+.hero-badge{
+  display:inline-block;
+  background:rgba(255,255,255,.15);
+  border:1px solid rgba(255,255,255,.3);
+  padding:8px 14px;
+  border-radius:30px;
+  margin-top:15px;
+  font-size:12px
+}
+
+.container{
+  width:100%;
+  max-width:1200px;
+  margin:auto;
+  padding:22px 15px
+}
+
+.photo-card,
+.fast-box,
+.history-box,
+.page-header{
+  background:#fff;
+  border-radius:16px;
+  padding:12px;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+  margin-bottom:20px
+}
+
+.photo-title,
+.fast-title{
+  font-size:19px;
+  font-weight:800;
+  color:#075985;
+  padding:6px;
+  margin-bottom:10px
+}
+
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:8px
+}
+
+.photo-grid a{
+  display:block;
+  position:relative;
+  overflow:hidden;
+  border-radius:11px
+}
+
+.photo-grid img{
+  width:100%;
+  height:150px;
+  object-fit:cover;
+  display:block;
+  transition:.3s
+}
+
+.photo-grid a:hover img{
+  transform:scale(1.05)
+}
+
+.photo-grid a:first-child{
+  grid-column:span 2
+}
+
+.photo-grid a:first-child img{
+  height:220px
+}
+
+.photo-label{
+  position:absolute;
+  left:8px;
+  bottom:8px;
+  background:rgba(0,0,0,.65);
+  color:#fff;
+  padding:5px 8px;
+  border-radius:6px;
+  font-size:11px
+}
+
+.photo-caption{
+  text-align:center;
+  color:#64748b;
+  font-size:11px;
+  padding:10px 4px 3px
+}
+
+.fast-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px
+}
+
+.fast-btn{
+  border:1px solid #dbeafe;
+  background:#f8fafc;
+  border-radius:12px;
+  padding:12px;
+  text-align:left;
+  cursor:pointer;
+  transition:.2s
+}
+
+.fast-btn:hover{
+  transform:translateY(-3px);
+  border-color:#0284c7
+}
+
+.fast-btn strong{
+  display:block;
+  font-size:13px
+}
+
+.fast-btn span{
+  display:block;
+  color:#15803d;
+  font-size:16px;
+  font-weight:800;
+  margin-top:4px
+}
+
+.fast-btn small{
+  color:#64748b;
+  font-size:10px
+}
+
+.section-title{
+  font-size:20px;
+  font-weight:800;
+  color:#075985;
+  margin-bottom:14px
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:14px
+}
+
+.service-card{
+  background:#fff;
+  border-radius:15px;
+  padding:22px 12px;
+  text-align:center;
+  box-shadow:0 5px 20px rgba(0,0,0,.07);
+  border:1px solid #e2e8f0;
+  cursor:pointer;
+  transition:.2s
+}
+
+.service-card:hover{
+  transform:translateY(-4px);
+  border-color:#0284c7
+}
+
+.service-icon{
+  font-size:38px;
+  margin-bottom:10px
+}
+
+.service-card h3{
+  font-size:15px;
+  margin-bottom:5px
+}
+
+.service-card p{
+  color:#64748b;
+  font-size:11px
+}
+
+.service-page{
+  display:none
+}
+
+.back-btn{
+  border:none;
+  background:#e0f2fe;
+  color:#075985;
+  padding:9px 13px;
+  border-radius:7px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-bottom:12px
+}
+
+.page-title{
+  font-size:22px;
+  font-weight:800;
+  color:#075985
+}
+
+.page-subtitle{
+  color:#64748b;
+  font-size:13px;
+  margin-top:5px
+}
+
+.search-box{
+  margin:15px 0;
+  display:flex;
+  gap:8px
+}
+
+.search-box input{
+  width:100%;
+  padding:13px;
+  border:1px solid #cbd5e1;
+  border-radius:9px;
+  outline:none;
+  font-size:14px
+}
+
+.category-tabs{
+  display:flex;
+  gap:8px;
+  overflow-x:auto;
+  padding-bottom:10px;
+  margin-bottom:15px
+}
+
+.category-tabs button{
+  white-space:nowrap;
+  border:none;
+  background:#e2e8f0;
+  padding:9px 13px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:12px;
+  font-weight:bold
+}
+
+.category-tabs button.active{
+  background:#075985;
+  color:#fff
+}
+
+.rate-card{
+  background:#fff;
+  border-radius:12px;
+  margin-bottom:12px;
+  border:1px solid #e2e8f0;
+  overflow:hidden;
+  box-shadow:0 3px 10px rgba(0,0,0,.05)
+}
+
+.rate-category{
+  background:#075985;
+  color:#fff;
+  padding:11px 13px;
+  font-size:14px;
+  font-weight:bold
+}
+
+.rate-row{
+  padding:13px;
+  border-bottom:1px solid #eef2f7
+}
+
+.rate-row:last-child{
+  border-bottom:none
+}
+
+.rate-name{
+  font-size:13px;
+  font-weight:700;
+  margin-bottom:6px
+}
+
+.rate-info{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px
+}
+
+.price{
+  color:#15803d;
+  font-size:16px;
+  font-weight:800
+}
+
+.labour{
+  color:#ea580c;
+  font-size:11px;
+  margin-top:3px
+}
+
+.book-btn{
+  background:#16a34a;
+  color:#fff;
+  border:none;
+  border-radius:7px;
+  padding:8px 10px;
+  font-size:11px;
+  font-weight:bold;
+  cursor:pointer
+}
+
+/* BOOKING MODAL */
+
+.booking-box{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.60);
+  z-index:3000;
+  align-items:flex-end;
+  justify-content:center
+}
+
+.booking-content{
+  background:#fff;
+  width:100%;
+  max-width:650px;
+  max-height:94vh;
+  overflow-y:auto;
+  border-radius:22px 22px 0 0;
+  padding:20px
+}
+
+.booking-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:15px
+}
+
+.booking-header h2{
+  color:#075985;
+  font-size:20px
+}
+
+.close-x{
+  width:34px;
+  height:34px;
+  border:none;
+  border-radius:50%;
+  background:#f1f5f9;
+  font-size:18px;
+  cursor:pointer
+}
+
+.selected-service{
+  background:#f0fdf4;
+  border:1px solid #bbf7d0;
+  padding:13px;
+  border-radius:10px;
+  margin-bottom:16px;
+  font-size:13px;
+  font-weight:bold;
+  color:#166534
+}
+
+.form-group{
+  margin-bottom:13px
+}
+
+.form-group label{
+  display:block;
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:5px
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+  width:100%;
+  padding:12px;
+  border:1px solid #cbd5e1;
+  border-radius:9px;
+  outline:none;
+  background:#fff;
+  font-size:14px
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+  border-color:#0284c7
+}
+
+.form-group textarea{
+  min-height:75px;
+  resize:vertical
+}
+
+/* GPS BOX */
+
+.location-box{
+  background:#f8fafc;
+  border:1px solid #dbeafe;
+  padding:12px;
+  border-radius:12px
+}
+
+.location-title{
+  font-size:12px;
+  font-weight:bold;
+  color:#075985;
+  margin-bottom:8px
+}
+
+.address-row{
+  display:flex;
+  gap:8px;
+  align-items:stretch
+}
+
+.address-row textarea{
+  flex:1
+}
+
+.location-btn{
+  border:none;
+  background:#075985;
+  color:#fff;
+  border-radius:9px;
+  padding:10px;
+  font-weight:bold;
+  min-width:125px;
+  cursor:pointer
+}
+
+.location-btn.loading{
+  background:#64748b;
+  pointer-events:none
+}
+
+.location-status{
+  font-size:11px;
+  color:#64748b;
+  margin-top:7px;
+  line-height:1.5
+}
+
+.location-success{
+  color:#15803d
+}
+
+.location-error{
+  color:#dc2626
+}
+
+.map-link{
+  display:none;
+  margin-top:9px;
+  background:#e0f2fe;
+  color:#075985;
+  padding:9px;
+  border-radius:8px;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+  text-align:center
+}
+
+.booking-actions{
+  display:flex;
+  gap:8px;
+  margin-top:18px
+}
+
+.whatsapp-btn{
+  flex:1;
+  border:none;
+  background:#16a34a;
+  color:#fff;
+  padding:14px;
+  border-radius:9px;
+  font-weight:bold;
+  cursor:pointer
+}
+
+.cancel-btn{
+  border:none;
+  background:#e2e8f0;
+  padding:13px 18px;
+  border-radius:9px;
+  cursor:pointer;
+  font-weight:bold
+}
+
+.history-item{
+  border-bottom:1px solid #e2e8f0;
+  padding:12px 0
+}
+
+.history-item:last-child{
+  border-bottom:none
+}
+
+.history-item strong{
+  color:#075985
+}
+
+.history-item small{
+  color:#64748b
+}
+
+footer{
+  margin-top:30px;
+  background:#082f49;
+  color:#fff;
+  text-align:center;
+  padding:25px 15px;
+  font-size:12px
+}
+
+.footer-phone{
+  color:#4ade80;
+  font-size:18px;
+  font-weight:bold;
+  margin-top:8px
+}
+
+@media(min-width:700px){
+
+  .photo-grid{
+    grid-template-columns:repeat(5,1fr)
+  }
+
+  .photo-grid a:first-child{
+    grid-column:auto
+  }
+
+  .photo-grid img,
+  .photo-grid a:first-child img{
+    height:170px
+  }
+
+  .fast-grid{
+    grid-template-columns:repeat(5,1fr)
+  }
+
+  .services-grid{
+    grid-template-columns:repeat(3,1fr)
+  }
+
+  .booking-box{
+    align-items:center
+  }
+
+  .booking-content{
+    border-radius:20px
+  }
+}
+
+@media(max-width:430px){
+
+  .address-row{
+    flex-direction:column
+  }
+
+  .location-btn{
+    width:100%;
+    padding:13px
+  }
+
+  .hero h1{
+    font-size:26px
+  }
+}
 </style>
 </head>
+
 <body>
-​<header>
-<div class="logo">N.G <span>Cooling Solution</span></div>
-<a class="header-btn" href="[https://wa.me/917439160014](https://wa.me/917439160014)" target="_blank">WhatsApp</a>
+
+<header>
+  <div class="logo">
+    N.G <span>Cooling Solution</span>
+  </div>
+
+  <a class="header-btn"
+     href="https://wa.me/917439160014"
+     target="_blank">
+     WhatsApp
+  </a>
 </header>
-​<section class="hero">
-<h1>N.G Cooling Solution</h1>
-<p>Professional AC Service & Repair</p>
-<div class="hero-badge">Fast Booking • AC Service • Repair • Installation • WhatsApp Support</div>
+
+
+<section class="hero">
+  <h1>N.G Cooling Solution</h1>
+  <p>Professional AC Service & Repair</p>
+
+  <div class="hero-badge">
+    ⚡ Fast Booking • 🔧 Repair • ❄️ Service • 📍 GPS Location
+  </div>
 </section>
-​<div id="homePage" class="container">
-​<div class="photo-card">
-<div class="photo-title">❄️ AC Service & Repair</div>
-<div class="photo-grid">
-<a href="[https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=85](https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=85)" target="_blank"><img src="[https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=85](https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=85)" alt="AC Service"><span class="photo-label">AC Service</span></a>
-<a href="[https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=85)" target="_blank"><img src="[https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=85)" alt="AC Repair"><span class="photo-label">AC Repair</span></a>
-<a href="[https://images.unsplash.com/photo-1631545806609-3b1b1f4b8b9b?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1631545806609-3b1b1f4b8b9b?auto=format&fit=crop&w=700&q=85)" target="_blank"><img src="[https://images.unsplash.com/photo-1631545806609-3b1b1f4b8b9b?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1631545806609-3b1b1f4b8b9b?auto=format&fit=crop&w=700&q=85)" alt="AC Installation"><span class="photo-label">AC Installation</span></a>
-<a href="[https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=85)" target="_blank"><img src="[https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=85)" alt="AC Cleaning"><span class="photo-label">AC Cleaning</span></a>
-<a href="[https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=85)" target="_blank"><img src="[https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=85](https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=85)" alt="AC Repair Service"><span class="photo-label">AC Repair Service</span></a>
+
+
+<!-- HOME PAGE -->
+
+<div id="homePage" class="container">
+
+  <div class="photo-card">
+
+    <div class="photo-title">
+      ❄️ AC Service & Repair
+    </div>
+
+    <div class="photo-grid">
+
+      <a href="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=85"
+         target="_blank">
+        <img src="https://images.unsplash.com/photo-1621905252507-b35492cc74b4?auto=format&fit=crop&w=900&q=85"
+             alt="AC Service">
+        <span class="photo-label">AC Service</span>
+      </a>
+
+      <a href="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=85"
+         target="_blank">
+        <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=700&q=85"
+             alt="AC Repair">
+        <span class="photo-label">AC Repair</span>
+      </a>
+
+      <a href="https://images.unsplash.com/photo-1631545806609-3b1b1f4b8b9b?auto=format&fit=crop&w=700&q=85"
+         target="_blank">
+        <img src="https://images.unsplash.com/photo-1631545806609-3b1b1f4b8b9b?auto=format&fit=crop&w=700&q=85"
+             alt="AC Installation">
+        <span class="photo-label">AC Installation</span>
+      </a>
+
+      <a href="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=85"
+         target="_blank">
+        <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=700&q=85"
+             alt="AC Cleaning">
+        <span class="photo-label">AC Cleaning</span>
+      </a>
+
+      <a href="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=85"
+         target="_blank">
+        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=700&q=85"
+             alt="AC Repair Service">
+        <span class="photo-label">AC Repair Service</span>
+      </a>
+
+    </div>
+
+    <div class="photo-caption">
+      Professional AC cleaning, repair, cooling & installation
+    </div>
+
+  </div>
+
+
+  <!-- FAST BOOKING -->
+
+  <div class="fast-box">
+
+    <div class="fast-title">
+      ⚡ Fast Popular AC Booking
+    </div>
+
+    <div class="fast-grid">
+
+      <button class="fast-btn"
+              onclick="quickBook('Foam-Jet AC Service','₹599')">
+        <strong>🧼 Foam-Jet Service</strong>
+        <span>₹599</span>
+        <small>Deep clean AC</small>
+      </button>
+
+      <button class="fast-btn"
+              onclick="quickBook('Lite AC Service','₹499')">
+        <strong>❄️ Lite AC Service</strong>
+        <span>₹499</span>
+        <small>Quick AC service</small>
+      </button>
+
+      <button class="fast-btn"
+              onclick="quickBook('Water Leakage Repaired - Split AC','₹599')">
+        <strong>💧 Water Leakage</strong>
+        <span>₹599</span>
+        <small>Split AC</small>
+      </button>
+
+      <button class="fast-btn"
+              onclick="quickBook('AC Installation','₹1699')">
+        <strong>🔧 AC Installation</strong>
+        <span>₹1699</span>
+        <small>Professional setup</small>
+      </button>
+
+      <button class="fast-btn"
+              onclick="quickBook('Gas Charging','₹2800')">
+        <strong>🧊 Gas Charging</strong>
+        <span>₹2800</span>
+        <small>Cooling problem</small>
+      </button>
+
+    </div>
+  </div>
+
+
+  <div class="section-title">
+    Select Appliance Service
+  </div>
+
+
+  <div class="services-grid">
+
+    <div class="service-card"
+         onclick="openService('AC')">
+      <div class="service-icon">❄️</div>
+      <h3>AC Service & Repair</h3>
+      <p>PCB • Gas • Coil • Motor • Installation</p>
+    </div>
+
+    <div class="service-card"
+         onclick="openService('FRIDGE')">
+      <div class="service-icon">🧊</div>
+      <h3>Fridge Repair</h3>
+      <p>Single Door • Double Door • SBS</p>
+    </div>
+
+    <div class="service-card"
+         onclick="openService('WM')">
+      <div class="service-icon">🌀</div>
+      <h3>Washing Machine</h3>
+      <p>Semi • Top Load • Front Load</p>
+    </div>
+
+    <div class="service-card"
+         onclick="openService('MICROWAVE')">
+      <div class="service-icon">🔥</div>
+      <h3>Microwave Repair</h3>
+      <p>PCB • Magnetron • Heater • Fuse</p>
+    </div>
+
+    <div class="service-card"
+         onclick="openService('GEYSER')">
+      <div class="service-icon">♨️</div>
+      <h3>Geyser Repair</h3>
+      <p>Heating • Thermostat • Leakage</p>
+    </div>
+
+    <div class="service-card"
+         onclick="openService('RO')">
+      <div class="service-icon">💧</div>
+      <h3>Water Purifier</h3>
+      <p>RO • UV • Aquaguard • Kent</p>
+    </div>
+
+  </div>
+
+
+  <!-- HISTORY -->
+
+  <div class="history-box">
+
+    <h3 style="color:#075985;margin-bottom:10px">
+      📋 Recent Bookings
+    </h3>
+
+    <div id="historyContainer">
+      No booking history yet.
+    </div>
+
+  </div>
+
 </div>
-<div class="photo-caption">Professional AC cleaning, repair, cooling & installation</div>
+
+
+<!-- SERVICE PAGE -->
+
+<div id="servicePage" class="container service-page">
+
+  <div class="page-header">
+
+    <button class="back-btn"
+            onclick="goHome()">
+      ← Back
+    </button>
+
+    <div id="pageTitle"
+         class="page-title">
+    </div>
+
+    <div id="pageSubtitle"
+         class="page-subtitle">
+    </div>
+
+  </div>
+
+
+  <div class="search-box">
+
+    <input type="text"
+           id="searchInput"
+           placeholder="🔎 Search service / part..."
+           oninput="renderRates()">
+
+  </div>
+
+
+  <div id="categoryTabs"
+       class="category-tabs">
+  </div>
+
+
+  <div id="rateContainer">
+  </div>
+
 </div>
-​<div class="fast-box">
-<div class="fast-title">⚡ Fast Popular AC Booking</div>
-<div class="fast-grid">
-<button class="fast-btn" onclick="quickBook('Foam-Jet AC Service','₹599')"><strong>🧼 Foam-Jet Service</strong><span>₹599</span><small>Deep clean AC</small></button>
-<button class="fast-btn" onclick="quickBook('Lite AC Service','₹499')"><strong>❄️ Lite AC Service</strong><span>₹499</span><small>Quick AC service</small></button>
-<button class="fast-btn" onclick="quickBook('Water Leakage Repaired - Split AC','₹599')"><strong>💧 Water Leakage</strong><span>₹599</span><small>Split AC</small></button>
-<button class="fast-btn" onclick="quickBook('AC Installation','₹1699')"><strong>🔧 AC Installation</strong><span>₹1699</span><small>Professional setup</small></button>
-<button class="fast-btn" onclick="quickBook('Gas Charging','₹2800')"><strong>🧊 Gas Charging</strong><span>₹2800</span><small>Cooling problem</small></button>
+
+
+<!-- BOOKING MODAL -->
+
+<div id="bookingBox"
+     class="booking-box">
+
+  <div class="booking-content">
+
+    <div class="booking-header">
+
+      <h2>
+        📅 Book Service
+      </h2>
+
+      <button class="close-x"
+              onclick="closeBooking()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div id="selectedService"
+         class="selected-service">
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Customer Name
+      </label>
+
+      <input id="customerName"
+             type="text"
+             placeholder="আপনার নাম">
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Mobile Number
+      </label>
+
+      <input id="customerPhone"
+             type="tel"
+             inputmode="numeric"
+             maxlength="10"
+             placeholder="10 digit mobile number">
+
+    </div>
+
+
+    <!-- LOCATION -->
+
+    <div class="form-group">
+
+      <div class="location-box">
+
+        <div class="location-title">
+          📍 Service Address + Customer Location
+        </div>
+
+
+        <div class="address-row">
+
+          <textarea id="customerAddress"
+                    placeholder="আপনার সম্পূর্ণ address লিখুন"></textarea>
+
+          <button type="button"
+                  id="locationBtn"
+                  class="location-btn"
+                  onclick="getCustomerLocation()">
+
+            📍 Use My Location
+
+          </button>
+
+        </div>
+
+
+        <div id="locationStatus"
+             class="location-status">
+
+          Location button চাপলে আপনার বর্তমান GPS location নেওয়া হবে।
+
+        </div>
+
+
+        <a id="mapLink"
+           class="map-link"
+           href="#"
+           target="_blank">
+
+          🗺️ Open Customer Location in Google Maps
+
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Date
+      </label>
+
+      <input id="serviceDate"
+             type="date">
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Preferred Time
+      </label>
+
+      <select id="serviceTime">
+
+        <option>8:00 AM - 10:00 AM</option>
+        <option>10:00 AM - 12:00 PM</option>
+        <option>12:00 PM - 2:00 PM</option>
+        <option>2:00 PM - 4:00 PM</option>
+        <option>4:00 PM - 6:00 PM</option>
+        <option>6:00 PM - 8:00 PM</option>
+        <option>8:00 PM - 10:00 PM</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>
+        Additional Problem
+      </label>
+
+      <textarea id="customerNote"
+                placeholder="Problem details"></textarea>
+
+    </div>
+
+
+    <div class="booking-actions">
+
+      <button class="cancel-btn"
+              onclick="closeBooking()">
+        Cancel
+      </button>
+
+      <button class="whatsapp-btn"
+              onclick="sendBooking()">
+        📱 Book on WhatsApp
+      </button>
+
+    </div>
+
+  </div>
+
 </div>
-</div>
-​<div class="section-title">Select Appliance Service</div>
-<div class="services-grid">
-<div class="service-card" onclick="openService('AC')"><div class="service-icon">❄️</div><h3>AC Service & Repair</h3><p>PCB • Gas • Coil • Motor • Installation</p></div>
-<div class="service-card" onclick="openService('FRIDGE')"><div class="service-icon">🧊</div><h3>Fridge Repair</h3><p>Single Door • Double Door • SBS</p></div>
-<div class="service-card" onclick="openService('WM')"><div class="service-icon">🌀</div><h3>Washing Machine</h3><p>Semi • Top Load • Front Load</p></div>
-<div class="service-card" onclick="openService('MICROWAVE')"><div class="service-icon">🔥</div><h3>Microwave Repair</h3><p>PCB • Magnetron • Heater • Fuse</p></div>
-<div class="service-card" onclick="openService('GEYSER')"><div class="service-icon">♨️</div><h3>Geyser Repair</h3><p>Heating • Thermostat • Leakage</p></div>
-<div class="service-card" onclick="openService('RO')"><div class="service-icon">💧</div><h3>Water Purifier</h3><p>RO • UV • Aquaguard • Kent</p></div>
-</div>
-​<div class="history-box">
-<h3 style="color:#075985;margin-bottom:10px">📋 Recent Bookings</h3>
-<div id="historyContainer">No booking history yet.</div>
-</div>
-</div>
-​<div id="servicePage" class="container service-page">
-<div class="page-header">
-<button class="back-btn" onclick="goHome()">← Back</button>
-<div id="pageTitle" class="page-title"></div>
-<div id="pageSubtitle" class="page-subtitle"></div>
-</div>
-<div class="search-box"><input type="text" id="searchInput" placeholder="🔎 Search service / part..." oninput="renderRates()"></div>
-<div id="categoryTabs" class="category-tabs"></div>
-<div id="rateContainer"></div>
-</div>
-​<div id="bookingBox" class="booking-box">
-<div class="booking-content">
-<h2>📅 Book Service</h2>
-<div id="selectedService" style="background:#f0fdf4;padding:12px;border-radius:8px;margin-bottom:15px;font-size:13px;font-weight:bold;color:#166534"></div>
-​<div class="form-group"><label>Customer Name</label><input id="customerName" type="text" placeholder="আপনার নাম"></div>
-<div class="form-group"><label>Mobile Number</label><input id="customerPhone" type="tel" inputmode="numeric" maxlength="10" placeholder="10 digit mobile number"></div>
-​<div class="form-group">
-<label>Service Address + Customer Location</label>
-<div class="address-row">
-<textarea id="customerAddress" placeholder="আপনার সম্পূর্ণ address লিখুন"></textarea>
-<button type="button" class="location-btn" onclick="getCustomerLocation()">📍 Location</button>
-</div>
-<div id="locationStatus" class="location-status">Location button চাপলে অটোমেটিক GPS location নিয়ে নেবে।</div>
-<a id="mapLink" class="map-link" href="#" target="_blank">🗺️ Open Customer Location in Google Maps</a>
-</div>
-​<div class="form-group"><label>Date</label><input id="serviceDate" type="date"></div>
-<div class="form-group"><label>Preferred Time</label>
-<select id="serviceTime">
-<option>8:00 AM - 10:00 AM</option><option>10:00 AM - 12:00 PM</option><option>12:00 PM - 2:00 PM</option><option>2:00 PM - 4:00 PM</option><option>4:00 PM - 6:00 PM</option><option>6:00 PM - 8:00 PM</option><option>8:00 PM - 10:00 PM</option>
-</select></div>
-<div class="form-group"><label>Additional Problem</label><textarea id="customerNote" placeholder="Problem details"></textarea></div>
-​<div class="booking-actions">
-<button class="cancel-btn" onclick="closeBooking()">Cancel</button>
-<button class="whatsapp-btn" onclick="sendBooking()">📱 Book on WhatsApp</button>
-</div>
-</div>
-</div>
-​<footer>
-<div>N.G Cooling Solution</div>
-<div>AC • Fridge • Washing Machine • Microwave • Geyser • RO</div>
-<div class="footer-phone">WhatsApp: 7439160014</div>
-<div style="margin-top:8px">© 2026 N.G Cooling Solution</div>
+
+
+<footer>
+
+  <div>N.G Cooling Solution</div>
+
+  <div>
+    AC • Fridge • Washing Machine • Microwave • Geyser • RO
+  </div>
+
+  <div class="footer-phone">
+    WhatsApp: 7439160014
+  </div>
+
+  <div style="margin-top:8px">
+    © 2026 N.G Cooling Solution
+  </div>
+
 </footer>
-​<script>
-const whatsappNumber="7439160014";
-let currentService="",currentCategory="All",selectedRate="",customerLat="",customerLng="",customerMapLink="";
-​const rates={
+
+
+<script>
+
+/* =========================
+   BASIC SETTINGS
+========================= */
+
+const whatsappNumber = "7439160014";
+
+let currentService = "";
+let currentCategory = "All";
+
+let selectedRate = "";
+
+let customerLat = "";
+let customerLng = "";
+
+let customerMapLink = "";
+
+
+/* =========================
+   SERVICE DATA
+========================= */
+
+const rates = {
+
 AC:[
-["Electrical Parts","Non-Inverter PCB repaired","₹1500",""],["Electrical Parts","Inverter PCB repaired","₹4500",""],["Electrical Parts","LVT (Transformer)","₹900","₹349 Labour"],["Electrical Parts","Replace sensor","₹350","₹499 Labour"],["Electrical Parts","Contactor replaced","₹500","₹499 Labour"],["Electrical Parts","Contactor Daikin / O-General","₹1500","₹449 Labour"],["Electrical Parts","Convert PCB with remote","₹1500",""],["Electrical Parts","Fan Capacitor - 2.5 to 10 mfd","₹250","₹449 Labour"],["Electrical Parts","Comp Capacitor - 25 to 60 mfd","₹400","₹449 Labour"],["Electrical Parts","Combo Capacitor (Comp + Fan)","₹500","₹449 Labour"],["Electrical Parts","Fuse Change in PCB","₹150","₹299 Labour"],
-["Gas Charging","Gas Charging","₹2800",""],["Gas Charging","Flair Nut Replaced","₹150",""],["Gas Charging","Copper Coil Condensor 1 Ton Split","₹4000",""],["Gas Charging","Copper Coil Condensor 1.5 Ton Split","₹4800",""],["Gas Charging","Copper Coil Condensor 2 Ton Split","₹5300",""],["Gas Charging","Capillary and Filter Replaced","₹350",""],["Gas Charging","Compressor 0.8 - 1 Ton","₹6500",""],["Gas Charging","Compressor 1.5 Ton","₹8500",""],["Gas Charging","Compressor 2 Ton","₹10000",""],["Gas Charging","Expansion Valve Replaced","₹1200",""],["Gas Charging","Service Valve 1/4","₹400",""],["Gas Charging","Service Valve 1/2","₹400",""],["Gas Charging","Service Valve 5/8","₹500",""],["Gas Charging","Cooling Coil Split AC - 1 Ton","₹5500",""],["Gas Charging","Cooling Coil Split AC - 1.5 Ton","₹6500",""],["Gas Charging","Cooling Coil Split AC - 2 Ton","₹7500",""],["Gas Charging","Cooling Coil O General / Mitsubishi - 1.5 Ton","₹7500",""],["Gas Charging","Cooling / Condenser Coil Window AC - 1 Ton","₹4500",""],["Gas Charging","Cooling / Condenser Coil Window AC - 1.5 Ton","₹5000",""],["Gas Charging","Cooling / Condenser Coil Window AC - 2 Ton","₹5500",""],["Gas Charging","Cooling Coil Repair with Anti-Rust Coating","₹899",""],
-["Fan Motors","Fan Motor - Split AC","₹1800","₹499 Labour"],["Fan Motors","Blower Motor - Split AC","₹2200","₹499 Labour"],["Fan Motors","Blower Replaced","₹1100","₹499 Labour"],["Fan Motors","Flap / Swing Motor","₹400","₹499 Labour"],["Fan Motors","Motor Bearing Change","₹1000",""],["Fan Motors","Fan Motor - Window AC","₹2600","₹499 Labour"],["Fan Motors","Blower Motor DC - Split AC","₹3800",""],["Fan Motors","Fan Motor DC - Split AC","₹3800",""],
-["Service & Installation","1 ft Copper Pipe Set","₹350",""],["Service & Installation","Split AC Wall Stand","₹750",""],["Service & Installation","Outdoor Unit Reinstalled","₹799",""],["Service & Installation","Indoor Unit Reinstalled","₹699",""],["Service & Installation","Fastner Complete Set","₹200",""],["Service & Installation","Floor Stand","₹550",""],["Service & Installation","Universal Back Plate","₹300",""],["Service & Installation","Foam-Jet AC Service","₹599",""],["Service & Installation","AC Installation","₹1699",""],["Service & Installation","AC Uninstallation","₹699",""],["Service & Installation","Anti-Rust Spray","₹249",""],["Service & Installation","Lite AC Service","₹499",""],["Service & Installation","Drain Pipe Replacement - 1 Meter","₹100",""],["Service & Installation","3/4 Core Wire Per Meter","₹120",""],["Service & Installation","Outdoor / Indoor Connector","₹150",""],
-["Minor Repairs","Water Leakage Repaired - Split AC","₹599",""],["Minor Repairs","Adjust Grill Locks","₹0","₹349 Labour"],["Minor Repairs","Adjust Pipe and Tight Compressor Screw","₹0","₹349 Labour"],["Minor Repairs","Connector Wires Replaced - 1 Meter","₹100","₹349 Labour"],["Minor Repairs","Tighten / Replace Thimble","₹50","₹349 Labour"],["Minor Repairs","External Dust / Stick Removal","₹0","₹399 Labour"],["Minor Repairs","Noise Adjustment in Motor","₹0","₹399 Labour"],["Minor Repairs","Noise Adjustment in Blower","₹0","₹399 Labour"],["Minor Repairs","Noise Adjustment in Cabinet","₹0","₹399 Labour"],["Minor Repairs","Noise Adjustment in Swing Flap","₹0","₹399 Labour"],["Minor Repairs","Water Leakage Repaired - Window AC","₹0","₹449 Labour"],["Minor Repairs","Drain Pipe Adjust","₹499",""],["Minor Repairs","Insulation Refix","₹0","₹399 Labour"],
-["Other Parts","AC Fan Blade","₹700","₹499 Labour"],["Other Parts","Grill Cover","₹1500","₹349 Labour"],["Other Parts","Swing Blade Replaced","₹400","₹349 Labour"],["Other Parts","Universal Remote","₹800",""],["Other Parts","Water Tray","₹500","₹200 Labour"],["Other Parts","Stabilizer Repair","₹1500",""],["Other Parts","Sleeves Per Piece","₹50",""],["Other Parts","Stabilizer Connection","₹499",""]
+
+["Electrical Parts","Non-Inverter PCB repaired","₹1500",""],
+["Electrical Parts","Inverter PCB repaired","₹4500",""],
+["Electrical Parts","LVT (Transformer)","₹900","₹349 Labour"],
+["Electrical Parts","Replace sensor","₹350","₹499 Labour"],
+["Electrical Parts","Contactor replaced","₹500","₹499 Labour"],
+["Electrical Parts","Contactor Daikin / O-General","₹1500","₹449 Labour"],
+["Electrical Parts","Convert PCB with remote","₹1500",""],
+["Electrical Parts","Fan Capacitor - 2.5 to 10 mfd","₹250","₹449 Labour"],
+["Electrical Parts","Comp Capacitor - 25 to 60 mfd","₹400","₹449 Labour"],
+["Electrical Parts","Combo Capacitor (Comp + Fan)","₹500","₹449 Labour"],
+["Electrical Parts","Fuse Change in PCB","₹150","₹299 Labour"],
+
+["Gas Charging","Gas Charging","₹2800",""],
+["Gas Charging","Flair Nut Replaced","₹150",""],
+["Gas Charging","Copper Coil Condensor 1 Ton Split","₹4000",""],
+["Gas Charging","Copper Coil Condensor 1.5 Ton Split","₹4800",""],
+["Gas Charging","Copper Coil Condensor 2 Ton Split","₹5300",""],
+["Gas Charging","Capillary and Filter Replaced","₹350",""],
+["Gas Charging","Compressor 0.8 - 1 Ton","₹6500",""],
+["Gas Charging","Compressor 1.5 Ton","₹8500",""],
+["Gas Charging","Compressor 2 Ton","₹10000",""],
+["Gas Charging","Expansion Valve Replaced","₹1200",""],
+["Gas Charging","Service Valve 1/4","₹400",""],
+["Gas Charging","Service Valve 1/2","₹400",""],
+["Gas Charging","Service Valve 5/8","₹500",""],
+["Gas Charging","Cooling Coil Split AC - 1 Ton","₹5500",""],
+["Gas Charging","Cooling Coil Split AC - 1.5 Ton","₹6500",""],
+["Gas Charging","Cooling Coil Split AC - 2 Ton","₹7500",""],
+["Gas Charging","Cooling Coil O General / Mitsubishi - 1.5 Ton","₹7500",""],
+["Gas Charging","Cooling / Condenser Coil Window AC - 1 Ton","₹4500",""],
+["Gas Charging","Cooling / Condenser Coil Window AC - 1.5 Ton","₹5000",""],
+["Gas Charging","Cooling / Condenser Coil Window AC - 2 Ton","₹5500",""],
+["Gas Charging","Cooling Coil Repair with Anti-Rust Coating","₹899",""],
+
+["Fan Motors","Fan Motor - Split AC","₹1800","₹499 Labour"],
+["Fan Motors","Blower Motor - Split AC","₹2200","₹499 Labour"],
+["Fan Motors","Blower Replaced","₹1100","₹499 Labour"],
+["Fan Motors","Flap / Swing Motor","₹400","₹499 Labour"],
+["Fan Motors","Motor Bearing Change","₹1000",""],
+["Fan Motors","Fan Motor - Window AC","₹2600","₹499 Labour"],
+["Fan Motors","Blower Motor DC - Split AC","₹3800",""],
+["Fan Motors","Fan Motor DC - Split AC","₹3800",""],
+
+["Service & Installation","1 ft Copper Pipe Set","₹350",""],
+["Service & Installation","Split AC Wall Stand","₹750",""],
+["Service & Installation","Outdoor Unit Reinstalled","₹799",""],
+["Service & Installation","Indoor Unit Reinstalled","₹699",""],
+["Service & Installation","Fastner Complete Set","₹200",""],
+["Service & Installation","Floor Stand","₹550",""],
+["Service & Installation","Universal Back Plate","₹300",""],
+["Service & Installation","Foam-Jet AC Service","₹599",""],
+["Service & Installation","AC Installation","₹1699",""],
+["Service & Installation","AC Uninstallation","₹699",""],
+["Service & Installation","Anti-Rust Spray","₹249",""],
+["Service & Installation","Lite AC Service","₹499",""],
+["Service & Installation","Drain Pipe Replacement - 1 Meter","₹100",""],
+["Service & Installation","3/4 Core Wire Per Meter","₹120",""],
+["Service & Installation","Outdoor / Indoor Connector","₹150",""],
+
+["Minor Repairs","Water Leakage Repaired - Split AC","₹599",""],
+["Minor Repairs","Adjust Grill Locks","₹0","₹349 Labour"],
+["Minor Repairs","Adjust Pipe and Tight Compressor Screw","₹0","₹349 Labour"],
+["Minor Repairs","Connector Wires Replaced - 1 Meter","₹100","₹349 Labour"],
+["Minor Repairs","Tighten / Replace Thimble","₹50","₹349 Labour"],
+["Minor Repairs","External Dust / Stick Removal","₹0","₹399 Labour"],
+["Minor Repairs","Noise Adjustment in Motor","₹0","₹399 Labour"],
+["Minor Repairs","Noise Adjustment in Blower","₹0","₹399 Labour"],
+["Minor Repairs","Noise Adjustment in Cabinet","₹0","₹399 Labour"],
+["Minor Repairs","Noise Adjustment in Swing Flap","₹0","₹399 Labour"],
+["Minor Repairs","Water Leakage Repaired - Window AC","₹0","₹449 Labour"],
+["Minor Repairs","Drain Pipe Adjust","₹499",""],
+["Minor Repairs","Insulation Refix","₹0","₹399 Labour"],
+
+["Other Parts","AC Fan Blade","₹700","₹499 Labour"],
+["Other Parts","Grill Cover","₹1500","₹349 Labour"],
+["Other Parts","Swing Blade Replaced","₹400","₹349 Labour"],
+["Other Parts","Universal Remote","₹800",""],
+["Other Parts","Water Tray","₹500","₹200 Labour"],
+["Other Parts","Stabilizer Repair","₹1500",""],
+["Other Parts","Sleeves Per Piece","₹50",""],
+["Other Parts","Stabilizer Connection","₹499",""]
+
 ],
+
 FRIDGE:[
-["Single Door","Power Cord","₹350",""],["Single Door","Power 3 Pin Plug Top","₹100",""],["Single Door","Repair - Inverter PCB","₹1601",""],["Single Door","Repair - PCB","₹1201",""],["Single Door","Thermostat","₹800",""],["Single Door","Complete Door Gasket with Magnet","₹1000",""],["Single Door","Defrost Sensor","₹500",""],["Single Door","Capillary","₹400",""],["Single Door","Condensor Coil","₹1050",""],["Single Door","Cooling Coil with Capillary","₹1450",""],["Single Door","Refrigerant Gas Charge >100L","₹1700",""],["Single Door","Inverter Compressor","₹6500",""],["Double Door","LVT","₹750",""],["Double Door","Repair Inverter PCB","₹2300",""],["Double Door","Repair PCB","₹1600",""],["Double Door","Coil Heater","₹1800",""],["Double Door","Defrost Sensor","₹600",""],["Double Door","Defrost Timer","₹950",""],["Double Door","Condensor Coil","₹1300",""],["Double Door","Cooling Coil","₹2500",""],["Double Door","Refrigerant Gas Charge","₹2000",""],["Double Door","Inverter Compressor","₹7500",""],["Double Door","DC Fan Motor - Condenser","₹1900",""],["Double Door","DC Fan Motor - Freezer","₹1800",""],["Accessories","Bulb","₹50",""],["Accessories","Door Switch","₹290",""],["Accessories","Drain Pipe","₹100",""],["Accessories","LED Light","₹290",""],["Minor Repair","Defrost Cycle Adjustment","₹0","₹399 Labour"],["Minor Repair","Door Gap Fix","₹0","₹399 Labour"],["Minor Repair","Temperature Setting","₹0","₹399 Labour"]
+
+["Single Door","Power Cord","₹350",""],
+["Single Door","Power 3 Pin Plug Top","₹100",""],
+["Single Door","Repair - Inverter PCB","₹1601",""],
+["Single Door","Repair - PCB","₹1201",""],
+["Single Door","Thermostat","₹800",""],
+["Single Door","Complete Door Gasket with Magnet","₹1000",""],
+["Single Door","Defrost Sensor","₹500",""],
+["Single Door","Capillary","₹400",""],
+["Single Door","Condensor Coil","₹1050",""],
+["Single Door","Cooling Coil with Capillary","₹1450",""],
+["Single Door","Refrigerant Gas Charge >100L","₹1700",""],
+["Single Door","Inverter Compressor","₹6500",""],
+
+["Double Door","LVT","₹750",""],
+["Double Door","Repair Inverter PCB","₹2300",""],
+["Double Door","Repair PCB","₹1600",""],
+["Double Door","Coil Heater","₹1800",""],
+["Double Door","Defrost Sensor","₹600",""],
+["Double Door","Defrost Timer","₹950",""],
+["Double Door","Condensor Coil","₹1300",""],
+["Double Door","Cooling Coil","₹2500",""],
+["Double Door","Refrigerant Gas Charge","₹2000",""],
+["Double Door","Inverter Compressor","₹7500",""],
+["Double Door","DC Fan Motor - Condenser","₹1900",""],
+["Double Door","DC Fan Motor - Freezer","₹1800",""],
+
+["Accessories","Bulb","₹50",""],
+["Accessories","Door Switch","₹290",""],
+["Accessories","Drain Pipe","₹100",""],
+["Accessories","LED Light","₹290",""],
+
+["Minor Repair","Defrost Cycle Adjustment","₹0","₹399 Labour"],
+["Minor Repair","Door Gap Fix","₹0","₹399 Labour"],
+["Minor Repair","Temperature Setting","₹0","₹399 Labour"]
+
 ],
+
 WM:[
-["Semi Automatic","Power 3 Pin Plug Top","₹200",""],["Semi Automatic","Power Cord","₹350",""],["Semi Automatic","Timer Wash Electro Mechanical","₹1000",""],["Semi Automatic","Pulsator With Snap","₹900",""],["Semi Automatic","Gear Box With Pulley","₹1550",""],["Semi Automatic","Wash Motor","₹2500",""],["Semi Automatic","Spin Motor","₹1800",""],["Top Load","Repair Inverter PCB","₹2250",""],["Top Load","Repair PCB","₹1700",""],["Top Load","Capacitor","₹450",""],["Top Load","Main Motor","₹2182",""],["Top Load","Door Lock","₹1450",""],["Top Load","Clutch Assembly","₹4000",""],["Front Load","Repair Inverter PCB","₹2800",""],["Front Load","Repair PCB","₹2300",""],["Front Load","Door Lock","₹1450",""],["Front Load","Gasket / Door Diaphragm","₹1600",""],["Front Load","Complete Tub & Drum Assembly","₹6000",""],["Front Load","Heater","₹1000",""],["Front Load","Drain Pump Motor","₹1600",""],["Installation","Washing Machine Installation","₹100","₹299 Labour"],["Descaling","Top Load Deep Cleaning","₹800","₹299 Labour"],["Descaling","Front Load Deep Cleaning","₹1200","₹299 Labour"],["Service","Washing Machine Jet Service","₹800","₹299 Labour"]
+
+["Semi Automatic","Power 3 Pin Plug Top","₹200",""],
+["Semi Automatic","Power Cord","₹350",""],
+["Semi Automatic","Timer Wash Electro Mechanical","₹1000",""],
+["Semi Automatic","Pulsator With Snap","₹900",""],
+["Semi Automatic","Gear Box With Pulley","₹1550",""],
+["Semi Automatic","Wash Motor","₹2500",""],
+["Semi Automatic","Spin Motor","₹1800",""],
+
+["Top Load","Repair Inverter PCB","₹2250",""],
+["Top Load","Repair PCB","₹1700",""],
+["Top Load","Capacitor","₹450",""],
+["Top Load","Main Motor","₹2182",""],
+["Top Load","Door Lock","₹1450",""],
+["Top Load","Clutch Assembly","₹4000",""],
+
+["Front Load","Repair Inverter PCB","₹2800",""],
+["Front Load","Repair PCB","₹2300",""],
+["Front Load","Door Lock","₹1450",""],
+["Front Load","Gasket / Door Diaphragm","₹1600",""],
+["Front Load","Complete Tub & Drum Assembly","₹6000",""],
+["Front Load","Heater","₹1000",""],
+["Front Load","Drain Pump Motor","₹1600",""],
+
+["Installation","Washing Machine Installation","₹100","₹299 Labour"],
+["Descaling","Top Load Deep Cleaning","₹800","₹299 Labour"],
+["Descaling","Front Load Deep Cleaning","₹1200","₹299 Labour"],
+["Service","Washing Machine Jet Service","₹800","₹299 Labour"]
+
 ],
+
 MICROWAVE:[
-["Electrical","Fuse 5 / 15 Amp","₹59",""],["Electrical","PCB New","₹2000",""],["Electrical","LVT","₹630",""],["Electrical","Keypad / Touchpad Repair","₹1600",""],["Electrical","Power Cord","₹400",""],["Electrical","PCB Repair","₹1600",""],["No Heating","HV Capacitor","₹650",""],["No Heating","Grill Heater","₹750",""],["No Heating","HV Diode","₹400",""],["No Heating","HV Transformer","₹1900",""],["No Heating","Magnetron","₹1800",""],["No Heating","Door Latch","₹630",""],["No Heating","Door Switch Set of 3","₹401",""],["Noise Issue","Turn Table Motor","₹750",""],["Noise Issue","Roller","₹300",""],["Noise Issue","Fan Motor","₹950",""],["Accessories","Bulb Holder","₹90",""],["Accessories","Mica Sheet","₹250",""],["Accessories","Glass Turn Table","₹810",""],["Minor Repair","Wire Retaping","₹0","₹299 Labour"],["Minor Repair","Cavity Cleaning","₹0","₹299 Labour"]
+
+["Electrical","Fuse 5 / 15 Amp","₹59",""],
+["Electrical","PCB New","₹2000",""],
+["Electrical","LVT","₹630",""],
+["Electrical","Keypad / Touchpad Repair","₹1600",""],
+["Electrical","Power Cord","₹400",""],
+["Electrical","PCB Repair","₹1600",""],
+
+["No Heating","HV Capacitor","₹650",""],
+["No Heating","Grill Heater","₹750",""],
+["No Heating","HV Diode","₹400",""],
+["No Heating","HV Transformer","₹1900",""],
+["No Heating","Magnetron","₹1800",""],
+["No Heating","Door Latch","₹630",""],
+["No Heating","Door Switch Set of 3","₹401",""],
+
+["Noise Issue","Turn Table Motor","₹750",""],
+["Noise Issue","Roller","₹300",""],
+["Noise Issue","Fan Motor","₹950",""],
+
+["Accessories","Bulb Holder","₹90",""],
+["Accessories","Mica Sheet","₹250",""],
+["Accessories","Glass Turn Table","₹810",""],
+
+["Minor Repair","Wire Retaping","₹0","₹299 Labour"],
+["Minor Repair","Cavity Cleaning","₹0","₹299 Labour"]
+
 ],
+
 GEYSER:[
-["Parts","Main Thermostat","₹350",""],["Parts","Main Thermostat Branded","₹900",""],["Parts","Heating Element Branded","₹1600",""],["Parts","Heating Element Small Geyser <10L","₹700",""],["Parts","Heating Element 10-30L","₹910",""],["Parts","Gasket 10-30L","₹200",""],["Services","Geyser Water Leakage","₹299",""],["Services","Geyser Servicing Up To 10L","₹300","₹299 Labour"],["Services","Geyser Servicing 10-25L","₹350","₹299 Labour"],["Services","Geyser Installation","₹200","₹299 Labour"],["Services","Geyser Uninstallation","₹100","₹299 Labour"],["Services","PCB Repair","₹850",""],["Services","Geyser Check-up","₹0",""],["Accessories","Safety Valve","₹300",""],["Accessories","Pressure Release Valve","₹400",""],["Accessories","Power Cord","₹200",""],["Accessories","Safety Thermostat","₹350",""]
+
+["Parts","Main Thermostat","₹350",""],
+["Parts","Main Thermostat Branded","₹900",""],
+["Parts","Heating Element Branded","₹1600",""],
+["Parts","Heating Element Small Geyser <10L","₹700",""],
+["Parts","Heating Element 10-30L","₹910",""],
+["Parts","Gasket 10-30L","₹200",""],
+
+["Services","Geyser Water Leakage","₹299",""],
+["Services","Geyser Servicing Up To 10L","₹300","₹299 Labour"],
+["Services","Geyser Servicing 10-25L","₹350","₹299 Labour"],
+["Services","Geyser Installation","₹200","₹299 Labour"],
+["Services","Geyser Uninstallation","₹100","₹299 Labour"],
+["Services","PCB Repair","₹850",""],
+["Services","Geyser Check-up","₹0",""],
+
+["Accessories","Safety Valve","₹300",""],
+["Accessories","Pressure Release Valve","₹400",""],
+["Accessories","Power Cord","₹200",""],
+["Accessories","Safety Thermostat","₹350",""]
+
 ],
+
 RO:[
-["Servicing","Water Purifier Installation","₹150","₹299 Labour"],["Servicing","Water Purifier Uninstallation","₹100","₹299 Labour"],["Servicing","Minor Repair - RO Reset","₹50","₹299 Labour"],["Servicing","Filter / Tank Cleaning","₹50","₹299 Labour"],["Generic Spares","Solenoid Valve","₹350","₹299 Labour"],["Generic Spares","Carbon Block Filter 10 Inch","₹250",""],["Generic Spares","Alkaline Filter","₹1299","₹299 Labour"],["Generic Spares","Pressure Tank","₹3299","₹299 Labour"],["Generic Spares","NRV","₹149","₹299 Labour"],["Generic Spares","Flow Restrictor","₹200","₹299 Labour"],["Generic Spares","TDS Controller","₹199","₹299 Labour"],["Generic Spares","RO Membrane <3000 TDS","₹1500","₹299 Labour"],["Generic Spares","Regular Service 10 Inch","₹1000","₹299 Labour"],["Aquaguard","Aquaguard Carbon Filter","₹850","₹299 Labour"],["Aquaguard","Aquaguard PCB","₹1998","₹299 Labour"],["Aquaguard","Aquaguard Booster Pump","🚀 2999","₹299 Labour"],["Aquaguard","Aquaguard RO Membrane","₹2500","₹299 Labour"],["Kent","KENT RO Membrane 8 Inch High Flow","₹2750","₹299 Labour"],["Kent","KENT UF Membrane 8 Inch","₹1000","₹299 Labour"],["Kent","KENT Inline Carbon Filter 8 Inch","₹600","₹299 Labour"],["Kent","KENT Pump 100PSI / 600RP","₹2400","₹299 Labour"],["PureIT","PureIT GK1","₹2750","₹299 Labour"],["PureIT","PureIT GK2","₹3499","₹299 Labour"],["Livpure","Livpure RO Membrane","₹2750","₹299 Labour"]
-]};
-​const titles={AC:"❄️ AC Service & Repair",FRIDGE:"🧊 Refrigerator Repair Service",WM:"🌀 Washing Machine Repair Service",MICROWAVE:"🔥 Microwave Repair Service",GEYSER:"♨️ Geyser Service & Repair",RO:"💧 Water Purifier Repair Service"};
-const subtitles={AC:"Electrical Parts • Gas • Coil • Fan Motor • Installation • Minor Repair",FRIDGE:"Single Door • Double Door • Cooling & Compressor",WM:"Semi Automatic • Top Load • Front Load",MICROWAVE:"Electrical • No Heating • Noise • Accessories",GEYSER:"Parts • Services • Installation • Accessories",RO:"RO • Aquaguard • Kent • PureIT • Livpure"};
-​function normalized(service){return (rates[service]||[]).map(x=>({category:x[0],name:x[1],price:x[2],labour:x[3]}))}
+
+["Servicing","Water Purifier Installation","₹150","₹299 Labour"],
+["Servicing","Water Purifier Uninstallation","₹100","₹299 Labour"],
+["Servicing","Minor Repair - RO Reset","₹50","₹299 Labour"],
+["Servicing","Filter / Tank Cleaning","₹50","₹299 Labour"],
+
+["Generic Spares","Solenoid Valve","₹350","₹299 Labour"],
+["Generic Spares","Carbon Block Filter 10 Inch","₹250",""],
+["Generic Spares","Alkaline Filter","₹1299","₹299 Labour"],
+["Generic Spares","Pressure Tank","₹3299","₹299 Labour"],
+["Generic Spares","NRV","₹149","₹299 Labour"],
+["Generic Spares","Flow Restrictor","₹200","₹299 Labour"],
+["Generic Spares","TDS Controller","₹199","₹299 Labour"],
+["Generic Spares","RO Membrane <3000 TDS","₹1500","₹299 Labour"],
+["Generic Spares","Regular Service 10 Inch","₹1000","₹299 Labour"],
+
+["Aquaguard","Aquaguard Carbon Filter","₹850","₹299 Labour"],
+["Aquaguard","Aquaguard PCB","₹1998","₹299 Labour"],
+["Aquaguard","Aquaguard Booster Pump","₹2999","₹299 Labour"],
+["Aquaguard","Aquaguard RO Membrane","₹2500","₹299 Labour"],
+
+["Kent","KENT RO Membrane 8 Inch High Flow","₹2750","₹299 Labour"],
+["Kent","KENT UF Membrane 8 Inch","₹1000","₹299 Labour"],
+["Kent","KENT Inline Carbon Filter 8 Inch","₹600","₹299 Labour"],
+["Kent","KENT Pump 100PSI / 600RP","₹2400","₹299 Labour"],
+
+["PureIT","PureIT GK1","₹2750","₹299 Labour"],
+["PureIT","PureIT GK2","₹3499","₹299 Labour"],
+
+["Livpure","Livpure RO Membrane","₹2750","₹299 Labour"]
+
+]
+
+};
+
+
+/* =========================
+   TITLES
+========================= */
+
+const titles={
+
+AC:"❄️ AC Service & Repair",
+
+FRIDGE:"🧊 Refrigerator Repair Service",
+
+WM:"🌀 Washing Machine Repair Service",
+
+MICROWAVE:"🔥 Microwave Repair Service",
+
+GEYSER:"♨️ Geyser Service & Repair",
+
+RO:"💧 Water Purifier Repair Service"
+
+};
+
+
+const subtitles={
+
+AC:"Electrical Parts • Gas • Coil • Fan Motor • Installation • Minor Repair",
+
+FRIDGE:"Single Door • Double Door • Cooling & Compressor",
+
+WM:"Semi Automatic • Top Load • Front Load",
+
+MICROWAVE:"Electrical • No Heating • Noise • Accessories",
+
+GEYSER:"Parts • Services • Installation • Accessories",
+
+RO:"RO • Aquaguard • Kent • PureIT • Livpure"
+
+};
+
+
+/* =========================
+   NORMALIZE DATA
+========================= */
+
+function normalized(service){
+
+  return (rates[service]||[]).map(x=>({
+
+    category:x[0],
+    name:x[1],
+    price:x[2],
+    labour:x[3]
+
+  }));
+
+}
+
+
+/* =========================
+   OPEN SERVICE
+========================= */
+
 function openService(service){
-currentService=service;currentCategory="All";
-homePage.style.display="none";servicePage.style.display="block";
-pageTitle.innerText=titles[service];pageSubtitle.innerText=subtitles[service];
-searchInput.value="";createCategoryTabs();renderRates();window.scrollTo({top:0,behavior:"smooth"});
+
+  currentService=service;
+
+  currentCategory="All";
+
+  document.getElementById("homePage").style.display="none";
+
+  document.getElementById("servicePage").style.display="block";
+
+  document.getElementById("pageTitle").innerText=titles[service];
+
+  document.getElementById("pageSubtitle").innerText=subtitles[service];
+
+  document.getElementById("searchInput").value="";
+
+  createCategoryTabs();
+
+  renderRates();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
 }
-function goHome(){servicePage.style.display="none";homePage.style.display="block";window.scrollTo({top:0,behavior:"smooth"})}
+
+
+/* =========================
+   GO HOME
+========================= */
+
+function goHome(){
+
+  document.getElementById("servicePage").style.display="none";
+
+  document.getElementById("homePage").style.display="block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================
+   CATEGORY TABS
+========================= */
+
 function createCategoryTabs(){
-const c=categoryTabs,data=normalized(currentService),cats=["All",...new Set(data.map(x=>x.category))];c.innerHTML="";
-cats.forEach(cat=>{const b=document.createElement("button");b.innerText=cat;if(cat=currentCategory)b.classList.add("active");b.onclick=()=>{currentCategory=cat;createCategoryTabs();renderRates()};c.appendChild(b)})
+
+  const c=document.getElementById("categoryTabs");
+
+  const data=normalized(currentService);
+
+  const cats=[
+    "All",
+    ...new Set(data.map(x=>x.category))
+  ];
+
+  c.innerHTML="";
+
+  cats.forEach(cat=>{
+
+    const b=document.createElement("button");
+
+    b.innerText=cat;
+
+    if(cat===currentCategory){
+      b.classList.add("active");
+    }
+
+    b.onclick=()=>{
+
+      currentCategory=cat;
+
+      createCategoryTabs();
+
+      renderRates();
+
+    };
+
+    c.appendChild(b);
+
+  });
+
 }
+
+
+/* =========================
+   RENDER RATES
+========================= */
+
 function renderRates(){
-const c=rateContainer,search=searchInput.value.toLowerCase().trim();
-let data=normalized(currentService).filter(x=>(currentCategory="All"||x.category===currentCategory)&&(!search||x.name.toLowerCase().includes(search)||x.category.toLowerCase().includes(search)));
-c.innerHTML="";
-if(!data.length){c.innerHTML='<div style="background:white;padding:25px;border-radius:10px;text-align:center;color:#64748b">No service found.</div>';return}
-const grouped={};data.forEach(x=>(grouped[x.category]??=[]).push(x));
-Object.keys(grouped).forEach(cat=>{
-const card=document.createElement("div");card.className="rate-card";let h=<div class="rate-category">${cat}</div>;
-grouped[cat].forEach(item=>{h+=<div class="rate-row"><div class="rate-name">${item.name}</div><div class="rate-info"><div><div class="price">${item.price}</div>${item.labour?<div class="labour">${item.labour}</div>:""}</div><button class="book-btn" onclick='openBooking(${JSON.stringify(item.name)},${JSON.stringify(item.price)})'>Book</button></div></div>});
-card.innerHTML=h;c.appendChild(card)
-})
+
+  const c=document.getElementById("rateContainer");
+
+  const search=document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+  let data=normalized(currentService).filter(x=>
+
+    (currentCategory==="All" ||
+     x.category===currentCategory)
+
+    &&
+
+    (!search ||
+     x.name.toLowerCase().includes(search) ||
+     x.category.toLowerCase().includes(search))
+
+  );
+
+  c.innerHTML="";
+
+  if(!data.length){
+
+    c.innerHTML=`
+      <div style="
+        background:white;
+        padding:25px;
+        border-radius:10px;
+        text-align:center;
+        color:#64748b">
+        No service found.
+      </div>
+    `;
+
+    return;
+  }
+
+
+  const grouped={};
+
+  data.forEach(x=>
+    (grouped[x.category]??=[]).push(x)
+  );
+
+
+  Object.keys(grouped).forEach(cat=>{
+
+    const card=document.createElement("div");
+
+    card.className="rate-card";
+
+    let h=`
+      <div class="rate-category">
+        ${cat}
+      </div>
+    `;
+
+
+    grouped[cat].forEach(item=>{
+
+      h+=`
+
+        <div class="rate-row">
+
+          <div class="rate-name">
+            ${item.name}
+          </div>
+
+          <div class="rate-info">
+
+            <div>
+
+              <div class="price">
+                ${item.price}
+              </div>
+
+              ${
+                item.labour
+                ?
+                `<div class="labour">
+                   ${item.labour}
+                 </div>`
+                :
+                ""
+              }
+
+            </div>
+
+
+            <button
+              class="book-btn"
+              onclick='openBooking(
+                ${JSON.stringify(item.name)},
+                ${JSON.stringify(item.price)}
+              )'>
+
+              Book
+
+            </button>
+
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+
+    card.innerHTML=h;
+
+    c.appendChild(card);
+
+  });
+
 }
-function quickBook(service,price){currentService="AC";openBooking(service,price)}
-​function openBooking(service,price){
-selectedRate=service+" - "+price;
-document.getElementById("selectedService").innerText=currentService+" | "+selectedRate;
-bookingBox.style.display="flex";
-serviceDate.value=new Date().toISOString().split("T")[0];
-​// 🚀 Automatically trigger location fetching as soon as the booking modal opens!
-getCustomerLocation();
+
+
+/* =========================
+   QUICK BOOK
+========================= */
+
+function quickBook(service,price){
+
+  currentService="AC";
+
+  openBooking(service,price);
+
 }
-​function closeBooking(){bookingBox.style.display="none"}
-​function getCustomerLocation(){
-const status=document.getElementById("locationStatus"),address=document.getElementById("customerAddress");
-if(!navigator.geolocation){
-status.innerText="❌ এই browser-এ Location support নেই.";
-return;
+
+
+/* =========================
+   OPEN BOOKING
+========================= */
+
+function openBooking(service,price){
+
+  selectedRate=service+" - "+price;
+
+  document.getElementById("selectedService").innerText=
+    currentService+" | "+selectedRate;
+
+
+  document.getElementById("bookingBox").style.display="flex";
+
+
+  const today=new Date();
+
+  const localDate=
+    today.getFullYear()+"-"+
+    String(today.getMonth()+1).padStart(2,"0")+"-"+
+    String(today.getDate()).padStart(2,"0");
+
+
+  document.getElementById("serviceDate").value=localDate;
+
+
+  customerLat="";
+  customerLng="";
+  customerMapLink="";
+
+
+  document.getElementById("locationStatus").innerText=
+    "Location button চাপলে আপনার বর্তমান GPS location নেওয়া হবে।";
+
+  document.getElementById("locationStatus").className=
+    "location-status";
+
+
+  document.getElementById("mapLink").style.display="none";
+
+
+  const btn=document.getElementById("locationBtn");
+
+  btn.classList.remove("loading");
+
+  btn.innerText="📍 Use My Location";
+
 }
-status.innerText="📍 অটোমেটিক GPS location নেওয়া হচ্ছে... অনুগ্রহ করে একটু অপেক্ষা করুন.";
-​navigator.geolocation.getCurrentPosition(
-function(pos){
-customerLat=pos.coords.latitude.toFixed(6);
-customerLng=pos.coords.longitude.toFixed(6);
-customerMapLink="https://www.google.com/maps?q="+customerLat+","+customerLng;
-​// যদি অ্যাড্রেস ফিলه ফাঁকা থাকে তাহলে শুধুমাত্র GPS লোকেশন বসিয়ে দেবে, আর যদি কিছু লেখা থাকে তাহলে নিচে জুড়ে দেবে
-let currentAddr = address.value.trim();
-if(!currentAddr.includes("📍 GPS Location:")){
-address.value = currentAddr ? currentAddr + "\n\n📍 GPS Location: " + customerLat + ", " + customerLng : "📍 GPS Location: " + customerLat + ", " + customerLng;
+
+
+/* =========================
+   CLOSE BOOKING
+========================= */
+
+function closeBooking(){
+
+  document.getElementById("bookingBox").style.display="none";
+
 }
-​mapLink.href=customerMapLink;
-mapLink.style.display="block";
-status.innerText="✅ সফলভাবে অটোমেটিক GPS location নেওয়া হয়ে গেছে!";
-},
-function(err){
-if(err.code=1) status.innerText="⚠️ Location permission deny করা হয়েছে। Manual-এর জন্য '📍 Location' বাটনে আবার চাপুন।";
-else if(err.code=2) status.innerText="❌ Location পাওয়া যাচ্ছে না. আপনার GPS/Location অন করুন।";
-else status.innerText="❌ Location নিতে সময় শেষ হয়েছে। আবার চেষ্টা করুন।";
-},
-{enableHighAccuracy:true,timeout:15000,maximumAge:0}
-);
+
+
+/* =================================================
+   GPS LOCATION FUNCTION
+================================================= */
+
+function getCustomerLocation(){
+
+  const status=
+    document.getElementById("locationStatus");
+
+  const address=
+    document.getElementById("customerAddress");
+
+  const btn=
+    document.getElementById("locationBtn");
+
+
+  /* Browser support */
+
+  if(!navigator.geolocation){
+
+    status.innerText=
+      "❌ এই browser-এ GPS Location support নেই।";
+
+    status.className=
+      "location-status location-error";
+
+    return;
+  }
+
+
+  /* Loading */
+
+  btn.classList.add("loading");
+
+  btn.innerText="⏳ Getting Location...";
+
+
+  status.innerText=
+    "📍 আপনার বর্তমান location নেওয়া হচ্ছে... Please Allow চাপুন।";
+
+  status.className=
+    "location-status";
+
+
+  /* GPS */
+
+  navigator.geolocation.getCurrentPosition(
+
+    function(position){
+
+      customerLat=
+        position.coords.latitude.toFixed(6);
+
+      customerLng=
+        position.coords.longitude.toFixed(6);
+
+
+      customerMapLink=
+        "https://www.google.com/maps?q="+
+        customerLat+
+        ","+
+        customerLng;
+
+
+      /* Address-এর সঙ্গে GPS যোগ */
+
+      const oldAddress=
+        address.value.trim();
+
+
+      const gpsText=
+        "📍 GPS Location: "+
+        customerLat+
+        ", "+
+        customerLng;
+
+
+      if(
+        !oldAddress.includes("GPS Location:")
+      ){
+
+        address.value=
+          oldAddress
+          ?
+          oldAddress+"\n\n"+gpsText
+          :
+          gpsText;
+
+      }
+
+
+      /* Status */
+
+      status.innerText=
+        "✅ Customer location successfully পাওয়া গেছে।";
+
+      status.className=
+        "location-status location-success";
+
+
+      /* Google Maps */
+
+      const mapLink=
+        document.getElementById("mapLink");
+
+      mapLink.href=
+        customerMapLink;
+
+      mapLink.style.display="block";
+
+
+      /* Button */
+
+      btn.classList.remove("loading");
+
+      btn.innerText=
+        "✅ Location Added";
+
+
+    },
+
+
+    function(error){
+
+      btn.classList.remove("loading");
+
+      btn.innerText=
+        "📍 Use My Location";
+
+
+      if(error.code===1){
+
+        status.innerText=
+          "❌ Location Permission Denied. Browser Settings থেকে Location Allow করুন।";
+
+      }
+
+      else if(error.code===2){
+
+        status.innerText=
+          "❌ Location পাওয়া যাচ্ছে না। Phone-এর GPS/Location ON করুন।";
+
+      }
+
+      else if(error.code===3){
+
+        status.innerText=
+          "❌ Location নিতে সময় শেষ হয়েছে। আবার চেষ্টা করুন।";
+
+      }
+
+      else{
+
+        status.innerText=
+          "❌ Location নেওয়া যায়নি। আবার চেষ্টা করুন।";
+
+      }
+
+
+      status.className=
+        "location-status location-error";
+
+    },
+
+
+    {
+
+      enableHighAccuracy:true,
+
+      timeout:20000,
+
+      maximumAge:0
+
+    }
+
+  );
+
 }
-​function sendBooking(){
-const name=customerName.value.trim(),phone=customerPhone.value.trim(),address=customerAddress.value.trim(),date=serviceDate.value,time=serviceTime.value,note=customerNote.value.trim();
-if(!name)return alert("Please enter customer name.");
-if(!/^[0-9]{10}$/.test(phone))return alert("Please enter a valid 10 digit mobile number.");
-if(!address)return alert("Please enter service address or use Location.");
-if(!date)return alert("Please select service date.");
-const booking={id:Date.now(),service:currentService,rate:selectedRate,name,phone,address,date,time,note,lat:customerLat,lng:customerLng,map:customerMapLink};
-saveBooking(booking);
-let message=`Hello N.G Cooling Solution,
-​I want to book a service.
-​Service:
+
+
+/* =========================
+   SEND WHATSAPP BOOKING
+========================= */
+
+function sendBooking(){
+
+  const name=
+    document.getElementById("customerName")
+    .value.trim();
+
+
+  const phone=
+    document.getElementById("customerPhone")
+    .value.trim();
+
+
+  const address=
+    document.getElementById("customerAddress")
+    .value.trim();
+
+
+  const date=
+    document.getElementById("serviceDate")
+    .value;
+
+
+  const time=
+    document.getElementById("serviceTime")
+    .value;
+
+
+  const note=
+    document.getElementById("customerNote")
+    .value.trim();
+
+
+  /* Validation */
+
+  if(!name){
+
+    alert("Please enter customer name.");
+
+    return;
+
+  }
+
+
+  if(!/^[0-9]{10}$/.test(phone)){
+
+    alert(
+      "Please enter a valid 10 digit mobile number."
+    );
+
+    return;
+
+  }
+
+
+  if(!address){
+
+    alert(
+      "Please enter service address or use GPS Location."
+    );
+
+    return;
+
+  }
+
+
+  if(!date){
+
+    alert(
+      "Please select service date."
+    );
+
+    return;
+
+  }
+
+
+  /* Booking object */
+
+  const booking={
+
+    id:Date.now(),
+
+    service:currentService,
+
+    rate:selectedRate,
+
+    name:name,
+
+    phone:phone,
+
+    address:address,
+
+    date:date,
+
+    time:time,
+
+    note:note,
+
+    lat:customerLat,
+
+    lng:customerLng,
+
+    map:customerMapLink
+
+  };
+
+
+  saveBooking(booking);
+
+
+  /* WhatsApp message */
+
+  let message=
+`Hello N.G Cooling Solution,
+
+I want to book a service.
+
+Service:
 ${currentService}
-​Required Work:
+
+Required Work:
 ${selectedRate}
-​Customer Name:
+
+Customer Name:
 ${name}
-​Mobile:
+
+Mobile:
 ${phone}
-​Address:
+
+Address:
 ${address}
-​Date:
+
+Date:
 ${date}
-​Preferred Time:
+
+Preferred Time:
 ${time}
-​Problem:
-${note||"Not specified"}; if(customerMapLink)message+=
-​📍 Customer Live GPS Location:
-${customerMapLink}; message+=
-​Please confirm my booking.
-​Thank you.; window.open("[https://wa.me/91](https://wa.me/91)"+whatsappNumber+"?text="+encodeURIComponent(message),"_blank"); closeBooking(); } function saveBooking(b){let h=JSON.parse(localStorage.getItem("ngCoolingBookings")||"[]");h.unshift(b);localStorage.setItem("ngCoolingBookings",JSON.stringify(h.slice(0,20)));renderHistory()} function renderHistory(){ const c=document.getElementById("historyContainer");let h=JSON.parse(localStorage.getItem("ngCoolingBookings")||"[]"); if(!h.length){c.innerHTML="No booking history yet.";return} c.innerHTML="";h.forEach(x=>{const d=document.createElement("div");d.className="history-item";d.innerHTML=<strong>{x.service}</strong><br>{x.rate}
-<small>${x.name} • {x.phone}</small><br><small>{x.date} • {x.time}</small>{x.map?<br><a href="${x.map}" target="_blank" style="font-size:11px;color:#075985">📍 View Location</a>:""}`;c.appendChild(d)})
+
+Problem:
+${note || "Not specified"}`;
+
+
+  /* GPS link */
+
+  if(customerMapLink){
+
+    message+=`
+
+📍 Customer GPS Location:
+${customerMapLink}`;
+
+  }
+
+
+  message+=`
+
+Please confirm my booking.
+
+Thank you.`;
+
+
+  /* Open WhatsApp */
+
+  const whatsappURL=
+    "https://wa.me/91"+
+    whatsappNumber+
+    "?text="+
+    encodeURIComponent(message);
+
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
+
+
+  closeBooking();
+
 }
+
+
+/* =========================
+   SAVE BOOKING
+========================= */
+
+function saveBooking(b){
+
+  let history=
+    JSON.parse(
+      localStorage.getItem(
+        "ngCoolingBookings"
+      ) || "[]"
+    );
+
+
+  history.unshift(b);
+
+
+  localStorage.setItem(
+    "ngCoolingBookings",
+    JSON.stringify(
+      history.slice(0,20)
+    )
+  );
+
+
+  renderHistory();
+
+}
+
+
+/* =========================
+   BOOKING HISTORY
+========================= */
+
+function renderHistory(){
+
+  const c=
+    document.getElementById(
+      "historyContainer"
+    );
+
+
+  let history=
+    JSON.parse(
+      localStorage.getItem(
+        "ngCoolingBookings"
+      ) || "[]"
+    );
+
+
+  if(!history.length){
+
+    c.innerHTML=
+      "No booking history yet.";
+
+    return;
+
+  }
+
+
+  c.innerHTML="";
+
+
+  history.forEach(x=>{
+
+    const d=
+      document.createElement("div");
+
+
+    d.className=
+      "history-item";
+
+
+    d.innerHTML=`
+
+      <strong>
+        ${x.service}
+      </strong>
+
+      <br>
+
+      ${x.rate}
+
+      <br>
+
+      <small>
+        ${x.name} • ${x.phone}
+      </small>
+
+      <br>
+
+      <small>
+        ${x.date} • ${x.time}
+      </small>
+
+      ${
+        x.map
+        ?
+        `
+        <br>
+
+        <a
+          href="${x.map}"
+          target="_blank"
+          style="
+            display:inline-block;
+            margin-top:5px;
+            font-size:11px;
+            color:#075985;
+            font-weight:bold">
+
+          📍 View Customer Location
+
+        </a>
+        `
+        :
+        ""
+      }
+
+    `;
+
+
+    c.appendChild(d);
+
+  });
+
+}
+
+
+/* =========================
+   CLOSE MODAL OUTSIDE CLICK
+========================= */
+
+document
+.getElementById("bookingBox")
+.addEventListener(
+  "click",
+  function(e){
+
+    if(
+      e.target===e.currentTarget
+    ){
+
+      closeBooking();
+
+    }
+
+  }
+);
+
+
+/* =========================
+   INITIAL LOAD
+========================= */
+
 renderHistory();
-bookingBox.addEventListener("click",e=>{if(e.target===e.currentTarget)closeBooking()});
+
 </script>
+
 </body>
 </html>
