@@ -2,13 +2,12 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#075985">
 
 <title>N.G Cooling Solution | Home Appliances Service & Repair</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     margin:0;
@@ -16,340 +15,208 @@
     font-family:Arial,"Noto Sans Bengali",sans-serif;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
-    background:#f4f7fb;
-    color:#172033;
-    line-height:1.5;
+    background:#f1f5f9;
+    color:#0f172a;
 }
 
-button,
-input,
-textarea,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-
-/* ================= HEADER ================= */
-
-.header{
+header{
     position:sticky;
     top:0;
     z-index:1000;
     background:#075985;
     color:#fff;
-    padding:12px 16px;
-    box-shadow:0 3px 12px rgba(0,0,0,.18);
-}
-
-.header-inner{
-    max-width:1100px;
-    margin:auto;
+    padding:14px 16px;
     display:flex;
     align-items:center;
     justify-content:space-between;
-    gap:12px;
-}
-
-.logo-area{
-    display:flex;
-    align-items:center;
-    gap:10px;
+    box-shadow:0 4px 14px rgba(0,0,0,.2);
 }
 
 .logo{
-    width:46px;
-    height:46px;
-    border-radius:12px;
-    background:#fff;
-    color:#075985;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:20px;
+    font-size:19px;
     font-weight:900;
 }
 
-.brand-title{
-    font-size:18px;
-    font-weight:800;
-}
-
-.brand-subtitle{
-    font-size:12px;
+.logo small{
+    display:block;
+    font-size:10px;
+    margin-top:3px;
     opacity:.9;
 }
 
-.header-wa{
-    background:#16a34a;
+.whatsapp{
+    text-decoration:none;
     color:#fff;
-    border:none;
+    background:#22c55e;
     padding:10px 14px;
-    border-radius:10px;
-    font-weight:700;
+    border-radius:25px;
+    font-size:13px;
+    font-weight:bold;
 }
-
-
-/* ================= HERO ================= */
 
 .hero{
-    max-width:1100px;
-    margin:18px auto;
-    padding:28px 18px;
-}
-
-.hero-box{
-    background:linear-gradient(135deg,#075985,#0e7490);
+    background:linear-gradient(135deg,#075985,#0284c7);
     color:#fff;
-    border-radius:24px;
-    padding:30px 22px;
-    box-shadow:0 10px 30px rgba(7,89,133,.25);
-}
-
-.status{
-    display:inline-block;
-    background:#fff;
-    color:#075985;
-    padding:7px 12px;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:800;
-    margin-bottom:14px;
+    text-align:center;
+    padding:38px 16px;
 }
 
 .hero h1{
-    font-size:clamp(30px,6vw,52px);
-    line-height:1.1;
-    margin-bottom:12px;
+    font-size:28px;
+    margin-bottom:9px;
 }
 
 .hero p{
-    max-width:700px;
-    font-size:15px;
-    opacity:.95;
+    font-size:14px;
+    line-height:1.6;
 }
 
-.hero-actions{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-top:22px;
-}
-
-.btn{
-    border:none;
-    border-radius:12px;
-    padding:12px 18px;
+.badge{
+    display:inline-block;
+    margin-top:15px;
+    background:#fff;
+    color:#075985;
+    padding:8px 15px;
+    border-radius:30px;
     font-weight:800;
-    transition:.2s;
 }
-
-.btn:hover{
-    transform:translateY(-2px);
-}
-
-.btn-primary{
-    background:#fff;
-    color:#075985;
-}
-
-.btn-secondary{
-    background:rgba(255,255,255,.15);
-    color:#fff;
-    border:1px solid rgba(255,255,255,.55);
-}
-
-.view-side-btn{
-    min-width:105px;
-    padding:12px 20px;
-    border-radius:14px;
-    background:#fff;
-    color:#075985;
-    border:2px solid #fff;
-    box-shadow:0 5px 14px rgba(0,0,0,.15);
-}
-
-
-/* ================= MAIN ================= */
 
 .container{
+    width:94%;
     max-width:1100px;
     margin:auto;
-    padding:0 16px 30px;
 }
 
 .section{
-    margin-top:22px;
+    padding:25px 0;
 }
 
 .section-title{
+    text-align:center;
+    color:#075985;
     font-size:24px;
     font-weight:900;
-    margin-bottom:14px;
+    margin-bottom:18px;
 }
 
-.section-subtitle{
-    color:#64748b;
-    font-size:14px;
-    margin-bottom:15px;
-}
-
-
-/* ================= POPULAR SERVICES ================= */
-
-.popular-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.service-card{
-    background:#fff;
-    border:1px solid #e2e8f0;
-    border-radius:17px;
-    padding:15px;
-    box-shadow:0 5px 15px rgba(15,23,42,.06);
-    transition:.2s;
-}
-
-.service-card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 20px rgba(15,23,42,.12);
-}
-
-.service-name{
-    font-weight:800;
-    font-size:14px;
-    min-height:42px;
-}
-
-.price-row{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin:7px 0;
-    flex-wrap:wrap;
-}
-
-.price{
-    font-size:21px;
-    font-weight:900;
-    color:#000;
-}
-
-.old-price{
-    font-size:13px;
-    text-decoration:line-through;
-    color:#94a3b8;
-}
-
-.discount{
-    font-size:11px;
+.warranty{
+    margin-top:20px;
     background:#dcfce7;
-    color:#15803d;
-    padding:3px 7px;
-    border-radius:20px;
-    font-weight:800;
-}
-
-.book-btn{
-    width:100%;
-    background:#075985;
-    color:#fff;
-    border:none;
-    padding:9px;
-    border-radius:10px;
-    font-size:13px;
-    font-weight:800;
-}
-
-
-/* ================= CATEGORIES ================= */
-
-.category-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:12px;
-}
-
-.category{
-    background:#fff;
-    border:1px solid #e2e8f0;
-    border-radius:15px;
-    padding:17px;
+    border:1px solid #86efac;
+    color:#166534;
+    padding:14px;
     text-align:center;
-    font-weight:800;
-    box-shadow:0 4px 12px rgba(15,23,42,.05);
-}
-
-.category-icon{
-    font-size:30px;
-    display:block;
-    margin-bottom:5px;
-}
-
-
-/* ================= SEARCH ================= */
-
-.search-box{
-    background:#fff;
     border-radius:15px;
-    padding:12px;
-    border:1px solid #e2e8f0;
+    font-weight:bold;
 }
 
-.search-box input{
+.search{
+    margin:0 auto 18px;
+    max-width:650px;
+}
+
+.search input{
     width:100%;
+    padding:14px 18px;
     border:1px solid #cbd5e1;
-    padding:12px;
-    border-radius:10px;
+    border-radius:30px;
+    font-size:15px;
     outline:none;
 }
 
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+}
 
-/* ================= LOCATION ================= */
+.card{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:18px;
+    padding:17px;
+    min-height:205px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    box-shadow:0 5px 15px rgba(0,0,0,.07);
+}
+
+.icon{
+    font-size:34px;
+    margin-bottom:7px;
+}
+
+.card h3{
+    font-size:16px;
+    margin-bottom:6px;
+}
+
+.card p{
+    font-size:13px;
+    line-height:1.5;
+    color:#64748b;
+}
+
+.price{
+    margin:9px 0;
+    font-size:20px;
+    font-weight:900;
+    color:#111827;
+}
+
+.old-price{
+    color:#64748b;
+    text-decoration:line-through;
+    font-size:13px;
+    margin-right:5px;
+}
+
+.discount{
+    color:#dc2626;
+    font-size:11px;
+    font-weight:900;
+}
+
+.book-btn{
+    border:0;
+    background:#075985;
+    color:#fff;
+    padding:11px;
+    border-radius:10px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.book-btn:hover{
+    background:#0c4a6e;
+}
 
 .location-box{
     background:#fff;
+    padding:20px;
     border-radius:18px;
-    padding:18px;
-    border:1px solid #e2e8f0;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,.06);
 }
 
-.location-buttons{
+.location-tags{
     display:flex;
-    gap:10px;
     flex-wrap:wrap;
-    margin-top:12px;
+    justify-content:center;
+    gap:8px;
+    margin-top:14px;
 }
 
-.location-btn{
-    border:none;
-    padding:11px 15px;
-    border-radius:10px;
-    font-weight:800;
+.location-tags span{
+    background:#e0f2fe;
+    color:#075985;
+    padding:8px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
 }
-
-.gps-btn{
-    background:#075985;
-    color:#fff;
-}
-
-.maps-btn{
-    background:#e2e8f0;
-    color:#172033;
-}
-
-
-/* ================= WHY CHOOSE US ================= */
 
 .why-grid{
     display:grid;
@@ -357,78 +224,112 @@ button{
     gap:12px;
 }
 
-.why-card{
+.why{
     background:#fff;
-    border:1px solid #e2e8f0;
-    border-radius:15px;
-    padding:18px 12px;
+    border-radius:16px;
+    padding:18px 10px;
     text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,.06);
 }
 
 .why-icon{
-    font-size:30px;
-    margin-bottom:6px;
+    font-size:29px;
+    margin-bottom:7px;
 }
 
-.why-card strong{
+.rate-btn{
     display:block;
-    font-size:14px;
+    width:100%;
+    max-width:400px;
+    margin:10px auto 25px;
+    border:0;
+    background:#0f172a;
+    color:#fff;
+    padding:14px;
+    border-radius:30px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.why-card span{
-    display:block;
-    font-size:12px;
-    color:#64748b;
-    margin-top:4px;
-}
-
-
-/* ================= MODAL ================= */
+/* ==============================
+   MODAL
+============================== */
 
 .modal{
+    display:none;
     position:fixed;
     inset:0;
-    background:rgba(15,23,42,.68);
-    display:none;
-    align-items:center;
-    justify-content:center;
-    z-index:2000;
+    z-index:3000;
+    background:rgba(15,23,42,.75);
+    overflow:auto;
     padding:15px;
 }
 
-.modal.show{
-    display:flex;
-}
-
 .modal-box{
-    width:min(520px,100%);
-    max-height:92vh;
-    overflow:auto;
-    background:#fff;
-    border-radius:22px;
+    position:relative;
+    width:100%;
+    max-width:760px;
+    margin:15px auto;
+    background:#f8fafc;
+    border-radius:24px;
     padding:20px;
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
 }
 
-.modal-head{
+.close{
+    position:absolute;
+    top:10px;
+    right:15px;
+    width:38px;
+    height:38px;
+    border-radius:50%;
+    background:#e2e8f0;
     display:flex;
     align-items:center;
-    justify-content:space-between;
-    margin-bottom:15px;
+    justify-content:center;
+    font-size:27px;
+    color:#334155;
+    cursor:pointer;
 }
 
-.modal-head h2{
-    font-size:21px;
-}
-
-.close-btn{
-    width:36px;
-    height:36px;
-    border:none;
-    border-radius:50%;
-    background:#fee2e2;
-    color:#dc2626;
-    font-size:20px;
+.modal-title{
+    padding-right:45px;
+    color:#075985;
+    font-size:23px;
     font-weight:900;
+    margin-bottom:5px;
+}
+
+.modal-subtitle{
+    color:#64748b;
+    font-size:13px;
+    margin-bottom:18px;
+}
+
+/* ==============================
+   CUSTOMER BOOKING FORM
+============================== */
+
+.booking-card{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:20px;
+    padding:18px;
+}
+
+.form-section{
+    margin-bottom:18px;
+}
+
+.form-section-title{
+    font-size:15px;
+    font-weight:900;
+    color:#075985;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:7px;
 }
 
 .form-group{
@@ -437,169 +338,244 @@ button{
 
 .form-group label{
     display:block;
+    margin-bottom:6px;
+    color:#334155;
     font-size:13px;
     font-weight:800;
-    margin-bottom:5px;
 }
 
 .form-group input,
-.form-group textarea,
-.form-group select{
+.form-group select,
+.form-group textarea{
     width:100%;
     border:1px solid #cbd5e1;
-    border-radius:10px;
-    padding:11px;
-    outline:none;
     background:#fff;
+    border-radius:12px;
+    padding:13px;
+    outline:none;
+    font-size:14px;
+    color:#0f172a;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#0284c7;
+    box-shadow:0 0 0 3px rgba(2,132,199,.1);
 }
 
 .form-group textarea{
-    min-height:85px;
+    min-height:90px;
     resize:vertical;
 }
 
+/* Selected service */
 
-/* ================= BOOKING GPS ================= */
-
-.booking-gps-btn{
-    width:100%;
-    margin-top:7px;
-    border:none;
-    background:#075985;
-    color:#fff;
-    padding:11px;
-    border-radius:10px;
-    font-weight:800;
-}
-
-.gps-status{
-    margin-top:7px;
-    font-size:12px;
-    color:#64748b;
-    word-break:break-word;
-}
-
-
-/* ================= SUMMARY ================= */
-
-.summary{
-    background:#f8fafc;
+.selected-service{
+    background:#e0f2fe;
+    border:1px solid #7dd3fc;
     border-radius:14px;
     padding:13px;
-    margin:15px 0;
-}
-
-.summary-row{
-    display:flex;
-    justify-content:space-between;
-    padding:4px 0;
+    color:#075985;
+    font-weight:900;
     font-size:14px;
 }
 
-.summary-row strong{
-    color:#000;
+/* Address */
+
+.address-box{
+    border:2px solid #e2e8f0;
+    border-radius:15px;
+    padding:12px;
+    background:#fff;
 }
 
-.summary-total{
-    border-top:1px solid #cbd5e1;
-    margin-top:6px;
-    padding-top:8px;
-    font-weight:900;
-    font-size:18px;
+.address-box textarea{
+    border:0;
+    padding:4px;
+    min-height:90px;
+    box-shadow:none;
 }
 
-.summary-total strong{
-    color:#000;
+.address-box textarea:focus{
+    box-shadow:none;
 }
 
+/* GPS separate */
 
-/* ================= SUBMIT ================= */
-
-.submit-btn{
-    width:100%;
-    background:#16a34a;
-    color:#fff;
-    border:none;
-    padding:13px;
-    border-radius:12px;
-    font-weight:900;
-    font-size:15px;
-}
-
-
-/* ================= TOAST ================= */
-
-.toast{
-    position:fixed;
-    left:50%;
-    bottom:22px;
-    transform:translateX(-50%) translateY(80px);
-    background:#172033;
-    color:#fff;
-    padding:11px 17px;
-    border-radius:30px;
-    z-index:3000;
-    opacity:0;
-    transition:.3s;
-    font-size:13px;
-    max-width:90%;
+.gps-card{
+    margin-top:12px;
+    background:#eff6ff;
+    border:2px dashed #38bdf8;
+    border-radius:16px;
+    padding:15px;
     text-align:center;
 }
 
-.toast.show{
-    opacity:1;
-    transform:translateX(-50%) translateY(0);
+.gps-title{
+    font-weight:900;
+    color:#075985;
+    margin-bottom:5px;
 }
 
+.gps-text{
+    font-size:12px;
+    color:#64748b;
+    margin-bottom:11px;
+}
 
-/* ================= WHATSAPP ================= */
+.gps-btn{
+    width:100%;
+    border:0;
+    background:#0284c7;
+    color:#fff;
+    padding:13px;
+    border-radius:11px;
+    font-size:14px;
+    font-weight:900;
+    cursor:pointer;
+}
 
-.floating-wa{
+.gps-btn:active{
+    transform:scale(.98);
+}
+
+.gps-status{
+    display:none;
+    margin-top:10px;
+    background:#dcfce7;
+    border:1px solid #86efac;
+    color:#166534;
+    padding:9px;
+    border-radius:10px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.gps-map{
+    display:none;
+    margin-top:8px;
+    text-decoration:none;
+    background:#fff;
+    color:#075985;
+    border:1px solid #7dd3fc;
+    padding:9px;
+    border-radius:9px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* Date + Time */
+
+.date-time-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+/* Submit */
+
+.submit-btn{
+    width:100%;
+    border:0;
+    background:#22c55e;
+    color:#fff;
+    padding:15px;
+    border-radius:13px;
+    font-size:16px;
+    font-weight:900;
+    cursor:pointer;
+    box-shadow:0 5px 14px rgba(34,197,94,.25);
+}
+
+.submit-btn:hover{
+    background:#16a34a;
+}
+
+.booking-note{
+    margin-top:10px;
+    text-align:center;
+    color:#64748b;
+    font-size:11px;
+    line-height:1.5;
+}
+
+/* Rate Card */
+
+.category-title{
+    background:#075985;
+    color:#fff;
+    padding:11px 14px;
+    border-radius:10px;
+    margin:18px 0 7px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+.rate-row{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    background:#fff;
+    padding:11px 7px;
+    border-bottom:1px solid #e2e8f0;
+    font-size:13px;
+}
+
+.rate-name{
+    flex:1;
+}
+
+.rate-price{
+    text-align:right;
+    font-weight:900;
+}
+
+.labour{
+    display:block;
+    color:#64748b;
+    font-size:10px;
+    margin-top:3px;
+}
+
+/* Footer */
+
+footer{
+    background:#0f172a;
+    color:#cbd5e1;
+    text-align:center;
+    padding:25px 15px;
+    line-height:1.8;
+}
+
+footer strong{
+    color:#fff;
+}
+
+.float-wa{
     position:fixed;
     right:18px;
     bottom:18px;
-    width:55px;
-    height:55px;
+    z-index:1500;
+    width:58px;
+    height:58px;
     border-radius:50%;
-    background:#16a34a;
+    background:#22c55e;
     color:#fff;
     display:flex;
     align-items:center;
     justify-content:center;
+    font-size:28px;
     text-decoration:none;
-    font-size:27px;
-    box-shadow:0 8px 20px rgba(0,0,0,.22);
-    z-index:1500;
+    box-shadow:0 6px 20px rgba(0,0,0,.25);
 }
 
-
-/* ================= FOOTER ================= */
-
-footer{
-    background:#082f49;
-    color:#fff;
-    text-align:center;
-    padding:25px 15px;
-    margin-top:25px;
-}
-
-footer strong{
-    font-size:18px;
-}
-
-footer p{
-    font-size:12px;
-    opacity:.85;
-    margin-top:5px;
-}
-
-
-/* ================= RESPONSIVE ================= */
+/* Mobile */
 
 @media(max-width:800px){
 
-    .popular-grid{
-        grid-template-columns:repeat(3,1fr);
+    .service-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
     .why-grid{
@@ -607,1965 +583,2465 @@ footer p{
     }
 }
 
-@media(max-width:600px){
-
-    .popular-grid{
-        grid-template-columns:repeat(2,1fr);
-        gap:9px;
-    }
-
-    .category-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
 @media(max-width:520px){
 
-    .header{
-        padding:10px;
-    }
-
-    .brand-title{
-        font-size:15px;
-    }
-
-    .brand-subtitle{
-        font-size:10px;
-    }
-
-    .logo{
-        width:40px;
-        height:40px;
-    }
-
-    .header-wa{
-        padding:8px 10px;
-        font-size:12px;
+    .hero h1{
+        font-size:23px;
     }
 
     .hero{
-        padding:15px 10px;
+        padding:30px 14px;
     }
 
-    .hero-box{
-        padding:24px 17px;
-        border-radius:20px;
+    .service-grid{
+        grid-template-columns:1fr 1fr;
+        gap:9px;
     }
 
-    .hero h1{
-        font-size:34px;
+    .card{
+        padding:13px;
+        min-height:205px;
     }
 
-    .hero-actions .btn{
-        flex:1;
-        min-width:120px;
+    .card h3{
+        font-size:14px;
     }
 
-    .service-card{
-        padding:12px 9px;
-    }
-
-    .service-name{
-        font-size:12px;
-        min-height:38px;
+    .card p{
+        font-size:11px;
     }
 
     .price{
-        font-size:18px;
+        font-size:17px;
     }
 
-    .old-price{
-        font-size:11px;
+    .why-grid{
+        grid-template-columns:1fr 1fr;
     }
 
-    .discount{
-        font-size:9px;
+    .date-time-grid{
+        grid-template-columns:1fr;
+        gap:0;
     }
 
-    .book-btn{
-        font-size:11px;
-        padding:8px 4px;
+    .modal{
+        padding:8px;
     }
 
-    .section-title{
-        font-size:21px;
+    .modal-box{
+        padding:13px;
+        border-radius:20px;
+        margin:5px auto;
+    }
+
+    .booking-card{
+        padding:13px;
     }
 }
-
 </style>
 </head>
 
-
 <body>
 
+<!-- HEADER -->
 
-<!-- ================= HEADER ================= -->
+<header>
 
-<header class="header">
+<div class="logo">
+N.G Cooling Solution
+<small>Home Appliances Service & Repair</small>
+</div>
 
-    <div class="header-inner">
-
-        <div class="logo-area">
-
-            <div class="logo">
-                NG
-            </div>
-
-            <div>
-
-                <div class="brand-title">
-                    N.G Cooling Solution
-                </div>
-
-                <div class="brand-subtitle">
-                    Your Comfort, Our Priority
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="header-wa"
-            onclick="openWhatsApp()">
-
-            💬 WhatsApp
-
-        </button>
-
-    </div>
+<a
+class="whatsapp"
+href="https://wa.me/917439160014"
+target="_blank">
+WhatsApp
+</a>
 
 </header>
 
 
-
-<!-- ================= HERO ================= -->
+<!-- HERO -->
 
 <section class="hero">
 
-    <div class="hero-box">
+<div class="container">
 
-        <div class="status">
-            🟢 BOOKING OPEN • 8 AM – 10 PM
-        </div>
+<h1>Home Appliances Service & Repair</h1>
 
+<p>
+Expert Home Appliance Service & Repair in Dum Dum & Kolkata
+</p>
 
-        <h1>
-            Home Appliances Service & Repair
-        </h1>
+<div class="badge">
+🛡️ 90 Days Warranty
+</div>
 
-
-        <p>
-            Professional Home Appliances Service & Repair
-            in Dum Dum & Kolkata.
-            Fast Booking • Expert Technician • Transparent Pricing
-        </p>
-
-
-        <div class="hero-actions">
-
-            <button
-                class="btn btn-primary view-side-btn"
-                onclick="scrollToServices()">
-
-                👁️ View
-
-            </button>
-
-
-            <button
-                class="btn btn-secondary"
-                onclick="openWhatsApp()">
-
-                💬 WhatsApp
-
-            </button>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
 
 
+<div class="container">
 
-<main class="container">
+<div class="warranty">
+🛠️ Selected Repair & Parts Work-এ 90 Days Warranty
+</div>
 
 
-<!-- ================= POPULAR SERVICES ================= -->
-
-<section
-    class="section"
-    id="services">
-
-    <h2 class="section-title">
-        🔥 Popular Services
-    </h2>
-
-
-    <p class="section-subtitle">
-        আপনার প্রয়োজনীয় সার্ভিস বেছে নিয়ে Book Now চাপুন
-    </p>
-
-
-    <div
-        class="popular-grid"
-        id="popularGrid">
-
-
-        <!-- AC GENERAL -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                ❄️ AC General Service
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹399
-                </span>
-
-                <span class="old-price">
-                    ₹499
-                </span>
-
-                <span class="discount">
-                    ₹100 OFF
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('AC General Service',399)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- FOAM JET -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🧼 Foam-Jet AC Service
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹499
-                </span>
-
-                <span class="old-price">
-                    ₹599
-                </span>
-
-                <span class="discount">
-                    ₹100 OFF
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('Foam-Jet AC Service',499)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- LITE -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🧹 Lite AC Service
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹399
-                </span>
-
-                <span class="old-price">
-                    ₹499
-                </span>
-
-                <span class="discount">
-                    ₹100 OFF
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('Lite AC Service',399)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- WATER LEAKAGE -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                💧 AC Water Leakage Repair
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹499
-                </span>
-
-                <span class="old-price">
-                    ₹599
-                </span>
-
-                <span class="discount">
-                    ₹100 OFF
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('AC Water Leakage Repair',499)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- COOLING -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                ❄️ AC Cooling Problem
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹199
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('AC Cooling Problem',199)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- NO COOLING -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                ❄️ AC No Cooling Issue
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹199
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('AC No Cooling Issue',199)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- INSTALLATION -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🔧 AC Installation
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹1499
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('AC Installation',1499)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- GAS -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🧊 AC Gas Charging
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹2499
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('AC Gas Charging',2499)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- UNINSTALLATION -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🔧 AC Uninstallation
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹599
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('AC Uninstallation',599)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- FRIDGE -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🧊 Fridge Cooling Problem
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹199
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('Fridge Cooling Problem',199)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- WASHING MACHINE -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🌀 Washing Machine Not Working
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹199
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('Washing Machine Not Working',199)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- MICROWAVE DOOR -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                📺 Microwave Door Repair
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹199
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('Microwave Door Repair',199)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- MICROWAVE HEATING -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                🔥 Microwave Heating Problem
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹199
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('Microwave Heating Problem',199)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-        <!-- GEYSER -->
-
-        <div class="service-card">
-
-            <div class="service-name">
-                ♨️ Geyser Heating Problem
-            </div>
-
-            <div class="price-row">
-
-                <span class="price">
-                    ₹199
-                </span>
-
-            </div>
-
-            <button
-                class="book-btn"
-                onclick="openBooking('Geyser Heating Problem',199)">
-
-                Book Now
-
-            </button>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= SEARCH ================= -->
+<!-- POPULAR SERVICES -->
 
 <section class="section">
 
-    <h2 class="section-title">
-        🔎 Search Service
-    </h2>
-
-
-    <div class="search-box">
-
-        <input
-            type="search"
-            id="serviceSearch"
-            placeholder="যেমন: AC, Fridge, Geyser..."
-            oninput="searchServices()">
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= ALL SERVICES ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        🛠️ All Services
-    </h2>
-
-
-    <div class="category-grid">
-
-        <div class="category">
-
-            <span class="category-icon">
-                ❄️
-            </span>
-
-            AC Service
-
-        </div>
-
-
-        <div class="category">
-
-            <span class="category-icon">
-                🧊
-            </span>
-
-            Fridge
-
-        </div>
-
-
-        <div class="category">
-
-            <span class="category-icon">
-                🌀
-            </span>
-
-            Washing Machine
-
-        </div>
-
-
-        <div class="category">
-
-            <span class="category-icon">
-                📺
-            </span>
-
-            Microwave
-
-        </div>
-
-
-        <div class="category">
-
-            <span class="category-icon">
-                ♨️
-            </span>
-
-            Geyser
-
-        </div>
-
-
-        <div class="category">
-
-            <span class="category-icon">
-                💧
-            </span>
-
-            Water Purifier
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= LOCATION ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        📍 Smart Location Booking
-    </h2>
-
-
-    <div class="location-box">
-
-        <p>
-            GPS Location ব্যবহার করে সহজে Service Booking করুন।
-        </p>
-
-
-        <div class="location-buttons">
-
-            <button
-                class="location-btn gps-btn"
-                onclick="getLocation()">
-
-                📍 Current Location
-
-            </button>
-
-
-            <button
-                class="location-btn maps-btn"
-                onclick="openGoogleMaps()">
-
-                🗺️ Google Maps
-
-            </button>
-
-        </div>
-
-
-        <p
-            id="locationStatus"
-            style="margin-top:10px;font-size:12px;color:#64748b;">
-        </p>
-
-    </div>
-
-</section>
-
-
-
-<!-- ================= WHY CHOOSE US ================= -->
-
-<section class="section">
-
-    <h2 class="section-title">
-        ⭐ Why Choose Us
-    </h2>
-
-
-    <div class="why-grid">
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                👨‍🔧
-            </div>
-
-            <strong>
-                Professional Technician
-            </strong>
-
-            <span>
-                Experienced service team
-            </span>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                💰
-            </div>
-
-            <strong>
-                Transparent Pricing
-            </strong>
-
-            <span>
-                Clear service charges
-            </span>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                📍
-            </div>
-
-            <strong>
-                GPS Booking
-            </strong>
-
-            <span>
-                Easy location sharing
-            </span>
-
-        </div>
-
-
-        <div class="why-card">
-
-            <div class="why-icon">
-                💬
-            </div>
-
-            <strong>
-                WhatsApp Confirmation
-            </strong>
-
-            <span>
-                Quick booking confirmation
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-</main>
-
-
-
-<!-- ================= BOOKING MODAL ================= -->
-
-<div
-    class="modal"
-    id="bookingModal">
-
-    <div class="modal-box">
-
-
-        <div class="modal-head">
-
-            <h2>
-                📋 Book Service
-            </h2>
-
-
-            <button
-                class="close-btn"
-                onclick="closeBooking()">
-
-                ×
-
-            </button>
-
-        </div>
-
-
-        <form id="bookingForm">
-
-
-            <!-- CUSTOMER NAME -->
-
-            <div class="form-group">
-
-                <label>
-                    Customer Name
-                </label>
-
-                <input
-                    type="text"
-                    id="customerName"
-                    placeholder="আপনার নাম"
-                    required>
-
-            </div>
-
-
-            <!-- MOBILE -->
-
-            <div class="form-group">
-
-                <label>
-                    Mobile Number
-                </label>
-
-                <input
-                    type="tel"
-                    id="customerMobile"
-                    maxlength="10"
-                    inputmode="numeric"
-                    placeholder="10 digit mobile number"
-                    required>
-
-            </div>
-
-
-            <!-- DATE -->
-
-            <div class="form-group">
-
-                <label>
-                    Booking Date
-                </label>
-
-                <input
-                    type="date"
-                    id="bookingDate"
-                    required>
-
-            </div>
-
-
-            <!-- TIME -->
-
-            <div class="form-group">
-
-                <label>
-                    Booking Time
-                </label>
-
-                <select
-                    id="bookingTime"
-                    required>
-
-                    <option value="">
-                        Select Booking Time
-                    </option>
-
-                    <option>
-                        8 AM - 9 AM
-                    </option>
-
-                    <option>
-                        9 AM - 10 AM
-                    </option>
-
-                    <option>
-                        10 AM - 11 AM
-                    </option>
-
-                    <option>
-                        11 AM - 12 PM
-                    </option>
-
-                    <option>
-                        12 PM - 1 PM
-                    </option>
-
-                    <option>
-                        1 PM - 2 PM
-                    </option>
-
-                    <option>
-                        2 PM - 3 PM
-                    </option>
-
-                    <option>
-                        3 PM - 4 PM
-                    </option>
-
-                    <option>
-                        4 PM - 5 PM
-                    </option>
-
-                    <option>
-                        5 PM - 6 PM
-                    </option>
-
-                    <option>
-                        6 PM - 7 PM
-                    </option>
-
-                    <option>
-                        7 PM - 8 PM
-                    </option>
-
-                    <option>
-                        8 PM - 9 PM
-                    </option>
-
-                    <option>
-                        9 PM - 10 PM
-                    </option>
-
-                </select>
-
-            </div>
-
-
-            <!-- ADDRESS -->
-
-            <div class="form-group">
-
-                <label>
-                    Address
-                </label>
-
-
-                <input
-                    type="text"
-                    id="serviceAddress"
-                    placeholder="আপনার Address"
-                    required>
-
-
-                <!-- GPS BUTTON -->
-
-                <button
-                    type="button"
-                    class="booking-gps-btn"
-                    onclick="getBookingLocation()">
-
-                    📍 Use Current GPS Location
-
-                </button>
-
-
-                <div
-                    class="gps-status"
-                    id="bookingGPSStatus">
-
-                    GPS button চাপলে Location Permission চাওয়া হবে।
-
-                </div>
-
-            </div>
-
-
-            <!-- PROBLEM -->
-
-            <div class="form-group">
-
-                <label>
-                    Problem / Details
-                </label>
-
-                <textarea
-                    id="problemDetails"
-                    placeholder="সমস্যাটি লিখুন..."></textarea>
-
-            </div>
-
-
-            <!-- SUMMARY -->
-
-            <div class="summary">
-
-
-                <div class="summary-row">
-
-                    <span>
-                        Service Charge
-                    </span>
-
-                    <strong id="serviceCharge">
-                        ₹0
-                    </strong>
-
-                </div>
-
-
-                <div class="summary-row">
-
-                    <span>
-                        Labour
-                    </span>
-
-                    <strong>
-                        Included
-                    </strong>
-
-                </div>
-
-
-                <div class="summary-row">
-
-                    <span>
-                        Discount
-                    </span>
-
-                    <strong id="discountAmount">
-                        ₹0
-                    </strong>
-
-                </div>
-
-
-                <div class="summary-row summary-total">
-
-                    <span>
-                        Total
-                    </span>
-
-                    <strong id="totalAmount">
-                        ₹0
-                    </strong>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- SUBMIT -->
-
-            <button
-                type="submit"
-                class="submit-btn">
-
-                💬 Confirm Booking on WhatsApp
-
-            </button>
-
-
-        </form>
-
-    </div>
+<h2 class="section-title">
+Popular Services
+</h2>
+
+<div class="search">
+
+<input
+id="searchInput"
+type="text"
+placeholder="🔍 Search Service..."
+onkeyup="searchServices()">
 
 </div>
 
 
-
-<!-- ================= TOAST ================= -->
-
 <div
-    class="toast"
-    id="toast">
+class="service-grid"
+id="serviceGrid">
+
+
+<!-- 1 -->
+
+<div class="card service-card"
+data-name="AC General Service">
+
+<div>
+
+<div class="icon">❄️</div>
+
+<h3>AC General Service</h3>
+
+<p>
+Complete AC basic service and checking.
+</p>
+
+<div class="price">
+<span class="old-price">₹499</span>
+₹399
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('AC General Service')">
+Book Now
+</button>
+
 </div>
 
 
+<!-- 2 -->
 
-<!-- ================= FLOATING WHATSAPP ================= -->
+<div class="card service-card"
+data-name="Foam-Jet AC Service">
+
+<div>
+
+<div class="icon">🧼</div>
+
+<h3>Foam-Jet AC Service</h3>
+
+<p>
+Deep cleaning with foam service.
+</p>
+
+<div class="price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Foam-Jet AC Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 3 -->
+
+<div class="card service-card"
+data-name="AC Repair">
+
+<div>
+
+<div class="icon">🔧</div>
+
+<h3>AC Repair</h3>
+
+<p>
+Complete Check-up to Identify Issues Before Repair.
+</p>
+
+<div class="price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('AC Repair')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 4 -->
+
+<div class="card service-card"
+data-name="Lite AC Service">
+
+<div>
+
+<div class="icon">❄️</div>
+
+<h3>Lite AC Service</h3>
+
+<p>
+Basic AC cleaning and checking.
+</p>
+
+<div class="price">
+<span class="old-price">₹499</span>
+₹399
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Lite AC Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 5 -->
+
+<div class="card service-card"
+data-name="AC Water Leakage Repair">
+
+<div>
+
+<div class="icon">💧</div>
+
+<h3>AC Water Leakage Repair</h3>
+
+<p>
+Split AC water leakage checking and repair.
+</p>
+
+<div class="price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('AC Water Leakage Repair')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 6 -->
+
+<div class="card service-card"
+data-name="Window AC Foam-Jet Service">
+
+<div>
+
+<div class="icon">🪟</div>
+
+<h3>Window AC Foam-Jet Service</h3>
+
+<p>
+Window AC deep foam cleaning.
+</p>
+
+<div class="price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Window AC Foam-Jet Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 7 -->
+
+<div class="card service-card"
+data-name="AC Installation">
+
+<div>
+
+<div class="icon">🛠️</div>
+
+<h3>AC Installation</h3>
+
+<p>
+Professional AC installation service.
+</p>
+
+<div class="price">
+<span class="old-price">₹1599</span>
+₹1499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('AC Installation')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 8 -->
+
+<div class="card service-card"
+data-name="AC Uninstallation">
+
+<div>
+
+<div class="icon">🔧</div>
+
+<h3>AC Uninstallation</h3>
+
+<p>
+Safe AC removal and uninstallation.
+</p>
+
+<div class="price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('AC Uninstallation')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 9 -->
+
+<div class="card service-card"
+data-name="Fridge Repair">
+
+<div>
+
+<div class="icon">🧊</div>
+
+<h3>Fridge Repair</h3>
+
+<p>
+Complete fridge check-up and repair.
+</p>
+
+<div class="price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Fridge Repair')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 10 -->
+
+<div class="card service-card"
+data-name="Washing Machine Repair">
+
+<div>
+
+<div class="icon">🧺</div>
+
+<h3>Washing Machine Repair</h3>
+
+<p>
+Washing machine fault checking and repair.
+</p>
+
+<div class="price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Washing Machine Repair')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 11 -->
+
+<div class="card service-card"
+data-name="Microwave Repair">
+
+<div>
+
+<div class="icon">♨️</div>
+
+<h3>Microwave Repair</h3>
+
+<p>
+Microwave complete check-up and repair.
+</p>
+
+<div class="price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Microwave Repair')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 12 -->
+
+<div class="card service-card"
+data-name="Geyser Repair">
+
+<div>
+
+<div class="icon">🚿</div>
+
+<h3>Geyser Repair</h3>
+
+<p>
+Geyser heating and electrical checking.
+</p>
+
+<div class="price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Geyser Repair')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 13 -->
+
+<div class="card service-card"
+data-name="Water Purifier Repair">
+
+<div>
+
+<div class="icon">💧</div>
+
+<h3>Water Purifier Repair</h3>
+
+<p>
+RO / Water purifier checking and repair.
+</p>
+
+<div class="price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Water Purifier Repair')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 14 -->
+
+<div class="card service-card"
+data-name="Washing Machine Service">
+
+<div>
+
+<div class="icon">🧺</div>
+
+<h3>Washing Machine Service</h3>
+
+<p>
+Complete washing machine service.
+</p>
+
+<div class="price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Washing Machine Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 15 -->
+
+<div class="card service-card"
+data-name="Geyser Service">
+
+<div>
+
+<div class="icon">🚿</div>
+
+<h3>Geyser Service</h3>
+
+<p>
+Geyser service and cleaning.
+</p>
+
+<div class="price">
+<span class="old-price">₹699</span>
+₹599
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Geyser Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 16 -->
+
+<div class="card service-card"
+data-name="Water Purifier Service">
+
+<div>
+
+<div class="icon">💧</div>
+
+<h3>Water Purifier Service</h3>
+
+<p>
+RO and purifier servicing.
+</p>
+
+<div class="price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Water Purifier Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 17 -->
+
+<div class="card service-card"
+data-name="Microwave Service">
+
+<div>
+
+<div class="icon">♨️</div>
+
+<h3>Microwave Service</h3>
+
+<p>
+Microwave service and checking.
+</p>
+
+<div class="price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Microwave Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 18 -->
+
+<div class="card service-card"
+data-name="Chimney Deep Cleaning Chemical Service">
+
+<div>
+
+<div class="icon">🧹</div>
+
+<h3>Chimney Deep Cleaning Chemical Service</h3>
+
+<p>
+Deep chemical cleaning service.
+</p>
+
+<div class="price">
+<span class="old-price">₹1450</span>
+₹1350
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Chimney Deep Cleaning Chemical Service')">
+Book Now
+</button>
+
+</div>
+
+
+<!-- 19 -->
+
+<div class="card service-card"
+data-name="Chimney Light Service">
+
+<div>
+
+<div class="icon">🧽</div>
+
+<h3>Chimney Light Service</h3>
+
+<p>
+Basic chimney cleaning service.
+</p>
+
+<div class="price">
+<span class="old-price">₹800</span>
+₹700
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+<button
+class="book-btn"
+onclick="openBooking('Chimney Light Service')">
+Book Now
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- SERVICE AREA -->
+
+<section class="section">
+
+<h2 class="section-title">
+Service Location
+</h2>
+
+<div class="location-box">
+
+<p>📍 Service Available in Dum Dum & Kolkata</p>
+
+<div class="location-tags">
+
+<span>Dum Dum</span>
+<span>Dakshineswar</span>
+<span>Belghoria</span>
+<span>Belgachia</span>
+<span>Shyambazar</span>
+<span>Lake Town</span>
+<span>Barasat</span>
+<span>New Town</span>
+<span>Rajarhat</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- WHY CHOOSE -->
+
+<section class="section">
+
+<h2 class="section-title">
+Why Choose Us?
+</h2>
+
+<div class="why-grid">
+
+<div class="why">
+<div class="why-icon">🛠️</div>
+<strong>Experienced Technician</strong>
+</div>
+
+<div class="why">
+<div class="why-icon">💰</div>
+<strong>Affordable Price</strong>
+</div>
+
+<div class="why">
+<div class="why-icon">🛡️</div>
+<strong>90 Days Warranty</strong>
+</div>
+
+<div class="why">
+<div class="why-icon">📱</div>
+<strong>Easy WhatsApp Booking</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<button
+class="rate-btn"
+onclick="openRateCard()">
+
+📋 View Full NG Rate Card
+
+</button>
+
+</div>
+
+
+<!-- ==============================
+     CUSTOMER BOOKING MODAL
+============================== -->
+
+<div class="modal" id="bookingModal">
+
+<div class="modal-box">
+
+<span class="close"
+onclick="closeBooking()">×</span>
+
+<div class="modal-title">
+📅 Customer Booking
+</div>
+
+<div class="modal-subtitle">
+Fill up your details and confirm your service booking.
+</div>
+
+
+<div class="booking-card">
+
+<form id="bookingForm">
+
+
+<!-- CUSTOMER -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+👤 Customer Details
+</div>
+
+<div class="form-group">
+
+<label>
+Customer Name *
+</label>
+
+<input
+type="text"
+id="customerName"
+placeholder="Enter your name"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Mobile Number *
+</label>
+
+<input
+type="tel"
+id="customerMobile"
+placeholder="10 Digit Mobile Number"
+maxlength="10"
+inputmode="numeric"
+required>
+
+</div>
+
+</div>
+
+
+<!-- SERVICE -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+🛠️ Selected Service
+</div>
+
+<div
+class="selected-service"
+id="selectedService">
+
+Select Service
+
+</div>
+
+</div>
+
+
+<!-- ADDRESS -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+🏠 Service Address
+</div>
+
+<div class="address-box">
+
+<div class="form-group">
+
+<label>
+Complete Address *
+</label>
+
+<textarea
+id="serviceAddress"
+placeholder="House / Flat No, Road, Area, Landmark..."
+required></textarea>
+
+</div>
+
+</div>
+
+
+<!-- GPS SEPARATE -->
+
+<div class="gps-card">
+
+<div class="gps-title">
+📍 GPS Location
+</div>
+
+<div class="gps-text">
+GPS location will be saved separately from your address.
+</div>
+
+<button
+type="button"
+class="gps-btn"
+onclick="getGPSLocation()">
+
+📍 Get My Current Location
+
+</button>
+
+<div
+id="gpsStatus"
+class="gps-status">
+
+✓ GPS Location Captured Successfully
+
+</div>
 
 <a
-    class="floating-wa"
-    href="https://wa.me/917439160014"
-    target="_blank"
-    aria-label="WhatsApp">
+id="gpsMap"
+class="gps-map"
+href="#"
+target="_blank">
 
-    💬
+🗺️ Open Captured Location on Google Maps
 
 </a>
 
+</div>
+
+</div>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- DATE TIME -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+📅 Booking Schedule
+</div>
+
+<div class="date-time-grid">
+
+<div class="form-group">
+
+<label>
+Booking Date *
+</label>
+
+<input
+type="date"
+id="bookingDate"
+required>
+
+</div>
+
+
+<div class="form-group">
+
+<label>
+Booking Time *
+</label>
+
+<select
+id="bookingTime"
+required>
+
+<option value="">
+Select Time
+</option>
+
+<option>8 AM - 9 AM</option>
+<option>9 AM - 10 AM</option>
+<option>10 AM - 11 AM</option>
+<option>11 AM - 12 PM</option>
+<option>12 PM - 1 PM</option>
+<option>1 PM - 2 PM</option>
+<option>2 PM - 3 PM</option>
+<option>3 PM - 4 PM</option>
+<option>4 PM - 5 PM</option>
+<option>5 PM - 6 PM</option>
+<option>6 PM - 7 PM</option>
+<option>7 PM - 8 PM</option>
+<option>8 PM - 9 PM</option>
+<option>9 PM - 10 PM</option>
+
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- PROBLEM -->
+
+<div class="form-section">
+
+<div class="form-section-title">
+📝 Problem / Details
+</div>
+
+<div class="form-group">
+
+<textarea
+id="problem"
+placeholder="Write your appliance problem or any additional details..."></textarea>
+
+</div>
+
+</div>
+
+
+<button
+type="submit"
+class="submit-btn">
+
+📲 Confirm Booking on WhatsApp
+
+</button>
+
+<div class="booking-note">
+
+After submitting, WhatsApp will open with your complete booking details.
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ==============================
+     RATE CARD MODAL
+============================== -->
+
+<div class="modal" id="rateModal">
+
+<div class="modal-box">
+
+<span class="close"
+onclick="closeRateCard()">×</span>
+
+<div class="modal-title">
+📋 NG Rate Card
+</div>
+
+<div class="modal-subtitle">
+Updated service & repair rates
+</div>
+
+
+<div class="category-title">
+❄️ AC Service & Installation
+</div>
+
+
+<div class="rate-row">
+
+<div class="rate-name">
+Foam-Jet AC Service
+</div>
+
+<div class="rate-price">
+<span class="old-price">₹699</span>
+₹599
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+
+<div class="rate-row">
+
+<div class="rate-name">
+Window AC Foam-Jet Service
+</div>
+
+<div class="rate-price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+
+<div class="rate-row">
+
+<div class="rate-name">
+Lite AC Service
+</div>
+
+<div class="rate-price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+
+<div class="rate-row">
+
+<div class="rate-name">
+AC Installation
+</div>
+
+<div class="rate-price">
+<span class="old-price">₹1599</span>
+₹1499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+
+<div class="rate-row">
+
+<div class="rate-name">
+AC Uninstallation
+</div>
+
+<div class="rate-price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+
+<div class="rate-row">
+
+<div class="rate-name">
+Water Leakage Split AC
+</div>
+
+<div class="rate-price">
+<span class="old-price">₹699</span>
+₹599
+<span class="discount">₹100 OFF</span>
+</div>
+
+</div>
+
+
+<div class="category-title">
+🔧 Electrical Parts
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Non-Inverter PCB Repaired
+</div>
+<div class="rate-price">₹1500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Inverter PCB Repaired
+</div>
+<div class="rate-price">₹4500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+LVT / Transformer
+</div>
+<div class="rate-price">
+₹900
+<span class="labour">Labour ₹349</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Sensor Replacement
+</div>
+<div class="rate-price">
+₹350
+<span class="labour">Labour ₹499</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Contactor Replacement
+</div>
+<div class="rate-price">
+₹500
+<span class="labour">Labour ₹499</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Contactor Daikin / O-General
+</div>
+<div class="rate-price">
+₹1500
+<span class="labour">Labour ₹449</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Convert PCB With Remote
+</div>
+<div class="rate-price">₹1500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Fan Capacitor 2.5–10 MFD
+</div>
+<div class="rate-price">
+₹250
+<span class="labour">Labour ₹449</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Compressor Capacitor 25–60 MFD
+</div>
+<div class="rate-price">
+₹400
+<span class="labour">Labour ₹449</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Combo Capacitor
+</div>
+<div class="rate-price">
+₹500
+<span class="labour">Labour ₹449</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Fuse Change in PCB
+</div>
+<div class="rate-price">
+₹150
+<span class="labour">Labour ₹299</span>
+</div>
+</div>
+
+
+<div class="category-title">
+❄️ Gas Charging
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Gas Charging
+</div>
+<div class="rate-price">₹2800</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Flair Nut Replacement
+</div>
+<div class="rate-price">₹150</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Copper Coil Condenser 1 Ton Split
+</div>
+<div class="rate-price">₹4000</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Copper Coil Condenser 1.5 Ton
+</div>
+<div class="rate-price">₹4800</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Copper Coil Condenser 2 Ton
+</div>
+<div class="rate-price">₹5300</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Capillary / Filter
+</div>
+<div class="rate-price">₹350</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Compressor 0.8–1 Ton
+</div>
+<div class="rate-price">₹6500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Compressor 1.5 Ton
+</div>
+<div class="rate-price">₹8500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Compressor 2 Ton
+</div>
+<div class="rate-price">₹10000</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Expansion Valve
+</div>
+<div class="rate-price">₹1200</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Service Valve 1/4
+</div>
+<div class="rate-price">₹400</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Service Valve 1/2
+</div>
+<div class="rate-price">₹400</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Service Valve 5/8
+</div>
+<div class="rate-price">₹500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Copper Cooling Coil Split 1 Ton
+</div>
+<div class="rate-price">₹5500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Copper Cooling Coil Split 1.5 Ton
+</div>
+<div class="rate-price">₹6500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Copper Cooling Coil Split 2 Ton
+</div>
+<div class="rate-price">₹7500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+O General / Mitsubishi 1.5 Ton
+</div>
+<div class="rate-price">₹7500</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Cooling Coil Repair With Anti-Rust
+</div>
+<div class="rate-price">₹899</div>
+</div>
+
+
+<div class="category-title">
+🌀 Fan Motors
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Fan Motor Split
+</div>
+<div class="rate-price">
+₹1800
+<span class="labour">Labour ₹499</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Blower Motor Split
+</div>
+<div class="rate-price">
+₹2200
+<span class="labour">Labour ₹499</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Blower Replacement
+</div>
+<div class="rate-price">
+₹1100
+<span class="labour">Labour ₹499</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Flap / Swing Motor
+</div>
+<div class="rate-price">
+₹400
+<span class="labour">Labour ₹499</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Motor Bearing
+</div>
+<div class="rate-price">₹1000</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Fan Motor Window
+</div>
+<div class="rate-price">
+₹2600
+<span class="labour">Labour ₹499</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Blower Motor DC Split
+</div>
+<div class="rate-price">₹3800</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Fan Motor DC Split
+</div>
+<div class="rate-price">₹3800</div>
+</div>
+
+
+<div class="category-title">
+🔨 Minor Repairs
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Water Leakage Split AC
+</div>
+<div class="rate-price">
+<span class="old-price">₹699</span>
+₹599
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Adjust Grill Locks
+</div>
+<div class="rate-price">
+₹0
+<span class="labour">Labour ₹349</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Adjust Pipe / Compressor Screw
+</div>
+<div class="rate-price">
+₹0
+<span class="labour">Labour ₹349</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Connector Wires 1m
+</div>
+<div class="rate-price">
+₹100
+<span class="labour">Labour ₹349</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Tighten / Replace Thimble
+</div>
+<div class="rate-price">
+₹50
+<span class="labour">Labour ₹349</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+External Dust / Stick Removal
+</div>
+<div class="rate-price">
+₹0
+<span class="labour">Labour ₹399</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Noise Adjustment
+</div>
+<div class="rate-price">
+₹0
+<span class="labour">Labour ₹399</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Water Leakage Window AC
+</div>
+<div class="rate-price">
+₹0
+<span class="labour">Labour ₹449</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Drain Pipe Adjust
+</div>
+<div class="rate-price">₹499</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Insulation Refix
+</div>
+<div class="rate-price">
+₹0
+<span class="labour">Labour ₹399</span>
+</div>
+</div>
+
+
+<div class="category-title">
+🧊 Fridge
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Fridge Repair
+</div>
+<div class="rate-price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Fridge Service
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Cooling Issue
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Gas Charging
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Compressor
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="category-title">
+🧺 Washing Machine
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Washing Machine Repair
+</div>
+<div class="rate-price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Washing Machine Service
+</div>
+<div class="rate-price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Drain / Pump
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Motor
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+PCB
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="category-title">
+♨️ Microwave
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Microwave Repair
+</div>
+<div class="rate-price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Microwave Service
+</div>
+<div class="rate-price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Door Repair
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Heating Issue
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="category-title">
+🚿 Geyser
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Geyser Repair
+</div>
+<div class="rate-price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Geyser Service
+</div>
+<div class="rate-price">
+<span class="old-price">₹699</span>
+₹599
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Heating Issue
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Heating Element
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="category-title">
+💧 Water Purifier
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Water Purifier Repair
+</div>
+<div class="rate-price">
+<span class="old-price">₹299</span>
+₹199
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Water Purifier Service
+</div>
+<div class="rate-price">
+<span class="old-price">₹599</span>
+₹499
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Filter Replacement
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+RO Membrane
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="category-title">
+🧹 Chimney
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Chimney Deep Cleaning Chemical Service
+</div>
+<div class="rate-price">
+<span class="old-price">₹1450</span>
+₹1350
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Chimney Light Service
+</div>
+<div class="rate-price">
+<span class="old-price">₹800</span>
+₹700
+<span class="discount">₹100 OFF</span>
+</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+Motor / Fan
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+
+<div class="rate-row">
+<div class="rate-name">
+PCB
+</div>
+<div class="rate-price">Contact for Price</div>
+</div>
+
+</div>
+
+</div>
+
+
+<!-- FLOATING WHATSAPP -->
+
+<a
+class="float-wa"
+href="https://wa.me/917439160014"
+target="_blank">
+💬
+</a>
+
+
+<!-- FOOTER -->
 
 <footer>
 
-    <strong>
-        N.G Cooling Solution
-    </strong>
+<strong>N.G Cooling Solution</strong>
+<br>
 
-    <p>
-        Your Comfort, Our Priority
-    </p>
+Home Appliances Service & Repair
 
-    <p>
-        Home Appliances Service • Repair • Installation
-    </p>
+<br>
 
-    <p>
-        WhatsApp: 7439160014
-    </p>
+Dum Dum • Dakshineswar • Belghoria • Belgachia •
+Shyambazar • Lake Town • Barasat • New Town • Rajarhat
+
+<br><br>
+
+📱 WhatsApp: 7439160014
+
+<br>
+
+© 2026 N.G Cooling Solution. All Rights Reserved.
 
 </footer>
 
 
-
 <script>
 
-/* =========================
-   VARIABLES
-========================= */
+/* ==============================
+   GLOBAL GPS DATA
+============================== */
 
-let selectedService = "";
-let selectedPrice = 0;
-let customerGPS = "";
-
-
-/* =========================
-   WHATSAPP
-========================= */
-
-function openWhatsApp(){
-
-    const number =
-        "917439160014";
+let gpsLatitude = "";
+let gpsLongitude = "";
+let gpsMapURL = "";
 
 
-    const message =
-        "Hello N.G Cooling Solution,%0A" +
-        "I want to book a service.";
+/* ==============================
+   BOOKING
+============================== */
 
+function openBooking(service){
 
-    window.open(
-        "https://wa.me/" +
-        number +
-        "?text=" +
-        message,
-        "_blank"
-    );
+    document.getElementById("selectedService").textContent =
+    service;
 
+    document.getElementById("bookingModal").style.display =
+    "block";
+
+    document.body.style.overflow =
+    "hidden";
+
+    /*
+       New booking-এর জন্য GPS status reset
+    */
+
+    gpsLatitude = "";
+    gpsLongitude = "";
+    gpsMapURL = "";
+
+    document.getElementById("gpsStatus").style.display =
+    "none";
+
+    document.getElementById("gpsMap").style.display =
+    "none";
 }
 
-
-/* =========================
-   VIEW
-========================= */
-
-function scrollToServices(){
-
-    const section =
-        document.getElementById("services");
-
-
-    if(section){
-
-        section.scrollIntoView({
-
-            behavior:"smooth",
-
-            block:"start"
-
-        });
-
-    }
-
-}
-
-
-/* =========================
-   OPEN BOOKING
-========================= */
-
-function openBooking(service,price){
-
-    selectedService =
-        service;
-
-
-    selectedPrice =
-        Number(price);
-
-
-    document.getElementById(
-        "bookingModal"
-    ).classList.add("show");
-
-
-    document.getElementById(
-        "serviceCharge"
-    ).textContent =
-        "₹" + selectedPrice;
-
-
-    document.getElementById(
-        "discountAmount"
-    ).textContent =
-        "₹0";
-
-
-    document.getElementById(
-        "totalAmount"
-    ).textContent =
-        "₹" + selectedPrice;
-
-
-    document.getElementById(
-        "bookingGPSStatus"
-    ).textContent =
-        "GPS button চাপলে Location Permission চাওয়া হবে।";
-
-
-    customerGPS = "";
-
-
-    setMinDate();
-
-}
-
-
-/* =========================
-   CLOSE BOOKING
-========================= */
 
 function closeBooking(){
 
-    document.getElementById(
-        "bookingModal"
-    ).classList.remove("show");
+    document.getElementById("bookingModal").style.display =
+    "none";
 
+    document.body.style.overflow =
+    "auto";
 }
 
 
-/* =========================
-   BOOKING GPS
-========================= */
+/* ==============================
+   RATE CARD
+============================== */
 
-function getBookingLocation(){
+function openRateCard(){
 
-    const status =
-        document.getElementById(
-            "bookingGPSStatus"
-        );
+    document.getElementById("rateModal").style.display =
+    "block";
 
-
-    if(!navigator.geolocation){
-
-        status.textContent =
-            "❌ এই Browser GPS support করছে না।";
-
-
-        showToast(
-            "GPS support পাওয়া যায়নি"
-        );
-
-
-        return;
-
-    }
-
-
-    status.textContent =
-        "📍 Location Permission চাওয়া হচ্ছে...";
-
-
-    showToast(
-        "📍 Location Permission Allow করুন"
-    );
-
-
-    navigator.geolocation.getCurrentPosition(
-
-        function(position){
-
-            const lat =
-                position.coords.latitude;
-
-
-            const lng =
-                position.coords.longitude;
-
-
-            customerGPS =
-                "https://www.google.com/maps?q=" +
-                lat +
-                "," +
-                lng;
-
-
-            document.getElementById(
-                "serviceAddress"
-            ).value =
-                "GPS Location: " +
-                lat.toFixed(6) +
-                ", " +
-                lng.toFixed(6);
-
-
-            status.innerHTML =
-                "✅ Current GPS Location Added<br>" +
-
-                "<a href='" +
-                customerGPS +
-                "' target='_blank'>" +
-
-                "📍 View GPS Location" +
-
-                "</a>";
-
-
-            showToast(
-                "✅ Automatic GPS Location নেওয়া হয়েছে"
-            );
-
-        },
-
-
-        function(error){
-
-            let message =
-                "❌ Location পাওয়া যায়নি।";
-
-
-            if(error.code === 1){
-
-                message =
-                    "❌ Location Permission Denied। Browser Settings থেকে Location Allow করুন।";
-
-            }
-
-            else if(error.code === 2){
-
-                message =
-                    "❌ Location unavailable। GPS চালু করুন।";
-
-            }
-
-            else if(error.code === 3){
-
-                message =
-                    "❌ Location নিতে সময় শেষ হয়েছে। আবার চেষ্টা করুন।";
-
-            }
-
-
-            status.textContent =
-                message;
-
-
-            showToast(
-                message
-            );
-
-        },
-
-
-        {
-            enableHighAccuracy:true,
-            timeout:15000,
-            maximumAge:0
-        }
-
-    );
-
+    document.body.style.overflow =
+    "hidden";
 }
 
 
-/* =========================
-   MAIN GPS
-========================= */
+function closeRateCard(){
 
-function getLocation(){
+    document.getElementById("rateModal").style.display =
+    "none";
 
-    const status =
-        document.getElementById(
-            "locationStatus"
-        );
-
-
-    if(!navigator.geolocation){
-
-        status.textContent =
-            "❌ GPS support নেই।";
-
-
-        showToast(
-            "GPS support নেই"
-        );
-
-
-        return;
-
-    }
-
-
-    status.textContent =
-        "📍 Location Permission চাওয়া হচ্ছে...";
-
-
-    navigator.geolocation.getCurrentPosition(
-
-        function(position){
-
-            const lat =
-                position.coords.latitude;
-
-
-            const lng =
-                position.coords.longitude;
-
-
-            const mapsURL =
-                "https://www.google.com/maps?q=" +
-                lat +
-                "," +
-                lng;
-
-
-            customerGPS =
-                mapsURL;
-
-
-            status.innerHTML =
-                "✅ Current Location Found<br>" +
-
-                "<a href='" +
-                mapsURL +
-                "' target='_blank'>" +
-
-                "📍 View Location on Google Maps" +
-
-                "</a>";
-
-
-            showToast(
-                "✅ Automatic GPS Location নেওয়া হয়েছে"
-            );
-
-        },
-
-
-        function(error){
-
-            let message =
-                "❌ Location পাওয়া যায়নি।";
-
-
-            if(error.code === 1){
-
-                message =
-                    "❌ Permission Denied। Location Permission Allow করুন।";
-
-            }
-
-            else if(error.code === 2){
-
-                message =
-                    "❌ Location unavailable। GPS চালু করুন।";
-
-            }
-
-            else if(error.code === 3){
-
-                message =
-                    "❌ Location request timeout। আবার চেষ্টা করুন।";
-
-            }
-
-
-            status.textContent =
-                message;
-
-
-            showToast(
-                message
-            );
-
-        },
-
-
-        {
-            enableHighAccuracy:true,
-            timeout:15000,
-            maximumAge:0
-        }
-
-    );
-
+    document.body.style.overflow =
+    "auto";
 }
 
 
-/* =========================
-   GOOGLE MAPS
-========================= */
-
-function openGoogleMaps(){
-
-    window.open(
-        "https://www.google.com/maps/search/?api=1&query=Dum+Dum+Kolkata",
-        "_blank"
-    );
-
-}
-
-
-/* =========================
+/* ==============================
    SEARCH
-========================= */
+============================== */
 
 function searchServices(){
 
-    const input =
-        document.getElementById(
-            "serviceSearch"
-        ).value
-        .toLowerCase()
-        .trim();
-
+    const search =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
 
     const cards =
-        document.querySelectorAll(
-            "#popularGrid .service-card"
-        );
+    document.querySelectorAll(".service-card");
 
-
-    cards.forEach(function(card){
-
-        const text =
-            card.innerText
-            .toLowerCase();
-
-
-        if(text.includes(input)){
-
-            card.style.display =
-                "";
-
-        }
-
-        else{
-
-            card.style.display =
-                "none";
-
-        }
-
-    });
-
-}
-
-
-/* =========================
-   SUMMARY
-========================= */
-
-function updateBookingSummary(){
-
-    const charge =
-        selectedPrice;
-
-
-    const discount =
-        0;
-
-
-    const total =
-        charge - discount;
-
-
-    document.getElementById(
-        "serviceCharge"
-    ).textContent =
-        "₹" + charge;
-
-
-    document.getElementById(
-        "discountAmount"
-    ).textContent =
-        "₹" + discount;
-
-
-    document.getElementById(
-        "totalAmount"
-    ).textContent =
-        "₹" + total;
-
-}
-
-
-/* =========================
-   FORM SUBMIT
-========================= */
-
-document.getElementById(
-    "bookingForm"
-).addEventListener(
-    "submit",
-    function(e){
-
-        e.preventDefault();
-
+    cards.forEach(card => {
 
         const name =
-            document.getElementById(
-                "customerName"
-            ).value.trim();
+        card.getAttribute("data-name")
+        .toLowerCase();
+
+        card.style.display =
+        name.includes(search)
+        ? "flex"
+        : "none";
+
+    });
+}
 
 
-        const mobile =
-            document.getElementById(
-                "customerMobile"
-            ).value.trim();
+/* ==============================
+   GPS
+   Address field-এর মধ্যে GPS
+   কখনও লেখা হবে না
+============================== */
+
+function getGPSLocation(){
+
+    if(!navigator.geolocation){
+
+        alert(
+            "এই device/browser-এ GPS support নেই।"
+        );
+
+        return;
+    }
 
 
-        const address =
-            document.getElementById(
-                "serviceAddress"
-            ).value.trim();
+    const button =
+    document.querySelector(".gps-btn");
+
+    button.textContent =
+    "📍 Getting Location...";
+
+    button.disabled = true;
 
 
-        const date =
-            document.getElementById(
-                "bookingDate"
-            ).value;
+    navigator.geolocation.getCurrentPosition(
+
+        function(position){
+
+            gpsLatitude =
+            position.coords.latitude;
+
+            gpsLongitude =
+            position.coords.longitude;
+
+            gpsMapURL =
+            "https://www.google.com/maps?q="
+            + gpsLatitude
+            + ","
+            + gpsLongitude;
 
 
-        const time =
-            document.getElementById(
-                "bookingTime"
-            ).value;
+            /*
+               GPS শুধু আলাদা variable-এ save হবে।
+               Address textarea touch করা হবে না।
+            */
+
+            document.getElementById("gpsStatus")
+            .style.display = "block";
 
 
-        const problem =
-            document.getElementById(
-                "problemDetails"
-            ).value.trim();
+            const mapButton =
+            document.getElementById("gpsMap");
+
+            mapButton.href =
+            gpsMapURL;
+
+            mapButton.style.display =
+            "block";
 
 
-        if(!/^[0-9]{10}$/.test(mobile)){
+            button.textContent =
+            "✓ Location Captured";
 
-            showToast(
-                "❌ সঠিক 10 digit mobile number দিন"
-            );
+            button.disabled = false;
 
+        },
 
-            return;
+        function(error){
 
-        }
+            button.textContent =
+            "📍 Get My Current Location";
 
+            button.disabled = false;
 
-        if(!address){
+            if(error.code === 1){
 
-            showToast(
-                "📍 Address দিন অথবা GPS Location নিন"
-            );
-
-
-            return;
-
-        }
-
-
-        if(!time){
-
-            showToast(
-                "⏰ Booking Time select করুন"
-            );
-
-
-            return;
-
-        }
-
-
-        updateBookingSummary();
-
-
-        const total =
-            document.getElementById(
-                "totalAmount"
-            ).textContent;
-
-
-        let message =
-            "🔧 *N.G Cooling Solution - Booking*%0A%0A" +
-
-            "👤 Customer: " +
-            encodeURIComponent(name) +
-            "%0A" +
-
-            "📱 Mobile: " +
-            encodeURIComponent(mobile) +
-            "%0A" +
-
-            "🛠️ Service: " +
-            encodeURIComponent(selectedService) +
-            "%0A" +
-
-            "💰 Amount: " +
-            encodeURIComponent(total) +
-            "%0A" +
-
-            "📅 Booking Date: " +
-            encodeURIComponent(date) +
-            "%0A" +
-
-            "⏰ Booking Time: " +
-            encodeURIComponent(time) +
-            "%0A" +
-
-            "🏠 Address: " +
-            encodeURIComponent(address) +
-            "%0A" +
-
-            "📝 Problem: " +
-            encodeURIComponent(
-                problem || "Not specified"
-            );
-
-
-        if(customerGPS){
-
-            message +=
-                "%0A📍 GPS Location: " +
-                encodeURIComponent(
-                    customerGPS
+                alert(
+                    "Location permission Allow করুন।"
                 );
 
+            }else{
+
+                alert(
+                    "GPS Location নেওয়া যায়নি। আবার চেষ্টা করুন।"
+                );
+
+            }
+
+        },
+
+        {
+            enableHighAccuracy:true,
+            timeout:10000,
+            maximumAge:0
         }
 
+    );
 
-        const whatsappURL =
-            "https://wa.me/917439160014?text=" +
-            message;
-
-
-        window.open(
-            whatsappURL,
-            "_blank"
-        );
+}
 
 
-        showToast(
-            "✅ Booking WhatsApp-এ পাঠানো হয়েছে"
-        );
+/* ==============================
+   CLOSE MODALS BY OUTSIDE CLICK
+============================== */
 
+window.addEventListener("click",function(event){
+
+    const bookingModal =
+    document.getElementById("bookingModal");
+
+    const rateModal =
+    document.getElementById("rateModal");
+
+
+    if(event.target === bookingModal){
 
         closeBooking();
 
     }
-);
 
 
-/* =========================
-   MIN DATE
-========================= */
+    if(event.target === rateModal){
 
-function setMinDate(){
+        closeRateCard();
 
-    const today =
-        new Date()
-        .toISOString()
-        .split("T")[0];
+    }
+
+});
 
 
-    document.getElementById(
-        "bookingDate"
-    ).min =
-        today;
+/* ==============================
+   BOOKING SUBMIT
+============================== */
 
-}
+document
+.getElementById("bookingForm")
+.addEventListener("submit",function(e){
 
-
-/* =========================
-   TOAST
-========================= */
-
-let toastTimer;
+    e.preventDefault();
 
 
-function showToast(message){
+    const name =
+    document
+    .getElementById("customerName")
+    .value
+    .trim();
 
-    const toast =
-        document.getElementById(
-            "toast"
+
+    const mobile =
+    document
+    .getElementById("customerMobile")
+    .value
+    .trim();
+
+
+    const service =
+    document
+    .getElementById("selectedService")
+    .textContent
+    .trim();
+
+
+    /*
+       Address শুধু Address field থেকে
+    */
+
+    const address =
+    document
+    .getElementById("serviceAddress")
+    .value
+    .trim();
+
+
+    const date =
+    document
+    .getElementById("bookingDate")
+    .value;
+
+
+    const time =
+    document
+    .getElementById("bookingTime")
+    .value;
+
+
+    const problem =
+    document
+    .getElementById("problem")
+    .value
+    .trim();
+
+
+    if(!/^[0-9]{10}$/.test(mobile)){
+
+        alert(
+            "Please enter a valid 10 digit mobile number."
         );
 
+        return;
+    }
 
-    toast.textContent =
-        message;
+
+    /*
+       GPS optional।
+       Customer GPS না দিলেও booking করতে পারবে।
+    */
+
+    let gpsText =
+    "GPS Location: Not Provided";
 
 
-    toast.classList.add(
-        "show"
+    if(gpsMapURL){
+
+        gpsText =
+        "GPS Location: "
+        + gpsMapURL;
+
+    }
+
+
+    /*
+       Local Booking Save
+    */
+
+    const booking = {
+
+        customerName:name,
+
+        mobile:mobile,
+
+        service:service,
+
+        address:address,
+
+        gps:gpsMapURL,
+
+        latitude:gpsLatitude,
+
+        longitude:gpsLongitude,
+
+        date:date,
+
+        time:time,
+
+        problem:problem,
+
+        createdAt:new Date().toISOString()
+
+    };
+
+
+    let bookings =
+    JSON.parse(
+        localStorage.getItem("ngBookings")
+        || "[]"
     );
 
 
-    clearTimeout(
-        toastTimer
+    bookings.push(booking);
+
+
+    localStorage.setItem(
+        "ngBookings",
+        JSON.stringify(bookings)
     );
 
 
-    toastTimer =
-        setTimeout(
+    /*
+       WhatsApp Message
+       Address এবং GPS আলাদা
+    */
 
-            function(){
+    const message =
+`🔔 *NEW SERVICE BOOKING*
 
-                toast.classList.remove(
-                    "show"
-                );
+👤 Customer Name:
+${name}
 
-            },
+📱 Mobile:
+${mobile}
 
-            3500
+🛠️ Service:
+${service}
 
-        );
+🏠 Service Address:
+${address}
 
-}
+📍 GPS Location:
+${gpsText}
+
+📅 Booking Date:
+${date}
+
+⏰ Booking Time:
+${time}
+
+📝 Problem / Details:
+${problem}
+
+🛡️ Warranty:
+90 Days Warranty on selected repair & parts work
+
+*N.G Cooling Solution*
+WhatsApp: 7439160014`;
 
 
-/* =========================
-   CLOSE MODAL OUTSIDE
-========================= */
+    const whatsappURL =
+    "https://wa.me/917439160014?text="
+    + encodeURIComponent(message);
 
-document.getElementById(
-    "bookingModal"
-).addEventListener(
-    "click",
-    function(e){
 
-        if(e.target === this){
+    window.open(
+        whatsappURL,
+        "_blank"
+    );
 
-            closeBooking();
 
-        }
+    document
+    .getElementById("bookingForm")
+    .reset();
 
-    }
+
+    document
+    .getElementById("selectedService")
+    .textContent =
+    "Select Service";
+
+
+    gpsLatitude = "";
+    gpsLongitude = "";
+    gpsMapURL = "";
+
+
+    document
+    .getElementById("gpsStatus")
+    .style.display =
+    "none";
+
+
+    document
+    .getElementById("gpsMap")
+    .style.display =
+    "none";
+
+
+    document
+    .querySelector(".gps-btn")
+    .textContent =
+    "📍 Get My Current Location";
+
+
+    closeBooking();
+
+});
+
+
+/* ==============================
+   MINIMUM BOOKING DATE
+============================== */
+
+const today =
+new Date()
+.toISOString()
+.split("T")[0];
+
+
+document
+.getElementById("bookingDate")
+.setAttribute(
+    "min",
+    today
 );
-
-
-/* =========================
-   ESC KEY
-========================= */
-
-document.addEventListener(
-    "keydown",
-    function(e){
-
-        if(e.key === "Escape"){
-
-            closeBooking();
-
-        }
-
-    }
-);
-
-
-/* =========================
-   INIT
-========================= */
-
-setMinDate();
 
 </script>
 
